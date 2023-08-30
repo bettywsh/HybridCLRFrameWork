@@ -1,0 +1,21 @@
+package com.bochsler.protocol;
+
+//option optimize_for = LITE_RUNTIME;
+
+// 所有客户端->服务器的消息类型 LUA端为10000以上 C#端为10000以下
+enum CSMessageEnum {
+  LoginRequest = 10001;
+  PingRequest = 10002;
+  ReconnectRequest = 10003; // 断线重连
+  GmOrderRequest = 10009;
+  LoginSuccReq = 10010;
+  CreateRoleRequest = 10011; //创建角色
+  RoleListRequest = 10012; //角色列表
+  RoleLoginRequest = 10013; //角色登陆游戏
+  RoleLogoutRequest = 10014; //角色登出游戏
+  ChatRequest = 10101;//聊天
+  FaceRequest = 10102;//表情
+  DanceRequest = 10103;//跳舞
+  SeatRequest = 10104;//坐
+
+}

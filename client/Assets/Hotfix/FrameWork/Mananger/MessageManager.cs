@@ -26,7 +26,7 @@ public class MessageManager : Singleton<MessageManager>
             list.Add(message);
     }
 
-    public void RegisterEventMessageHandler(string eventName, MessageHandler message)
+    public void RegisterMessageHandler(string eventName, MessageHandler message)
     {
         List<MessageHandler> list;
         if (!eventHandlerDic.TryGetValue(eventName, out list))
@@ -49,7 +49,7 @@ public class MessageManager : Singleton<MessageManager>
     }
 
 
-    public void RemoveEventMessage(string eventName)
+    public void RemoveMessage(string eventName)
     {
         if (eventHandlerDic.ContainsKey(eventName))
         {
@@ -83,13 +83,12 @@ public class MessageManager : Singleton<MessageManager>
         }
     }
 
-    public void EventNotify(string eventName,params object[] msgData)
+    public void MessageNotify(string eventName,params object[] msgData)
     {
         List<MessageHandler> handle;
 
         if (eventHandlerDic.TryGetValue(eventName, out handle))
         {
-
             foreach (MessageHandler itemHand in handle)
             {
 

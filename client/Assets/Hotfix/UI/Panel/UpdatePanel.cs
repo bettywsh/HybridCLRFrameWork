@@ -6,12 +6,12 @@ public partial class UpdatePanel : BasePanel
 {
     public void OnOpen()
     {
-        MessageManager.Instance.RegisterEventMessageHandler(MessageConst.MsgUpdateFristCopy, Msg_UpdateFristCopy);
-        MessageManager.Instance.RegisterEventMessageHandler(MessageConst.MsgUpdateFristProgress, Msg_UpdateFristProgress);
-        MessageManager.Instance.RegisterEventMessageHandler(MessageConst.MsgUpdateCheckVersion, Msg_UpdateCheckVersion);
-        MessageManager.Instance.RegisterEventMessageHandler(MessageConst.MsgUpdateBigVersion, Msg_UpdateBigVersion);
-        MessageManager.Instance.RegisterEventMessageHandler(MessageConst.MsgUpdateSmallVersion, Msg_UpdateSmallVersion);
-        MessageManager.Instance.RegisterEventMessageHandler(MessageConst.MsgUpdateLostConnect, Msg_UpdateLostConnect);
+        MessageManager.Instance.RegisterMessageHandler(MessageConst.MsgUpdateFristCopy, Msg_UpdateFristCopy);
+        MessageManager.Instance.RegisterMessageHandler(MessageConst.MsgUpdateFristProgress, Msg_UpdateFristProgress);
+        MessageManager.Instance.RegisterMessageHandler(MessageConst.MsgUpdateCheckVersion, Msg_UpdateCheckVersion);
+        MessageManager.Instance.RegisterMessageHandler(MessageConst.MsgUpdateBigVersion, Msg_UpdateBigVersion);
+        MessageManager.Instance.RegisterMessageHandler(MessageConst.MsgUpdateSmallVersion, Msg_UpdateSmallVersion);
+        MessageManager.Instance.RegisterMessageHandler(MessageConst.MsgUpdateLostConnect, Msg_UpdateLostConnect);
     }
 
 

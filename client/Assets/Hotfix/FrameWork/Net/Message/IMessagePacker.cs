@@ -5,6 +5,6 @@ using System.IO;
 public interface IMessagePacker
 {
 	byte[] SerializeTo(int opcode, byte[] data);
-    object DeserializeFrom(MemoryStream stream, int packetLength);
+    void DeserializeFrom(MemoryStream stream, int packetLength);
 
 }

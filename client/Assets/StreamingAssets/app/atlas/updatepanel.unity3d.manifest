@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 55734723
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ef0b1a3d03153137b97a24322b8ed70f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e9382dc4b19d670c321f75ecd250bee6
+HashAppended: 0
+ClassTypes:
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/App/Atlas/UpdatePanel.spriteatlas
+Dependencies: []

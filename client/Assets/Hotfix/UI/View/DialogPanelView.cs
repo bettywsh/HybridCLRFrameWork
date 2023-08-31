@@ -18,4 +18,20 @@ public partial class DialogPanel
 	public Button btn_Ok;
 	public TextMeshProUGUI txt_Ok;
 
+
+   public override void Awake()
+   {
+       
+   }
+   
+   public override void Start()
+   {
+       OnOpen();
+   }
+   
+   public override void OnDestroy()
+   {
+       OnClose();
+   }
+   
 }

@@ -15,4 +15,20 @@ public partial class LoginPanel
 	public TMP_InputField ipt_account;
 	public TMP_InputField ipt_passWorld;
 
+
+   public override void Awake()
+   {
+       
+   }
+   
+   public override void Start()
+   {
+       OnOpen();
+   }
+   
+   public override void OnDestroy()
+   {
+       OnClose();
+   }
+   
 }

@@ -266,7 +266,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1804292436268675099}
-  - component: {fileID: 1263399440967886815}
   m_Layer: 5
   m_Name: MainPanel
   m_TagString: Untagged
@@ -295,23 +294,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1263399440967886815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804292436268675096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75fa061b601315e438b032eff5ac0c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn_Mask: {fileID: 1851447704694099903}
-  btn_Bag: {fileID: 5249335819254337939}
-  btn_DialogOne: {fileID: 1804210031155732255}
-  btn_DialogTwo: {fileID: 6087054077282706299}
-  btn_FlyingText: {fileID: 1360842222629050542}
 --- !u!1 &1804292436910473572
 GameObject:
   m_ObjectHideFlags: 0

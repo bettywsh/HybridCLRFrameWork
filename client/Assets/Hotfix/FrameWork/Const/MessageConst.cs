@@ -19,16 +19,14 @@ public class MessageConst
     public const string MsgNetMsg = "OnNetMsg_";// for c# use
 
     //热更新代码
-    //小版本更新
+    //网络连接失败
     public const string MsgUpdateLostConnect = "MsgUpdateLostConnect";
-    //服务器连接失败
+    //小版本更新
     public const string MsgUpdateSmallVersion = "MsgUpdateSmallVersion";
     //大版本更新
     public const string MsgUpdateBigVersion = "MsgUpdateBigVersion";
-    //不更新
-    public const string MsgUpdateNo = "MsgUpdateNo";
     //更新
-    public const string MsgUpdateYes = "MsgUpdateYes";
+    public const string MsgUpdateCheckVersion = "MsgUpdateCheckVersion";
     //第一次拷贝
     public const string MsgUpdateFristCopy = "MsgUpdateFristCopy";
     //拷贝进度
@@ -62,4 +60,7 @@ public class MessageConst
 
     //unity退出事件
     public const string MsgOnApplicationQuit = "MsgOnApplicationQuit";
+
+
+    //////////////////////////////////上面是框架事件其他写下面
 }

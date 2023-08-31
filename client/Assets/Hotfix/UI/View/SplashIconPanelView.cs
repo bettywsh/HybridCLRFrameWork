@@ -12,4 +12,20 @@ public partial class SplashIconPanel
 {
 	public CanvasGroup cng_BG;
 
+
+   public override void Awake()
+   {
+       
+   }
+   
+   public override void Start()
+   {
+       OnOpen();
+   }
+   
+   public override void OnDestroy()
+   {
+       OnClose();
+   }
+   
 }

@@ -4,20 +4,17 @@ using UnityEngine;
 
 public partial class LoginPanel : BasePanel
 {
-    void Awake()
+    public void OnOpen()
+    {
+        DialogManager.Instance.ShowDialogOne("警告", "大版本更新请下载www.baidu.com", () => {
+            Application.Quit();
+        });
+    }
+
+
+    public void OnClose()
     {
         
     }
 
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

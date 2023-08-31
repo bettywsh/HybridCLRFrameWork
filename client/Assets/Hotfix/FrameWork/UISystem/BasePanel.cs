@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class BasePanel : MonoBehaviour
+public class BasePanel : MonoBehaviour
 {
+    public object[] args;
+    public virtual void Awake()
+    {
+        //注册事件
 
-    //private void Awake()
-    //{
-    //    //注册事件
-       
-    //}
+    }
+
+    public virtual void Start()
+    {
+
+
+    }
+
+    public virtual void OnDestroy()
+    {
+
+
+    }
 }

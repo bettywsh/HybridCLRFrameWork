@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 3608373053
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9c6f58c1a066227786aed40a1c06db95
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e9382dc4b19d670c321f75ecd250bee6
+HashAppended: 0
+ClassTypes:
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/App/Atlas/FlyTextPanel.spriteatlas
+Dependencies: []

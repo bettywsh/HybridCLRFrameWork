@@ -4,13 +4,13 @@ using UnityEngine;
 
 public partial class #CLASSNAME# : BasePanel
 {
-    void Awake()
+    public void OnOpen()
     {
         
     }
 
 
-    void Start()
+    public void OnClose()
     {
         
     }

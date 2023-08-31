@@ -19,7 +19,7 @@ MonoBehaviour:
   UniqueBundleName: 0
   ShowEditorAlias: 0
   Packages:
-  - PackageName: Game
+  - PackageName: App
     PackageDesc: "\u6E38\u620F\u5305"
     Groups:
     - GroupName: Prefabs
@@ -42,6 +42,58 @@ MonoBehaviour:
       Collectors:
       - CollectPath: Assets/App/Atlas
         CollectorGUID: 0736bb5f8def8ee4f805edff5b7b28e0
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Dll
+      GroupDesc: "\u4EE3\u7801"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Dll
+        CollectorGUID: 001eb8bb7fc0cc245986299561d7c38a
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Scene
+      GroupDesc: "\u573A\u666F"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Scene
+        CollectorGUID: fb6acea776eb7e0459ba77b1da8c3298
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Texture
+      GroupDesc: icon
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Texture
+        CollectorGUID: c176e790a66dc05459a9036eacd6b4be
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Sound
+      GroupDesc: "\u58F0\u97F3"
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Sound
+        CollectorGUID: c76e835d3e2ee8a49930d1348160f8bd
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

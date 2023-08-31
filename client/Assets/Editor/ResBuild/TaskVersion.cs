@@ -17,6 +17,7 @@ public class TaskVersion : ITask
         else
         {
             jd["ResVersion"] = 1;
+            jd["MainVersion"] = (int)jd["MainVersion"] + 1;
             string[] gameVers = jd["GameVersion"].ToString().Split(".");
             gameVers[2] = (int.Parse(gameVers[2]) + 1).ToString();
         }

@@ -29,7 +29,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             //在其上添加AudioListener 和 AudioSource 组件
             go.AddComponent<AudioListener>();
             audio = go.AddComponent<AudioSource>();
-            DontDestroyOnLoad(go);
+            //DontDestroyOnLoad(go);
             root = go.transform;
             isCanBackGround = CanPlayBackSound();
             background_volume = PlayerPrefs.GetFloat("BackGroundVolume", 1f);
@@ -246,5 +246,10 @@ public class SoundManager : MonoSingleton<SoundManager>
                 }
             }
         }
+    }
+
+    public override void Dispose() {
+        base.Dispose();
+        GameObject.Destroy(root.gameObject); 
     }
 }

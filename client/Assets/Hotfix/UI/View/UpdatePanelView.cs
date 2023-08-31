@@ -13,4 +13,14 @@ public partial class UpdatePanel
 	public Image img_cur;
 	public TextMeshProUGUI txt_Content;
 
+
+   public override void Awake()
+   {
+       
+   }
+   
+   public override void Start()
+   {
+       OnOpen();
+   }
 }

@@ -1,0 +1,86 @@
+ManifestFileVersion: 0
+CRC: 1612830772
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: buildconfig/buildconfig.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: dll/dll.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: prefab/ui/cell/bagcell.unity3d
+      Dependencies:
+        Dependency_0: texture/item.unity3d
+    Info_3:
+      Name: prefab/ui/panel/bagpanel.unity3d
+      Dependencies:
+        Dependency_0: prefab/ui/cell/bagcell.unity3d
+    Info_4:
+      Name: prefab/ui/panel/dialogpanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehansanscn-normal sdf.unity3d
+        Dependency_1: font/sourcehanserifcn-bold sdf.unity3d
+    Info_5:
+      Name: prefab/ui/panel/loadingpanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehansanscn-normal sdf.unity3d
+    Info_6:
+      Name: prefab/ui/panel/loginpanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehansanscn-normal sdf.unity3d
+    Info_7:
+      Name: prefab/ui/panel/mainpanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehansanscn-normal sdf.unity3d
+    Info_8:
+      Name: prefab/ui/panel/splashadvicepanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehanserifcn-bold sdf.unity3d
+    Info_9:
+      Name: prefab/ui/panel/splashiconpanel.unity3d
+      Dependencies: {}
+    Info_10:
+      Name: prefab/ui/panel/textflyingpanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehansanscn-normal sdf.unity3d
+    Info_11:
+      Name: prefab/ui/panel/updatepanel.unity3d
+      Dependencies:
+        Dependency_0: font/sourcehansanscn-normal sdf.unity3d
+    Info_12:
+      Name: atlas/dialogpanel.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: atlas/flytextpanel.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: atlas/loginpanel.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: atlas/splashpanel.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: atlas/updatepanel.unity3d
+      Dependencies: {}
+    Info_17:
+      Name: scene/battle.unity3d
+      Dependencies: {}
+    Info_18:
+      Name: scene/login.unity3d
+      Dependencies: {}
+    Info_19:
+      Name: scene/main.unity3d
+      Dependencies: {}
+    Info_20:
+      Name: scene/start.unity3d
+      Dependencies: {}
+    Info_21:
+      Name: font/sourcehansanscn-normal sdf.unity3d
+      Dependencies: {}
+    Info_22:
+      Name: font/sourcehanserifcn-bold sdf.unity3d
+      Dependencies: {}
+    Info_23:
+      Name: texture/item.unity3d
+      Dependencies: {}

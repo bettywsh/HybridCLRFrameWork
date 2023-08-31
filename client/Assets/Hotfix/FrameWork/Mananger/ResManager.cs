@@ -104,8 +104,7 @@ public class ResManager : Singleton<ResManager>
     //    if (!AppConst.IsABMode)
     //    { return; }
     //    string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
-    //    AssetBundleManager.Instance.UnloadAssetBundle(abName, true);
-        
+    //    AssetBundleManager.Instance.UnloadAssetBundle(abName, true);        
     //}
 
     public override void Dispose()

@@ -14,4 +14,20 @@ public partial class SplashAdvicePanel
 	public TextMeshProUGUI txt_Title;
 	public TextMeshProUGUI txt_Info;
 
+
+   public override void Awake()
+   {
+       
+   }
+   
+   public override void Start()
+   {
+       OnOpen();
+   }
+   
+   public override void OnDestroy()
+   {
+       OnClose();
+   }
+   
 }

@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 2619864921
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 805f6bbec0498f27f6091aa1df4f90f6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: e9382dc4b19d670c321f75ecd250bee6
+HashAppended: 0
+ClassTypes:
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/App/Atlas/SplashPanel.spriteatlas
+Dependencies: []

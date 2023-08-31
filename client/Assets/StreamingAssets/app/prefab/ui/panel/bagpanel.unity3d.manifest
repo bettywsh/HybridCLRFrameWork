@@ -1,0 +1,62 @@
+ManifestFileVersion: 0
+CRC: 4045618146
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 36f72c7fdbc39199abf4a1f497996e9e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c5b6ce2ad008842d35f90fecc194d2a4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e2bc2b1a9cddc514fa1a841021a5ae1b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: ce71017a2903f7c4c9a699e438d0b897, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e13d7b50d956d1d4c8a83d6017324f58, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Hotfix
+  ClassName: ButtonExt/ScaleTweenInfo
+- AssemblyName: LoopScrollRect.Runtime
+  ClassName: UnityEngine.UI.LoopScrollRectBase/ScrollRectEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.AnimationTriggers
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Button/ButtonClickedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.ColorBlock
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.Navigation
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.SpriteState
+Assets:
+- Assets/App/Prefab/UI/Panel/BagPanel.prefab
+Dependencies:
+- E:/demo/HybridCLRFrameWork/ResCreate/Android/app/prefab/ui/cell/bagcell.unity3d

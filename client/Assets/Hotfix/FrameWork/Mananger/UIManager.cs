@@ -20,47 +20,39 @@ public class UIManager : MonoSingleton<UIManager>
     public override void Init()
     {
         canvasRoot = GameObject.Find("Canvas");
-        DontDestroyOnLoad(canvasRoot);
+        //DontDestroyOnLoad(canvasRoot);
         uiCamera = GameObject.Find("Canvas/UICamera").GetComponent<Camera>();
         baseCanvas = GameObject.Find("Canvas/UICanvas/BaseCanvas").transform;
     }
 
-    ////public void PreLoad()
-    ////{
-    ////    // var seq = DG.Tweening.DOTween.Sequence();
-    ////    // seq.IsPlaying(true)
+    //public void PreLoad()
+    //{
+    //    // var seq = DG.Tweening.DOTween.Sequence();
+    //    // seq.IsPlaying(true)
 
-    ////}
+    //}
 
-    ////public LuaTable GetBaseUI(string prefabName)
-    ////{
-    ////    LuaTable lt = null;
-    ////    for (int i = 0; i < baseCanvas.childCount; i++)
-    ////    {
-    ////        Transform tf = baseCanvas.GetChild(i);
-    ////        if (tf.name == prefabName)
-    ////        {
-    ////            lt = tf.GetComponent<LuaBehaviour>().metaTable;
-    ////            break;
-    ////        }
-    ////    }
-    ////    return lt;
-    ////}
+    public T GetUI<T>()
+    {
+        foreach (var item in uiList)
+        {
+            if (item.Key == typeof(T).Name)
+            {
+                return item.Value.GetComponent<T>();
+            }
+        }
+        return default;
+    }
 
-    ////public void CallAllStart()
-    ////{
-    ////    for (int i = 0; i < baseCanvas.childCount; i++)
-    ////    {
-    ////        Transform tf = baseCanvas.GetChild(i);
-    ////        LuaTable metaTable = tf.GetComponent<LuaBehaviour>().metaTable;
-    ////        LuaFunction lnew = metaTable.Get<LuaFunction>("Start");
-    ////        if (lnew != null)
-    ////        {
-    ////            //执行New函数生成脚本对象
-    ////            lnew.Call(metaTable);
-    ////        }
-    ////    }
-    ////}
+    //public void RefreshAllUI()
+    //{
+    //    for (int i = 0; i < baseCanvas.childCount; i++)
+    //    {
+    //        Transform tf = baseCanvas.GetChild(i);
+    //        BasePanel basePanel = tf.GetComponent<BasePanel>();
+    //        //basePanel.
+    //    }
+    //}
 
 
     public void Open(string prefabName, params object[] args)
@@ -75,8 +67,21 @@ public class UIManager : MonoSingleton<UIManager>
             cv.overrideSorting = true;
             go.AddComponent<GraphicRaycaster>();
             OrderCanvas(go);
+            uiList.Add(prefabName, go);
+            go.GetComponent<BasePanel>().args = args;
             go.SetActive(true);
+            
         });
+    }
+
+    public void Close(string prefabName)
+    {
+        GameObject go;
+        if (uiList.TryGetValue(prefabName, out go))
+        {
+            GameObject.DestroyImmediate(go);
+            uiList.Remove(prefabName);
+        }
     }
 
     public void LoadBaseUIAsync(string prefabName, Action<GameObject> cb)
@@ -135,30 +140,23 @@ public class UIManager : MonoSingleton<UIManager>
         return outVec;
     }
 
-    //public void HideAllBaseUI()
-    //{
-    //    List<GameObject> keys = new List<GameObject>();
-    //    for (int i = baseCanvas.childCount - 1; i >= 0; i--)
-    //    {
-    //        keys.Add(baseCanvas.GetChild(i).gameObject);
-    //    }
+    public void CloseAll()
+    {
+        List<GameObject> keys = new List<GameObject>();
+        for (int i = baseCanvas.childCount - 1; i >= 0; i--)
+        {
+            keys.Add(baseCanvas.GetChild(i).gameObject);
+        }
 
-    //    for (int i = keys.Count - 1; i >= 0; i--)
-    //    {
-    //        GameObject go = keys[i].gameObject;
-    //        keys.RemoveAt(i);
-    //        LuaTable metaTable = go.GetComponent<LuaBehaviour>().metaTable;
-    //        LuaFunction lnew = (LuaFunction)metaTable.Get<LuaFunction>("Hide");
-    //        lnew.Call(metaTable);
-    //    }
-    //}
+        for (int i = keys.Count - 1; i >= 0; i--)
+        {
+            GameObject go = keys[i].gameObject;
+            keys.RemoveAt(i);
+            uiList.Remove(go.name);
+            DestroyImmediate(go);
+        }
+    }
 
-    //public void HideBaseUI(GameObject go)
-    //{
-    //    LuaBehaviour luaBehaviour = go.GetComponent<LuaBehaviour>();       
-    //    uiList.Remove(luaBehaviour.className);
-    //    DestroyImmediate(go);
-    //}
 
     public bool ClickUI()
     {
@@ -177,5 +175,8 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
-
+    public override void Dispose()
+    {
+        base.Dispose();
+    }
 }

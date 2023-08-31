@@ -14,11 +14,25 @@ public class AppConst
     public const bool IsABMode = true;
 #endif
 
-
     /// <summary>
     /// 热更新模式
     /// </summary>
-    public const bool UpdateModel = false;
+    public const bool UpdateModel = true;
+
+    /// <summary>
+    /// 游戏启动ip地址
+    /// </summary>
+    public const string SvrGameIp = "shiku.grandlink.net";
+
+    /// <summary>
+    /// 游戏启动端口
+    /// </summary>
+    public const int SvrGamePort = 8443;
+
+    /// <summary>
+    /// 热更下载地址
+    /// </summary>
+    public const string SvrResIp = "http://localhost/";
 
     /// <summary>
     /// 打印Log模式

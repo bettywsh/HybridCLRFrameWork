@@ -12,7 +12,7 @@ public class TaskCopyFile : ITask
             AssetDatabase.Refresh();
             //重命名manifest
             System.IO.File.Move(ResPack.BuildCreatePath + "/ResCreate.manifest", ResPack.BuildCreatePath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower() + ".manifest");
-            //System.IO.File.Move(ResPack.BuildCreatePath + "/ResCreate", ResPack.BuildCreatePath + "/" + ResConst.RootFolderName.ToLower());
+            System.IO.File.Move(ResPack.BuildCreatePath + "/ResCreate", ResPack.BuildCreatePath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower());
             AssetDatabase.Refresh();
             //拷贝到streamingAssets
             PackFile.CopySourceDirTotargetDir(ResPack.BuildCreatePath.Replace("/app", ""), Application.streamingAssetsPath);
@@ -23,7 +23,7 @@ public class TaskCopyFile : ITask
             AssetDatabase.Refresh();
             //重命名manifest
             System.IO.File.Move(ResPack.BuildHotfixPath + "/ResCreate.manifest", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower() + ".manifest");
-            //System.IO.File.Move(ResPack.BuildHotfixPath + "/ResCreate", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower());
+            System.IO.File.Move(ResPack.BuildHotfixPath + "/ResCreate", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower());
         }
     }
 }

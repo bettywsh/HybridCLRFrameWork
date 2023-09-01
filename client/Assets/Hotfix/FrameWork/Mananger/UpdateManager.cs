@@ -371,6 +371,8 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         SoundManager.Instance.Dispose();
         UIManager.Instance.Dispose();
         AtlasManager.Instance.Dispose();
+
+
         NetworkManager.Instance.Init();
         UIManager.Instance.Open("LoginPanel");
     }

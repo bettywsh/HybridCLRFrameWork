@@ -73,7 +73,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         yield return new WaitForEndOfFrame();
 
         // 释放所有文件到数据目录
-        string[] files = File.ReadAllLines(infile);     
+        string[] files = File.ReadAllLines(outfile);     
         for (int i =0;i< files.Length;i++)        {
             string[] fs = files[i].Split('|');
             infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), fs[0]);
@@ -341,10 +341,9 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             retText.text = File.ReadAllText(path);
         }
         else
-        {
-
+        {           
 #if UNITY_ANDROID
-        path = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
+            path = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
 #endif
 
 #if UNITY_IOS

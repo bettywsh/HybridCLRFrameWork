@@ -16,16 +16,15 @@ public static class ResPack
     /// 
     public static string BuildHotfixPath
     {
-        get { return Application.dataPath.Replace("Assets", "ResHotfix/Android/") + ResConst.RootFolderName.ToLower(); }
+        get { return Application.dataPath.Replace("Assets", "ResHotfix"); }
     }
-
 
     /// <summary>
     /// 旧资源目录
     /// </summary>
     public static string BuildCreatePath
     {
-        get { return Application.dataPath.Replace("Assets", "ResCreate/Android/") + ResConst.RootFolderName.ToLower(); }
+        get { return Application.dataPath.Replace("Assets", "ResCreate"); }
     }
 
     [MenuItem("Builds/Create", false, 1)]
@@ -52,7 +51,8 @@ public static class ResPack
         List<ITask> pipeline = new List<ITask>
                 {
                     new TaskAtals(), //打包ui图集
-					new TaskAssetBundle(), //打包资源
+                    new TaskDll(),   //生产热更dll和aot原数据
+                    new TaskAssetBundle(), //打包资源
 					new TaskFileList(), //生成资源列表
                     new TaskVersion(), //生成版本文件
                     new TaskCopyFile(), // 拷贝文件到对应目录

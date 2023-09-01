@@ -122,7 +122,7 @@ public class ResPath
 
     public static string GetSingleAssetBunldeName(string folderName)
     {
-        return Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+        return ResConst.RootFolderName.ToLower()+"/"+ Path.Combine(folderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
     }
 
     public static string GetMultiFileAssetBunldeName(string path)
@@ -132,7 +132,7 @@ public class ResPath
 
     public static string GetMultiFolderAssetBunldeName(string rootFolderName, string folderName)
     {
-        return Path.Combine(rootFolderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
+        return ResConst.RootFolderName.ToLower() + "/" +  Path.Combine(rootFolderName.ToLower(), folderName.ToLower()) + ResConst.AssetBunldExtName;
     }
 
     public static string GetAssetBunldePath(string path, Type type, Dictionary<string, BuildJson> BuildJson)

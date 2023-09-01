@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StartUpdate 
 {
@@ -15,6 +16,10 @@ public class StartUpdate
         SoundManager.Instance.Init();
         UIManager.Instance.Init();
         AtlasManager.Instance.Init();
+        ResManager.Instance.Init();
+        AssetBundleManager.Instance.Init();
+        //ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSansCN-Normal SDF.asset", typeof(TMP_FontAsset));
+        //ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSerifCN-Bold SDF.asset", typeof(TMP_FontAsset));
         UIManager.Instance.Open("SplashAdvicePanel");
     }
 

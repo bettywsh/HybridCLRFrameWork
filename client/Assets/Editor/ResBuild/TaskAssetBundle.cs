@@ -80,7 +80,7 @@ public class TaskAssetBundle : ITask
             if (Path.GetExtension(files[i]).ToLower() == ".meta")
                 continue;
             var absolutePath = files[i].Replace("\\", "/");
-            int start = absolutePath.IndexOf(folderName + "/");
+            int start = absolutePath.IndexOf(ResConst.RootFolderName + "/");
             string path = absolutePath.Substring(start, absolutePath.Length - start);
 
             path = path.Replace(Path.GetExtension(files[i]), "");

@@ -54,9 +54,10 @@ public class Init :MonoBehaviour
         return Application.streamingAssetsPath + "/";
 #else
 #if UNITY_ANDROID
-        return Application.dataPath + @"/Raw" + "/";
+        return Application.streamingAssetsPath + "/";      
 #elif UNITY_IOS
-        return Application.streamingAssetsPath + "/";
+        return Application.dataPath + @"/Raw";        
+
 #else
         return Application.streamingAssetsPath + "/";
 #endif
@@ -81,10 +82,9 @@ public class Init :MonoBehaviour
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
 #endif
         UnLoadAssetBundle();
+        Debug.Log("dll加载完成");
         Type entryType = _hotUpdateAss.GetType("StartUpdate");
         entryType.GetMethod("Start").Invoke(null, null);
-
-        Debug.Log("dll加载完成");
     }
 
     /// <summary>

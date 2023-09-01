@@ -21,7 +21,7 @@ public class ResManager : Singleton<ResManager>
     public override void Init()
     {
         TextAsset text = LoadAsset("Common", ResConst.BuildFolderName + "/" + ResConst.BuildFile, typeof(TextAsset)) as TextAsset;
-        BuildJson = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(text.text);
+        BuildJson = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(text.text);        
     }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
@@ -32,11 +32,7 @@ public class ResManager : Singleton<ResManager>
             return ResLocalManager.Instance.LoadLocalUObject(relativePath, type);
         }
         else
-        {
-            if (relativePath.Contains("protobuf"))
-            {
-                int a = 0;
-            }
+        {           
             string assetName = ResPath.GetAssetPath(relativePath, type);
             string abName = ResPath.GetAssetBunldePath(relativePath, type, BuildJson);
             AddResloader(resName, abName);
@@ -53,10 +49,6 @@ public class ResManager : Singleton<ResManager>
         }
         else
         {
-            if (relativePath.Contains("protobuf"))
-            {
-                int a = 0;
-            }
             string assetName = ResPath.GetAssetPath(relativePath, type);
             string abName = ResPath.GetAssetBunldePath(relativePath, type, BuildJson);
             AddResloader(resName, abName);

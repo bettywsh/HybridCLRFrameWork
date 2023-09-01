@@ -11,4 +11,20 @@ using TMPro;
 public partial class LoadingPanel 
 {
 
+
+   public override void Awake()
+   {
+       
+   }
+   
+   public override void Start()
+   {
+       OnOpen();
+   }
+   
+   public override void OnDestroy()
+   {
+       OnClose();
+   }
+   
 }

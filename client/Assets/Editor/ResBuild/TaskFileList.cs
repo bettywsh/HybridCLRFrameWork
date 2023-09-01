@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 public class TaskFileList :ITask
 {
@@ -9,11 +10,11 @@ public class TaskFileList :ITask
     {
         if (packSetting.IsHotfix)
         {
-            CreateFiles(ResPack.BuildHotfixPath);
+            CreateFiles(ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower());
         }
         else
         {
-            CreateFiles(ResPack.BuildCreatePath);
+            CreateFiles(ResPack.BuildCreatePath + "/" + ResConst.RootFolderName.ToLower());
         }
     }
 
@@ -32,15 +33,15 @@ public class TaskFileList :ITask
             if (string.IsNullOrEmpty(ext) || (ext != ".meta" && ext != ".manifest"))
             {
                 FileInfo fileContent = new FileInfo(file);
-                var md5 = PackFile.MD5File(file);
+                //var md5 = PackFile.MD5File(file);
                 string relativePath = file.Replace(path, string.Empty).Substring(1);
                 //relativePath = Path.GetFileNameWithoutExtension(relativePath);
                 //ªÒ»°manifest
                 string manifestContent = File.ReadAllText(file + ".manifest");
                 //string crc = Regex.Match(manifestContent, @"CRC:.(\d*)").Groups[1].ToString();
-                //string hash = Regex.Match(manifestContent, @"Hash:.(.*)\s{3}Type").Groups[1].ToString();
+                string hash = Regex.Match(manifestContent, @"Hash:.(.*)\s{3}Type").Groups[1].ToString();
 
-                lines.Add(string.Format("{0}|{1}|{2}", relativePath, fileContent.Length, md5));
+                lines.Add(string.Format("{0}|{1}|{2}", relativePath, fileContent.Length, hash));
             }
         }
         File.WriteAllText(filesPath, string.Join("\n", lines.ToArray()), utf8);

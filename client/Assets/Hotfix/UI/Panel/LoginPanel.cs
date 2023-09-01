@@ -6,7 +6,7 @@ public partial class LoginPanel : BasePanel
 {
     public void OnOpen()
     {
-        DialogManager.Instance.ShowDialogOne("警告", "大版本更新请下载www.baidu.com", () => {
+        DialogManager.Instance.ShowDialogOne("警告", "进入游戏www.baidu.com", () => {
             Application.Quit();
         });
     }

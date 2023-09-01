@@ -25,11 +25,11 @@ public class TaskVersion : ITask
         File.WriteAllText(ResPath.AppFullPath + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
         if (packSetting.IsHotfix)
         {
-            File.WriteAllText(ResPack.BuildHotfixPath + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
+            File.WriteAllText(ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
         }
         else
         {
-            File.WriteAllText(ResPack.BuildCreatePath + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
+            File.WriteAllText(ResPack.BuildCreatePath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.VerFile, JsonMapper.ToJson(jd), new System.Text.UTF8Encoding(false));
         }
         AssetDatabase.Refresh();
     }

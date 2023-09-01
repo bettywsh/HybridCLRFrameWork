@@ -113,11 +113,11 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     {
         string serverHttpFile = "";
 #if UNITY_ANDROID
-        serverHttpFile = string.Format("{0}Android/{1}", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
+        serverHttpFile = string.Format("{0}Android/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
 #elif UNITY_IOS
-        serverHttpFile = string.Format({0}IOS/, AppConst.SvrResIp);
+        serverHttpFile = string.Format("{0}IOS/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
 #else
-        serverHttpFile = string.Format({0}Pc/, AppConst.SvrResIp);
+        serverHttpFile = string.Format("{0}Pc/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
 #endif
         return serverHttpFile + fileName;
     }
@@ -127,7 +127,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         MessageManager.Instance.EventNotify(MessageConst.MsgUpdateCheckVersion);
         string serverHttpFile = GetFilePath(ResConst.VerFile);
         JsonData jsonDataInfoServer, jsonDataInfoClient;
-        string[] serverVersion = new string[3];
+        int[] serverVersion = new int[3];
         UnityWebRequest webRequest = UnityWebRequest.Get(serverHttpFile);
         yield return webRequest.SendWebRequest();
         if (webRequest.isHttpError || webRequest.isNetworkError)
@@ -138,18 +138,18 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         else
         {
             jsonDataInfoServer = JsonMapper.ToObject(webRequest.downloadHandler.text);
-            serverVersion[0] = (string)jsonDataInfoServer["MainVersion"];
-            serverVersion[1] = (string)jsonDataInfoServer["PatchVersion"];
-            serverVersion[2] = (string)jsonDataInfoServer["ResVersion"];
+            serverVersion[0] = (int)jsonDataInfoServer["MainVersion"];
+            serverVersion[1] = (int)jsonDataInfoServer["PatchVersion"];
+            serverVersion[2] = (int)jsonDataInfoServer["ResVersion"];
         }
-       
-        string[] clientVersion = new string[3];
+
+        int[] clientVersion = new int[3];
         LocalText localText = new LocalText();
         yield return StartCoroutine(LocalFile(ResConst.VerFile, localText));
         jsonDataInfoClient = JsonMapper.ToObject(localText.text);
-        clientVersion[0] = (string)jsonDataInfoClient["MainVersion"];
-        clientVersion[1] = (string)jsonDataInfoClient["PatchVersion"];
-        clientVersion[2] = (string)jsonDataInfoClient["ResVersion"];
+        clientVersion[0] = (int)jsonDataInfoClient["MainVersion"];
+        clientVersion[1] = (int)jsonDataInfoClient["PatchVersion"];
+        clientVersion[2] = (int)jsonDataInfoClient["ResVersion"];
 
         //可写文件夹版本太低， 可能覆盖安装了
         //if (int.Parse(serverVersion[2]) > int.Parse(clientVersion[2]))
@@ -167,13 +167,13 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         //}
         //AppConst.GameVersion = sVersion;
 
-        if (int.Parse(serverVersion[0]) > int.Parse(clientVersion[0]))
+        if (serverVersion[0] > clientVersion[0])
         {
             //大版本更新
             MessageManager.Instance.EventNotify(MessageConst.MsgUpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
             yield break;
         }
-        else if (int.Parse(serverVersion[2]) > int.Parse(clientVersion[2]))
+        else if (serverVersion[2] > clientVersion[2])
         {
             //小版本更新
             StartCoroutine(TotalDownloadSize(true));
@@ -192,6 +192,8 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         return (string)jsonDataInfo["AndroidUrl"];
 #elif UNITY_IOS
         return (string)jsonDataInfo["IosUrl"];
+#else
+        return (string)jsonDataInfo["PcUrl"];
 #endif
 
     }
@@ -339,7 +341,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
     IEnumerator LocalFile(string file, LocalText retText)
     {
-        string path = string.Format("{0}/{1}", Application.persistentDataPath, file);
+        string path = string.Format("{0}/{1}/{2}", Application.persistentDataPath, ResConst.RootFolderName.ToLower(), file);
         if (File.Exists(path))
         {
             retText.text = File.ReadAllText(path);
@@ -348,11 +350,11 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         {
 
 #if UNITY_ANDROID
-        path = string.Format("{0}/{1}", Application.streamingAssetsPath, ResConst.CheckFile);
+        path = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
 #endif
 
 #if UNITY_IOS
-            path = string.Format("file://{0}/{1}", Application.streamingAssetsPath, ResConst.CheckFile);
+            path = string.Format("file://{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
 #endif
 
 

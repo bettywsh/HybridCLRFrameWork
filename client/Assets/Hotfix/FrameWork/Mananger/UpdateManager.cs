@@ -40,7 +40,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
     IEnumerator ExtractStreamingAssetsPath()
     {
-        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateFristCopy);
+        MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateFristCopy);
         string rootPath = Application.persistentDataPath + "/" + ResConst.RootFolderName.ToLower();
         if (!Directory.Exists(rootPath))
             Directory.CreateDirectory(rootPath);
@@ -79,7 +79,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), fs[0]);
             outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, ResConst.RootFolderName.ToLower(), fs[0]);
 
-            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateFristProgress, i, files.Length);
+            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateFristProgress, i, files.Length);
 
             string dir = Path.GetDirectoryName(outfile);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
@@ -124,7 +124,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
     IEnumerator OnCheckVersion()
     {
-        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateCheckVersion);
+        MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateCheckVersion);
         string serverHttpFile = GetFilePath(ResConst.VerFile);
         JsonData jsonDataInfoServer, jsonDataInfoClient;
         int[] serverVersion = new int[3];
@@ -132,7 +132,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         yield return webRequest.SendWebRequest();
         if (webRequest.isHttpError || webRequest.isNetworkError)
         {
-            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateLostConnect);
+            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateLostConnect);
             yield break;
         }
         else
@@ -170,7 +170,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         if (serverVersion[0] > clientVersion[0])
         {
             //大版本更新
-            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
+            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
             yield break;
         }
         else if (serverVersion[2] > clientVersion[2])
@@ -207,7 +207,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         yield return webRequest.SendWebRequest();
         if (webRequest.isHttpError || webRequest.isNetworkError)
         {
-            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateLostConnect);
+            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateLostConnect);
             yield break;
         }
         else
@@ -235,6 +235,8 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         writeClientFiles = "";
         for (int i = 0; i < serverFiles.Length; i++)
         {
+            if (serverFiles[i] == "")
+                continue;
             string[] sFile = serverFiles[i].Split('|');
             string file = null;
             cFiles.TryGetValue(sFile[0], out file);
@@ -266,7 +268,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         }
         if (isShowDialog)
         {
-            MessageManager.Instance.EventNotify(MessageConst.MsgUpdateSmallVersion, HumanReadableFilesize(downloadSize));
+            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateSmallVersion, HumanReadableFilesize(downloadSize));
         }
         else
         {
@@ -310,7 +312,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
                 yield return www.SendWebRequest();
                 if (www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
                 {
-                    MessageManager.Instance.EventNotify(MessageConst.MsgUpdateLostConnect);
+                    MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateLostConnect);
                     yield break;
                 }
                 while (!www.isDone)
@@ -322,21 +324,13 @@ public class UpdateManager : MonoSingleton<UpdateManager>
                     File.WriteAllBytes(needUpdate[i].file, www.downloadHandler.data);
                 }
             }
-            //if (i == needUpdate.Count)
-            //{
-            //    writeClientFiles += needUpdate[i].fileInfo;
-            //}
-            //else
-            //{
-            //    writeClientFiles += needUpdate[i].fileInfo + "\n";
-            //}
             writeClientFiles += needUpdate[i].fileInfo + "\n";
             File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.CheckFile), writeClientFiles);
         }
 
         
         File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
-        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadComplete);
+        MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateDownLoadComplete);
     }
 
     IEnumerator LocalFile(string file, LocalText retText)

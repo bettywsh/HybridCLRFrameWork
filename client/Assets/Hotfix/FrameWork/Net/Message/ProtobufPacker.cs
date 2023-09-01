@@ -1,9 +1,9 @@
-﻿using com.bochsler.protocol;
-using System;
+﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
+using com.bochsler.protocol;
 
 public class ProtobufPacker : IMessagePacker
 {
@@ -32,7 +32,7 @@ public class ProtobufPacker : IMessagePacker
         }
 	}
 
-	public object DeserializeFrom(MemoryStream memStream, int packetLength)
+	public void DeserializeFrom(MemoryStream memStream, int packetLength)
 	{
         BinaryReader reader = new BinaryReader(memStream);
         //byte[] totalLengthBytes = reader.ReadBytes(4);
@@ -45,17 +45,7 @@ public class ProtobufPacker : IMessagePacker
         int aa = Converter.GetBigEndian(BitConverter.ToInt32(aaBytes, 0));
         byte[] packetArray = reader.ReadBytes(packetLength);
 
-        if (packetId > 10000)
-        {
-            //lua
-            MessageManager.Instance.EventNotify(MessageConst.MsgNetData, packetId, packetArray);
-        }
-        else
-        {
-            //c#
-            SCMessageEnum scMsg = (SCMessageEnum)packetId;
-            MessageManager.Instance.EventNotify(MessageConst.MsgNetMsg + scMsg.ToString(), packetId, packetArray);
-        }
-        return null;
+        //c#
+        MessageManager.Instance.NetNotify(packetId, packetArray);
 	}
 }

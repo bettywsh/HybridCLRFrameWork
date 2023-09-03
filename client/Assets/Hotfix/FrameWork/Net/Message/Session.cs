@@ -41,7 +41,7 @@ public sealed class Session
 		{
 			Network.OnConnect.Invoke(0);
 		}
-        MessageManager.Instance.MessageNotify(MessageConst.MsgConnected, code);
+        MessageManager.Instance.MessageNotify(MessageConst.Msg_Connected, code);
         Debug.Log("OnConnect" + code);
 	}
 		

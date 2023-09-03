@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using UnityEngine;
+using com.bochsler.protocol;
 
 public class NetworkManager : MonoSingleton<NetworkManager>
 {
@@ -34,6 +35,12 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 
     }
 
+	public void Connect(string ip, int port)
+	{
+		string address = ip + ":" + port;
+		Connect(address);
+	}
+
 	public void Connect(string address)
 	{
 		AChannel channel = this.Service.ConnectChannel(address);
@@ -53,10 +60,14 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 		this.Service.Update();
 	}
 
+	public void Send<T>(CSMessageEnum messageEnum, T data)
+	{
+		Debug.Log(messageEnum.ToString() + ","+ LitJson.JsonMapper.ToJson(data));
+		Send((int)messageEnum, ProtobufHelper.Serialize(data));
+	}
+
 	public void Send(int opcode, byte[] data)
 	{
-		Debug.Log("send message：" + opcode);
-
 		Session.Send(MessagePacker.SerializeTo(opcode, data));
 	}
 

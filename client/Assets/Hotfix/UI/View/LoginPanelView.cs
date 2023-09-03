@@ -18,7 +18,7 @@ public partial class LoginPanel
 
    public override void Awake()
    {
-       
+        base.Awake();
    }
    
    public override void Start()

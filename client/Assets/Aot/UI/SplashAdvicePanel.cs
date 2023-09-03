@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class SplashAdvicePanel : BasePanel
+public partial class SplashAdvicePanel : AotBasePanel
 {
 
 
@@ -17,8 +17,8 @@ public partial class SplashAdvicePanel : BasePanel
         //动画完成回调
         seq.AppendCallback(() =>
         {
-            UIManager.Instance.Close("SplashAdvicePanel");
-            UIManager.Instance.Open("SplashIconPanel");
+            AotUI.Instance.Close("SplashAdvicePanel");
+            AotUI.Instance.Open("SplashIconPanel");
         });
     }
 

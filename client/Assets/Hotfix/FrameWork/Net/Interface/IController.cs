@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void MessageHandler(object[] msgDatas);
+
 public delegate void OnRegHandlerEvent(string msgName, MessageHandler handler);
 
 public interface IController

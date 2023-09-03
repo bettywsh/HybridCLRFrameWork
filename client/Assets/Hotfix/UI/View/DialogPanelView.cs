@@ -21,7 +21,7 @@ public partial class DialogPanel
 
    public override void Awake()
    {
-       
+        base.Awake();
    }
    
    public override void Start()

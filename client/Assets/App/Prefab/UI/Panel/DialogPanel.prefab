@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 6892950659194578253}
   - component: {fileID: 6892950659194578248}
   - component: {fileID: 6892950659194578251}
-  - component: {fileID: 1063665009029087090}
+  - component: {fileID: 4915779630928011442}
   m_Layer: 5
   m_Name: '#btn_Cancel'
   m_TagString: Untagged
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1063665009029087090
+--- !u!114 &4915779630928011442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950659194578252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -590,29 +590,6 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6892950659194578251}
   m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ScaleTweenInfo:
-    shouldTween: 0
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    localScale: {x: 0.9, y: 0.9, z: 1}
-    duration: 0.2
-  m_DoubleTime: 0.3
-  m_LongClickTime: 0.4
-  m_LongPressTime: 0.4
-  m_LongIntervalTime: 0.1
-  m_OnDoubleClick:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLongClick:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6892950659735519923
@@ -822,7 +799,7 @@ GameObject:
   - component: {fileID: 6892950660287096085}
   - component: {fileID: 6892950660287096080}
   - component: {fileID: 6892950660287096083}
-  - component: {fileID: 4341846355851044134}
+  - component: {fileID: 6699926027544091769}
   m_Layer: 5
   m_Name: '#btn_Ok'
   m_TagString: Untagged
@@ -889,7 +866,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4341846355851044134
+--- !u!114 &6699926027544091769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -898,7 +875,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950660287096084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af542cecab552634dbf229234f04841f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -933,29 +910,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  m_ScaleTweenInfo:
-    shouldTween: 0
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    localScale: {x: 0.9, y: 0.9, z: 1}
-    duration: 0.2
-  m_DoubleTime: 0.3
-  m_LongClickTime: 0.4
-  m_LongPressTime: 0.4
-  m_LongIntervalTime: 0.1
-  m_OnDoubleClick:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLongClick:
-    m_PersistentCalls:
-      m_Calls: []
-  m_OnLongPress:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6892950660369249231
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,7 +919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6892950660369249228}
-  - component: {fileID: -8248733979805315199}
+  - component: {fileID: -8936253962133729191}
   m_Layer: 5
   m_Name: DialogPanel
   m_TagString: Untagged
@@ -995,7 +949,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-8248733979805315199
+--- !u!114 &-8936253962133729191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1004,15 +958,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950660369249231}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdc13e5a3e0255147adccc052653a69b, type: 3}
+  m_Script: {fileID: 11500000, guid: b366080ddf242634ba0e4e9bffe2691a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   btn_Mask: {fileID: 6798093927829108814}
   cng_Msg: {fileID: 1425305453025213585}
   txt_Msg: {fileID: 4019639225460123371}
-  btn_Cancel: {fileID: 1063665009029087090}
+  btn_Cancel: {fileID: 4915779630928011442}
   txt_Cancel: {fileID: 1124492646915379185}
-  btn_Ok: {fileID: 4341846355851044134}
+  btn_Ok: {fileID: 6699926027544091769}
   txt_Ok: {fileID: 2907113148085182964}
 --- !u!1 &7210635767537150044
 GameObject:

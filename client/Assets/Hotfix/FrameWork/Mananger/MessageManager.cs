@@ -7,7 +7,7 @@ using UnityEngine;
 /// 
 /// 20200514
 /// </summary>
-
+public delegate void MessageHandler(object[] msgDatas);
 public class MessageManager : Singleton<MessageManager>
 {
     private Dictionary<int, List<MessageHandler>> netHandlerDic = new Dictionary<int, List<MessageHandler>>();
@@ -91,12 +91,10 @@ public class MessageManager : Singleton<MessageManager>
         {
             foreach (MessageHandler itemHand in handle)
             {
-
                 itemHand(msgData);
             }
 
         }
-
     }
 
 

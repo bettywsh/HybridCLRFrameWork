@@ -67,8 +67,9 @@ public class ResPath
                 }
                 else
                 {
-                    if (!AppConst.UpdateModel)
+                    if (!AotResConst.UpdateModel)
                     {
+
                         _DataFolder = AppFullPath;
                     }
                     else

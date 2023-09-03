@@ -161,6 +161,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	public void RefMethods()
 	{
 		// object DG.Tweening.TweenSettingsExtensions.OnComplete<object>(object,DG.Tweening.TweenCallback)
+		// !!0 LitJson.JsonMapper.ToObject<!!0>(string)
 		// object LitJson.JsonMapper.ToObject<object>(string)
 		// System.Void ProtoBuf.Serializer.Serialize<object>(System.IO.Stream,object)
 		// !0 System.Activator.CreateInstance<!0>()

@@ -6,22 +6,22 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class UpdateManager : MonoSingleton<UpdateManager>
+public class AotUpdate : AotMonoSingleton<AotUpdate>
 {
     private string sJsonStr = "";
     List<DownLoadFile> needUpdate = new List<DownLoadFile>();
     private string writeClientFiles = "";
     public void CheckVersion()
     {
-        if (!AppConst.UpdateModel)
+        if (!AotResConst.UpdateModel)
         {
             StartGame();
             return;
         }
         else
         {
-            UIManager.Instance.Open("UpdatePanel");
-            if (File.Exists(Application.persistentDataPath + "/" + ResConst.RootFolderName))
+            AotUI.Instance.Open("UpdatePanel");
+            if (File.Exists(Application.persistentDataPath + "/" + AotResConst.RootFolderName))
             {
                 StartCoroutine(OnCheckVersion());
             }
@@ -34,18 +34,18 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
     void DeletePersistentDataPath()
     {
-        Directory.Delete(Application.persistentDataPath + "/" + ResConst.RootFolderName, true);
+        Directory.Delete(Application.persistentDataPath + "/" + AotResConst.RootFolderName, true);
     }
 
 
     IEnumerator ExtractStreamingAssetsPath()
     {
-        MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateFristCopy);
-        string rootPath = Application.persistentDataPath + "/" + ResConst.RootFolderName.ToLower();
+        AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateFristCopy);
+        string rootPath = Application.persistentDataPath + "/" + AotResConst.RootFolderName.ToLower();
         if (!Directory.Exists(rootPath))
             Directory.CreateDirectory(rootPath);
-        string infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.VerFile);
-        string outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, ResConst.RootFolderName.ToLower(), ResConst.VerFile);
+        string infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), AotResConst.VerFile);
+        string outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.VerFile);
         if (Application.platform == RuntimePlatform.Android)
         {
             WWW www = new WWW(infile);
@@ -58,8 +58,8 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         else File.Copy(infile, outfile, true);
         yield return new WaitForEndOfFrame();
 
-        infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
-        outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
+        infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile);
+        outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile);
         if (Application.platform == RuntimePlatform.Android)
         {
             WWW www = new WWW(infile);
@@ -76,10 +76,10 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         string[] files = File.ReadAllLines(outfile);     
         for (int i =0;i< files.Length;i++)        {
             string[] fs = files[i].Split('|');
-            infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), fs[0]);
-            outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, ResConst.RootFolderName.ToLower(), fs[0]);
+            infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), fs[0]);
+            outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), fs[0]);
 
-            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateFristProgress, i, files.Length);
+            AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateFristProgress, i, files.Length);
 
             string dir = Path.GetDirectoryName(outfile);
             if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
@@ -113,7 +113,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     {
         string serverHttpFile = "";
 #if UNITY_ANDROID
-        serverHttpFile = string.Format("{0}Android/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
+        serverHttpFile = string.Format("{0}Android/{1}/", AotResConst.SvrResIp, AotResConst.RootFolderName.ToLower());
 #elif UNITY_IOS
         serverHttpFile = string.Format("{0}IOS/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
 #else
@@ -124,15 +124,15 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
     IEnumerator OnCheckVersion()
     {
-        MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateCheckVersion);
-        string serverHttpFile = GetFilePath(ResConst.VerFile);
+        AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateCheckVersion);
+        string serverHttpFile = GetFilePath(AotResConst.VerFile);
         JsonData jsonDataInfoServer, jsonDataInfoClient;
         int[] serverVersion = new int[3];
         UnityWebRequest webRequest = UnityWebRequest.Get(serverHttpFile);
         yield return webRequest.SendWebRequest();
         if (webRequest.isHttpError || webRequest.isNetworkError)
         {
-            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateLostConnect);
+            AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
             yield break;
         }
         else
@@ -145,7 +145,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
 
         int[] clientVersion = new int[3];
         LocalText localText = new LocalText();
-        yield return StartCoroutine(LocalFile(ResConst.VerFile, localText));
+        yield return StartCoroutine(LocalFile(AotResConst.VerFile, localText));
         jsonDataInfoClient = JsonMapper.ToObject(localText.text);
         clientVersion[0] = (int)jsonDataInfoClient["MainVersion"];
         clientVersion[1] = (int)jsonDataInfoClient["PatchVersion"];
@@ -170,7 +170,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         if (serverVersion[0] > clientVersion[0])
         {
             //大版本更新
-            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
+            AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
             yield break;
         }
         else if (serverVersion[2] > clientVersion[2])
@@ -202,12 +202,12 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     IEnumerator TotalDownloadSize(bool isShowDialog)
     {
         string serverFile = "";
-        string serverHttpFile = GetFilePath(ResConst.CheckFile);
+        string serverHttpFile = GetFilePath(AotResConst.CheckFile);
         UnityWebRequest webRequest = UnityWebRequest.Get(serverHttpFile);
         yield return webRequest.SendWebRequest();
         if (webRequest.isHttpError || webRequest.isNetworkError)
         {
-            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateLostConnect);
+            AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
             yield break;
         }
         else
@@ -215,7 +215,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
             serverFile = webRequest.downloadHandler.text;
         }
         LocalText localText = new LocalText();
-        yield return StartCoroutine(LocalFile(ResConst.CheckFile, localText));
+        yield return StartCoroutine(LocalFile(AotResConst.CheckFile, localText));
         string clientFile = localText.text;
 
         string[] serverFiles = serverFile.Split('\n');
@@ -268,7 +268,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         }
         if (isShowDialog)
         {
-            MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateSmallVersion, HumanReadableFilesize(downloadSize));
+            AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateSmallVersion, HumanReadableFilesize(downloadSize));
         }
         else
         {
@@ -306,13 +306,13 @@ public class UpdateManager : MonoSingleton<UpdateManager>
     {
         for (int i = 0; i < needUpdate.Count; i++)
         {
-            string url = AppConst.SvrResIp + needUpdate[i].file;
+            string url = AotResConst.SvrResIp + needUpdate[i].file;
             using (var www = UnityWebRequest.Get(url))
             {
                 yield return www.SendWebRequest();
                 if (www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
                 {
-                    MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateLostConnect);
+                    AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
                     yield break;
                 }
                 while (!www.isDone)
@@ -325,17 +325,17 @@ public class UpdateManager : MonoSingleton<UpdateManager>
                 }
             }
             writeClientFiles += needUpdate[i].fileInfo + "\n";
-            File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.CheckFile), writeClientFiles);
+            File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, AotResConst.CheckFile), writeClientFiles);
         }
 
         
-        File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, ResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
-        MessageManager.Instance.MessageNotify(MessageConst.MsgUpdateDownLoadComplete);
+        File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, AotResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
+        AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateDownLoadComplete);
     }
 
     IEnumerator LocalFile(string file, LocalText retText)
     {
-        string path = string.Format("{0}/{1}/{2}", Application.persistentDataPath, ResConst.RootFolderName.ToLower(), file);
+        string path = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), file);
         if (File.Exists(path))
         {
             retText.text = File.ReadAllText(path);
@@ -343,7 +343,7 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         else
         {           
 #if UNITY_ANDROID
-            path = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
+            path = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile);
 #endif
 
 #if UNITY_IOS
@@ -357,24 +357,9 @@ public class UpdateManager : MonoSingleton<UpdateManager>
         }
     }
 
-    //private void Update()
-    //{
-    //    if (isProgress)
-    //    {
-    //        MessageManager.Instance.EventNotify(MessageConst.MsgUpdateDownLoadUpdate, param1, (curDownLoadSize + param2) / allDownLoadSize);
-    //    }
-    //}
-
     void StartGame()
     {
-        UpdateManager.Instance.Dispose();
-        SoundManager.Instance.Dispose();
-        UIManager.Instance.Dispose();
-        AtlasManager.Instance.Dispose();
-
-
-        NetworkManager.Instance.Init();
-        UIManager.Instance.Open("LoginPanel");
+        AotHybridCLR.Instance.LoadDll();
     }
 
 }

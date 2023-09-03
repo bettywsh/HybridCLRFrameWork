@@ -26,6 +26,7 @@ public partial class ChineseTextConfig
         }
         return item;
     }
+
 	
 	public List<ChineseTextConfigItem> GetAll()
 	{

@@ -1,47 +1,17 @@
-﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEditor;
-using System.Resources;
-using HybridCLR;
-using System.Linq;
-using System.Reflection;
-using System;
+using TMPro;
 
 public class Launch : MonoBehaviour
 {
-    //private string Version = "Version";
+
     void Awake()
     {
-        //LoadDll();
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        TMP_FontAsset a = AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSansCN-Normal SDF.unity3d", "Assets/App/Font/SourceHanSansCN-Normal SDF.asset");
+        TMP_FontAsset b = AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSerifCN-Bold SDF.unity3d", "Assets/App/Font/SourceHanSerifCN-Bold SDF.asset");
+        AotUI.Instance.Open("SplashAdvicePanel");
+        
     }
-
-
-    //void OnApplicationQuit()
-    //{
-    //    MessageManager.Instance.EventNotify(MessageConst.MsgOnApplicationQuit);
-    //}
-
-
-    //void OnApplicationPause(bool focus)
-    //{
-    //    //进入程序状态更改为前台
-    //    if (focus)
-    //    {
-    //        MessageManager.Instance.EventNotify(MessageConst.EventApplicationPause, true);
-    //    }
-    //    else
-    //    {
-    //        //离开程序进入到后台状态
-    //        MessageManager.Instance.EventNotify(MessageConst.EventApplicationPause, false);
-    //    }
-    //}
-
-
-   
-
-
 }

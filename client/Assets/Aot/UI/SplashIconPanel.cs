@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public partial class SplashIconPanel : BasePanel
+public partial class SplashIconPanel : AotBasePanel
 {
 
     public void OnOpen()
@@ -16,14 +16,14 @@ public partial class SplashIconPanel : BasePanel
         //动画完成回调
         seq.AppendCallback(() =>
         {
-            UIManager.Instance.Close("SplashIconPanel");            
+            AotUI.Instance.Close("SplashIconPanel");            
         });
 
     }
 
     public void OnClose()
     {
-        UpdateManager.Instance.CheckVersion();
+        AotUpdate.Instance.CheckVersion();
     }
 
 }

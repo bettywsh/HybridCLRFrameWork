@@ -1,21 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-public partial class (ConfigName)
+[Config]
+public partial class (ConfigName) : BaseConfig
 {
     private Dictionary<string, (ConfigName)Item> dict = new Dictionary<string, (ConfigName)Item>();
-    public List<(ConfigName)Item> list = new List<(ConfigName)Item>();
-        
-    public void Init(List<(ConfigName)Item> items)
+    private List<(ConfigName)Item> list = new List<(ConfigName)Item>();
+	
+    public override void Init()
     {
-		list = items;
-        dict = new Dictionary<string, (ConfigName)Item>();
-        foreach ((ConfigName)Item item in list)
-        {
-            dict.Add(item.Id, item);
-        }
+        dict = LoadConfig<Dictionary<string, (ConfigName)Item>>(typeof((ConfigName)));
+		list = dict.Select(x => x.Value).ToList();
     }
-    
+	
     public (ConfigName)Item GetById(string id)
     {
 		(ConfigName)Item item = null;	

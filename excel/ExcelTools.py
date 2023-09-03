@@ -35,10 +35,10 @@ ROW_START = 3
 #==========================================================================
 FLOAT_FORMAT = "%.8f"
 
-EXPORT_CLIENT_LUA = True
+EXPORT_CLIENT_LUA = False
 EXPORT_CLIENT_CSHARP = True
 EXPORT_CLIENT_JSON = True
-EXPORT_SERVER = True
+EXPORT_SERVER = False
 
 server_export_excel_list = []
 client_export_lua_excel_list = []
@@ -112,6 +112,8 @@ def tabletodict(luaT):
 						name_head = head.get(colidx)
 						if name_head.startswith("_"):
 							continue
+						if name_head.find("(string)") > 0:
+							col=str(col)
 						if name_head.find("(int32)") > 0:
 							col=int(col)
 						if name_head.find("(float)") > 0:
@@ -422,37 +424,12 @@ def export_client_csharp(dir_src, dir_dst_csharp):
 		if os.path.isfile(name_temp) and not name.startswith("_") and not '$' in name :
 			print("Start Csharp: " + name_temp)
 			t, n = gen_table(name_temp)
-			if EXPORT_CLIENT_LUA :
+			if EXPORT_CLIENT_CSHARP :
 				if name.startswith('s_') or name.startswith('S_'):
 					continue
 				pathInfo =  os.path.basename(name_temp)
 				write_csharp(t, n, dir_dst_csharp + pathInfo.split('.')[0] + "Config.cs", withfunc = True)
 				print("Client Csharp: SUCCESS ")
-
-# 生成manager
-def export_client_csharp_manager(dir_src, dir_dst_manager):
-	outfile = dir_dst_manager + "\ConfigManager.cs"
-	if outfile and outfile != '-':
-		outfp = open(outfile, 'w',encoding= "utf-8")
-	from io import StringIO
-	configvar = StringIO()
-	configinit = StringIO()	
-	tmpmanager = open("TmpManager.txt",'r')
-	txttmpmanager = tmpmanager.read()
-	for filename in client_export_csharp_excel_list:
-		name = filename.split('.')[0]
-		configname = name + "Config"
-		confignamelower = configname[0].lower() + configname[1:]
-		configvar.write("public " + configname + " " + confignamelower + " = new " + configname + "();\n")
-		configinit.write(confignamelower + ".Init(LoadConfig<List<ChineseTextConfigItem>>(\"" + name + "\"));\n")
-	txttmpmanager = txttmpmanager.replace("[CONFIG_INIT]", configinit.getvalue())
-	txttmpmanager = txttmpmanager.replace("[CONFIG_VAR]", configvar.getvalue())
-	tmpmanager.close()
-	outfp.write(txttmpmanager)
-	if not outfile or outfile == '-':
-		outfp.seek(0)
-		print(outfp.read())
-	outfp.close()	
 
 def export_client_json(dir_src, dir_dst_json):
 	if dir_dst_json[len(dir_dst_json) - 1] != '\\':
@@ -465,7 +442,7 @@ def export_client_json(dir_src, dir_dst_json):
 		if os.path.isfile(name_temp) and not name.startswith("_") and not '$' in name :
 			print("Start Json: " + name_temp)
 			t, n = gen_table(name_temp)
-			if EXPORT_CLIENT_LUA :
+			if EXPORT_CLIENT_JSON :
 				if name.startswith('s_') or name.startswith('S_'):
 					continue
 				pathInfo =  os.path.basename(name_temp)
@@ -534,14 +511,12 @@ def main():
 	dir_src=config_parse.get("config","excel_dir")
 	dir_dst_client_lua = config_parse.get("config","client_export_lua_dir")
 	dir_dst_client_csharp = config_parse.get("config","client_export_csharp_dir")
-	dir_dst_client_csharp_manager = config_parse.get("config","client_export_csharp_manager_dir")
 	dir_dst_client_json = config_parse.get("config","client_export_json_dir")
 	dir_dst_server = config_parse.get("config","server_export_dir")
 	export_config = config_parse.get("config","excel_export_config")
 	get_export_excel_list(dir_src+"//"+export_config)
 	export_client_lua(dir_src,dir_dst_client_lua)
 	export_client_csharp(dir_src, dir_dst_client_csharp)
-	export_client_csharp_manager(dir_src, dir_dst_client_csharp_manager)
 	export_client_json(dir_src, dir_dst_client_json)
 	export_server_json(dir_src,dir_dst_server)
 

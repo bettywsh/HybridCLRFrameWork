@@ -30,6 +30,8 @@ public partial class LoginPanel : BasePanel
 
     void Click_btn_Ok()
     {
+        List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
+
         NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
     }
 

@@ -1,21 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-public partial class ChineseTextConfig
+[Config]
+public partial class ChineseTextConfig : BaseConfig
 {
     private Dictionary<string, ChineseTextConfigItem> dict = new Dictionary<string, ChineseTextConfigItem>();
-    public List<ChineseTextConfigItem> list = new List<ChineseTextConfigItem>();
-        
-    public void Init(List<ChineseTextConfigItem> items)
+    private List<ChineseTextConfigItem> list = new List<ChineseTextConfigItem>();
+	
+    public override void Init()
     {
-		list = items;
-        dict = new Dictionary<string, ChineseTextConfigItem>();
-        foreach (ChineseTextConfigItem item in list)
-        {
-            dict.Add(item.Id, item);
-        }
+        dict = LoadConfig<Dictionary<string, ChineseTextConfigItem>>(typeof(ChineseTextConfig));
+		list = dict.Select(x => x.Value).ToList();
     }
-    
+	
     public ChineseTextConfigItem GetById(string id)
     {
 		ChineseTextConfigItem item = null;	
@@ -26,7 +24,6 @@ public partial class ChineseTextConfig
         }
         return item;
     }
-
 	
 	public List<ChineseTextConfigItem> GetAll()
 	{

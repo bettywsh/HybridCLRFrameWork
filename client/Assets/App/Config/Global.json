@@ -1,0 +1,46 @@
+{
+ "InitCameraPosition": {
+  "Id": "InitCameraPosition",
+  "Value": "-22.4,45.1,94.4"
+ },
+ "InitCameraRatotion": {
+  "Id": "InitCameraRatotion",
+  "Value": "36.435,171.686,-2.541"
+ },
+ "MaxCameraRatotion": {
+  "Id": "MaxCameraRatotion",
+  "Value": "30"
+ },
+ "StableCameraPosition": {
+  "Id": "StableCameraPosition",
+  "Value": "-50,5,3"
+ },
+ "StableCameraRatotion": {
+  "Id": "StableCameraRatotion",
+  "Value": "10,180,0"
+ },
+ "FoodStuff1": {
+  "Id": "FoodStuff1",
+  "Value": "0.25"
+ },
+ "FoodStuff2": {
+  "Id": "FoodStuff2",
+  "Value": "0.333333333333333"
+ },
+ "FoodStuff3": {
+  "Id": "FoodStuff3",
+  "Value": "0.5"
+ },
+ "FoodStuff4": {
+  "Id": "FoodStuff4",
+  "Value": "0.583333333333333"
+ },
+ "FoodStuff5": {
+  "Id": "FoodStuff5",
+  "Value": "0.833333333333333"
+ },
+ "FoodStuff6": {
+  "Id": "FoodStuff6",
+  "Value": "0.916666666666667"
+ }
+}

@@ -1,22 +1,44 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 public class ConfigManager : Singleton<ConfigManager>
 {    
-    public ChineseTextConfig chineseTextConfig = new ChineseTextConfig();
-
+    List<Type> types = new List<Type>();
+    Dictionary<Type, object> configs = new Dictionary<Type, object>();
 
     public override void Init()
     {
-        chineseTextConfig.Init(LoadConfig<List<ChineseTextConfigItem>>("ChineseText"));
+        Assembly Hotfix = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
+        foreach (Type type in Hotfix.GetTypes())
+        {
+            if (type.IsAbstract)
+            {
+                continue;
+            }
+            object[] objects = type.GetCustomAttributes(typeof(ConfigAttribute), true);
 
+            foreach (object o in objects)
+            {
+                object obj = Activator.CreateInstance(type);
+                BaseConfig baseConfig =obj as BaseConfig;
+                baseConfig.Init();
+                configs.Add(type, baseConfig);
+            }
+        }
     }
 
-    public T LoadConfig<T>(string fileName) where T : class
+    public T LoadConfig<T>() where T : BaseConfig
     {
-        TextAsset ta = ResManager.Instance.LoadAsset("Common", "Config/" + fileName, typeof(TextAsset)) as TextAsset;
-        return LitJson.JsonMapper.ToObject<T>(ta.text);
+        object obj;
+        configs.TryGetValue(typeof(T), out obj);
+        return obj as T;
     }
+
+
+
 
 }
 

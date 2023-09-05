@@ -14,7 +14,7 @@ public class AotHybridCLR : AotSingleton<AotHybridCLR>
         "System.dll.bytes",
         "System.Core.dll.bytes",
     };
-    private Assembly _hotUpdateAss;
+    public Assembly _hotUpdateAss;
     public void LoadDll()
     {
         LoadMetadataForAOTAssemblies();

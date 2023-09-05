@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class DialogPanel 
+public class DialogPanelView : MonoBehaviour
 {
 	public Button btn_Mask;
 	public CanvasGroup cng_Msg;
@@ -17,21 +17,5 @@ public partial class DialogPanel
 	public TextMeshProUGUI txt_Cancel;
 	public Button btn_Ok;
 	public TextMeshProUGUI txt_Ok;
-
-
-   public override void Awake()
-   {
-        base.Awake();
-   }
-   
-   public override void Start()
-   {
-       OnOpen();
-   }
-   
-   public override void OnDestroy()
-   {
-       OnClose();
-   }
    
 }

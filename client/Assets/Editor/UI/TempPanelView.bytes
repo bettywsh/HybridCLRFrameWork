@@ -8,23 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class #CLASSNAME# 
+public class #CLASSNAME# : MonoBehaviour
 {
-#FIELD_BIND#
-
-   public override void Awake()
-   {
-       base.Awake();
-   }
-   
-   public override void Start()
-   {
-       OnOpen();
-   }
-   
-   public override void OnDestroy()
-   {
-       OnClose();
-   }
-   
+#FIELD_BIND#   
 }

@@ -41,8 +41,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             bundle = GetLoadedAssetBundle(abName);
             if (bundle == null)
             {
-                uobjectAsyncList.Remove(abName);
-                Debug.LogError("OnLoadAsset--->>>" + abName);
+                Debug.LogError("OnLoadAsset--->>>" + abName + " " + assetName);
             }
         }
 

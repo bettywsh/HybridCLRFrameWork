@@ -1,12 +1,17 @@
+using com.bochsler.protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using com.bochsler.protocol;
 
 public partial class LoginPanel : BasePanel
 {
+	public LoginPanelView view;
+	
     public void OnOpen()
     {
+        base.OnOpen();
+        view = transform.GetComponent<LoginPanelView>();
+
         DialogManager.Instance.ShowDialogOne("警告", "进入游戏www.baidu.com", () => {
             Application.Quit();
         });
@@ -30,14 +35,13 @@ public partial class LoginPanel : BasePanel
 
     void Click_btn_Ok()
     {
-        List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
+        //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 
         NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
     }
 
-    public void OnClose()
+    public override void OnClose()
     {
-        
+        base.OnClose();
     }
-
 }

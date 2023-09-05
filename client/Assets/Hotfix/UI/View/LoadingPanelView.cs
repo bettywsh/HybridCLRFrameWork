@@ -8,23 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class LoadingPanel 
+public class LoadingPanelView : MonoBehaviour
 {
-
-
-   public override void Awake()
-   {
-       
-   }
-   
-   public override void Start()
-   {
-       OnOpen();
-   }
-   
-   public override void OnDestroy()
-   {
-       OnClose();
-   }
+	public TextMeshProUGUI txt_Value;
    
 }

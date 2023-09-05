@@ -8,14 +8,11 @@ using UnityEngine.UI;
 using com.bochsler.protocol;
 
 
-public class BasePanel : MonoBehaviour
+public class BasePanel
 {
+    public Transform transform;
     public object[] args;
-    public virtual void Awake()
-    {
-        RegisterEvent();
-    }
-
+    
     public void RegisterEvent()
     {
         //×¢²áÊÂ¼þ
@@ -29,9 +26,11 @@ public class BasePanel : MonoBehaviour
             }
             else if (MethodInfos[i].Name.Contains("Click_"))
             {
-                string btn = MethodInfos[i].Name.Replace("Click_", "");
+                string btnStr = MethodInfos[i].Name.Replace("Click_", "");
                 UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), this, MethodInfos[i]) as UnityAction;
-                this[btn].onClick.AddListener(cb);
+                object v = GetType().GetField("view").GetValue(this);
+                Button btn = (Button)v.GetType().GetField(btnStr).GetValue(v);
+                btn.onClick.AddListener(cb);
 
             }
             else if(MethodInfos[i].Name.Contains("Net_"))
@@ -58,15 +57,13 @@ public class BasePanel : MonoBehaviour
         }
     }
 
-    public virtual void Start()
+    public virtual void OnOpen()
     {
-
-
+        RegisterEvent();
     }
 
-    public virtual void OnDestroy()
+    public virtual void OnClose()
     {
-
 
     }
 }

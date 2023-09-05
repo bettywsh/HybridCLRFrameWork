@@ -4,15 +4,16 @@ using UnityEngine;
 
 public partial class LoadingPanel : BasePanel
 {
-    public void OnOpen()
-    {
-        
+	public LoadingPanelView view;
+	
+    public override void OnOpen()
+    {		
+        view = transform.GetComponent<LoadingPanelView>();
+		base.OnOpen();
     }
 
-
-    public void OnClose()
+    public override void OnClose()
     {
-        
+        base.OnClose();
     }
-
 }

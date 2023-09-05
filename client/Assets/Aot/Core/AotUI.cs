@@ -10,6 +10,10 @@ public class AotUI : AotSingleton<AotUI>
 
     public void Open(string prefabName, params object[] args)
     {
+        if (uiList.ContainsKey(prefabName))
+        {
+            return;
+        }
         string abName = "App/Prefab/AotUI/" + prefabName + ".unity3d";
         string assetName = "Assets/App/Prefab/AotUI/" + prefabName + ".prefab";
         baseCanvas = GameObject.Find("Canvas/UICanvas/BaseCanvas").transform;

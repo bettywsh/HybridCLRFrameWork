@@ -10,17 +10,17 @@ using UObject = UnityEngine.Object;
 using TMPro;
 
 
-public class UIManager : MonoSingleton<UIManager>
+public class UIManager : Singleton<UIManager>
 {
     public GameObject canvasRoot;
     public Camera uiCamera;
-    private Dictionary<string, GameObject> uiList = new Dictionary<string, GameObject>();
+    private Dictionary<string, object> uiList = new Dictionary<string, object>();
     private Transform baseCanvas;
 
     public override void Init()
     {
         canvasRoot = GameObject.Find("Canvas");
-        //DontDestroyOnLoad(canvasRoot);
+        GameObject.DontDestroyOnLoad(canvasRoot);
         uiCamera = GameObject.Find("Canvas/UICamera").GetComponent<Camera>();
         baseCanvas = GameObject.Find("Canvas/UICanvas/BaseCanvas").transform;
     }
@@ -32,13 +32,13 @@ public class UIManager : MonoSingleton<UIManager>
 
     //}
 
-    public T GetUI<T>()
+    public T GetUI<T>() where T : BasePanel
     {
         foreach (var item in uiList)
         {
             if (item.Key == typeof(T).Name)
             {
-                return item.Value.GetComponent<T>();
+                return item.Value as T;
             }
         }
         return default;
@@ -55,11 +55,15 @@ public class UIManager : MonoSingleton<UIManager>
     //}
 
 
-    public void Open(string prefabName, params object[] args)
+    public T Open<T>(params object[] args) where T : BasePanel
     {
-        //require lua文件，得到返回的类
-        LoadBaseUIAsync(string.Format("Prefab/UI/Panel/{0}", prefabName), (GameObject go) =>
+        string prefabName = typeof(T).Name;
+        if (uiList.ContainsKey(typeof(T).Name))
+            return default;
+        T t = Activator.CreateInstance<T>();
+        ResManager.Instance.LoadAssetAsync(prefabName, string.Format("Prefab/UI/Panel/{0}.Prefab", prefabName), typeof(GameObject), (UObject ugo) =>
         {
+            GameObject go = ugo as GameObject;
             go = GameObject.Instantiate(go);
             go.name = prefabName;
             go = ObjectOperation.SetParent(baseCanvas, go.transform).gameObject;
@@ -67,42 +71,26 @@ public class UIManager : MonoSingleton<UIManager>
             cv.overrideSorting = true;
             go.AddComponent<GraphicRaycaster>();
             OrderCanvas(go);
-            uiList.Add(prefabName, go);
-            go.GetComponent<BasePanel>().args = args;
+            uiList.Add(typeof(T).Name, t.GetType());
+            BasePanel basePanel = t as BasePanel;
+            basePanel.args = args;
             go.SetActive(true);
-            
         });
+        return t;
     }
 
-    public void Close(string prefabName)
+    public void Close<T>() where T : BasePanel
     {
-        GameObject go;
-        if (uiList.TryGetValue(prefabName, out go))
+        string prefabName = typeof(T).Name;
+        object obj;
+        if (uiList.TryGetValue(typeof(T).Name, out obj))
         {
-            GameObject.DestroyImmediate(go);
-            uiList.Remove(prefabName);
+            BasePanel basePanel = obj as BasePanel;
+            GameObject.DestroyImmediate(basePanel.transform.gameObject);
+            uiList.Remove(typeof(T).Name);
         }
     }
 
-    public void LoadBaseUIAsync(string prefabName, Action<GameObject> cb)
-    {
-        GameObject go;
-        if (!uiList.TryGetValue(prefabName, out go))
-        {
-            ResManager.Instance.LoadAssetAsync(prefabName, prefabName + ".Prefab", typeof(GameObject), (UObject ugo) =>
-            {
-                go = ugo as GameObject;
-                uiList.Add(prefabName, go);
-                if (cb != null)
-                    cb(go);
-            });
-        }
-        else
-        {
-            if (cb != null)
-                cb(go);
-        }
-    }
 
     void OrderCanvas(GameObject go)
     {
@@ -153,7 +141,7 @@ public class UIManager : MonoSingleton<UIManager>
             GameObject go = keys[i].gameObject;
             keys.RemoveAt(i);
             uiList.Remove(go.name);
-            DestroyImmediate(go);
+            GameObject.DestroyImmediate(go);
         }
     }
 

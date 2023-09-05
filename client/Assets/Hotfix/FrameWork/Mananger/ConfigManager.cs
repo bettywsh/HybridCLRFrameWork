@@ -23,7 +23,7 @@ public class ConfigManager : Singleton<ConfigManager>
             foreach (object o in objects)
             {
                 object obj = Activator.CreateInstance(type);
-                BaseConfig baseConfig =obj as BaseConfig;
+                BaseConfig baseConfig = obj as BaseConfig;
                 baseConfig.Init();
                 configs.Add(type, baseConfig);
             }
@@ -37,8 +37,11 @@ public class ConfigManager : Singleton<ConfigManager>
         return obj as T;
     }
 
-
-
-
+    public Type LoadConfig(Type type)
+    {
+        object obj;
+        configs.TryGetValue(type.GetType(), out obj);
+        return obj as Type;
+    }
 }
 

@@ -7,7 +7,7 @@ public class DialogManager : Singleton<DialogManager>
 {
     public void ShowDialog(DialogInfo dialogInfo)
     {
-        UIManager.Instance.Open("DialogPanel", dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
 
     public void ShowDialogOne(string txtTitle, string txtMsg, Action okCb)
@@ -16,7 +16,7 @@ public class DialogManager : Singleton<DialogManager>
         dialogInfo.txtTitle = txtTitle;
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okCb;
-        UIManager.Instance.Open("DialogPanel", dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
 
     public void ShowDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
@@ -26,7 +26,7 @@ public class DialogManager : Singleton<DialogManager>
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okFun;
         dialogInfo.calFun = calFun;
-        UIManager.Instance.Open("DialogPanel", dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
 }
 

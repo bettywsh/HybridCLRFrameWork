@@ -8,27 +8,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class LoginPanel 
+public class LoginPanelView : MonoBehaviour
 {
 	public Button btn_Ok;
 	public Image img_Ok;
 	public TMP_InputField ipt_account;
 	public TMP_InputField ipt_passWorld;
-
-
-   public override void Awake()
-   {
-        base.Awake();
-   }
-   
-   public override void Start()
-   {
-       OnOpen();
-   }
-   
-   public override void OnDestroy()
-   {
-       OnClose();
-   }
    
 }

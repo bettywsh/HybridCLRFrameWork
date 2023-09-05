@@ -46,8 +46,8 @@ public class AutoGenPanel : Editor
         //{ "tsf", new VarType(){ name = "Transform", type = typeof(Transform) } },
     };
 
-    [MenuItem("AutoGenUI/CreatePanelView", false, 1)]
-    public static void CreateView()
+    [MenuItem("AutoGenUI/CreatePanelAndView", false, 1)]
+    public static void CreatePanelAndView()
     {
         VarData.Clear();
         GameObject go = Selection.activeGameObject;
@@ -67,7 +67,7 @@ public class AutoGenPanel : Editor
         string className = go.name;
         StringBuilder fieldContent = new StringBuilder();
 
-        foreach (KeyValuePair<string,Transform> item in VarData)
+        foreach (KeyValuePair<string, Transform> item in VarData)
         {
             string tempFieldStr = FieldTemplete.Replace("{0}", GetNameToVarType(item.Key).name);
             tempFieldStr = tempFieldStr.Replace("{1}", item.Key);
@@ -82,7 +82,7 @@ public class AutoGenPanel : Editor
         AssetDatabase.Refresh();
         using (StreamWriter sw = new StreamWriter(viewPath))
         {
-            viewTempleteContent = viewTempleteContent.Replace("#CLASSNAME#", className);
+            viewTempleteContent = viewTempleteContent.Replace("#CLASSNAME#", className + "View");
             viewTempleteContent = viewTempleteContent.Replace("#FIELD_BIND#", fieldContent.ToString());
             sw.Write(viewTempleteContent);
             sw.Close();
@@ -103,43 +103,16 @@ public class AutoGenPanel : Editor
         AssetDatabase.Refresh();
         AssetDatabase.SaveAssets();
         Debug.Log("生成Panel完成");
-
-        //Type type = Assembly.Load("Hotfix").GetType(go.name);
-        //UnityEngine.Component com = go.GetComponent(type);
-        //if (com == null)
-        //{
-        //    com = go.AddComponent(type);
-        //}
-        //FieldInfo[] allFieldInfo = type.GetFields(BindingFlags.Instance | BindingFlags.Public);
-        //foreach (KeyValuePair<string, Transform> item in VarData)
-        //{
-        //    Type type1 = GetNameToVarType(item.Key).type;
-        //    UnityEngine.Component obj = item.Value.GetComponent(type1);
-        //    for (int i = 0; i < allFieldInfo.Length; i++)
-        //    {
-        //        if (allFieldInfo[i].Name == item.Key)
-        //        {
-        //            allFieldInfo[i].SetValue(com, obj);
-        //        }
-        //    }
-        //}
-        //AssetDatabase.Refresh();
-        //AssetDatabase.SaveAssets();
-        //GameObject newgo = GameObject.Instantiate(go);
-        //UnityEditor.PrefabUtility.SaveAsPrefabAssetAndConnect(newgo, PanelPrefab + go.name + ".prefab", UnityEditor.InteractionMode.UserAction);
-        //GameObject.DestroyImmediate(newgo);
-        //AssetDatabase.SaveAssets();
-        //Debug.Log("绑定Panel完成");
     }
 
-    [MenuItem("AutoGenUI/PanelViewBind", false, 1)]
+    [MenuItem("AutoGenUI/BindPanelView", false, 1)]
     static public void CreatePanelBind()
     {
         GameObject go = Selection.activeGameObject;
         VarData.Clear();
         DeepSearch(go.transform);
 
-        Type type = Assembly.Load("Hotfix").GetType(go.name);
+        Type type = Assembly.Load("Hotfix").GetType(go.name + "View");
         UnityEngine.Component com = go.GetComponent(type);
         if (com == null)
         {

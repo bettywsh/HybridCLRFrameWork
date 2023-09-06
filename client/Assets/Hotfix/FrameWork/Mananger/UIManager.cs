@@ -74,6 +74,8 @@ public class UIManager : Singleton<UIManager>
             uiList.Add(typeof(T).Name, t.GetType());
             BasePanel basePanel = t as BasePanel;
             basePanel.args = args;
+            basePanel.transform = go.transform;
+            basePanel?.OnOpen();
             go.SetActive(true);
         });
         return t;

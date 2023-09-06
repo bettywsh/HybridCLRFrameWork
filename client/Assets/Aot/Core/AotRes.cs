@@ -9,10 +9,10 @@ public class AotRes : AotSingleton<AotRes>
     Dictionary<string, AssetBundle> abDic = new Dictionary<string, AssetBundle>();
     public T LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
     {
-        string path = GetPersistentPath() + abName;
+        string path = GetPersistentPath() + abName.ToLower();
         if (!File.Exists(path))
         {
-            path = GetStreamingAssetsPath() + abName;
+            path = GetStreamingAssetsPath() + abName.ToLower();
         }
         AssetBundle ab;
         if (!abDic.TryGetValue(abName, out ab))

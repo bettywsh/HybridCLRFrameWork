@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 public class TextManager : Singleton<TextManager>
@@ -28,7 +27,7 @@ public class TextManager : Singleton<TextManager>
 
     public string GetText(string languageName)
     {
-        ConfigManager.Instance.LoadConfig(languageConfig).GetById(languageName);
+        //ConfigManager.Instance.LoadConfig(languageConfig).GetById(languageName);
         return "";
     }
 

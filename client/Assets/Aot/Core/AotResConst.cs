@@ -7,12 +7,12 @@ public class AotResConst
     /// <summary>
     /// 热更新模式
     /// </summary>
-    public const bool UpdateModel = false;
+    public const bool UpdateModel = true;
 
     /// <summary>
     /// 热更下载地址
     /// </summary>
-    public const string SvrResIp = "http://localhost/";
+    public const string SvrResIp = "http://192.168.11.18:8082/";
 
 
     /// <summary>

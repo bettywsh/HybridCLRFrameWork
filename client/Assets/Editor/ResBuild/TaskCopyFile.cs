@@ -22,8 +22,8 @@ public class TaskCopyFile : ITask
         {
             AssetDatabase.Refresh();
             //÷ÿ√¸√˚manifest
-            System.IO.File.Move(ResPack.BuildHotfixPath + "/ResCreate.manifest", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower() + ".manifest");
-            System.IO.File.Move(ResPack.BuildHotfixPath + "/ResCreate", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower());
+            System.IO.File.Move(ResPack.BuildHotfixPath + "/ResHotfix.manifest", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower() + ".manifest");
+            System.IO.File.Move(ResPack.BuildHotfixPath + "/ResHotfix", ResPack.BuildHotfixPath + "/" + ResConst.RootFolderName.ToLower() + "/" + ResConst.RootFolderName.ToLower());
         }
     }
 }

@@ -9,7 +9,8 @@ public partial class DialogPanel : AotBasePanel
     {
         dialogInfo = args[0] as AotDialogInfo;
         txt_Msg.text = dialogInfo.txtMsg;
-
+        txt_Ok.text = "确定";
+        txt_Cancel.text = "取消";
         if (dialogInfo.txtOk != null)
         {
             //txt_Ok.text = TextMgr:GetText(dialogInfo.txtOk);

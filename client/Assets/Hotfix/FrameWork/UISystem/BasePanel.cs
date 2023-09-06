@@ -26,11 +26,11 @@ public class BasePanel
             }
             else if (MethodInfos[i].Name.Contains("Click_"))
             {
-                string btnStr = MethodInfos[i].Name.Replace("Click_", "");
-                UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), this, MethodInfos[i]) as UnityAction;
-                object v = GetType().GetField("view").GetValue(this);
-                Button btn = (Button)v.GetType().GetField(btnStr).GetValue(v);
-                btn.onClick.AddListener(cb);
+                //string btnStr = MethodInfos[i].Name.Replace("Click_", "");
+                //UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), this, MethodInfos[i]) as UnityAction;
+                //object v = GetType().GetField("view").GetValue(this);
+                //Button btn = (Button)v.GetType().GetField(btnStr).GetValue(v);
+                //btn.onClick.AddListener(cb);
 
             }
             else if(MethodInfos[i].Name.Contains("Net_"))

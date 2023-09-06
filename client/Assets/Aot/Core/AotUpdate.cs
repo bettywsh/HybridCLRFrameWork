@@ -217,7 +217,6 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
         LocalText localText = new LocalText();
         yield return StartCoroutine(LocalFile(AotResConst.CheckFile, localText));
         string clientFile = localText.text;
-
         string[] serverFiles = serverFile.Split('\n');
         string[] clientFiles = clientFile.Split('\n');
         Dictionary<string, string> cFiles = new Dictionary<string, string>();
@@ -251,7 +250,7 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
             }
             else
             {
-                if (sFile[3] != cFiles[sFile[0]].Split('|')[3])
+                if (sFile[2] != cFiles[sFile[0]].Split('|')[2])
                 {
                     //修改
                     downloadSize += int.Parse(sFile[1]);
@@ -299,6 +298,10 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
 
     public void DownLoadFiles()
     {
+        if (needUpdate.Count <= 0)
+        {
+            StartGame();
+        }
         StartCoroutine(OnDownLoadFiles());
     }
 
@@ -306,7 +309,8 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
     {
         for (int i = 0; i < needUpdate.Count; i++)
         {
-            string url = AotResConst.SvrResIp + needUpdate[i].file;
+            Debug.LogError(needUpdate[i]);
+            string url = GetFilePath(needUpdate[i].file);
             using (var www = UnityWebRequest.Get(url))
             {
                 yield return www.SendWebRequest();
@@ -321,16 +325,17 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
                 }
                 if (www.isDone)
                 {
-                    File.WriteAllBytes(needUpdate[i].file, www.downloadHandler.data);
+                    File.WriteAllBytes(string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), needUpdate[i].file), www.downloadHandler.data);
                 }
             }
             writeClientFiles += needUpdate[i].fileInfo + "\n";
-            File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, AotResConst.CheckFile), writeClientFiles);
+            File.WriteAllText(string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile), writeClientFiles);
         }
 
         
-        File.WriteAllText(string.Format("{0}/{1}", Application.persistentDataPath, AotResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
-        AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateDownLoadComplete);
+        File.WriteAllText(string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
+        //AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateDownLoadComplete);
+        StartGame();
     }
 
     IEnumerator LocalFile(string file, LocalText retText)

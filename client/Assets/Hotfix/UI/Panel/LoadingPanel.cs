@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class LoadingPanel : BasePanel
+public class LoadingPanel : BasePanel
 {
 	public LoadingPanelView view;
 	

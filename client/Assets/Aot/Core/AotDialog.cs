@@ -7,7 +7,7 @@ public class AotDialog : AotSingleton<AotDialog>
 {
     public void ShowDialog(AotDialogInfo dialogInfo)
     {
-        AotUI.Instance.Open("DialogPanel", dialogInfo);
+        AotUI.Instance.Open("UpdateDialogPanel", dialogInfo);
     }
 
     public void ShowDialogOne(string txtTitle, string txtMsg, Action okCb)
@@ -16,7 +16,7 @@ public class AotDialog : AotSingleton<AotDialog>
         dialogInfo.txtTitle = txtTitle;
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okCb;
-        AotUI.Instance.Open("DialogPanel", dialogInfo);
+        AotUI.Instance.Open("UpdateDialogPanel", dialogInfo);
     }
 
     public void ShowDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
@@ -26,7 +26,7 @@ public class AotDialog : AotSingleton<AotDialog>
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okFun;
         dialogInfo.calFun = calFun;
-        AotUI.Instance.Open("DialogPanel", dialogInfo);
+        AotUI.Instance.Open("UpdateDialogPanel", dialogInfo);
     }
 }
 

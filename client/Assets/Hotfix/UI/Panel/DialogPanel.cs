@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class DialogPanel : BasePanel
+public class DialogPanel : BasePanel
 {
 	public DialogPanelView view;
     DialogInfo dialogInfo;
 
-    public void OnOpen()
+    public override void OnOpen()
     {
         view = transform.GetComponent<DialogPanelView>();
         base.OnOpen();
@@ -48,7 +48,7 @@ public partial class DialogPanel : BasePanel
         UIManager.Instance.Close<DialogPanel>();
     }
 
-    public void OnClose()
+    public override void OnClose()
     {
         
     }

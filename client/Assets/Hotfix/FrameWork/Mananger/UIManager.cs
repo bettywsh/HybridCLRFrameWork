@@ -10,7 +10,7 @@ using UObject = UnityEngine.Object;
 using TMPro;
 
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoSingleton<UIManager>
 {
     public GameObject canvasRoot;
     public Camera uiCamera;
@@ -71,7 +71,7 @@ public class UIManager : Singleton<UIManager>
             cv.overrideSorting = true;
             go.AddComponent<GraphicRaycaster>();
             OrderCanvas(go);
-            uiList.Add(typeof(T).Name, t.GetType());
+            uiList.Add(typeof(T).Name, t);
             BasePanel basePanel = t as BasePanel;
             basePanel.args = args;
             basePanel.transform = go.transform;
@@ -87,12 +87,11 @@ public class UIManager : Singleton<UIManager>
         object obj;
         if (uiList.TryGetValue(typeof(T).Name, out obj))
         {
-            BasePanel basePanel = obj as BasePanel;
+            T basePanel = obj as T;
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             uiList.Remove(typeof(T).Name);
         }
     }
-
 
     void OrderCanvas(GameObject go)
     {
@@ -116,6 +115,15 @@ public class UIManager : Singleton<UIManager>
             {
                 r[i].sortingOrder = order + r[i].sortingOrder;
             }
+        }
+    }
+
+    private void Update()
+    {
+        foreach ((string name, object obj) in uiList)
+        {
+            BasePanel basePanel = obj as BasePanel;
+            basePanel.OnUpdate();
         }
     }
 

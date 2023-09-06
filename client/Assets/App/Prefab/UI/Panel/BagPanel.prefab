@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1804292436268675099}
-  - component: {fileID: 8423817430325101440}
+  - component: {fileID: -6172115551244773757}
   m_Layer: 5
   m_Name: BagPanel
   m_TagString: Untagged
@@ -117,7 +117,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8423817430325101440
+--- !u!114 &-6172115551244773757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804292436268675096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e13d7b50d956d1d4c8a83d6017324f58, type: 3}
+  m_Script: {fileID: 11500000, guid: 99b19af2e56bf4e468c327d817ea9a2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   btn_Mask: {fileID: 5151144325394428205}

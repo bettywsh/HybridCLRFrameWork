@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class DialogPanel 
+public partial class UpdateDialogPanel
 {
 	public Button btn_Mask;
 	public CanvasGroup cng_Msg;

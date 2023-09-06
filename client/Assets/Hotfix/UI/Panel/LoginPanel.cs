@@ -3,18 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class LoginPanel : BasePanel
+public class LoginPanel : BasePanel
 {
 	public LoginPanelView view;
 	
     public override void OnOpen()
     {
-        base.OnOpen();
         view = transform.GetComponent<LoginPanelView>();
-
-        //DialogManager.Instance.ShowDialogOne("警告", "进入游戏www.baidu.com", () => {
-        //    Application.Quit();
-        //});
+        base.OnOpen();
     }
 
     void Msg_Connected(object[] msgDatas)
@@ -38,7 +34,10 @@ public partial class LoginPanel : BasePanel
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 
 
-        NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
+        //NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
+
+        UIManager.Instance.Open<MainPanel>();
+        UIManager.Instance.Close<LoginPanel>();
     }
 
     public override void OnClose()

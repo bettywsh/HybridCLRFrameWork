@@ -122,7 +122,11 @@ public class AutoGenPanel : Editor
         foreach (KeyValuePair<string, Transform> item in VarData)
         {
             Type type1 = GetNameToVarType(item.Key).type;
-            UnityEngine.Component obj = item.Value.GetComponent(type1);
+            object obj = item.Value.gameObject;
+            if (type1.Name != "GameObject")
+            {
+                obj = item.Value.GetComponent(type1) as object;
+            }
             for (int i = 0; i < allFieldInfo.Length; i++)
             {
                 if (allFieldInfo[i].Name == item.Key)

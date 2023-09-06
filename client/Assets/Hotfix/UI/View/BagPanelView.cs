@@ -8,9 +8,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class BagPanel 
+public class BagPanelView : MonoBehaviour
 {
 	public Button btn_Mask;
 	public ListView lsv_ListView;
-
+   
 }

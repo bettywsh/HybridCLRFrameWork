@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class DialogPanel : AotBasePanel
+public partial class UpdateDialogPanel : AotBasePanel
 {
     AotDialogInfo dialogInfo;
     public void OnOpen()

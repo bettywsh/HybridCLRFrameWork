@@ -8,12 +8,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class MainPanelView : MonoBehaviour
+public class TextFlyingPanelView : MonoBehaviour
 {
-	public Button btn_Mask;
-	public Button btn_Bag;
-	public Button btn_DialogOne;
-	public Button btn_DialogTwo;
-	public Button btn_FlyingText;
+	public Image img_Bg;
+	public TextMeshProUGUI txt_TextMesh;
+	public GameObject obj_Content;
    
 }

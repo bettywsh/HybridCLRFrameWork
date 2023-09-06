@@ -10,8 +10,10 @@ using System.Linq;
 public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSource
 {
     public GameObject Item;
-
     private int mtotalCount = -1;
+
+    public Action<int, Transform> OnItemRender;
+
     public int TotalCount
     {
         get
@@ -53,10 +55,8 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
 
     public void ProvideData(Transform transform, int idx)
     {
-
+        OnItemRender(idx, transform);
         //listViewItem.ScrollCellIndex(idx);
-        transform.SendMessage("ScrollCellIndex", idx);
-    }
-
-
+        //transform.SendMessage("ScrollCellIndex", idx);
+    }        
 }

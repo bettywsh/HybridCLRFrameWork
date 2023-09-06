@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectOperation
+public class ObjectHelper
 {
     public static Transform AddChildren(Transform parent, GameObject children)
     {

@@ -5,8 +5,8 @@ using System.Reflection;
 using UnityEngine;
 
 public class ConfigManager : Singleton<ConfigManager>
-{    
-    List<Type> types = new List<Type>();
+{
+
     Dictionary<Type, object> configs = new Dictionary<Type, object>();
 
     public override void Init()

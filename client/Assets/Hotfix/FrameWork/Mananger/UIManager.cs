@@ -66,7 +66,7 @@ public class UIManager : MonoSingleton<UIManager>
             GameObject go = ugo as GameObject;
             go = GameObject.Instantiate(go);
             go.name = prefabName;
-            go = ObjectOperation.SetParent(baseCanvas, go.transform).gameObject;
+            go = ObjectHelper.SetParent(baseCanvas, go.transform).gameObject;
             Canvas cv = go.AddComponent<Canvas>();
             cv.overrideSorting = true;
             go.AddComponent<GraphicRaycaster>();

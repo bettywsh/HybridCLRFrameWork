@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class AnimationManager : Singleton<AnimationManager>
+public class AnimationHelper 
 {
-    public void PlayAnimation(string animName, Transform transform, Action onComplete = null)
+    public static void PlayAnimation(string animName, Transform transform, Action onComplete = null)
     {
         Animation animation = transform.GetComponent<Animation>();
         if(animation == null)

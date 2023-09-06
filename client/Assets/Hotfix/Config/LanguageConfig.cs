@@ -34,6 +34,6 @@ public partial class LanguageConfig : BaseConfig
 public partial class LanguageConfigItem
 {
 	public string Id;
-	public string LanguageTable;
+	public string Chinese;
 
 }

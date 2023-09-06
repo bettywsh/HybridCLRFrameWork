@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Data]
-public class PlayerData 
+public class BaseData 
 {
-    
+    public virtual void Init()
+    {
+        
+    }
 }

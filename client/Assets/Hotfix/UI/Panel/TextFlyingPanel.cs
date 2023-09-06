@@ -23,7 +23,7 @@ public class TextFlyingPanel : BasePanel
         {
             isTween = true;
             view.txt_TextMesh.text = queue.Dequeue();
-            Transform run = ObjectOperation.AddChildren(view.obj_Content.transform, view.img_Bg.gameObject);
+            Transform run = ObjectHelper.AddChildren(view.obj_Content.transform, view.img_Bg.gameObject);
             run.gameObject.SetActive(true);
             Sequence seq = DOTween.Sequence();
             seq.Append(run.GetComponent<RectTransform>().DOAnchorPosY(125, 1).SetRelative());

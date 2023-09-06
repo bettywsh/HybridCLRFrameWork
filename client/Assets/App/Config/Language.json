@@ -1,6 +1,10 @@
 {
- "Chinese": {
-  "Id": "Chinese",
-  "LanguageTable": "ChineseText"
+ "Dialog_Ok": {
+  "Id": "Dialog_Ok",
+  "Chinese": "确定"
+ },
+ "Dialog_Cancel": {
+  "Id": "Dialog_Cancel",
+  "Chinese": "取消"
  }
 }

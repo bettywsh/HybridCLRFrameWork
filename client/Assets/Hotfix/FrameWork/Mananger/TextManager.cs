@@ -6,8 +6,6 @@ using UnityEngine;
 public class TextManager : Singleton<TextManager>
 {
     string language;
-    LanguageConfigItem languageConfigItem;
-    Type languageConfig;
     public override void Init()
     {
         base.Init();
@@ -21,23 +19,25 @@ public class TextManager : Singleton<TextManager>
         {
             language = startLanguage;
         }
-        LanguageConfigItem languageConfigItem = ConfigManager.Instance.LoadConfig<LanguageConfig>().GetById(language);
-        languageConfig = AotHybridCLR.Instance._hotUpdateAss.GetType(languageConfigItem.LanguageTable);
     }
 
-    public string GetText(string languageName)
+    public void ChangeLanguage(string languageName)
     {
-        //ConfigManager.Instance.LoadConfig(languageConfig).GetById(languageName);
-        return "";
+        language = languageName;
+        PlayerPrefs.SetString("language", languageName);
     }
 
-    //    function TextMgr:GetText(key)
-    //    self.textDefine = require("Config/" .. self.LanguageTable[self.language].LanguageTable)
-    //    if self.textDefine[key] == nil then
-    //        return "Not Found" .. key
-    //    else
-    //        return self.textDefine[key].Value
-    //    end
-    //end
+    public string GetText(string key)
+    {
+        LanguageConfigItem languageConfigItem = ConfigManager.Instance.LoadConfig<LanguageConfig>().GetById(key);
+        string str = "Not Found" + key;
+        try
+        {
+            str = typeof(LanguageConfigItem).GetField(language).GetValue(languageConfigItem) as string;
+        }
+        catch {
 
+        }
+        return str;
+    }
 }

@@ -60,8 +60,8 @@ public class UIManager : MonoSingleton<UIManager>
         string prefabName = typeof(T).Name;
         if (uiList.ContainsKey(typeof(T).Name))
             return default;
-        T t = Activator.CreateInstance<T>();
-        ResManager.Instance.LoadAssetAsync(prefabName, string.Format("Prefab/UI/Panel/{0}.Prefab", prefabName), typeof(GameObject), (UObject ugo) =>
+        T t = Activator.CreateInstance<T>();        
+        ResManager.Instance.LoadAssetAsync(prefabName, $"Prefab/UI/Panel/{prefabName}{ResConst.PrefabExtName}", typeof(GameObject), (UObject ugo) =>
         {
             GameObject go = ugo as GameObject;
             go = GameObject.Instantiate(go);
@@ -87,8 +87,10 @@ public class UIManager : MonoSingleton<UIManager>
         object obj;
         if (uiList.TryGetValue(typeof(T).Name, out obj))
         {
-            T basePanel = obj as T;
+            BasePanel basePanel = obj as BasePanel;
+            basePanel.OnClose();          
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
+            ResManager.Instance.UnLoadAssetBundle(prefabName);
             uiList.Remove(typeof(T).Name);
         }
     }
@@ -138,22 +140,22 @@ public class UIManager : MonoSingleton<UIManager>
         return outVec;
     }
 
-    public void CloseAll()
-    {
-        List<GameObject> keys = new List<GameObject>();
-        for (int i = baseCanvas.childCount - 1; i >= 0; i--)
-        {
-            keys.Add(baseCanvas.GetChild(i).gameObject);
-        }
+    //public void CloseAll()
+    //{
+    //    List<GameObject> keys = new List<GameObject>();
+    //    for (int i = baseCanvas.childCount - 1; i >= 0; i--)
+    //    {
+    //        keys.Add(baseCanvas.GetChild(i).gameObject);
+    //    }
 
-        for (int i = keys.Count - 1; i >= 0; i--)
-        {
-            GameObject go = keys[i].gameObject;
-            keys.RemoveAt(i);
-            uiList.Remove(go.name);
-            GameObject.DestroyImmediate(go);
-        }
-    }
+    //    for (int i = keys.Count - 1; i >= 0; i--)
+    //    {
+    //        GameObject go = keys[i].gameObject;
+    //        keys.RemoveAt(i);
+    //        uiList.Remove(go.name);
+    //        GameObject.DestroyImmediate(go);
+    //    }
+    //}
 
 
     public bool ClickUI()

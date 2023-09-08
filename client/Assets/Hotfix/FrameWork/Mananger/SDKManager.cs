@@ -3,21 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/**
- * 
- *  SDK 管理，对外提供方法，
- *  
- *  xuss 20190529
- * 
- */
-
-public class SDKManager : Singleton<SDKManager>
+public class SDKManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    protected static SDKManager instance = null;
+    public static SDKManager Instance
     {
-        
+        get
+        {
+            if (instance == null)
+            {
+                GameObject go = GameObject.Find("Sdk");
+                if (go == null)
+                {
+                    go = new GameObject("Sdk");
+                    DontDestroyOnLoad(go);
+                }
+                instance = go.GetComponent<SDKManager>();
+                if (instance == null)
+                {
+                    instance = go.AddComponent<SDKManager>();
+                }
+            }
+            return instance;
+        }
     }
+
+    public void Init()
+    {
+
+    }
+
     //SDK 初始化
     public void InitSDK()
     {

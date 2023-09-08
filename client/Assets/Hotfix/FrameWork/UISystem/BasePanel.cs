@@ -13,6 +13,8 @@ public class BasePanel
     public Transform transform;
     public object[] args;
     
+    public List<string> messages = new List<string>();
+    public List<int> nets = new List<int>();
     public void RegisterEvent()
     {
         //×¢²áÊÂ¼þ
@@ -23,6 +25,7 @@ public class BasePanel
             {
                 MessageHandler messageHandler = Delegate.CreateDelegate(typeof(MessageHandler), this, MethodInfos[i]) as MessageHandler;
                 MessageManager.Instance.RegisterMessageHandler(MethodInfos[i].Name, messageHandler);
+                messages.Add(MethodInfos[i].Name);
             }
             else if (MethodInfos[i].Name.Contains("Click_"))
             {
@@ -38,21 +41,8 @@ public class BasePanel
                 SCMessageEnum sc = (SCMessageEnum)Enum.Parse(typeof(SCMessageEnum), net);
                 MessageHandler messageHandler = Delegate.CreateDelegate(typeof(MessageHandler), this, MethodInfos[i]) as MessageHandler;
                 MessageManager.Instance.RegisterNetMessageHandler((int)sc, messageHandler);
+                nets.Add((int)sc);
             }
-        }
-    }
-
-    public Button this[string name]
-    {
-        get
-        {
-            FieldInfo fi = GetType().GetField(name);
-            object obj = fi.GetValue(this);
-            return (Button)obj;
-        }
-        set
-        {
-            GetType().GetField(name).SetValue(this, value);
         }
     }
 
@@ -68,6 +58,15 @@ public class BasePanel
 
     public virtual void OnClose()
     {
-
+        foreach (string m in messages)
+        {
+            MessageManager.Instance.RemoveMessage(m);
+        }
+        foreach (int n in nets)
+        {
+            MessageManager.Instance.RemoveNetMessage(n);
+        }
+        messages.Clear();
+        nets.Clear();
     }
 }

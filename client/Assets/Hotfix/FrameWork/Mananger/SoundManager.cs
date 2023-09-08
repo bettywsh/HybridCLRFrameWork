@@ -7,7 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SoundManager : MonoSingleton<SoundManager>
+public class SoundManager : Singleton<SoundManager>
 {
 
     private AudioSource audio;
@@ -21,7 +21,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public override void Init()
     {
-        DontDestroyOnLoad(gameObject);
         if (audio == null)
         {
             //创建一个名称为Sound的空GameObject
@@ -83,10 +82,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void LoadAudioClipAsync(string moduleName, string name, System.Action<AudioClip> onCompleted)
     {
         //不在缓存中 则异步加载资源
-        //ResManager.Instance.LoadAssetAsync(moduleName, name, typeof(AudioClip), (clip) => {
-        //    //异步加载完成回调
-        //    onCompleted(clip as AudioClip);
-        //});
+        ResManager.Instance.LoadAssetAsync(moduleName, name, typeof(AudioClip), (clip) =>
+        {
+            //异步加载完成回调
+            onCompleted(clip as AudioClip);
+        });
     }
 
     public bool CanPlayBackSound()
@@ -173,7 +173,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         {
             if (effect_audio[i].name == name)
             {
-                DestroyImmediate(effect_audio[i].gameObject);
+                GameObject.DestroyImmediate(effect_audio[i].gameObject);
                 effect_audio.RemoveAt(i);
             }
         }
@@ -183,7 +183,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         for (int i = effect_audio.Count - 1; i >= 0; i--)
         {
-            DestroyImmediate(effect_audio[i].gameObject);
+            GameObject.DestroyImmediate(effect_audio[i].gameObject);
             effect_audio.RemoveAt(i);         
         }
     }
@@ -241,7 +241,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             {
                 if (!effect_audio[i].isPlaying)
                 {
-                    DestroyImmediate(effect_audio[i].gameObject);
+                    GameObject.DestroyImmediate(effect_audio[i].gameObject);
                     effect_audio.RemoveAt(i);                    
                 }
             }

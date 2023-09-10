@@ -53,10 +53,14 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
         pool.Push(trans);
     }
 
+
     public void ProvideData(Transform transform, int idx)
     {
         OnItemRender(idx, transform);
-        //listViewItem.ScrollCellIndex(idx);
-        //transform.SendMessage("ScrollCellIndex", idx);
-    }        
+    }
+
+    //public void SetItemRender(string panelName, OnItemRender onItemRender)
+    //{
+    
+    //}
 }

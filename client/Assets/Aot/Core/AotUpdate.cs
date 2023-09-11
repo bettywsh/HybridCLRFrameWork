@@ -42,7 +42,7 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
     async UniTask ExtractStreamingAssets()
     {
         AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateFristCopy);
-        if(Directory.Exists(persistentAppPath))
+        if (Directory.Exists(persistentAppPath))
             Directory.Delete(persistentAppPath, true);
 
 #if UNITY_ANDROID
@@ -54,7 +54,13 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
         var datas = (await UnityWebRequest.Get(infile).SendWebRequest()).downloadHandler.data;
         File.WriteAllBytes(outfile, datas);
         Debug.LogError("开始解压");
-        ZipHelper.Decompress(outfile, outfile.Replace(zipFile, ""));
+        try
+        {
+            ZipHelper.Decompress(outfile, outfile.Replace(zipFile, ""));
+        }
+        catch {
+            Debug.LogError("解压失败");
+        }
         File.Delete(outfile);
         await UniTask.WaitForEndOfFrame(this);
         PlayerPrefs.SetString("Version", Application.version);

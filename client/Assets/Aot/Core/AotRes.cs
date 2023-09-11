@@ -14,6 +14,7 @@ public class AotRes : AotSingleton<AotRes>
         //{
         //    path = GetStreamingAssetsPath() + abName.ToLower();
         //}
+        Debug.LogError(path);
         AssetBundle ab;
         if (!abDic.TryGetValue(abName, out ab))
         {
@@ -37,7 +38,7 @@ public class AotRes : AotSingleton<AotRes>
 
     string GetPersistentPath()
     {
-        return Application.persistentDataPath + "/";
+        return $"{Application.persistentDataPath}/";
     }
 
 //    string GetStreamingAssetsPath()

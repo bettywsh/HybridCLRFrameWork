@@ -5,178 +5,112 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class AotUpdate : AotMonoSingleton<AotUpdate>
 {
     private string sJsonStr = "";
     List<DownLoadFile> needUpdate = new List<DownLoadFile>();
     private string writeClientFiles = "";
+    string persistentAppPath = "";
+    string zipFile = $"{ResConst.RootFolderName.ToLower()}.zip";
+
     public void CheckVersion()
     {
-        if (!AotResConst.UpdateModel)
+        persistentAppPath = $"{Application.persistentDataPath}/{ResConst.RootFolderName.ToLower()}";
+
+        if (!ResConst.UpdateModel)
         {
             StartGame();
-            return;
         }
         else
         {
             AotUI.Instance.Open("UpdatePanel");
-            if (File.Exists(Application.persistentDataPath + "/" + AotResConst.RootFolderName))
-            {
-                StartCoroutine(OnCheckVersion());
-            }
-            else 
-            {                
-                StartCoroutine(ExtractStreamingAssetsPath());
-            }
+            OnCheckVersion();
         }
     }
 
-    void DeletePersistentDataPath()
+    public async UniTask CheckExtractStreamingAssets()
     {
-        Directory.Delete(Application.persistentDataPath + "/" + AotResConst.RootFolderName, true);
+        if (PlayerPrefs.GetString("Version", "") != Application.version)
+        {
+            await ExtractStreamingAssets();
+        }
     }
 
-
-    IEnumerator ExtractStreamingAssetsPath()
+    async UniTask ExtractStreamingAssets()
     {
         AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateFristCopy);
-        string rootPath = Application.persistentDataPath + "/" + AotResConst.RootFolderName.ToLower();
-        if (!Directory.Exists(rootPath))
-            Directory.CreateDirectory(rootPath);
-        string infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), AotResConst.VerFile);
-        string outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.VerFile);
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            WWW www = new WWW(infile);
-            yield return www;
-            if (www.isDone)
-            {
-                File.WriteAllBytes(outfile, www.bytes);
-            }
-        }
-        else File.Copy(infile, outfile, true);
-        yield return new WaitForEndOfFrame();
+        if(Directory.Exists(persistentAppPath))
+            Directory.Delete(persistentAppPath, true);
 
-        infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile);
-        outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile);
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            WWW www = new WWW(infile);
-            yield return www;
-            if (www.isDone)
-            {
-                File.WriteAllBytes(outfile, www.bytes);
-            }
-        }
-        else File.Copy(infile, outfile, true);
-        yield return new WaitForEndOfFrame();
-
-        // 释放所有文件到数据目录
-        string[] files = File.ReadAllLines(outfile);     
-        for (int i =0;i< files.Length;i++)        {
-            string[] fs = files[i].Split('|');
-            infile = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), fs[0]);
-            outfile = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), fs[0]);
-
-            AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateFristProgress, i, files.Length);
-
-            string dir = Path.GetDirectoryName(outfile);
-            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                WWW www = new WWW(infile);
-                yield return www;
-
-                if (www.isDone)
-                {
-                    File.WriteAllBytes(outfile, www.bytes);
-                }
-                yield return 0;
-            }
-            else
-            {
-                if (File.Exists(outfile))
-                {
-                    File.Delete(outfile);
-                }
-                File.Copy(infile, outfile, true);
-            }
-            yield return new WaitForEndOfFrame();
-        }
-        //启动版本检测
-        StartCoroutine(OnCheckVersion());
+#if UNITY_ANDROID
+        string infile = $"{Application.streamingAssetsPath}/{zipFile}";
+#elif UNITY_IOS
+        string infile = $"file://{Application.streamingAssetsPath}/{zipFile}";
+#endif
+        string outfile = Path.Combine(Application.persistentDataPath, zipFile);
+        var datas = (await UnityWebRequest.Get(infile).SendWebRequest()).downloadHandler.data;
+        File.WriteAllBytes(outfile, datas);
+        Debug.LogError("开始解压");
+        ZipHelper.Decompress(outfile, outfile.Replace(zipFile, ""));
+        File.Delete(outfile);
+        await UniTask.WaitForEndOfFrame(this);
+        PlayerPrefs.SetString("Version", Application.version);
     }
 
     private string GetFilePath(string fileName)
     {
         string serverHttpFile = "";
 #if UNITY_ANDROID
-        serverHttpFile = string.Format("{0}Android/{1}/", AotResConst.SvrResIp, AotResConst.RootFolderName.ToLower());
+        serverHttpFile = $"{ResConst.SvrResIp}Android/{ResConst.RootFolderName.ToLower()}/";
 #elif UNITY_IOS
-        serverHttpFile = string.Format("{0}IOS/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
+        serverHttpFile = $"{AotResConst.SvrResIp}Ios/{AotResConst.RootFolderName.ToLower()}/";
 #else
-        serverHttpFile = string.Format("{0}Pc/{1}/", AppConst.SvrResIp, ResConst.RootFolderName.ToLower());
+        serverHttpFile = $"{AotResConst.SvrResIp}Pc/{AotResConst.RootFolderName.ToLower()}/";        
 #endif
         return serverHttpFile + fileName;
     }
 
-    IEnumerator OnCheckVersion()
+    async void OnCheckVersion()
     {
         AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateCheckVersion);
-        string serverHttpFile = GetFilePath(AotResConst.VerFile);
+        string serverHttpFile = GetFilePath(ResConst.VerFile);
         JsonData jsonDataInfoServer, jsonDataInfoClient;
         int[] serverVersion = new int[3];
-        UnityWebRequest webRequest = UnityWebRequest.Get(serverHttpFile);
-        yield return webRequest.SendWebRequest();
-        if (webRequest.isHttpError || webRequest.isNetworkError)
+        string downloadHandlerText = null;
+        try
+        {
+            downloadHandlerText = (await UnityWebRequest.Get(serverHttpFile).SendWebRequest()).downloadHandler.text;
+        }
+        catch
         {
             AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
-            yield break;
+            return;
         }
-        else
-        {
-            jsonDataInfoServer = JsonMapper.ToObject(webRequest.downloadHandler.text);
-            serverVersion[0] = (int)jsonDataInfoServer["MainVersion"];
-            serverVersion[1] = (int)jsonDataInfoServer["PatchVersion"];
-            serverVersion[2] = (int)jsonDataInfoServer["ResVersion"];
-        }
+        jsonDataInfoServer = JsonMapper.ToObject(downloadHandlerText);
+        serverVersion[0] = (int)jsonDataInfoServer["MainVersion"];
+        serverVersion[1] = (int)jsonDataInfoServer["PatchVersion"];
+        serverVersion[2] = (int)jsonDataInfoServer["ResVersion"];
+        
 
         int[] clientVersion = new int[3];
-        LocalText localText = new LocalText();
-        yield return StartCoroutine(LocalFile(AotResConst.VerFile, localText));
-        jsonDataInfoClient = JsonMapper.ToObject(localText.text);
+        jsonDataInfoClient = JsonMapper.ToObject(LocalFile(ResConst.VerFile));
         clientVersion[0] = (int)jsonDataInfoClient["MainVersion"];
         clientVersion[1] = (int)jsonDataInfoClient["PatchVersion"];
         clientVersion[2] = (int)jsonDataInfoClient["ResVersion"];
-
-        //可写文件夹版本太低， 可能覆盖安装了
-        //if (int.Parse(serverVersion[2]) > int.Parse(clientVersion[2]))
-        //{            
-        //    DeletePersistentDataPath();
-        //    localText = new LocalText();
-        //    LocalFile(ResConst.VerFile, localText);
-        //    jsonDataInfoClient = JsonMapper.ToObject(localText.text);
-        //    cversion = (string)jsonDataInfoClient["GameVersion"];
-        //    cversions = cversion.Split('.');
-        //    clientVersion[0] = cversions[0];
-        //    clientVersion[1] = cversions[1];
-        //    clientVersion[2] = cversions[2];
-        //    clientVersion[3] = (string)jsonDataInfoClient["ResVersion"];
-        //}
-        //AppConst.GameVersion = sVersion;
 
         if (serverVersion[0] > clientVersion[0])
         {
             //大版本更新
             AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateBigVersion, GetDownloadURLFromJSON(jsonDataInfoServer));
-            yield break;
+            return;
         }
         else if (serverVersion[2] > clientVersion[2])
         {
             //小版本更新
-            StartCoroutine(TotalDownloadSize(true));
+            TotalDownloadSize(true);
 }
         else
         {
@@ -199,24 +133,16 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
     }
 
     //计算所需要下载的时间
-    IEnumerator TotalDownloadSize(bool isShowDialog)
+    async void TotalDownloadSize(bool isShowDialog)
     {
-        string serverFile = "";
-        string serverHttpFile = GetFilePath(AotResConst.CheckFile);
-        UnityWebRequest webRequest = UnityWebRequest.Get(serverHttpFile);
-        yield return webRequest.SendWebRequest();
-        if (webRequest.isHttpError || webRequest.isNetworkError)
+        string serverHttpFile = GetFilePath(ResConst.CheckFile);
+        string serverFile = (await UnityWebRequest.Get(serverHttpFile).SendWebRequest()).downloadHandler.text;
+        if (serverFile == "")
         {
             AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
-            yield break;
+            return;
         }
-        else
-        {
-            serverFile = webRequest.downloadHandler.text;
-        }
-        LocalText localText = new LocalText();
-        yield return StartCoroutine(LocalFile(AotResConst.CheckFile, localText));
-        string clientFile = localText.text;
+        string clientFile = LocalFile(ResConst.CheckFile);
         string[] serverFiles = serverFile.Split('\n');
         string[] clientFiles = clientFile.Split('\n');
         Dictionary<string, string> cFiles = new Dictionary<string, string>();
@@ -271,9 +197,8 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
         }
         else
         {
-            StartCoroutine(OnDownLoadFiles());
+            OnDownLoadFiles();
         }
-
     }
 
 
@@ -302,64 +227,34 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
         {
             StartGame();
         }
-        StartCoroutine(OnDownLoadFiles());
+        OnDownLoadFiles();
     }
 
-    IEnumerator OnDownLoadFiles()
+    async void OnDownLoadFiles()
     {
         for (int i = 0; i < needUpdate.Count; i++)
         {
             Debug.LogError(needUpdate[i]);
             string url = GetFilePath(needUpdate[i].file);
-            using (var www = UnityWebRequest.Get(url))
+            byte[] data = (await UnityWebRequest.Get(url).SendWebRequest()).downloadHandler.data;
+            if (data == null)
             {
-                yield return www.SendWebRequest();
-                if (www.result == UnityWebRequest.Result.ProtocolError || www.result == UnityWebRequest.Result.ConnectionError)
-                {
-                    AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
-                    yield break;
-                }
-                while (!www.isDone)
-                {
-                    yield return null;
-                }
-                if (www.isDone)
-                {
-                    File.WriteAllBytes(string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), needUpdate[i].file), www.downloadHandler.data);
-                }
+                AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateLostConnect);
+                return;
             }
+            File.WriteAllBytes($"{persistentAppPath}/{needUpdate[i].file}", data);
             writeClientFiles += needUpdate[i].fileInfo + "\n";
-            File.WriteAllText(string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile), writeClientFiles);
+            File.WriteAllText($"{persistentAppPath}/{ResConst.CheckFile}", writeClientFiles);
         }
 
-        
-        File.WriteAllText(string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), AotResConst.VerFile), sJsonStr, new System.Text.UTF8Encoding(false));
-        //AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateDownLoadComplete);
+        File.WriteAllText($"{persistentAppPath}/{ResConst.VerFile}", sJsonStr, new System.Text.UTF8Encoding(false));
         StartGame();
     }
 
-    IEnumerator LocalFile(string file, LocalText retText)
+    string LocalFile(string file)
     {
-        string path = string.Format("{0}/{1}/{2}", Application.persistentDataPath, AotResConst.RootFolderName.ToLower(), file);
-        if (File.Exists(path))
-        {
-            retText.text = File.ReadAllText(path);
-        }
-        else
-        {           
-#if UNITY_ANDROID
-            path = string.Format("{0}/{1}/{2}", Application.streamingAssetsPath, AotResConst.RootFolderName.ToLower(), AotResConst.CheckFile);
-#endif
-
-#if UNITY_IOS
-            path = string.Format("file://{0}/{1}/{2}", Application.streamingAssetsPath, ResConst.RootFolderName.ToLower(), ResConst.CheckFile);
-#endif
-
-
-            UnityWebRequest uwr = UnityWebRequest.Get(path);
-            yield return uwr.SendWebRequest();
-            retText.text = uwr.downloadHandler.text;
-        }
+        string path = $"{persistentAppPath}/{file}";
+        return File.ReadAllText(path);
     }
 
     void StartGame()
@@ -373,9 +268,4 @@ public class DownLoadFile
 {
     public string file;
     public string fileInfo;
-}
-
-public class LocalText
-{
-    public string text;
 }

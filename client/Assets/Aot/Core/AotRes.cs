@@ -10,10 +10,10 @@ public class AotRes : AotSingleton<AotRes>
     public T LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
     {
         string path = GetPersistentPath() + abName.ToLower();
-        if (!File.Exists(path))
-        {
-            path = GetStreamingAssetsPath() + abName.ToLower();
-        }
+        //if (!File.Exists(path))
+        //{
+        //    path = GetStreamingAssetsPath() + abName.ToLower();
+        //}
         AssetBundle ab;
         if (!abDic.TryGetValue(abName, out ab))
         {
@@ -40,19 +40,19 @@ public class AotRes : AotSingleton<AotRes>
         return Application.persistentDataPath + "/";
     }
 
-    string GetStreamingAssetsPath()
-    {
-#if UNITY_EDITOR
-        return Application.streamingAssetsPath + "/";
-#else
-#if UNITY_ANDROID
-        return Application.streamingAssetsPath + "/";      
-#elif UNITY_IOS
-        return Application.dataPath + @"/Raw";        
+//    string GetStreamingAssetsPath()
+//    {
+//#if UNITY_EDITOR
+//        return Application.streamingAssetsPath + "/";
+//#else
+//#if UNITY_ANDROID
+//        return Application.streamingAssetsPath + "/";      
+//#elif UNITY_IOS
+//        return Application.dataPath + @"/Raw";        
 
-#else
-        return Application.streamingAssetsPath + "/";
-#endif
-#endif
-    }
+//#else
+//        return Application.streamingAssetsPath + "/";
+//#endif
+//#endif
+//    }
 }

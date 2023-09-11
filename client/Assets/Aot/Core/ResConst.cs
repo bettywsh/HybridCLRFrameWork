@@ -5,6 +5,16 @@ using UnityEngine;
 public class ResConst
 {
     /// <summary>
+    /// 热更新模式
+    /// </summary>
+    public const bool UpdateModel = true;
+
+    /// <summary>
+    /// 热更下载地址
+    /// </summary>
+    public const string SvrResIp = "http://192.168.11.18:8082/";
+
+    /// <summary>
     /// 框架根目录
     /// </summary>
     public const string RootFolderName = "App";
@@ -88,39 +98,6 @@ public class ResConst
     /// 版本文件列表
     /// </summary>
     public const string CheckFile = "files.txt";
-
-
 }
 
-public enum ResType
-{ 
-    AudioClip = 1,
-    Prefab = 2,
-    Texture2d = 3,
-    Sprite = 4,
-    TextAsset = 5,
-    Scene = 8,
-    Material = 9,
-    Atlas = 10,
-    Font = 11,
-    Asset = 12,
-    AssetBundleManifest = 13,
-}
-
-public enum ResExtName
-{
-    None,
-    LuaExtName,
-    PrefabExtName,
-    AtlasExtName,
-    TextureExtName,
-    MaterialExtName,
-    FontExtName,
-    AssetExtName,
-    SceneExtName,
-    AssetBunldExtName,
-    BytesExtName,
-    TxtExtName,
-    JsonExtName,
-}
 

@@ -10,8 +10,8 @@ public class Launch : MonoBehaviour
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         await AotUpdate.Instance.CheckExtractStreamingAssets();
-        AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSansCN-Normal SDF.unity3d", "Assets/App/Font/SourceHanSansCN-Normal SDF.asset");
-        AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSerifCN-Bold SDF.unity3d", "Assets/App/Font/SourceHanSerifCN-Bold SDF.asset");
+        AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSansCN-NormalSDF.unity3d", "Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
+        AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSerifCN-BoldSDF.unity3d", "Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         AotUI.Instance.Open("SplashAdvicePanel");
         
     }

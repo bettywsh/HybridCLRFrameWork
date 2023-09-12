@@ -19,8 +19,8 @@ public class Launch
         AssetBundleManager.Instance.Init();
         NetworkManager.Instance.Init();
         ConfigManager.Instance.Init();
-        ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSansCN-Normal SDF.asset", typeof(TMP_FontAsset));
-        ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSerifCN-Bold SDF.asset", typeof(TMP_FontAsset), (ugo) => {
+        ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSansCN-NormalSDF.asset", typeof(TMP_FontAsset));
+        ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSerifCN-BoldSDF.asset", typeof(TMP_FontAsset), (ugo) => {
             //UIManager.Instance.Open<LoginPanel>();
         });
         LoadSceneManager.Instance.LoadScene("Login", false);

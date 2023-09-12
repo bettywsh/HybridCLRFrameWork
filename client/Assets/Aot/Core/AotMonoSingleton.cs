@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AotMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+public abstract class AotMonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
 
     protected static T m_instance = null;

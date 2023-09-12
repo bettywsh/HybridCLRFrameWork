@@ -14,7 +14,6 @@ public class AotRes : AotSingleton<AotRes>
         //{
         //    path = GetStreamingAssetsPath() + abName.ToLower();
         //}
-        Debug.LogError(path);
         AssetBundle ab;
         if (!abDic.TryGetValue(abName, out ab))
         {

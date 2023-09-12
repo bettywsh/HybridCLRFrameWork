@@ -61,10 +61,11 @@ public class ZipHelper : MonoBehaviour
             ZipEntry theEntry;
             while ((theEntry = s.GetNextEntry()) != null)
             {
-                string directorName = Path.Combine(targetPath, Path.GetDirectoryName(theEntry.Name));
-                string fileName = Path.Combine(directorName, Path.GetFileName(theEntry.Name));
+                string path = theEntry.Name.Replace("\\", "/");
+                string directorName = $"{targetPath}/{Path.GetDirectoryName(path)}";
+                string fileName = $"{directorName}/{Path.GetFileName(path)}";
                 // ´´½¨Ä¿Â¼
-                if (directorName.Length > 0)
+                if (!Directory.Exists(directorName))
                 {
                     Directory.CreateDirectory(directorName);
                 }

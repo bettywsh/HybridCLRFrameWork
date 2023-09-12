@@ -33,37 +33,33 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
 
     public async UniTask CheckExtractStreamingAssets()
     {
-        if (PlayerPrefs.GetString("Version", "") != Application.version)
+        Debug.LogError(PlayerPrefs.GetString("Version") + "    " + Application.version);
+        if (PlayerPrefs.GetString("Version") != Application.version)
         {
             await ExtractStreamingAssets();
+            Debug.LogError("写入版本号");
+            PlayerPrefs.SetString("Version", Application.version);
         }
     }
 
     async UniTask ExtractStreamingAssets()
     {
-        AotMessage.Instance.MessageNotify(AotMessageConst.Msg_UpdateFristCopy);
         if (Directory.Exists(persistentAppPath))
             Directory.Delete(persistentAppPath, true);
-
 #if UNITY_ANDROID
         string infile = $"{Application.streamingAssetsPath}/{zipFile}";
 #elif UNITY_IOS
         string infile = $"file://{Application.streamingAssetsPath}/{zipFile}";
+#else
+        string infile = $"{Application.streamingAssetsPath}/{zipFile}";
 #endif
-        string outfile = Path.Combine(Application.persistentDataPath, zipFile);
-        var datas = (await UnityWebRequest.Get(infile).SendWebRequest()).downloadHandler.data;
-        File.WriteAllBytes(outfile, datas);
-        Debug.LogError("开始解压");
-        try
-        {
-            ZipHelper.Decompress(outfile, outfile.Replace(zipFile, ""));
-        }
-        catch {
-            Debug.LogError("解压失败");
-        }
+        string outfile = $"{Application.persistentDataPath}/{zipFile}";
+        var data = (await UnityWebRequest.Get(infile).SendWebRequest()).downloadHandler.data;
+        File.WriteAllBytes(outfile, data);
+        ZipHelper.Decompress(outfile, Application.persistentDataPath);
+        Debug.LogError("解压");
         File.Delete(outfile);
         await UniTask.WaitForEndOfFrame(this);
-        PlayerPrefs.SetString("Version", Application.version);
     }
 
     private string GetFilePath(string fileName)

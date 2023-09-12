@@ -7,7 +7,7 @@ public class ResConst
     /// <summary>
     /// 热更新模式
     /// </summary>
-    public const bool UpdateModel = true;
+    public const bool UpdateModel = false;
 
     /// <summary>
     /// 热更下载地址

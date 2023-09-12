@@ -58,7 +58,6 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
         var data = (await UnityWebRequest.Get(infile).SendWebRequest()).downloadHandler.data;
         File.WriteAllBytes(outfile, data);
         ZipHelper.Decompress(outfile, Application.persistentDataPath);
-        Debug.LogError("解压");
         File.Delete(outfile);
         await UniTask.WaitForEndOfFrame(this);
     }

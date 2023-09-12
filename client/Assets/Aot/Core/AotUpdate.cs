@@ -33,12 +33,13 @@ public class AotUpdate : AotMonoSingleton<AotUpdate>
 
     public async UniTask CheckExtractStreamingAssets()
     {
-        Debug.LogError(PlayerPrefs.GetString("Version") + "    " + Application.version);
-        if (PlayerPrefs.GetString("Version") != Application.version)
+        string version = Application.version;
+        Debug.LogError(PlayerPrefs.GetString("Version", "") + "  |  " + version);
+        if (PlayerPrefs.GetString("Version", "") != version)
         {
             await ExtractStreamingAssets();
-            Debug.LogError("写入版本号");
-            PlayerPrefs.SetString("Version", Application.version);
+            PlayerPrefs.SetString("Version", version);
+            PlayerPrefs.Save();
         }
     }
 

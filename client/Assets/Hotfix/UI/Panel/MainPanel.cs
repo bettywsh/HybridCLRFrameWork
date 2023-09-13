@@ -6,9 +6,14 @@ public class MainPanel : BasePanel
 {
     public MainPanelView view;
 
-    public override void OnOpen()
+    public override void OnBindEvent()
     {
         view = transform.GetComponent<MainPanelView>();
+        base.OnBindEvent();
+    }
+
+    public override void OnOpen()
+    {        
         base.OnOpen();
     }
 

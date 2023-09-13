@@ -7,9 +7,14 @@ public class DialogPanel : BasePanel
 	public DialogPanelView view;
     DialogInfo dialogInfo;
 
-    public override void OnOpen()
+    public override void OnBindEvent()
     {
         view = transform.GetComponent<DialogPanelView>();
+        base.OnBindEvent();
+    }
+
+    public override void OnOpen()
+    {        
         base.OnOpen();
 
         dialogInfo = args[0] as DialogInfo;

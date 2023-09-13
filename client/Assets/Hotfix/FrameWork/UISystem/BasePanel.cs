@@ -29,11 +29,17 @@ public class BasePanel
             }
             else if (MethodInfos[i].Name.Contains("Click_"))
             {
-                string btnStr = MethodInfos[i].Name.Replace("Click_", "");
-                UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), this, MethodInfos[i]) as UnityAction;
-                object v = GetType().GetField("view").GetValue(this);
-                Button btn = (Button)v.GetType().GetField(btnStr).GetValue(v);
-                btn.onClick.AddListener(cb);
+                try
+                {
+                    string btnStr = MethodInfos[i].Name.Replace("Click_", "");
+                    UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), this, MethodInfos[i]) as UnityAction;
+                    object v = GetType().GetField("view").GetValue(this);
+                    Button btn = (Button)v.GetType().GetField(btnStr).GetValue(v);
+                    btn.onClick.AddListener(cb);
+                }
+                catch {
+                    Debug.LogError(MethodInfos[i].Name + ",Not Find Buttom Or Reference");
+                }
             }
             else if(MethodInfos[i].Name.Contains("Net_"))
             {
@@ -46,9 +52,14 @@ public class BasePanel
         }
     }
 
-    public virtual void OnOpen()
+    public virtual void OnBindEvent()
     {
         RegisterEvent();
+    }
+
+    public virtual void OnOpen()
+    {
+
     }
 
     public virtual void OnUpdate()

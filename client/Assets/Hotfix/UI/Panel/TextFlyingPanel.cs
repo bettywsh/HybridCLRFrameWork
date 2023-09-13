@@ -10,10 +10,15 @@ public class TextFlyingPanel : BasePanel
     bool isTween = false;
     Queue<string> queue = new Queue<string>();
 
-    public override void OnOpen()
-    {		
+    public override void OnBindEvent()
+    {
         view = transform.GetComponent<TextFlyingPanelView>();
-		base.OnOpen();
+        base.OnBindEvent();
+    }
+
+    public override void OnOpen()
+    { 
+		base.OnOpen();        
     }
 
     public override void OnUpdate()

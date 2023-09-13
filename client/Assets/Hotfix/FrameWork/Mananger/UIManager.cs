@@ -75,6 +75,7 @@ public class UIManager : MonoSingleton<UIManager>
             BasePanel basePanel = t as BasePanel;
             basePanel.args = args;
             basePanel.transform = go.transform;
+            basePanel?.OnBindEvent();
             basePanel?.OnOpen();
             go.SetActive(true);
         });

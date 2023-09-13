@@ -6,9 +6,14 @@ public class #CLASSNAME# : BasePanel
 {
 	public #CLASSNAME#View view;
 	
-    public override void OnOpen()
-    {		
+	public override void BindEvent()
+    {
         view = transform.GetComponent<#CLASSNAME#View>();
+        base.BindEvent();
+    }
+	
+    public override void OnOpen()
+    {
 		base.OnOpen();
     }
 

@@ -6,10 +6,15 @@ using UnityEngine;
 public class LoginPanel : BasePanel
 {
 	public LoginPanelView view;
-	
-    public override void OnOpen()
+
+    public override void OnBindEvent()
     {
         view = transform.GetComponent<LoginPanelView>();
+        base.OnBindEvent();
+    }
+
+    public override void OnOpen()
+    {
         base.OnOpen();
     }
 

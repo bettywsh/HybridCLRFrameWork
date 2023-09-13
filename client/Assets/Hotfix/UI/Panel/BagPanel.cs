@@ -6,11 +6,16 @@ public class BagPanel : BasePanel
 {
 	public BagPanelView view;
     List<HorseConfigItem> listHorseConfig;
-    public override void OnOpen()
-    {		
-        view = transform.GetComponent<BagPanelView>();
-		base.OnOpen();
 
+    public override void OnBindEvent()
+    {
+        view = transform.GetComponent<BagPanelView>();
+        base.OnBindEvent();
+    }
+
+    public override void OnOpen()
+    {
+        base.OnOpen();
         listHorseConfig = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
         view.lsv_ListView.OnItemRender = OnItemRender;
         view.lsv_ListView.TotalCount = listHorseConfig.Count;

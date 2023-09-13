@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class AppConst
 {
-    /// <summary>
-    /// 是否是打包模式
-    /// </summary>
-    /// 
-#if UNITY_EDITOR
-    public const bool IsABMode = false;
-#else
-    public const bool IsABMode = true;
-#endif
 
     /// <summary>
     /// 游戏启动ip地址

@@ -36,7 +36,7 @@ public class ResPath
                         //_SourceFolder = Application.dataPath + @"!assets";
                         break;
                     default:
-                        if (!AppConst.IsABMode)
+                        if (!ResConst.IsABMode)
                         {
                             _SourceFolder = AppFullPath;
                         }
@@ -67,7 +67,7 @@ public class ResPath
                 }
                 else
                 {
-                    if (!ResConst.UpdateModel)
+                    if (!ResConst.IsABMode)
                     {
 
                         _DataFolder = AppFullPath;

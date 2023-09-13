@@ -12,8 +12,8 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
     public GameObject Item;
     private int mtotalCount = -1;
 
-    public Action<int, Transform> OnItemRender;
-
+    private Action<int, Transform> onItemRender;
+    private string panelName;
     public int TotalCount
     {
         get
@@ -40,6 +40,7 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
             return Instantiate(Item);
         }
         Transform candidate = pool.Pop();
+        candidate.GetComponent<BaseCell>().panelName = panelName;
         candidate.gameObject.SetActive(true);
         return candidate.gameObject;
     }
@@ -56,11 +57,12 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
 
     public void ProvideData(Transform transform, int idx)
     {
-        OnItemRender(idx, transform);
+        onItemRender(idx, transform);
     }
 
-    //public void SetItemRender(string panelName, OnItemRender onItemRender)
-    //{
-    
-    //}
+    public void SetItemRender(object obj, Action<int, Transform> itemRender)
+    {
+        panelName = obj.GetType().Name;
+        onItemRender = itemRender;
+    }
 }

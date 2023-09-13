@@ -5,9 +5,23 @@ using UnityEngine;
 public class ResConst
 {
     /// <summary>
+    /// 是否是打包模式
+    /// </summary>
+    /// 
+#if UNITY_EDITOR
+    public const bool IsABMode = false;
+#else
+    public const bool IsABMode = true;
+#endif
+
+    /// <summary>
     /// 热更新模式
     /// </summary>
+#if UNITY_EDITOR
     public const bool UpdateModel = false;
+#else
+    public const bool UpdateModel = true;
+#endif
 
     /// <summary>
     /// 热更下载地址

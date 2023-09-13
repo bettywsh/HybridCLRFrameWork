@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BagCell : MonoBehaviour
+public class BagCell : BaseCell
 {
     public TextMeshProUGUI m_Text;
     public Image m_Image;

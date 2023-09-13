@@ -25,7 +25,7 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
 
     public override void Init()
     {
-        if (AppConst.IsABMode)
+        if (ResConst.IsABMode)
         { 
             assetBundleManifest = ResManager.Instance.LoadAsset("Common", ResConst.RootFolderName.ToLower(), typeof(AssetBundleManifest)) as AssetBundleManifest;
         }

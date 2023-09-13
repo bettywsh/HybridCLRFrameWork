@@ -17,7 +17,7 @@ public class BagPanel : BasePanel
     {
         base.OnOpen();
         listHorseConfig = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
-        view.lsv_ListView.OnItemRender = OnItemRender;
+        view.lsv_ListView.SetItemRender(this, OnItemRender);
         view.lsv_ListView.TotalCount = listHorseConfig.Count;
     }
 

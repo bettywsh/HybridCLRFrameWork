@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764998814983601108}
   - component: {fileID: 5017368213899001865}
-  - component: {fileID: 7144507594276921945}
+  - component: {fileID: 3970391807280111993}
   m_Layer: 5
   m_Name: BagCell
   m_TagString: Untagged
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &7144507594276921945
+--- !u!114 &3970391807280111993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66934117419187845adfb48a71b3d963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelName: 
   m_Text: {fileID: 2410391386807952269}
   m_Image: {fileID: 6635795227799336869}
 --- !u!1 &7116102664159694597

@@ -56,7 +56,6 @@ public class ResManager : Singleton<ResManager>
         }
     }
 
-
     #region 资源加载标识
     public void AddResloader(string resName, string abName)
     {
@@ -90,14 +89,6 @@ public class ResManager : Singleton<ResManager>
         ResLoaders.Remove(resLoaderName);
     }
     #endregion
-
-    //public void UnLoadAssetBundle(string relativePath, ResType resType)
-    //{
-    //    if (!AppConst.IsABMode)
-    //    { return; }
-    //    string abName = ResPath.GetAssetBunldePath(relativePath, BuildJson);
-    //    AssetBundleManager.Instance.UnloadAssetBundle(abName, true);        
-    //}
 
     public override void Dispose()
     {

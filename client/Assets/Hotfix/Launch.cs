@@ -8,6 +8,9 @@ public class Launch
     // Start is called before the first frame update
     public static void Start()
     {
+        AotUI.Instance.Close("UpdatePanel");
+        AotText.Instance.Dispose();
+
         Debug.unityLogger.logEnabled = AppConst.DebugLog;
         QualitySettings.vSyncCount = 2;
         Application.targetFrameRate = AppConst.GameFrameRate;
@@ -15,8 +18,8 @@ public class Launch
         SoundManager.Instance.Init();
         UIManager.Instance.Init();
         AtlasManager.Instance.Init();
-        ResManager.Instance.Init();
         AssetBundleManager.Instance.Init();
+        ResManager.Instance.Init();
         NetworkManager.Instance.Init();
         ConfigManager.Instance.Init();
         ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSansCN-NormalSDF.asset", typeof(TMP_FontAsset));

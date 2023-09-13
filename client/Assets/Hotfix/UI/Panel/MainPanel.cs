@@ -24,7 +24,7 @@ public class MainPanel : BasePanel
 
     void Click_btn_DialogOne()
     {
-        DialogManager.Instance.ShowDialogOne("", "一个按钮", () => {
+        DialogManager.Instance.ShowDialogOne("", new Vector3(1,2,3).z + "一个按钮", () => {
             Debug.Log("确定");
         });
     }

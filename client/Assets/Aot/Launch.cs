@@ -13,6 +13,6 @@ public class Launch : MonoBehaviour
         AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSansCN-NormalSDF.unity3d", "Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSerifCN-BoldSDF.unity3d", "Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         AotUI.Instance.Open("SplashAdvicePanel");
-        
+        AotText.Instance.Init();
     }
 }

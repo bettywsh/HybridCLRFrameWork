@@ -1,1 +1,1 @@
-{"GameVersion":"1.0.0","MainVersion":7,"PatchVersion":1,"ResVersion":1,"AndroidUrl":"www.baidu.com","IosUrl":"www.baidu.com","PcUrl":"www.baidu.com"}
+{"GameVersion":"1.0.77","MainVersion":77,"PatchVersion":1,"ResVersion":2,"AndroidUrl":"www.baidu.com","IosUrl":"www.baidu.com","PcUrl":"www.baidu.com"}

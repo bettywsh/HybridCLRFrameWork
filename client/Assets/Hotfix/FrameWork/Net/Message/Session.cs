@@ -51,7 +51,8 @@ public sealed class Session
 		{
 			Network.OnError.Invoke(code);
 		}
-		Debug.LogError("OnError:" + code);
+        MessageManager.Instance.MessageNotify(MessageConst.Msg_Disconnected, code);
+        Debug.LogError("OnError:" + code);
 		this.Dispose();
 	}
 

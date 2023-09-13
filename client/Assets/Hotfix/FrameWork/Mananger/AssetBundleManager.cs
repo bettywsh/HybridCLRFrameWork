@@ -81,6 +81,29 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
             return;
         }
         assetBundleLoading.Add(path, 1);
+
+        if (assetBundleManifest != null)
+        {
+            string[] dep = assetBundleManifest.GetAllDependencies(abName);
+            if (dep.Length > 0)
+            {
+                if (!dependencies.ContainsKey(abName))
+                    dependencies.Add(abName, dep);
+                for (int i = 0; i < dep.Length; i++)
+                {
+                    string depName = dep[i];
+                    AssetBundleInfo bundleInfo = null;
+                    if (loadedAssetBundles.TryGetValue(depName, out bundleInfo))
+                    {
+                        bundleInfo.referencedCount++;
+                    }
+                    else
+                    {
+                        OnLoadAssetBundle(depName);
+                    }
+                }
+            }
+        }
         var assetObj = AssetBundle.LoadFromFile(path);
         if (assetObj != null)
         {
@@ -286,6 +309,11 @@ public class AssetBundleManager : MonoSingleton<AssetBundleManager>
     private void OnDestroy()
     {
         assetBundleManifest = null;
+        loadedAssetBundles.Clear();
+        assetBundleLoading.Clear();
+        dependencies.Clear();
+        assetBundleUnloading.Clear();
+        uobjectAsyncList.Clear();
     }
 }
 

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UObject = UnityEngine.Object;
 using UnityEditor;
+using Cysharp.Threading.Tasks;
 
 public class ResLocalManager : MonoSingleton<ResLocalManager>
 {
-    // Start is called before the first frame update
     public void LoadLocalUObjectAsync(string relativePath, Type type, Action<UObject> sharpFunc = null)
     {
         string assetName = ResPath.GetAssetPath(relativePath, type);

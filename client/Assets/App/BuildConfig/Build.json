@@ -5,6 +5,7 @@
 //ResType
 {
 	"BuildConfig":{ "FolderName":"BuildConfig", "BuildType":1 },
+	"Config":{"FolderName":"Config", "BuildType":1},
 	"Dll":{ "FolderName":"Dll", "BuildType":1 },
 	"Prefab":{ "FolderName":"Prefab", "BuildType":2 },
 	"Atlas":{ "FolderName":"Atlas", "BuildType":2 },

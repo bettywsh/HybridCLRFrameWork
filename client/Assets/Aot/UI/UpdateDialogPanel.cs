@@ -32,13 +32,13 @@ public partial class UpdateDialogPanel : AotBasePanel
     void OnClick_btn_Ok()
     {
         dialogInfo.okFun?.Invoke();
-        AotUI.Instance.Close("DialogPanel");
+        AotUI.Instance.Close("UpdateDialogPanel");
     }
 
     void OnClick_btn_Cancel()
     {
         dialogInfo.calFun?.Invoke();
-        AotUI.Instance.Close("DialogPanel");
+        AotUI.Instance.Close("UpdateDialogPanel");
     }
 
 

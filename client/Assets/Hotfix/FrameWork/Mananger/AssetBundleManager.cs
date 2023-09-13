@@ -306,7 +306,6 @@ public class AssetBundleInfo
 public class LoadUObjectAsyncRequest
 {
     public UObject uObject;
-    public ResType resType;
     public string assetNames;
     public Action<UObject> sharpFunc;
     public Type assetType;

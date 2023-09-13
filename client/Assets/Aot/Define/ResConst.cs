@@ -9,7 +9,7 @@ public class ResConst
     /// </summary>
     /// 
 #if UNITY_EDITOR
-    public const bool IsABMode = true;
+    public const bool IsABMode = false;
 #else
     public const bool IsABMode = true;
 #endif
@@ -18,7 +18,7 @@ public class ResConst
     /// 热更新模式
     /// </summary>
 #if UNITY_EDITOR
-    public const bool UpdateModel = true;
+    public const bool UpdateModel = false;
 #else
     public const bool UpdateModel = true;
 #endif

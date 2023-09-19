@@ -16,6 +16,7 @@ public class LoginPanel : BasePanel
     public override void OnOpen()
     {
         base.OnOpen();
+        //ObjectHelper.SetGrey(view.btn_Ok.transform, true);
     }
 
     void Msg_Connected(object[] msgDatas)

@@ -9,9 +9,9 @@ public class EmptyRaycast  : MaskableGraphic
 	{
 		useLegacyMeshGeneration = false;
 	}
-	
-	// protected override void OnPopulateMesh(VertexHelper toFill)
-	// {
-	//     toFill.Clear();
-	// }
+
+	protected override void OnPopulateMesh(VertexHelper toFill)
+	{
+		toFill.Clear();
+	}
 }

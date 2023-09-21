@@ -23,6 +23,26 @@ public class UIManager : MonoSingleton<UIManager>
         GameObject.DontDestroyOnLoad(canvasRoot);
         uiCamera = GameObject.Find("Canvas/UICamera").GetComponent<Camera>();
         baseCanvas = GameObject.Find("Canvas/UICanvas/BaseCanvas").transform;
+        CanvasScale();
+    }
+
+    public void CanvasScale()
+    {
+        float ScreenRatio = Screen.width / Screen.height;
+        bool CanvasMatchWidth = ScreenRatio < 1.78f;
+        if (CanvasMatchWidth)
+        {
+            float CanvasRealWidth = 1280;
+            float CanvasRealHeight = 1280 / ScreenRatio;
+            //CanvasScaleToScreen = CanvasRealWidth / Screen.width;
+        }
+        else
+        {
+            float CanvasRealHeight = 720;
+            float CanvasRealWidth = 720 * ScreenRatio;
+            //CanvasScaleToScreen = CanvasRealHeight / Screen.height;
+        }
+        GameObject.Find("Canvas/UICanvas").GetComponent<CanvasScaler>().matchWidthOrHeight = CanvasMatchWidth ? 0 : 1;
     }
 
     //public void PreLoad()

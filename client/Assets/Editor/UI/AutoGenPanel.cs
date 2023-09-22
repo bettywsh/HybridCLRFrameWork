@@ -29,9 +29,9 @@ public class AutoGenPanel : Editor
     //×Ö¶ÎÄ£°å
     const string PanelPrefab = "Assets/App/Prefab/UI/Panel/";
 
-    static Dictionary<string, Transform> VarData = new Dictionary<string, Transform>();
+    public static Dictionary<string, Transform> VarData = new Dictionary<string, Transform>();
 
-    static Dictionary<string, VarType> VarTypes = new Dictionary<string, VarType>() {
+    public static Dictionary<string, VarType> VarTypes = new Dictionary<string, VarType>() {
         { "tsf", new VarType(){ name = "Transform", type = typeof(Transform) } },
         { "obj", new VarType(){ name = "GameObject", type = typeof(GameObject) } },
         { "txt", new VarType(){ name = "TextMeshProUGUI", type = typeof(TextMeshProUGUI) } },

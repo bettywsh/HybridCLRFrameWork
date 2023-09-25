@@ -164,7 +164,7 @@ public class AutoGenPanel : Editor
         return null;
     }
 
-    private static void DeepSearch(Transform tran)
+    public static void DeepSearch(Transform tran)
     {
         if (tran.name.Substring(0, 2) == "##")
             return;

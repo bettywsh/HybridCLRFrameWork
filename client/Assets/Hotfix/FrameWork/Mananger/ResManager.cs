@@ -25,6 +25,7 @@ public class ResManager : Singleton<ResManager>
     }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
+
     public UObject LoadAsset(string resName, string relativePath, Type type)
     {
         if (!ResConst.IsABMode)
@@ -38,6 +39,11 @@ public class ResManager : Singleton<ResManager>
             AddResloader(resName, abName);
             return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName, type);
         }
+    }
+
+    public void LoadAssetAsync(ResLoader resLoader, string relativePath, Type type, Action<UObject> sharpFunc = null)
+    {
+        LoadAssetAsync(resLoader.id, relativePath, type, sharpFunc);
     }
 
     //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
@@ -94,6 +100,19 @@ public class ResManager : Singleton<ResManager>
     {
         ResLoaders.Clear();
         BuildJson.Clear();
+    }
+}
+
+public class ResLoader
+{
+    public string id;
+    public ResLoader()
+    { 
+        id = Guid.NewGuid().ToString();
+    }
+
+    ~ResLoader() {
+        ResManager.Instance.UnLoadAssetBundle(id);
     }
 }
 

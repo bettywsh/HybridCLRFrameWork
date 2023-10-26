@@ -5,11 +5,9 @@ using UnityEngine;
 
 public class LoginPanel : BasePanel
 {
-	public LoginPanelView view;
 
     public override void OnBindEvent()
     {
-        view = transform.GetComponent<LoginPanelView>();
         base.OnBindEvent();
     }
 
@@ -35,7 +33,7 @@ public class LoginPanel : BasePanel
         Debug.LogError("LoginResponse");
     }
 
-    void Click_btn_Ok()
+    void Click_Ok()
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 

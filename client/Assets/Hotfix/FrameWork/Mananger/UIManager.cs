@@ -45,14 +45,15 @@ public class UIManager : MonoSingleton<UIManager>
         GameObject.Find("Canvas/UICanvas").GetComponent<CanvasScaler>().matchWidthOrHeight = CanvasMatchWidth ? 0 : 1;
     }
 
-    //public void PreLoad()
-    //{
-    //    // var seq = DG.Tweening.DOTween.Sequence();
-    //    // seq.IsPlaying(true)
+    public void PreLoad()
+    {
 
-    //}
+        //    // var seq = DG.Tweening.DOTween.Sequence();
+        //    // seq.IsPlaying(true)
 
-    public T GetUI<T>() where T : BasePanel
+    }
+
+public T GetUI<T>() where T : BasePanel
     {
         foreach (var item in uiList)
         {

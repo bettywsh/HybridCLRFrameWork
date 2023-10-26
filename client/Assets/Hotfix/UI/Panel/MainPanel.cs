@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class MainPanel : BasePanel
 {
-    public MainPanelView view;
 
     public override void OnBindEvent()
     {
-        view = transform.GetComponent<MainPanelView>();
         base.OnBindEvent();
     }
 
@@ -17,19 +15,19 @@ public class MainPanel : BasePanel
         base.OnOpen();
     }
 
-    void Click_btn_Bag()
+    void Click_Bag()
     {
         UIManager.Instance.Open<BagPanel>();
     }
 
-    void Click_btn_DialogOne()
+    void Click_DialogOne()
     {
         DialogManager.Instance.ShowDialogOne("", new Vector3(1,2,3).z + "一个按钮", () => {
             Debug.Log("确定");
         });
     }
 
-    void Click_btn_DialogTwo() 
+    void Click_DialogTwo() 
     { 
         DialogManager.Instance.ShowDialogTwo("", "两个按钮", ()=> {
             Debug.Log("确定");
@@ -39,7 +37,7 @@ public class MainPanel : BasePanel
         });
     }
 
-    void Click_btn_FlyingText() {
+    void Click_FlyingText() {
         DialogManager.Instance.ShowTextFlying("漂字1");
         DialogManager.Instance.ShowTextFlying("漂字2");
         DialogManager.Instance.ShowTextFlying("漂字3");

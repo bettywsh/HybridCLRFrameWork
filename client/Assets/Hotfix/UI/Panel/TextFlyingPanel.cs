@@ -6,13 +6,11 @@ using UnityEngine;
 
 public class TextFlyingPanel : BasePanel
 {
-	public TextFlyingPanelView view;
     bool isTween = false;
     Queue<string> queue = new Queue<string>();
 
     public override void OnBindEvent()
     {
-        view = transform.GetComponent<TextFlyingPanelView>();
         base.OnBindEvent();
     }
 
@@ -26,8 +24,8 @@ public class TextFlyingPanel : BasePanel
         if (!isTween && queue.Count > 0)
         {
             isTween = true;
-            view.txt_TextMesh.text = queue.Dequeue();
-            Transform run = ObjectHelper.AddChildren(view.obj_Content.transform, view.img_Bg.gameObject);
+            referenceData["txtTextMesh"].tmptxtValue.text = queue.Dequeue();
+            Transform run = ObjectHelper.Instantiate(referenceData["Content"].tranValue, referenceData["imgBg"].tranValue.gameObject);
             run.gameObject.SetActive(true);
             Sequence seq = DOTween.Sequence();
             seq.Append(run.GetComponent<RectTransform>().DOAnchorPosY(125, 1).SetRelative());

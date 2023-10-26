@@ -11,7 +11,7 @@ public static class EventHelper
 {
     public static Dictionary<string, List<string>> dirMessages = new Dictionary<string, List<string>>();
     public static Dictionary<string, List<int>> dirNets = new Dictionary<string, List<int>>();
-    public static void RegisterEvent(object obj)
+    public static void RegisterEvent(object obj, Dictionary<string, ReferenceData> referenceData)
     {
         Type type = obj.GetType();
         //×¢²áÊÂ¼þ
@@ -37,9 +37,9 @@ public static class EventHelper
                 {
                     string btnStr = MethodInfos[i].Name.Replace("Click_", "");
                     UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), obj, MethodInfos[i]) as UnityAction;
-                    object v = type.GetField("view").GetValue(obj);
-                    Button btn = (Button)v.GetType().GetField(btnStr).GetValue(v);
-                    btn.onClick.AddListener(cb);
+                    ReferenceData btn;
+                    referenceData.TryGetValue(btnStr, out btn);
+                    btn.btnValue.onClick.AddListener(cb);
                 }
                 catch
                 {

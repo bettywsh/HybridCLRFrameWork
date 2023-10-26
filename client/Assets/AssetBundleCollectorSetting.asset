@@ -13,30 +13,19 @@ MonoBehaviour:
   m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   ShowPackageView: 1
-  EnableAddressable: 0
-  LocationToLower: 0
-  IncludeAssetGUID: 0
-  UniqueBundleName: 0
   ShowEditorAlias: 0
+  UniqueBundleName: 0
   Packages:
-  - PackageName: App
-    PackageDesc: "\u6E38\u620F\u5305"
+  - PackageName: DefaultPackage
+    PackageDesc: 
+    EnableAddressable: 0
+    LocationToLower: 0
+    IncludeAssetGUID: 0
+    IgnoreDefaultType: 1
+    AutoCollectShaders: 1
     Groups:
-    - GroupName: Prefabs
-      GroupDesc: "\u9884\u8BBE"
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/App/Prefab
-        CollectorGUID: 0144ae293979d18448b9914b76ac5263
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
     - GroupName: Atlas
-      GroupDesc: "\u56FE\u96C6"
+      GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
@@ -44,59 +33,20 @@ MonoBehaviour:
         CollectorGUID: 0736bb5f8def8ee4f805edff5b7b28e0
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
+        PackRuleName: PackSeparately
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-    - GroupName: Dll
-      GroupDesc: "\u4EE3\u7801"
+    - GroupName: Config
+      GroupDesc: 
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/App/Dll
-        CollectorGUID: 001eb8bb7fc0cc245986299561d7c38a
+      - CollectPath: Assets/App/Config
+        CollectorGUID: 24a94d9f62b6512499c395113b22ab12
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
-    - GroupName: Scene
-      GroupDesc: "\u573A\u666F"
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/App/Scene
-        CollectorGUID: fb6acea776eb7e0459ba77b1da8c3298
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
-    - GroupName: Texture
-      GroupDesc: icon
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/App/Texture
-        CollectorGUID: c176e790a66dc05459a9036eacd6b4be
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
-    - GroupName: Sound
-      GroupDesc: "\u58F0\u97F3"
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/App/Sound
-        CollectorGUID: c76e835d3e2ee8a49930d1348160f8bd
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
+        PackRuleName: PackSeparately
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

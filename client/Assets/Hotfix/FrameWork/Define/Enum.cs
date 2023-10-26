@@ -1,4 +1,4 @@
-public enum UILayer
+public enum EUILayer
 {
     Normal = 0,
     Dialog = 100,

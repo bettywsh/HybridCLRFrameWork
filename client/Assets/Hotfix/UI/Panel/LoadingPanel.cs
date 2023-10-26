@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class LoadingPanel : BasePanel
 {
-	public LoadingPanelView view;
 
     public override void OnBindEvent()
     {
-        view = transform.GetComponent<LoadingPanelView>();
         base.OnBindEvent();
     }
 

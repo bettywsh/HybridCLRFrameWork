@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ObjectHelper
 {
-    public static Transform AddChildren(Transform parent, GameObject children)
+    public static Transform Instantiate(Transform parent, GameObject children)
     {
         Transform go = GameObject.Instantiate<GameObject>(children).transform;
         SetParent(parent, go);

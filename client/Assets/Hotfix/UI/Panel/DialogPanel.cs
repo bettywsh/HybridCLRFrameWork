@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class DialogPanel : BasePanel
 {
-	public DialogPanelView view;
     DialogInfo dialogInfo;
 
     public override void OnBindEvent()
     {
-        view = transform.GetComponent<DialogPanelView>();
         base.OnBindEvent();
     }
 
@@ -18,36 +16,36 @@ public class DialogPanel : BasePanel
         base.OnOpen();
 
         dialogInfo = args[0] as DialogInfo;
-        view.txt_Msg.text = dialogInfo.txtMsg;
-        view.txt_Ok.text = "确定";
-        view.txt_Cancel.text = "取消";
+        referenceData["txtMsg"].tmptxtValue.text = dialogInfo.txtMsg;
+        referenceData["txtOk"].tmptxtValue.text = "确定";
+        referenceData["txtCancel"].tmptxtValue.text = "取消";
         if (dialogInfo.txtOk != null)
         {
-            view.txt_Ok.text = "确定";
+            referenceData["txtOk"].tmptxtValue.text = "确定";
         }
 
         if (dialogInfo.txtCal != null)
         {
-            view.txt_Cancel.text = "取消";
+            referenceData["txtCancel"].tmptxtValue.text = "取消";
         }
 
         if (dialogInfo.okFun != null)
         {
-            view.btn_Ok.gameObject.SetActive(true);
+            referenceData["btnCancel"].btnValue.gameObject.SetActive(true);
         }
         if (dialogInfo.calFun != null)
         {
-            view.btn_Cancel.gameObject.SetActive(true);
+            referenceData["btnOk"].btnValue.gameObject.SetActive(true);
         }
     }
 
-    void Click_btn_Ok()
+    void Click_btnOk()
     {
         dialogInfo.okFun?.Invoke();
         UIManager.Instance.Close<DialogPanel>();
     }
 
-    void Click_btn_Cancel()
+    void Click_btnCancel()
     {
         dialogInfo.calFun?.Invoke();
         UIManager.Instance.Close<DialogPanel>();

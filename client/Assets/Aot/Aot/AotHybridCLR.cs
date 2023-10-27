@@ -18,15 +18,17 @@ public class AotHybridCLR : Singleton<AotHybridCLR>
     public async void LoadDll()
     {
         LoadMetadataForAOTAssemblies();
-#if !UNITY_EDITOR
+#if !UNITY_EDITOR        
         TextAsset ta = await AotRes.Instance.LoadAssetAsync<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
         _hotUpdateAss = Assembly.Load(ta.bytes);
+        AotRes.Instance.UnLoadAssetAsync();
 #else
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
 #endif
         //AotRes.Instance.UnLoadAssetBundle();
         Debug.Log("dllº”‘ÿÕÍ≥…");
         Type entryType = _hotUpdateAss.GetType("Launch");
+        
         entryType.GetMethod("Start").Invoke(null, null);
     }
 

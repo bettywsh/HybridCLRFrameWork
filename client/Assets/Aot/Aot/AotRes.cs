@@ -5,7 +5,7 @@ using YooAsset;
 
 public class AotRes : Singleton<AotRes>
 {
-    Dictionary<string, AssetBundle> abDic = new Dictionary<string, AssetBundle>();
+    Dictionary<string, AssetHandle> abDic = new Dictionary<string, AssetHandle>();
 
     public override async UniTask InitUniTask()
     {
@@ -98,8 +98,18 @@ public class AotRes : Singleton<AotRes>
         AssetHandle handle = YooAssets.LoadAssetAsync<T>(location);
         await handle.Task.AsUniTask();
         T t = (T)handle.AssetObject;
-        handle.Release();
+        abDic.Add(location, handle);
         return t;
+    }
+
+    public void UnLoadAssetAsync()
+    {
+        foreach ((string path, AssetHandle assetHandle) in abDic)
+        {
+            assetHandle.Release();
+        }
+        abDic.Clear();
+
     }
 
 

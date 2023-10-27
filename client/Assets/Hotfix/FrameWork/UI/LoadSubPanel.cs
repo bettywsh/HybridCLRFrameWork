@@ -11,7 +11,7 @@ public class LoadSubPanel : MonoBehaviour
     {
         string prefabName = typeof(T).Name;
         T t = Activator.CreateInstance<T>();
-        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/SubPanel/{prefabName}{ResConst.PrefabExtName}");
+        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/SubPanel/{prefabName}.prefab");
         go = GameObject.Instantiate(go);
         go.name = prefabName;
         go = ObjectHelper.SetParent(transform, go.transform).gameObject;

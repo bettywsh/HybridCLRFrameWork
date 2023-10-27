@@ -27,28 +27,35 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
 
     public async void LoadScene(string sceneName, bool loading)
     {
+        oldName = name;
         name = sceneName;
         this.loading = loading;
         if (this.loading)
         {
             await UIManager.Instance.Open<LoadingPanel>();
         }
+        UnLoadScene();
         ChangeScene(name);
+    }
+
+    void UnLoadScene()
+    {
+        loadPro = 0;
+        Application.backgroundLoadingPriority = ThreadPriority.High;
+        if (oldSceneScript != null)
+        {
+            BaseScene baseScene = oldSceneScript as BaseScene;
+            baseScene.UnLoadScene();
+        }
+        GC();
     }
 
     public async void ChangeScene(string name)
     {
-        loadPro = 0;
-        Application.backgroundLoadingPriority = ThreadPriority.High;
         var package = YooAssets.GetPackage(App.AppConfig.PackageName);
-        SceneHandle handle = package.LoadSceneAsync("Assets/App/Scene/" + name + ".unity", LoadSceneMode.Single, false);
+        handle = package.LoadSceneAsync("Assets/App/Scene/" + name + ".unity", LoadSceneMode.Single, false);
         await handle;
-        if (sceneScript != null)
-        {
-            BaseScene baseScene = sceneScript as BaseScene;
-            baseScene.UnLoadScene();
-        }
-        GC();
+        handle = null;
         Type type = AotHybridCLR.Instance._hotUpdateAss.GetType(name + "Scene", false);
         if (type != null)
         {
@@ -73,17 +80,18 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
         {
             loadPro = handle.Progress; //获取加载进度,此处特别注意:加载场景的progress值最大为0.9!!!
         }
-        //if (loadPro >= 0.9f)//因为progress值最大为0.9,所以我们需要强制将其等于1
-        //{
-        //    handle.allowSceneActivation = true;
-        //}
         
     }
 
     public void GC()
-    {        
-        ResManager.Instance.UnLoadAssetBundle(name);
+    {
+        if (oldName != null)
+        {
+            ResManager.Instance.UnLoadAssetBundle(oldName);
+        }
         System.GC.Collect();
-        Resources.UnloadUnusedAssets();        
+        var package = YooAssets.GetPackage(App.AppConfig.PackageName);
+        package.UnloadUnusedAssets();
+        Resources.UnloadUnusedAssets();
     }
 }

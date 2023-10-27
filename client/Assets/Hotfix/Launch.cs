@@ -11,9 +11,9 @@ public class Launch
         AotUI.Instance.Close("UpdatePanel");
         AotText.Instance.Dispose();
 
-        Debug.unityLogger.logEnabled = AppConst.DebugLog;
+        Debug.unityLogger.logEnabled = App.AppConfig.DebugLog;
         QualitySettings.vSyncCount = 2;
-        Application.targetFrameRate = AppConst.GameFrameRate;
+        Application.targetFrameRate = App.AppConfig.GameFrameRate;
 
         SoundManager.Instance.Init();
         UIManager.Instance.Init();

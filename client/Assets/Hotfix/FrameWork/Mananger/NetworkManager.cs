@@ -19,7 +19,8 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 	//clinet
 	public override void Init()
 	{
-        switch (AppConst.NetProtocol)
+		NetworkProtocol networkProtocol = NetworkProtocol.TCP;
+        switch (networkProtocol)
 		{
 			case NetworkProtocol.KCP:
 				this.Service = new KService() { };

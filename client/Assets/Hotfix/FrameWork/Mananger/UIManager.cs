@@ -82,7 +82,7 @@ public T GetUI<T>() where T : BasePanel
         if (uiList.ContainsKey(typeof(T).Name))
             return default;
         T t = Activator.CreateInstance<T>();
-        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{prefabName}{ResConst.PrefabExtName}");
+        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{prefabName}.prefab");
         go = GameObject.Instantiate(go);
         go.name = prefabName;
         go = ObjectHelper.SetParent(baseCanvas, go.transform).gameObject;

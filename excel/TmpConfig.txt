@@ -12,9 +12,9 @@ public partial class (ConfigName) : BaseConfig
     private Dictionary<string, (ConfigName)Item> dict = new Dictionary<string, (ConfigName)Item>();
     private List<(ConfigName)Item> list = new List<(ConfigName)Item>();
 	
-    public override void Init()
+    public override async UniTaskVoid InitUniTask()
     {
-        dict = LoadConfig<Dictionary<string, (ConfigName)Item>>(typeof((ConfigName)));
+        dict = await LoadConfig<Dictionary<string, (ConfigName)Item>>(typeof((ConfigName)));
 		list = dict.Select(x => x.Value).ToList();
     }
 	

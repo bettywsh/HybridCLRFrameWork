@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
@@ -21,12 +22,17 @@ public abstract class Singleton<T> where T : class, new()
         }
 	}
 
-    public virtual void Init()
+    public virtual void  Init()
     {
 
     }
 
-	public virtual void Dispose()
+    public virtual async UniTask InitUniTask()
+    {
+        await UniTask.Yield();
+    }
+
+    public virtual void Dispose()
 	{
 
 	}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void AotMessageHandler(object[] msgDatas);
-public class AotMessage : AotSingleton<AotMessage>
+public class AotMessage : Singleton<AotMessage>
 {
     private Dictionary<string, List<AotMessageHandler>> eventHandlerDic = new Dictionary<string, List<AotMessageHandler>>();
 

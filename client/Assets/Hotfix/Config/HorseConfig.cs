@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ public partial class HorseConfig : BaseConfig
     private Dictionary<string, HorseConfigItem> dict = new Dictionary<string, HorseConfigItem>();
     private List<HorseConfigItem> list = new List<HorseConfigItem>();
 	
-    public override void Init()
+    public override async UniTaskVoid InitUniTask()
     {
-        dict = LoadConfig<Dictionary<string, HorseConfigItem>>(typeof(HorseConfig));
+        dict = await LoadConfig<Dictionary<string, HorseConfigItem>>(typeof(HorseConfig));
 		list = dict.Select(x => x.Value).ToList();
     }
 	

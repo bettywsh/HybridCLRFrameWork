@@ -15,19 +15,19 @@ public class MainPanel : BasePanel
         base.OnOpen();
     }
 
-    void Click_Bag()
+    void OnClick_Bag()
     {
         UIManager.Instance.Open<BagPanel>();
     }
 
-    void Click_DialogOne()
+    void OnClick_DialogOne()
     {
         DialogManager.Instance.ShowDialogOne("", new Vector3(1,2,3).z + "一个按钮", () => {
             Debug.Log("确定");
         });
     }
 
-    void Click_DialogTwo() 
+    void OnClick_DialogTwo() 
     { 
         DialogManager.Instance.ShowDialogTwo("", "两个按钮", ()=> {
             Debug.Log("确定");
@@ -37,7 +37,7 @@ public class MainPanel : BasePanel
         });
     }
 
-    void Click_FlyingText() {
+    void OnClick_FlyingText() {
         DialogManager.Instance.ShowTextFlying("漂字1");
         DialogManager.Instance.ShowTextFlying("漂字2");
         DialogManager.Instance.ShowTextFlying("漂字3");

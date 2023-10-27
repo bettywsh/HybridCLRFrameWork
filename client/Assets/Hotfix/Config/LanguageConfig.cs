@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ public partial class LanguageConfig : BaseConfig
     private Dictionary<string, LanguageConfigItem> dict = new Dictionary<string, LanguageConfigItem>();
     private List<LanguageConfigItem> list = new List<LanguageConfigItem>();
 	
-    public override void Init()
+    public override async UniTaskVoid InitUniTask()
     {
-        dict = LoadConfig<Dictionary<string, LanguageConfigItem>>(typeof(LanguageConfig));
+        dict = await LoadConfig<Dictionary<string, LanguageConfigItem>>(typeof(LanguageConfig));
 		list = dict.Select(x => x.Value).ToList();
     }
 	

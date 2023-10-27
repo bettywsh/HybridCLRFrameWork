@@ -16,14 +16,15 @@ public partial class SplashIconPanel : AotBasePanel
         //动画完成回调
         seq.AppendCallback(() =>
         {
-            AotUI.Instance.Close("SplashIconPanel");            
+            AotUI.Instance.Close("SplashIconPanel");
+            AotUI.Instance.Open("UpdatePanel");
         });
 
     }
 
     public void OnClose()
     {
-        AotUpdate.Instance.CheckVersion();
+
     }
 
 }

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class AppConst
 {
-
+    /// <summary>
+    /// 网络类型
+    /// </summary>
+    public static NetworkProtocol NetProtocol = NetworkProtocol.TCP;
     /// <summary>
     /// 游戏启动ip地址
     /// </summary>
@@ -36,9 +39,6 @@ public class AppConst
     public const int ChannelID = 10001;
 
 
-    /// <summary>
-    /// 网络类型
-    /// </summary>
-    public static NetworkProtocol NetProtocol = NetworkProtocol.TCP;
+
 
 }

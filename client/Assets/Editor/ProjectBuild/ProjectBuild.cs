@@ -71,7 +71,7 @@ public class ProjectBuild
         
         string path = Application.dataPath + "/../../tools/AutoBuild/TmpAndroidProject";
         
-        PackFile.ClearDir(path);
+        //PackFile.ClearDir(path);
 
         EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
         EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;

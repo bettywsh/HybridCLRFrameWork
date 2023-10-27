@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AotUI : AotSingleton<AotUI>
+public class AotUI : Singleton<AotUI>
 {
     private Transform baseCanvas;
     private Dictionary<string, GameObject> uiList = new Dictionary<string, GameObject>();
 
-    public void Open(string prefabName, params object[] args)
+    public async void Open(string prefabName, params object[] args)
     {
         if (uiList.ContainsKey(prefabName))
         {
             return;
         }
-        string abName = "App/Prefab/AotUI/" + prefabName + ".unity3d";
         string assetName = "Assets/App/Prefab/AotUI/" + prefabName + ".prefab";
         baseCanvas = GameObject.Find("Canvas/UICanvas/BaseCanvas").transform;
-        GameObject go = AotRes.Instance.LoadAsset<GameObject>(abName, assetName);
+        GameObject go = await AotRes.Instance.LoadAssetAsync<GameObject>(assetName);
         go = GameObject.Instantiate(go);
         go.name = prefabName;
         go = SetParent(baseCanvas, go.transform).gameObject;

@@ -1,96 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
-using UnityEngine.U2D;
-using System.IO;
-using System.Text;
-using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-using TMPro;
-using UObject = UnityEngine.Object;
-
+using YooAsset;
+using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class ResManager : Singleton<ResManager>
 {
 
-    Dictionary<string, List<string>> ResLoaders = new Dictionary<string, List<string>>();
-    Dictionary<string, BuildJson> BuildJson = new Dictionary<string, BuildJson>();
-    public override void Init()
+    Dictionary<string, List<AssetHandle>> ResLoaders = new Dictionary<string, List<AssetHandle>>();
+
+
+    public async UniTask<T> CommonLoadAssetAsync<T>(string location) where T : UnityEngine.Object
     {
-        TextAsset text = LoadAsset("Common", ResConst.BuildFolderName + "/" + ResConst.BuildFile, typeof(TextAsset)) as TextAsset;
-        BuildJson = LitJson.JsonMapper.ToObject<Dictionary<string, BuildJson>>(text.text);        
+        return await LoadAssetAsync<T>("Common", location);
     }
 
-    //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
-
-    public UObject LoadAsset(string resName, string relativePath, Type type)
+    public async UniTask<T> SceneLoadAssetAsync<T>(string location) where T : UnityEngine.Object
     {
-        if (!ResConst.IsABMode)
-        {
-            return ResLocalManager.Instance.LoadLocalUObject(relativePath, type);
-        }
-        else
-        {           
-            string assetName = ResPath.GetAssetPath(relativePath, type);
-            string abName = ResPath.GetAssetBunldePath(relativePath, type, BuildJson);
-            AddResloader(resName, abName);
-            return AssetBundleManager.Instance.LoadAssetBundleUObject(abName, assetName, type);
-        }
+        return await LoadAssetAsync<T>(LoadSceneManager.Instance.CurScene(), location);
     }
 
-    public void LoadAssetAsync(ResLoader resLoader, string relativePath, Type type, Action<UObject> sharpFunc = null)
-    {
-        LoadAssetAsync(resLoader.id, relativePath, type, sharpFunc);
-    }
-
-    //resName 资源卸载标识 Common为不卸载 其他通过标识卸载
-    public void LoadAssetAsync(string resName, string relativePath, Type type, Action<UObject> sharpFunc = null)
-    {
-        if (!ResConst.IsABMode)
-        {
-            ResLocalManager.Instance.LoadLocalUObjectAsync(relativePath, type, sharpFunc);
-        }
-        else
-        {
-            string assetName = ResPath.GetAssetPath(relativePath, type);
-            string abName = ResPath.GetAssetBunldePath(relativePath, type, BuildJson);
-            AddResloader(resName, abName);
-            AssetBundleManager.Instance.LoadAssetBundleUObjectAsync(abName, assetName, type, sharpFunc);
-        }
-    }
 
     #region 资源加载标识
-    public void AddResloader(string resName, string abName)
+    private void AddResloader(string resName, AssetHandle assetHandle)
     {
         if (resName == "Common") return;
-        List<string> abNames = null;
-        if (!ResLoaders.TryGetValue(resName, out abNames))
+        List<AssetHandle> assetHandles = null;
+        if (!ResLoaders.TryGetValue(resName, out assetHandles))
         {
-            abNames = new List<string>();
-            abNames.Add(abName);
-            ResLoaders.Add(resName, abNames);
+            assetHandles = new List<AssetHandle>();
+            assetHandles.Add(assetHandle);
+            ResLoaders.Add(resName, assetHandles);
         }
         else
         {
-            abNames.Add(abName);
+            assetHandles.Add(assetHandle);
         }
+    }
+
+    private async UniTask<T> LoadAssetAsync<T>(string resName, string location) where T : UnityEngine.Object
+    {
+        var package = YooAssets.GetPackage(App.AppConfig.PackageName);
+        AssetHandle handle = package.LoadAssetAsync<T>(location);
+        await handle;
+        T t = (T)handle.AssetObject;
+        AddResloader(resName, handle);
+        return t;
     }
 
     public void UnLoadAssetBundle(string resLoaderName)
     {
-        if (!ResConst.IsABMode)
-        { return; }
-        List<string> abNames = null;
-        if (!ResLoaders.TryGetValue(resLoaderName, out abNames))
+        List<AssetHandle> assetHandles = null;
+        if (!ResLoaders.TryGetValue(resLoaderName, out assetHandles))
         {
             return;
         }
-        for (int i = 0; i < abNames.Count; i++)
+        for (int i = 0; i < assetHandles.Count; i++)
         {
-            AssetBundleManager.Instance.UnloadAssetBundle(abNames[i], true);
+            assetHandles[i].Release();
         }
         ResLoaders.Remove(resLoaderName);
     }
@@ -99,20 +66,5 @@ public class ResManager : Singleton<ResManager>
     public override void Dispose()
     {
         ResLoaders.Clear();
-        BuildJson.Clear();
     }
 }
-
-public class ResLoader
-{
-    public string id;
-    public ResLoader()
-    { 
-        id = Guid.NewGuid().ToString();
-    }
-
-    ~ResLoader() {
-        ResManager.Instance.UnLoadAssetBundle(id);
-    }
-}
-

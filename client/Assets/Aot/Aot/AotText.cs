@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using LitJson;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,9 +8,8 @@ public class AotText : Singleton<AotText>
 {
     string language;
     JsonData data;
-    public override void Init()
+    public override async UniTask InitUniTask()
     {
-        base.Init();
         string startLanguage = PlayerPrefs.GetString("language", "");
         if (startLanguage == "")
         {
@@ -20,7 +20,7 @@ public class AotText : Singleton<AotText>
         {
             language = startLanguage;
         }
-        TextAsset ta = AotRes.Instance.LoadAsset<TextAsset>("App/Config/Config.unity3d", "Assets/App/Config/Language.json");
+        TextAsset ta = await AotRes.Instance.LoadAssetAsync<TextAsset>("Assets/App/Config/Language.json");
         data = LitJson.JsonMapper.ToObject(ta.text);
     }
 

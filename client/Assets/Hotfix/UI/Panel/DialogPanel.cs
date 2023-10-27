@@ -39,13 +39,13 @@ public class DialogPanel : BasePanel
         }
     }
 
-    void Click_btnOk()
+    void OnClick_btnOk()
     {
         dialogInfo.okFun?.Invoke();
         UIManager.Instance.Close<DialogPanel>();
     }
 
-    void Click_btnCancel()
+    void OnClick_btnCancel()
     {
         dialogInfo.calFun?.Invoke();
         UIManager.Instance.Close<DialogPanel>();

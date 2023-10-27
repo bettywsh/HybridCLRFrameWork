@@ -18,7 +18,7 @@ public static class EventHelper
         MethodInfo[] MethodInfos = type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
         for (int i = 0; i < MethodInfos.Length; i++)
         {
-            if (MethodInfos[i].Name.Contains("Msg_"))
+            if (MethodInfos[i].Name.Contains("OnMsg_"))
             {
                 MessageHandler messageHandler = Delegate.CreateDelegate(typeof(MessageHandler), obj, MethodInfos[i]) as MessageHandler;
                 MessageManager.Instance.RegisterMessageHandler(MethodInfos[i].Name, messageHandler);
@@ -31,11 +31,11 @@ public static class EventHelper
                 dirMessages.Add(type.Name, messages);
 
             }
-            else if (MethodInfos[i].Name.Contains("Click_"))
+            else if (MethodInfos[i].Name.Contains("OnClick_"))
             {
                 try
                 {
-                    string btnStr = MethodInfos[i].Name.Replace("Click_", "");
+                    string btnStr = MethodInfos[i].Name.Replace("OnClick_", "");
                     UnityAction cb = Delegate.CreateDelegate(typeof(UnityAction), obj, MethodInfos[i]) as UnityAction;
                     ReferenceData btn;
                     referenceData.TryGetValue(btnStr, out btn);
@@ -46,9 +46,9 @@ public static class EventHelper
                     Debug.LogError(MethodInfos[i].Name + ",Not Find Buttom Or Reference");
                 }
             }
-            else if (MethodInfos[i].Name.Contains("Net_"))
+            else if (MethodInfos[i].Name.Contains("OnNet_"))
             {
-                string net = MethodInfos[i].Name.Replace("Net_", "");
+                string net = MethodInfos[i].Name.Replace("OnNet_", "");
                 SCMessageEnum sc = (SCMessageEnum)Enum.Parse(typeof(SCMessageEnum), net);
                 MessageHandler messageHandler = Delegate.CreateDelegate(typeof(MessageHandler), obj, MethodInfos[i]) as MessageHandler;
                 MessageManager.Instance.RegisterNetMessageHandler((int)sc, messageHandler);

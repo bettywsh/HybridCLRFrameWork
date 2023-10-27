@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AotDialog : AotSingleton<AotDialog>
+public class AotDialog : Singleton<AotDialog>
 {
     public void ShowDialog(AotDialogInfo dialogInfo)
     {

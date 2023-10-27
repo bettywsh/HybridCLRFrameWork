@@ -17,7 +17,7 @@ public class LoginPanel : BasePanel
         //ObjectHelper.SetGrey(view.btn_Ok.transform, true);
     }
 
-    void Msg_Connected(object[] msgDatas)
+    void OnMsg_Connected(object[] msgDatas)
     {
         Debug.LogError("连接成功");
         LoginRequest lr = new LoginRequest();
@@ -28,12 +28,12 @@ public class LoginPanel : BasePanel
         NetworkManager.Instance.Send(CSMessageEnum.LoginRequest, lr);
     }
 
-    void Net_LoginResponse(object[] msgDatas)
+    void OnNet_LoginResponse(object[] msgDatas)
     {
         Debug.LogError("LoginResponse");
     }
 
-    void Click_Ok()
+    void OnClick_Ok()
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 

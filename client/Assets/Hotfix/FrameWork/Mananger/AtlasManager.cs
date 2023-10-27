@@ -17,9 +17,9 @@ public class AtlasManager : MonoSingleton<AtlasManager>
     }
 
 
-    void RequestAtlas(string atlasName, System.Action<SpriteAtlas> callback)
+    async void RequestAtlas(string atlasName, System.Action<SpriteAtlas> callback)
     {
-        SpriteAtlas sa = ResManager.Instance.LoadAsset(atlasName, $"Atlas/{atlasName}{ResConst.AtlasExtName}", typeof(SpriteAtlas)) as SpriteAtlas;
+        SpriteAtlas sa = await ResManager.Instance.SceneLoadAssetAsync<SpriteAtlas>( $"Assets/App/Atlas/{atlasName}{ResConst.AtlasExtName}");
         callback(new SpriteAtlas());
     }
 }

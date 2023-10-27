@@ -24,7 +24,7 @@ public class BagPanel : BasePanel
         tf.GetComponent<BagCell>().SetData(idx, listHorseConfig);
     }
 
-    void Click_Mask()
+    void OnClick_Mask()
     {
         UIManager.Instance.Close<BagPanel>();
     }

@@ -9,10 +9,13 @@ public class Launch : MonoBehaviour
     async void Awake()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        await AotUpdate.Instance.CheckExtractStreamingAssets();
-        AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSansCN-NormalSDF.unity3d", "Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
-        AotRes.Instance.LoadAsset<TMP_FontAsset>("App/Font/SourceHanSerifCN-BoldSDF.unity3d", "Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
+        App.AppConfig = Resources.Load<AppConfig>("AppConfig");
+        await AotRes.Instance.InitUniTask();
+        await AotText.Instance.InitUniTask();
+        //await AotUpdate.Instance.CheckExtractStreamingAssets();
+        await AotRes.Instance.LoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
+        await AotRes.Instance.LoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         AotUI.Instance.Open("SplashAdvicePanel");
-        AotText.Instance.Init();
+     
     }
 }

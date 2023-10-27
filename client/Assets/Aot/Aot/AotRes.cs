@@ -1,70 +1,107 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using UnityEditor;
 using UnityEngine;
+using YooAsset;
 
-public class AotRes : AotSingleton<AotRes>
+public class AotRes : Singleton<AotRes>
 {
     Dictionary<string, AssetBundle> abDic = new Dictionary<string, AssetBundle>();
-    public T LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
+
+    public override async UniTask InitUniTask()
     {
-        if (ResConst.IsABMode)
+        string packageName = "DefaultPackage";
+        // 初始化资源系统
+        YooAssets.Initialize();
+
+        // 创建默认的资源包
+        var package = YooAssets.CreatePackage(packageName);
+
+        // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
+        YooAssets.SetDefaultPackage(package);
+
+        EPlayMode ePlayMode = App.AppConfig.EPlayMode;
+
+        // 编辑器下的模拟模式
+        InitializationOperation initializationOperation = null;
+        // 编辑器下的模拟模式
+        switch (ePlayMode)
         {
-            string path = GetPersistentPath() + abName.ToLower();
-            //if (!File.Exists(path))
-            //{
-            //    path = GetStreamingAssetsPath() + abName.ToLower();
-            //}
-            AssetBundle ab;
-            if (!abDic.TryGetValue(abName, out ab))
-            {
-                ab = AssetBundle.LoadFromFile(path);
-                abDic.Add(abName, ab);
-            }
-            return ab.LoadAsset<T>(assetName);
+            case EPlayMode.EditorSimulateMode:
+                {
+                    EditorSimulateModeParameters createParameters = new();
+                    createParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), packageName);
+                    initializationOperation = package.InitializeAsync(createParameters);
+                    await initializationOperation.Task.AsUniTask();
+                    break;
+                }
+            case EPlayMode.OfflinePlayMode:
+                {
+                    OfflinePlayModeParameters createParameters = new();
+                    initializationOperation = package.InitializeAsync(createParameters);
+                    await initializationOperation.Task.AsUniTask();
+                    break;
+                }
+            case EPlayMode.HostPlayMode:
+                {
+                    string defaultHostServer = GetHostServerURL();
+                    string fallbackHostServer = GetHostServerURL();
+                    HostPlayModeParameters createParameters = new();
+                    createParameters.DecryptionServices = new FileStreamDecryption();
+                    createParameters.BuildinQueryServices = new GameQueryServices();
+                    createParameters.RemoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
+                    initializationOperation = package.InitializeAsync(createParameters);
+                    await initializationOperation.Task.AsUniTask();                    
+                    break;
+                }
+        }
+
+        // 如果初始化失败弹出提示界面
+        if (initializationOperation.Status != EOperationStatus.Succeed)
+        {
+            Debug.LogWarning($"{initializationOperation.Error}");
         }
         else
         {
+            var version = package.GetPackageVersion();
+            Debug.Log($"Init resource package version : {version}");
+        }
+    }
+
+    string GetHostServerURL()
+    {
+        string hostServerIP = App.AppConfig.SvrResIp;
+        string appVersion = $"";
+
 #if UNITY_EDITOR
-            return AssetDatabase.LoadAssetAtPath<T>(assetName);
+        if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+            return $"{hostServerIP}/Android/{appVersion}";
+        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+            return $"{hostServerIP}/IPhone/{appVersion}";
+        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+            return $"{hostServerIP}/WebGL/{appVersion}";
+        else
+            return $"{hostServerIP}/PC/{appVersion}";
 #else
-            return null;
+		        if (Application.platform == RuntimePlatform.Android)
+		        	return $"{hostServerIP}/Android/{appVersion}";
+		        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+		        	return $"{hostServerIP}/IPhone/{appVersion}";
+		        else if (Application.platform == RuntimePlatform.WebGLPlayer)
+		        	return $"{hostServerIP}/WebGL/{appVersion}";
+		        else
+		        	return $"{hostServerIP}/PC/{appVersion}";
 #endif
-        }
     }
 
-    public void UnLoadAssetBundle()
+    public async UniTask<T> LoadAssetAsync<T>(string location) where T : UnityEngine.Object
     {
-        List<KeyValuePair<string, UnityEngine.AssetBundle>> abs = abDic.ToList();
-        for (int i = abs.Count - 1; i >= 0; i--)
-        {
-            abs[i].Value.Unload(false);
-        }
-        abDic.Clear();
-        abDic = null;
+        AssetHandle handle = YooAssets.LoadAssetAsync<T>(location);
+        await handle.Task.AsUniTask();
+        T t = (T)handle.AssetObject;
+        handle.Release();
+        return t;
     }
 
 
-    string GetPersistentPath()
-    {
-        return $"{Application.persistentDataPath}/";
-    }
 
-//    string GetStreamingAssetsPath()
-//    {
-//#if UNITY_EDITOR
-//        return Application.streamingAssetsPath + "/";
-//#else
-//#if UNITY_ANDROID
-//        return Application.streamingAssetsPath + "/";      
-//#elif UNITY_IOS
-//        return Application.dataPath + @"/Raw";        
-
-//#else
-//        return Application.streamingAssetsPath + "/";
-//#endif
-//#endif
-//    }
 }

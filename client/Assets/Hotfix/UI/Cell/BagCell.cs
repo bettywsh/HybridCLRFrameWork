@@ -11,12 +11,10 @@ public class BagCell : BaseCell
     public Image m_Image;
     
 
-    public void SetData(int idx, List<HorseConfigItem> listHorseConfig)
+    public async void SetData(int idx, List<HorseConfigItem> listHorseConfig)
     {
         HorseConfigItem horseConfigItem = listHorseConfig[idx];
         m_Text.text = horseConfigItem.Name;
-        ResManager.Instance.LoadAssetAsync(panelName, $"Texture/item/{horseConfigItem.Icon}.png", typeof(Sprite), (ugo) => {
-            m_Image.sprite = ugo as Sprite;
-        });
+        await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png");
     }
 }

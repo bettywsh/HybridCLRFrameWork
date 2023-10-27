@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEditor;
@@ -79,14 +80,10 @@ public class SoundManager : Singleton<SoundManager>
     }
 
 
-    public void LoadAudioClipAsync(string moduleName, string name, System.Action<AudioClip> onCompleted)
+    public async UniTask<AudioClip> LoadAudioClipAsync(string name)
     {
         //不在缓存中 则异步加载资源
-        ResManager.Instance.LoadAssetAsync(moduleName, name, typeof(AudioClip), (clip) =>
-        {
-            //异步加载完成回调
-            onCompleted(clip as AudioClip);
-        });
+        return await ResManager.Instance.SceneLoadAssetAsync<AudioClip>(name);
     }
 
     public bool CanPlayBackSound()
@@ -118,22 +115,20 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void PlayBackSound(string moduleName, string name)
+    public async void PlayBackSound(string name)
     {
         audio.loop = true;
         //改为异步加载
-        LoadAudioClipAsync(moduleName, name, clip =>{
-            audio.clip = clip;
-            if (CanPlayBackSound())
-            {
-                audio.Play();
-            }
-            else
-            {
-                StopBacksound();
-            }
-        });
-        
+        audio.clip = await LoadAudioClipAsync(name);
+        if (CanPlayBackSound())
+        {
+            audio.Play();
+        }
+        else
+        {
+            StopBacksound();
+        }
+
     }
 
     public void PlayBackSound(AudioClip clip)
@@ -150,7 +145,7 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void PlayEffectSound(string moduleName, string name)
+    public async void PlayEffectSound(string moduleName, string name)
     {
         GameObject go = new GameObject(name);        
         AudioSource effect = go.AddComponent<AudioSource>();
@@ -159,12 +154,10 @@ public class SoundManager : Singleton<SoundManager>
         effect.playOnAwake = false;
         effect.volume = effect_volume;
         //改为异步加载
-        LoadAudioClipAsync(moduleName, name, clip =>{
-            effect.clip = clip;
-            effect_audio.Add(effect);
-            effect.Play();
-        });
-         
+        effect.clip = await LoadAudioClipAsync(name);
+        effect_audio.Add(effect);
+        effect.Play();
+
     }
 
     public void StopEffectSound(string name) 

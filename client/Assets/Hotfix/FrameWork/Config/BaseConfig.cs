@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,10 +11,15 @@ public class BaseConfig
     
     }
 
-    public T LoadConfig<T>(Type type) where T : class
+    public virtual async UniTaskVoid InitUniTask()
     {
-        string path = "Config/" + type.Name.Replace("Config", "") + ".json";
-        TextAsset ta = ResManager.Instance.LoadAsset("Common", path, typeof(TextAsset)) as TextAsset;
+        await UniTask.Yield();
+    }
+
+    public async UniTask<T> LoadConfig<T>(Type type) where T : class
+    {
+        string path = "Assets/App/Config/" + type.Name.Replace("Config", "") + ".json";
+        TextAsset ta = await ResManager.Instance.CommonLoadAssetAsync<TextAsset>(path);
         return LitJson.JsonMapper.ToObject<T>(ta.text);
     }
 }

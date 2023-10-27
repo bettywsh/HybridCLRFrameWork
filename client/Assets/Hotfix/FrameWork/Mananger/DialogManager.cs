@@ -6,11 +6,11 @@ using UnityEngine;
 public class DialogManager : Singleton<DialogManager>
 {
     TextFlyingPanel textFlyingPanel;
-    public void ShowTextFlying(string value)
+    public async void ShowTextFlying(string value)
     {
         if (textFlyingPanel == null)
         {
-            textFlyingPanel = UIManager.Instance.Open<TextFlyingPanel>(value);
+            textFlyingPanel = await UIManager.Instance.Open<TextFlyingPanel>(value);
         }
         textFlyingPanel.Fly(value);
     }

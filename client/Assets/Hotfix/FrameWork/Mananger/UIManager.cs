@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using DG.Tweening;
 using UObject = UnityEngine.Object;
 using TMPro;
-
+using Cysharp.Threading.Tasks;
 
 public class UIManager : MonoSingleton<UIManager>
 {
@@ -76,30 +76,27 @@ public T GetUI<T>() where T : BasePanel
     //}
 
 
-    public T Open<T>(params object[] args) where T : BasePanel
+    public async UniTask<T> Open<T>(params object[] args) where T : BasePanel
     {
         string prefabName = typeof(T).Name;
         if (uiList.ContainsKey(typeof(T).Name))
             return default;
-        T t = Activator.CreateInstance<T>();        
-        ResManager.Instance.LoadAssetAsync(prefabName, $"Prefab/UI/Panel/{prefabName}{ResConst.PrefabExtName}", typeof(GameObject), (UObject ugo) =>
-        {
-            GameObject go = ugo as GameObject;
-            go = GameObject.Instantiate(go);
-            go.name = prefabName;
-            go = ObjectHelper.SetParent(baseCanvas, go.transform).gameObject;
-            Canvas cv = go.AddComponent<Canvas>();
-            cv.overrideSorting = true;
-            go.AddComponent<GraphicRaycaster>();
-            OrderCanvas(go);
-            uiList.Add(typeof(T).Name, t);
-            BasePanel basePanel = t as BasePanel;
-            basePanel.args = args;
-            basePanel.transform = go.transform;
-            basePanel?.OnBindEvent();
-            basePanel?.OnOpen();
-            go.SetActive(true);
-        });
+        T t = Activator.CreateInstance<T>();
+        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{prefabName}{ResConst.PrefabExtName}");
+        go = GameObject.Instantiate(go);
+        go.name = prefabName;
+        go = ObjectHelper.SetParent(baseCanvas, go.transform).gameObject;
+        Canvas cv = go.AddComponent<Canvas>();
+        cv.overrideSorting = true;
+        go.AddComponent<GraphicRaycaster>();
+        OrderCanvas(go);
+        uiList.Add(typeof(T).Name, t);
+        BasePanel basePanel = t as BasePanel;
+        basePanel.args = args;
+        basePanel.transform = go.transform;
+        basePanel?.OnBindEvent();
+        basePanel?.OnOpen();
+        go.SetActive(true);
         return t;
     }
 

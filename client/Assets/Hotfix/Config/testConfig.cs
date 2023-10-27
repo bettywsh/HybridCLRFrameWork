@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ public partial class testConfig : BaseConfig
     private Dictionary<string, testConfigItem> dict = new Dictionary<string, testConfigItem>();
     private List<testConfigItem> list = new List<testConfigItem>();
 	
-    public override void Init()
+    public override async UniTaskVoid InitUniTask()
     {
-        dict = LoadConfig<Dictionary<string, testConfigItem>>(typeof(testConfig));
+        dict = await LoadConfig<Dictionary<string, testConfigItem>>(typeof(testConfig));
 		list = dict.Select(x => x.Value).ToList();
     }
 	

@@ -6,6 +6,10 @@ using UnityEngine.U2D;
 using UnityEngine.SceneManagement;
 using UnityEditor;
 using System.Reflection;
+using static UnityEditor.FilePathAttribute;
+using static UnityEngine.UI.CanvasScaler;
+using YooAsset;
+using Cysharp.Threading.Tasks;
 
 public class LoadSceneManager : MonoSingleton<LoadSceneManager>
 {
@@ -13,7 +17,7 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     float loadPro = 0;
     bool isfinish = false;
     // 用以接受异步加载的返回值
-    AsyncOperation AsyncOp = null;
+    SceneHandle handle = null;
 
     string name;
     bool loading;
@@ -21,47 +25,41 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     string oldName;
     object oldSceneScript;
 
-    public void LoadScene(string sceneName, bool loading)
+    public async void LoadScene(string sceneName, bool loading)
     {
         name = sceneName;
         this.loading = loading;
         if (this.loading)
         {
-            UIManager.Instance.Open<LoadingPanel>();
+            await UIManager.Instance.Open<LoadingPanel>();
         }
         ChangeScene(name);
     }
 
-    public void ChangeScene(string name)
+    public async void ChangeScene(string name)
     {
         loadPro = 0;
-        AsyncOp = null;
         Application.backgroundLoadingPriority = ThreadPriority.High;
-        ResManager.Instance.LoadAssetAsync(name, "Scene/" + name + ".scene", typeof(Scene), (objt) =>
-        {          
-            AsyncOp = null;
-            AsyncOp = SceneManager.LoadSceneAsync(name, LoadSceneMode.Single);
-            AsyncOp.allowSceneActivation = false;
-            AsyncOp.completed += (AsyncOperation ao) => {              
-                AsyncOp.allowSceneActivation = true;
-                if (sceneScript != null)
-                {
-                    BaseScene baseScene = sceneScript as BaseScene;
-                    baseScene.UnLoadScene();
-                }
-                GC();
-                Type type = AotHybridCLR.Instance._hotUpdateAss.GetType(name + "Scene", false);
-                if (type != null)
-                {
-                    sceneScript = Activator.CreateInstance(type);
-                    BaseScene baseScene = sceneScript as BaseScene;
-                    baseScene.LoadScene();
-                }
-                else {
-                    Debug.LogError("No Scene Script");
-                }
-            };
-        });
+        var package = YooAssets.GetPackage(App.AppConfig.PackageName);
+        SceneHandle handle = package.LoadSceneAsync("Assets/App/Scene/" + name + ".unity", LoadSceneMode.Single, false);
+        await handle;
+        if (sceneScript != null)
+        {
+            BaseScene baseScene = sceneScript as BaseScene;
+            baseScene.UnLoadScene();
+        }
+        GC();
+        Type type = AotHybridCLR.Instance._hotUpdateAss.GetType(name + "Scene", false);
+        if (type != null)
+        {
+            sceneScript = Activator.CreateInstance(type);
+            BaseScene baseScene = sceneScript as BaseScene;
+            baseScene.LoadScene();
+        }
+        else
+        {
+            Debug.LogError("No Scene Script");
+        }
     }
 
     public string CurScene()
@@ -71,14 +69,14 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
 
     private void Update()
     {
-        if (AsyncOp != null)//如果已经开始加载
+        if (handle != null)//如果已经开始加载
         {
-            loadPro = AsyncOp.progress; //获取加载进度,此处特别注意:加载场景的progress值最大为0.9!!!
+            loadPro = handle.Progress; //获取加载进度,此处特别注意:加载场景的progress值最大为0.9!!!
         }
-        if (loadPro >= 0.9f)//因为progress值最大为0.9,所以我们需要强制将其等于1
-        {
-            AsyncOp.allowSceneActivation = true;
-        }
+        //if (loadPro >= 0.9f)//因为progress值最大为0.9,所以我们需要强制将其等于1
+        //{
+        //    handle.allowSceneActivation = true;
+        //}
         
     }
 
@@ -86,6 +84,6 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     {        
         ResManager.Instance.UnLoadAssetBundle(name);
         System.GC.Collect();
-        Resources.UnloadUnusedAssets();
+        Resources.UnloadUnusedAssets();        
     }
 }

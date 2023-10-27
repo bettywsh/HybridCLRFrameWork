@@ -22,13 +22,13 @@ public class ObjectHelper
         return go;
     }
 
-    public static void SetGrey(Transform transform, bool isGrey)
+    public static async void SetGrey(Transform transform, bool isGrey)
     {
         Image[] images = transform.GetComponentsInChildren<Image>();
         foreach(Image image in images)
         {
             if (isGrey)
-                image.material = ResManager.Instance.LoadAsset(LoadSceneManager.Instance.name, "Material/ImageGrey.mat", typeof(Material)) as Material;
+                image.material = await ResManager.Instance.SceneLoadAssetAsync<Material>("Assets/App/Material/ImageGrey.mat");
             else
                 image.material = null;
         }

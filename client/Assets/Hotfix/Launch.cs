@@ -6,7 +6,7 @@ using TMPro;
 public class Launch
 {
     // Start is called before the first frame update
-    public static void Start()
+    public static async void Start()
     {
         AotUI.Instance.Close("UpdatePanel");
         AotText.Instance.Dispose();
@@ -18,14 +18,11 @@ public class Launch
         SoundManager.Instance.Init();
         UIManager.Instance.Init();
         AtlasManager.Instance.Init();
-        AssetBundleManager.Instance.Init();
         ResManager.Instance.Init();
         NetworkManager.Instance.Init();
         ConfigManager.Instance.Init();
-        ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSansCN-NormalSDF.asset", typeof(TMP_FontAsset));
-        ResManager.Instance.LoadAssetAsync("Common", "Font/SourceHanSerifCN-BoldSDF.asset", typeof(TMP_FontAsset), (ugo) => {
-            //UIManager.Instance.Open<LoginPanel>();
-        });
+        await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
+        await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         LoadSceneManager.Instance.LoadScene("Login", false);
         //UIManager.Instance.Open("LoginPanel");
     }

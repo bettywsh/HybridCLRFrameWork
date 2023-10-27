@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,9 @@ public partial class SoundsConfig : BaseConfig
     private Dictionary<string, SoundsConfigItem> dict = new Dictionary<string, SoundsConfigItem>();
     private List<SoundsConfigItem> list = new List<SoundsConfigItem>();
 	
-    public override void Init()
+    public override async UniTaskVoid InitUniTask()
     {
-        dict = LoadConfig<Dictionary<string, SoundsConfigItem>>(typeof(SoundsConfig));
+        dict = await LoadConfig<Dictionary<string, SoundsConfigItem>>(typeof(SoundsConfig));
 		list = dict.Select(x => x.Value).ToList();
     }
 	

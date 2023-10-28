@@ -1,7 +1,11 @@
-using Cysharp.Threading.Tasks;
+//---------------------------------
+//此文件由工具自动生成,请勿手动修改
+//---------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 
 [Config]
 public partial class SoundsConfig : BaseConfig

@@ -331,7 +331,7 @@ def write_csharp(luaT, luaN ,outfile = '-', withfunc = True):
 		outfp = StringIO.StringIO()
 	szName = outfile.split('.')[2]
 	szName = szName.split('\\')[-1]
-	tmpconfig = open("TmpConfig.txt",'r')
+	tmpconfig = open("TmpConfig.txt",'r', encoding='utf-8')
 	txttmpconfig = tmpconfig.read()
 	txttmpconfig = txttmpconfig.replace("(ConfigName)",szName)
 	from io import StringIO

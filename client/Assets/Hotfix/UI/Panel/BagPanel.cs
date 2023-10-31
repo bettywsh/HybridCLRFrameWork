@@ -21,7 +21,7 @@ public class BagPanel : BasePanel
 
     void OnItemRender(int idx, Transform tf)
     {
-        tf.GetComponent<BagCell>().SetData(idx, listHorseConfig);
+        tf.GetComponent<BagCell>().SetData(idx, listHorseConfig[idx]);
     }
 
     void OnClick_Mask()

@@ -11,9 +11,8 @@ public class BagCell : BaseCell
     public Image m_Image;
     
 
-    public async void SetData(int idx, List<HorseConfigItem> listHorseConfig)
+    public async void SetData(int idx, HorseConfigItem horseConfigItem)
     {
-        HorseConfigItem horseConfigItem = listHorseConfig[idx];
         m_Text.text = horseConfigItem.Name;
         await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png");
     }

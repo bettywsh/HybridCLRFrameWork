@@ -14,7 +14,7 @@ public class UIManager : MonoSingleton<UIManager>
 {
     public GameObject canvasRoot;
     public Camera uiCamera;
-    private Dictionary<string, object> uiList = new Dictionary<string, object>();
+    private Dictionary<string, BasePanel> uiList = new Dictionary<string, BasePanel>();
     private Transform baseCanvas;
 
     public override void Init()
@@ -53,13 +53,13 @@ public class UIManager : MonoSingleton<UIManager>
 
     }
 
-public T GetUI<T>() where T : BasePanel
+    public T GetUI<T>() where T : BasePanel
     {
-        foreach (var item in uiList)
+        foreach ((string name, BasePanel basePanel) in uiList)
         {
-            if (item.Key == typeof(T).Name)
+            if (name == typeof(T).Name)
             {
-                return item.Value as T;
+                return basePanel as T;
             }
         }
         return default;
@@ -76,28 +76,39 @@ public T GetUI<T>() where T : BasePanel
     //}
 
 
-    public async UniTask<T> Open<T>(params object[] args) where T : BasePanel
+    public T Open<T>(params object[] args) where T : BasePanel
     {
         string prefabName = typeof(T).Name;
-        if (uiList.ContainsKey(typeof(T).Name))
-            return default;
-        T t = Activator.CreateInstance<T>();
-        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{prefabName}.prefab");
+        BasePanel bp = null;
+        T t = default;
+        if (!uiList.TryGetValue(typeof(T).Name, out bp))
+        {
+            t = Activator.CreateInstance<T>();
+            uiList.Add(typeof(T).Name, t as BasePanel);
+            LoadPanel(typeof(T).Name, t as BasePanel, args);
+        }
+        else
+        {
+            t = bp as T;
+        }      
+        return t as T;
+    }
+
+    public async void LoadPanel(string name, BasePanel basePanel, params object[] args)
+    {
+        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{name}.prefab");
         go = GameObject.Instantiate(go);
-        go.name = prefabName;
+        go.name = name;
         go = ObjectHelper.SetParent(baseCanvas, go.transform).gameObject;
         Canvas cv = go.AddComponent<Canvas>();
         cv.overrideSorting = true;
         go.AddComponent<GraphicRaycaster>();
         OrderCanvas(go);
-        uiList.Add(typeof(T).Name, t);
-        BasePanel basePanel = t as BasePanel;
         basePanel.args = args;
         basePanel.transform = go.transform;
         basePanel?.OnBindEvent();
         basePanel?.OnOpen();
         go.SetActive(true);
-        return t;
     }
 
     void OrderCanvas(GameObject go)
@@ -128,10 +139,10 @@ public T GetUI<T>() where T : BasePanel
     public void Close<T>() where T : BasePanel
     {
         string prefabName = typeof(T).Name;
-        object obj;
+        BasePanel obj;
         if (uiList.TryGetValue(typeof(T).Name, out obj))
         {
-            BasePanel basePanel = obj as BasePanel;
+            BasePanel basePanel = obj;
             basePanel.OnClose();          
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             ResManager.Instance.UnLoadAssetBundle(prefabName);
@@ -141,21 +152,20 @@ public T GetUI<T>() where T : BasePanel
 
     public void CloseAll()
     {
-        foreach ((string k, object v) in uiList)
+        foreach ((string name, BasePanel basePanel) in uiList)
         {
-            BasePanel basePanel = v as BasePanel;
             basePanel.OnClose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
-            ResManager.Instance.UnLoadAssetBundle(k);
-            uiList.Remove(k);
+            uiList.Remove(name);
         }
     }
 
     private void Update()
     {
-        foreach ((string name, object obj) in uiList)
+        foreach ((string name, BasePanel bp) in uiList)
         {
-            BasePanel basePanel = obj as BasePanel;
+            if (bp.transform == null) { return; }
+            BasePanel basePanel = bp;
             basePanel.OnUpdate();
         }
     }

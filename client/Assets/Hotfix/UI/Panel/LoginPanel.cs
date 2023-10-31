@@ -37,10 +37,9 @@ public class LoginPanel : BasePanel
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 
-
         //NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
 
-        UIManager.Instance.Open<MainPanel>();
+        LoadSceneManager.Instance.LoadScene(EScene.Main, false);
         UIManager.Instance.Close<LoginPanel>();
     }
 

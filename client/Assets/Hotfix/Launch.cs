@@ -23,7 +23,7 @@ public class Launch
         ConfigManager.Instance.Init();
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
-        LoadSceneManager.Instance.LoadScene("Login", false);
+        LoadSceneManager.Instance.LoadScene(EScene.Login, false);
         //UIManager.Instance.Open("LoginPanel");
     }
 

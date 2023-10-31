@@ -6,3 +6,11 @@ public enum EUILayer
     Loading = 103,
     SystemBox = 105
 }
+
+
+public enum EScene
+{ 
+    Login,
+    Main,
+    Battle,
+}

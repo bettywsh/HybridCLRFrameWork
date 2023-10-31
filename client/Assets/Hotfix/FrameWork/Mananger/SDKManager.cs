@@ -13,10 +13,10 @@ public class SDKManager : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject go = GameObject.Find("Sdk");
+                GameObject go = GameObject.Find("SDKManager");
                 if (go == null)
                 {
-                    go = new GameObject("Sdk");
+                    go = new GameObject("SDKManager");
                     DontDestroyOnLoad(go);
                 }
                 instance = go.GetComponent<SDKManager>();

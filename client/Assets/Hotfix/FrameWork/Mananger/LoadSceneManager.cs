@@ -25,14 +25,14 @@ public class LoadSceneManager : MonoSingleton<LoadSceneManager>
     string oldName;
     object oldSceneScript;
 
-    public async void LoadScene(string sceneName, bool loading)
+    public void LoadScene(EScene scene, bool loading)
     {
         oldName = name;
-        name = sceneName;
+        name = scene.ToString();
         this.loading = loading;
         if (this.loading)
         {
-            await UIManager.Instance.Open<LoadingPanel>();
+            UIManager.Instance.Open<LoadingPanel>();
         }
         UnLoadScene();
         ChangeScene(name);

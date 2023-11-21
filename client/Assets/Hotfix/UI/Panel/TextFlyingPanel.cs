@@ -4,13 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextFlyingPanel : BasePanel
+public class MsgPanel : BasePanel
 {
     bool isTween = false;
     Queue<string> queue = new Queue<string>();
 
     public override void OnBindEvent()
     {
+        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Msg;
         base.OnBindEvent();
     }
 

@@ -8,6 +8,7 @@ public class DialogPanel : BasePanel
 
     public override void OnBindEvent()
     {
+        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Dialog;
         base.OnBindEvent();
     }
 

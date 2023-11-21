@@ -7,6 +7,7 @@ public class LoadingPanel : BasePanel
 
     public override void OnBindEvent()
     {
+        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
         base.OnBindEvent();
     }
 

@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class DialogManager : Singleton<DialogManager>
 {
-    TextFlyingPanel textFlyingPanel;
+    MsgPanel msgPanel;
     public void ShowTextFlying(string value)
     {
-        if (textFlyingPanel == null)
+        if (msgPanel == null)
         {
-            textFlyingPanel = UIManager.Instance.Open<TextFlyingPanel>(value);
+            msgPanel = UIManager.Instance.Open<MsgPanel>(value);
         }
         Debug.LogError(value);
-        textFlyingPanel.Fly(value);
+        msgPanel.Fly(value);
     }
 
     public void ShowDialog(DialogInfo dialogInfo)

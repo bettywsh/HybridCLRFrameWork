@@ -7,7 +7,7 @@ public class LoginPanel : BasePanel
 {
 
     public override void OnBindEvent()
-    {
+    {        
         base.OnBindEvent();
     }
 

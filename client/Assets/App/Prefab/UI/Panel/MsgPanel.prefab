@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4075515927542589723}
   - component: {fileID: 8974123458019897628}
   m_Layer: 5
-  m_Name: TextFlyingPanel
+  m_Name: MsgPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -102,9 +102,10 @@ public class UIManager : MonoSingleton<UIManager>
         OrderCanvas(go);
         basePanel.args = args;
         basePanel.transform = go.transform;
+        go.SetActive(true);
         basePanel?.OnBindEvent();
         basePanel?.OnOpen();
-        go.SetActive(true);
+      
     }
 
     void OrderCanvas(GameObject go)

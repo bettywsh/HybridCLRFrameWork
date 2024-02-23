@@ -22,16 +22,16 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     string oldName;
     object oldSceneScript;
     Action openLoadingUI;
-    public void Init(Action openUI)
+    public void Init(Action openUI = null)
     {
         openLoadingUI = openUI;
         name = "Start";
     }
 
-    public void LoadScene(int scene, bool loading)
+    public void LoadScene(string scene, bool loading)
     {
         oldName = name;
-        name = scene.ToString();
+        name = scene;
         this.loading = loading;
         if (this.loading)
         {
@@ -56,10 +56,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
 
     public async void ChangeScene(string name)
     {
-        var package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
-        handle = package.LoadSceneAsync("Assets/App/Scene/" + name + ".unity", LoadSceneMode.Single, false);
-        await handle;
-        handle = null;
+        await ResManager.Instance.LoadSceneAsync("Assets/App/Scene/" + name);
         Type type = HybridCLRManager.Instance._hotUpdateAss.GetType(name + "Scene", false);
         if (type != null)
         {

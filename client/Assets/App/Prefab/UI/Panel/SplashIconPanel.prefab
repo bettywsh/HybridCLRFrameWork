@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_selectedIndex: -1
   data:
-  - name: cng_BG
+  - name: cngBG
     referenceData:
       tranValue: {fileID: 6550831825512319180}
       imgValue: {fileID: 6638012402996055265}
@@ -62,6 +62,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 923992444825279941}
       listValue: {fileID: 0}
 --- !u!1 &1665525621283328797
 GameObject:

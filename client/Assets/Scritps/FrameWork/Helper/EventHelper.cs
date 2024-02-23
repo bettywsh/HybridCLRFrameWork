@@ -47,7 +47,7 @@ public static class EventHelper
             }
             else if (MethodInfos[i].Name.Contains("OnNet_"))
             {
-                string net = MethodInfos[i].Name.Replace("OnNet_", "");                
+                string net = MethodInfos[i].Name.Replace("OnNet_", "");
                 object sc = Enum.Parse(HybridCLRManager.Instance._hotUpdateAss.GetType(net, false), net);
                 MessageHandler messageHandler = Delegate.CreateDelegate(typeof(MessageHandler), obj, MethodInfos[i]) as MessageHandler;
                 MessageManager.Instance.RegisterNetMessageHandler((int)sc, messageHandler);

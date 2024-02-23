@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public partial class UpdateDialogPanel : BasePanel
+public class UpdateDialogPanel : BasePanel
 {
     AotDialogInfo dialogInfo;
     public override void OnOpen()

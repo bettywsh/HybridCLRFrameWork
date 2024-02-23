@@ -8,7 +8,7 @@ using YooAsset;
 using TMPro;
 using UnityEngine.UI;
 
-public partial class UpdatePanel : BasePanel
+public class UpdatePanel : BasePanel
 {
     ResourcePackage package;
     string packageVersion;
@@ -16,14 +16,14 @@ public partial class UpdatePanel : BasePanel
     CancellationTokenSource cancelToken = new CancellationTokenSource();
     public override async void OnOpen()
     {
-        //判断大版本
-        //AotDialog.Instance.ShowDialogOne("警告", "大版本更新请下载www.baidu.com", () => {
-        //    Application.Quit();
-        //});
-        //return
-        //判断小版本
-
-        await UpdatePackageVersion();
+        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
+        {
+            StartGame();
+        }
+        else
+        {
+            await UpdatePackageVersion();
+        }
     }
 
     //获取资源版本
@@ -109,14 +109,6 @@ public partial class UpdatePanel : BasePanel
             //下载成功
             StartGame();
         }
-        //else
-        //{
-        //    //下载失败
-        //    AotDialog.Instance.ShowDialogOne("警告", "下载文件失败，是否重新下载", async () => {
-        //        await Download();
-        //    });
-        //    return;
-        //}
     }
 
     /// <summary>

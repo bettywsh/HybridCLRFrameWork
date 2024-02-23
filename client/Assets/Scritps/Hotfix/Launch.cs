@@ -13,7 +13,6 @@ public class Launch
         ResManager.Instance.UnLoadAssetBundle(LoadSceneManager.Instance.CurScene());
         ResManager.Instance.Dispose();
         AotDialog.Instance.Dispose();
-        AotUpdate.Instance.Dispose();
 
         SoundManager.Instance.Init();
         UIManager.Instance.Init();
@@ -24,7 +23,7 @@ public class Launch
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         LoadSceneManager.Instance.Init(()=> UIManager.Instance.Open<LoadingPanel>());
-        LoadSceneManager.Instance.LoadScene((int)EScene.Login, false);
+        LoadSceneManager.Instance.LoadScene(EScene.Login.ToString(), false);
         //UIManager.Instance.Open("LoginPanel");
     }
 

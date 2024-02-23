@@ -39,7 +39,7 @@ public class LoginPanel : BasePanel
 
         //NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
 
-        LoadSceneManager.Instance.LoadScene((int)EScene.Main, false);
+        LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
         UIManager.Instance.Close<LoginPanel>();
     }
 

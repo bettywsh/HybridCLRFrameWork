@@ -14,11 +14,12 @@ public class Launch : MonoBehaviour
         QualitySettings.vSyncCount = 2;
         Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;
 
+        LoadSceneManager.Instance.Init();
         await ResManager.Instance.InitUniTask();
         await AotText.Instance.InitUniTask();
-        //await AotUpdate.Instance.CheckExtractStreamingAssets();
         await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
+        UIManager.Instance.Init();
         UIManager.Instance.Open<SplashAdvicePanel>();
      
     }

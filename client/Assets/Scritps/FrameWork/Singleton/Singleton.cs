@@ -34,7 +34,7 @@ public abstract class Singleton<T> where T : class, new()
 
     public virtual void Dispose()
 	{
-
+		m_instance = null;
 	}
 
 }

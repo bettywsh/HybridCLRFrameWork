@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ public class RedManager : Singleton<RedManager>
     {
         RedPointConst.Main
     };
-    public override void Init()
+    public override async UniTask Init()
     {
         main = new RedNode();
         main.name = RedPointConst.Main;

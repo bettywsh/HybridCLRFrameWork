@@ -22,15 +22,11 @@ public abstract class Singleton<T> where T : class, new()
         }
 	}
 
-    public virtual void  Init()
+    public virtual async UniTask Init()
     {
-
+		await UniTask.Yield();
     }
 
-    public virtual async UniTask InitUniTask()
-    {
-        await UniTask.Yield();
-    }
 
     public virtual void Dispose()
 	{

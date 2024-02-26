@@ -16,7 +16,7 @@ public class UIManager : MonoSingleton<UIManager>
     private Dictionary<string, BasePanel> uiList = new Dictionary<string, BasePanel>();
     private Transform baseCanvas;
 
-    public override void Init()
+    public override async UniTask Init()
     {
         canvasRoot = GameObject.Find("Canvas");
         GameObject.DontDestroyOnLoad(canvasRoot);

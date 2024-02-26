@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class TextManager : Singleton<TextManager>
 {
     string language;
-    public override void Init()
+    public override async UniTask Init()
     {
         base.Init();
         string startLanguage = PlayerPrefs.GetString("language", "");

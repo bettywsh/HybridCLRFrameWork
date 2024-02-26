@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ public class ConfigManager : Singleton<ConfigManager>
 
     Dictionary<Type, object> configs = new Dictionary<Type, object>();
 
-    public override void Init()
+    public override async UniTask Init()
     {
         Assembly Hotfix = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
         foreach (Type type in Hotfix.GetTypes())

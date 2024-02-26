@@ -15,8 +15,8 @@ public class Launch : MonoBehaviour
         Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;
 
         LoadSceneManager.Instance.Init();
-        await ResManager.Instance.InitUniTask();
-        await AotText.Instance.InitUniTask();
+        await ResManager.Instance.Init();
+        await AotText.Instance.Init();
         await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         UIManager.Instance.Init();

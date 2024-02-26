@@ -20,7 +20,7 @@ public class SoundManager : Singleton<SoundManager>
     public float background_volume = 1f;
     public float effect_volume = 1f;
 
-    public override void Init()
+    public override async UniTask Init()
     {
         if (audio == null)
         {

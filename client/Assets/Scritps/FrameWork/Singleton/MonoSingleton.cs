@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    public virtual void Init()
+    public virtual async UniTask Init()
     {
 
     }

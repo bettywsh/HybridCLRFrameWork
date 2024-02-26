@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -6,7 +7,7 @@ using UnityEngine.U2D;
 public class AtlasManager : MonoSingleton<AtlasManager>
 {
     Dictionary<string, SpriteAtlas> spriteAtlasList = new Dictionary<string, SpriteAtlas>();
-    public override void Init()
+    public override async UniTask Init()
     {
         SpriteAtlasManager.atlasRequested += RequestAtlas;
     }

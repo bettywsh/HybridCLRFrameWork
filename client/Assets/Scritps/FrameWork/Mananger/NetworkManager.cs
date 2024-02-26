@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,7 +17,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 	public Action<int> OnError { get; set; }
 
 	//clinet
-	public override void Init()
+	public override async UniTask Init()
 	{
 		NetworkProtocol networkProtocol = NetworkProtocol.TCP;
         switch (networkProtocol)

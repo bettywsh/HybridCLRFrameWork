@@ -11,7 +11,7 @@ public class ResManager : Singleton<ResManager>
     Dictionary<string, List<AssetHandle>> ResLoaders = new Dictionary<string, List<AssetHandle>>();
 
     ResourcePackage package;
-    public override async UniTask InitUniTask()
+    public override async UniTask Init()
     {
         // 初始化资源系统
         YooAssets.Initialize();

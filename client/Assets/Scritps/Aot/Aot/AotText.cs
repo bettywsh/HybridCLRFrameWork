@@ -8,7 +8,7 @@ public class AotText : Singleton<AotText>
 {
     string language;
     JsonData data;
-    public override async UniTask InitUniTask()
+    public override async UniTask Init()
     {
         string startLanguage = PlayerPrefs.GetString("language", "");
         if (startLanguage == "")

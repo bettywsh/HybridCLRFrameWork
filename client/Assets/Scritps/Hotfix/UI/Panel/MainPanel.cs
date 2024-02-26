@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,12 +6,12 @@ using UnityEngine;
 public class MainPanel : BasePanel
 {
 
-    public override void OnBindEvent()
+    public override async UniTask OnBindEvent()
     {
         base.OnBindEvent();
     }
 
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {        
         base.OnOpen();
     }

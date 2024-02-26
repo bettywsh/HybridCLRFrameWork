@@ -161,6 +161,8 @@ public class ResManager : Singleton<ResManager>
 
     public override void Dispose()
     {
+        //YooAssets.DestroyPackage(AppSettings.AppConfig.PackageName);
+        //YooAssets.Destroy();
         ResLoaders.Clear();
     }
 }

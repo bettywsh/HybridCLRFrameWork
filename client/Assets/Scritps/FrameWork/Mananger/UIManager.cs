@@ -95,7 +95,7 @@ public class UIManager : MonoSingleton<UIManager>
         GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{name}.prefab");
         go = GameObject.Instantiate(go);
         go.name = name;
-        go = ObjectHelper.SetParent(baseCanvas, go.transform).gameObject;
+        go = GameObjectHelper.SetParent(baseCanvas, go.transform).gameObject;
         Canvas cv = go.AddComponent<Canvas>();
         cv.overrideSorting = true;
         go.AddComponent<GraphicRaycaster>();
@@ -142,7 +142,6 @@ public class UIManager : MonoSingleton<UIManager>
             BasePanel basePanel = obj;
             basePanel.OnClose();          
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
-            ResManager.Instance.UnLoadAssetBundle(prefabName);
             uiList.Remove(typeof(T).Name);
         }
     }

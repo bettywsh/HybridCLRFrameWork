@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,17 +7,17 @@ public class DialogPanel : BasePanel
 {
     DialogInfo dialogInfo;
 
-    public override void OnBindEvent()
+    public override async UniTask OnBindEvent()
     {
-        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Dialog;
         base.OnBindEvent();
     }
 
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {        
         base.OnOpen();
 
         dialogInfo = args[0] as DialogInfo;
+        transform.GetComponent<Canvas>().sortingOrder = (int)dialogInfo.layer;
         referenceData["txtMsg"].tmptxtValue.text = dialogInfo.txtMsg;
         referenceData["txtOk"].tmptxtValue.text = "确定";
         referenceData["txtCancel"].tmptxtValue.text = "取消";

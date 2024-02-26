@@ -46,4 +46,9 @@ public class AppConfig : ScriptableObject
     /// ProtoBuff 包名
     /// </summary>
     public string ProtoBuffPackageName = "com.bochsler.protocol.";
+
+    /// <summary>
+    /// 启动场景名
+    /// </summary>
+    public string StartSceneName = "Start";
 }

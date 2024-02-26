@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,7 +12,7 @@ public class BagCell : BaseCell
     public Image m_Image;
     
 
-    public async void SetData(int idx, HorseConfigItem horseConfigItem)
+    public async UniTask SetData(int idx, HorseConfigItem horseConfigItem)
     {
         m_Text.text = horseConfigItem.Name;
         await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png");

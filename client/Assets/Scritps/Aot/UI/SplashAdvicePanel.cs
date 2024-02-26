@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ public class SplashAdvicePanel : BasePanel
     public CanvasGroup cng_Content;
 
 
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {
         CanvasGroup cngContent = referenceData["cngContent"].cngValue;
         cngContent.alpha = 0;

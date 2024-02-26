@@ -5,6 +5,7 @@ using HybridCLR;
 using System.Reflection;
 using System;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 
 public class HybridCLRManager : Singleton<HybridCLRManager>
 {
@@ -15,13 +16,13 @@ public class HybridCLRManager : Singleton<HybridCLRManager>
         "System.Core.dll.bytes",
     };
     public Assembly _hotUpdateAss;
-    public async void LoadDll()
+    public async UniTask LoadDll()
     {
         LoadMetadataForAOTAssemblies();
 #if !UNITY_EDITOR        
-        TextAsset ta = await AotRes.Instance.LoadAssetAsync<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
+        TextAsset ta = await ResManager.Instance.LoadAssetAsync<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
         _hotUpdateAss = Assembly.Load(ta.bytes);
-        AotRes.Instance.UnLoadAssetAsync();
+        ResManager.Instance.UnLoadAssetAsync();
 #else
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
 #endif

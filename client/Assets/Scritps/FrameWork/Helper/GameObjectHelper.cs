@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectHelper
+public class GameObjectHelper
 {
     public static Transform Instantiate(Transform parent, GameObject children)
     {

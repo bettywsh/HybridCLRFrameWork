@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Linq;
+using Cysharp.Threading.Tasks;
 
 public class BasePanel
 {
@@ -14,14 +15,14 @@ public class BasePanel
     public Transform transform;
     public object[] args;
     
-    public virtual void OnBindEvent()
+    public virtual async UniTask OnBindEvent()
     {
         referenceCollector = transform.GetComponent<ReferenceCollector>();
         referenceData = referenceCollector.data.ToDictionary(x => x.name, x => x.referenceData);
         EventHelper.RegisterEvent(this, referenceData);
     }
 
-    public virtual void OnOpen()
+    public virtual async UniTask OnOpen()
     {
 
     }

@@ -4,20 +4,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MsgPanel : BasePanel
+public class TextPanel : BasePanel
 {
     bool isTween = false;
     Queue<string> queue = new Queue<string>();
 
-    public override void OnBindEvent()
+    public override async UniTask OnBindEvent()
     {
-        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Msg;
         base.OnBindEvent();
     }
 
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     { 
-		base.OnOpen();        
+		base.OnOpen();
+        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Text;
     }
 
     public override void OnUpdate()
@@ -26,7 +26,7 @@ public class MsgPanel : BasePanel
         {
             isTween = true;
             referenceData["txtTextMesh"].tmptxtValue.text = queue.Dequeue();
-            Transform run = ObjectHelper.Instantiate(referenceData["Content"].tranValue, referenceData["imgBg"].tranValue.gameObject);
+            Transform run = GameObjectHelper.Instantiate(referenceData["objContent"].tranValue, referenceData["imgBg"].tranValue.gameObject);
             run.gameObject.SetActive(true);
             Sequence seq = DOTween.Sequence();
             seq.Append(run.GetComponent<RectTransform>().DOAnchorPosY(125, 1).SetRelative());

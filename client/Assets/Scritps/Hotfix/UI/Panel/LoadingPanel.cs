@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,13 @@ using UnityEngine;
 public class LoadingPanel : BasePanel
 {
 
-    public override void OnBindEvent()
+    public override async UniTask OnBindEvent()
     {
         transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
         base.OnBindEvent();
     }
 
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {
 		base.OnOpen();
     }

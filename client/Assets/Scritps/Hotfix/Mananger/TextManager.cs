@@ -9,7 +9,6 @@ public class TextManager : Singleton<TextManager>
     string language;
     public override async UniTask Init()
     {
-        base.Init();
         string startLanguage = PlayerPrefs.GetString("language", "");
         if (startLanguage == "")
         {

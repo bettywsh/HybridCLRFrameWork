@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Cysharp.Threading.Tasks;
 
 public class UpdateDialogPanel : BasePanel
 {
     AotDialogInfo dialogInfo;
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {
         dialogInfo = args[0] as AotDialogInfo;
         referenceData["txtMsg"].tmptxtValue.text = dialogInfo.txtMsg;

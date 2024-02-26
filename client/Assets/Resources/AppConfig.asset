@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: AppConfig
   m_EditorClassIdentifier: 
   EPlayMode: 0
-  UpdateModel: 0
   SvrResIp: http://192.168.14.129:8082/
   SvrGameIp: shiku.grandlink.net
   SvrGamePort: 8443
   DebugLog: 1
   GameFrameRate: 30
   PackageName: DefaultPackage
+  ProtoBuffPackageName: com.bochsler.protocol.
+  StartSceneName: Start

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,12 @@ public class BagPanel : BasePanel
 {
     List<HorseConfigItem> listHorseConfig;
 
-    public override void OnBindEvent()
+    public override async UniTask OnBindEvent()
     {
         base.OnBindEvent();
     }
 
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {
         base.OnOpen();
         listHorseConfig = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();

@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Cysharp.Threading.Tasks;
 
 public class SplashIconPanel : BasePanel
 {
     public CanvasGroup cng_BG;
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {
         CanvasGroup cngBG = referenceData["cngBG"].cngValue;
         cngBG.alpha = 0;

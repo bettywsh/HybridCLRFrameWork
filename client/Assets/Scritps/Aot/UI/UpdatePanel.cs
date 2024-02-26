@@ -14,7 +14,7 @@ public class UpdatePanel : BasePanel
     string packageVersion;
     ResourceDownloaderOperation downloader;
     CancellationTokenSource cancelToken = new CancellationTokenSource();
-    public override async void OnOpen()
+    public override async UniTask OnOpen()
     {
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
         {

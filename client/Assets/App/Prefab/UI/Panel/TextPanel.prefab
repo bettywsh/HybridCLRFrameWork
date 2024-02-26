@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4075515927542589723}
   - component: {fileID: 8974123458019897628}
   m_Layer: 5
-  m_Name: MsgPanel
+  m_Name: TextPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 349060237259688693}
       listValue: {fileID: 0}
   - name: txtTextMesh
     referenceData:
@@ -87,8 +88,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 6375129374618941288}
+      cngValue: {fileID: 2458037912204603943}
       listValue: {fileID: 0}
-  - name: Content
+  - name: objContent
     referenceData:
       tranValue: {fileID: 5309031600279883059}
       imgValue: {fileID: 0}
@@ -98,6 +100,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
 --- !u!1 &2548184640373765942
 GameObject:
@@ -199,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5309031600279883059}
   m_Layer: 5
-  m_Name: '#Content'
+  m_Name: '#objContent'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,7 +14,7 @@ public class LoadSubPanel : MonoBehaviour
         GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/SubPanel/{prefabName}.prefab");
         go = GameObject.Instantiate(go);
         go.name = prefabName;
-        go = ObjectHelper.SetParent(transform, go.transform).gameObject;
+        go = GameObjectHelper.SetParent(transform, go.transform).gameObject;
         Canvas cv = go.AddComponent<Canvas>();
         cv.overrideSorting = true;
         go.AddComponent<GraphicRaycaster>();

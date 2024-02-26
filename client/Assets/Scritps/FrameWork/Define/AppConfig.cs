@@ -41,4 +41,9 @@ public class AppConfig : ScriptableObject
     /// yooasset 包名
     /// </summary>
     public string PackageName = "DefaultPackage";
+
+    /// <summary>
+    /// ProtoBuff 包名
+    /// </summary>
+    public string ProtoBuffPackageName = "com.bochsler.protocol.";
 }

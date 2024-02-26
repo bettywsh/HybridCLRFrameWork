@@ -31,7 +31,7 @@ public class UpdatePanel : BasePanel
     {
         package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
         var versionOperation = package.UpdatePackageVersionAsync();
-        await versionOperation;
+        await versionOperation.Task.AsUniTask();
         if (versionOperation.Status == EOperationStatus.Succeed)
         {
             //更新成功
@@ -46,6 +46,16 @@ public class UpdatePanel : BasePanel
             //更新失败
             Debug.LogError(versionOperation.Error);
             return;
+        }
+        Debug.LogError("包体版本"+package.GetPackageVersion());
+        Debug.LogError("远程版本" + versionOperation.PackageVersion);
+        if (int.Parse(package.GetPackageVersion()) > int.Parse(versionOperation.PackageVersion))
+        { 
+            //大版本更新
+        }
+        else
+        {
+            StartGame();
         }
         await UpdatePackageManifest();
     }

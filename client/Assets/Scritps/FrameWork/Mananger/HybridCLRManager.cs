@@ -19,10 +19,10 @@ public class HybridCLRManager : Singleton<HybridCLRManager>
     public async UniTask LoadDll()
     {
         LoadMetadataForAOTAssemblies();
-#if !UNITY_EDITOR        
-        TextAsset ta = await ResManager.Instance.LoadAssetAsync<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
+#if !UNITY_EDITOR
+        TextAsset ta = await ResManager.Instance.SceneLoadAssetAsync<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
         _hotUpdateAss = Assembly.Load(ta.bytes);
-        ResManager.Instance.UnLoadAssetAsync();
+        ResManager.Instance.UnLoadAssetBundle(LoadSceneManager.Instance.CurScene());
 #else
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
 #endif

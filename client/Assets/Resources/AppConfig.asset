@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be708a707b5662a44a27a96344ee1908, type: 3}
   m_Name: AppConfig
   m_EditorClassIdentifier: 
-  EPlayMode: 0
+  EPlayMode: 2
+  AppVersion: 1.0.1
+  ResVersion: 10002
   SvrResIp: http://192.168.14.129:8082/
   SvrGameIp: shiku.grandlink.net
   SvrGamePort: 8443

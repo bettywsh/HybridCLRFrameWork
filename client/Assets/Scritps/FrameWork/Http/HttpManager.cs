@@ -58,7 +58,9 @@ public class HttpManager : Singleton<HttpManager>
             }
             else
             {
-                return webRequest.downloadHandler.text;
+                string data = webRequest.downloadHandler.text;
+                webRequest.Dispose();
+                return data;
             }
         }
     }
@@ -86,7 +88,9 @@ public class HttpManager : Singleton<HttpManager>
             }
             else
             {
-                return webRequest.downloadHandler.text;
+                string data = webRequest.downloadHandler.text;
+                webRequest.Dispose();
+                return data;
             }
         }
     }

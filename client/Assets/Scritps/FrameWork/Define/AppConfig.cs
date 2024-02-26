@@ -13,6 +13,18 @@ public class AppConfig : ScriptableObject
     public EPlayMode EPlayMode = EPlayMode.EditorSimulateMode;
 
     /// <summary>
+    /// app版本
+    /// </summary>
+    ///
+    public string AppVersion = "1.01";
+
+    /// <summary>
+    /// 资源版本
+    /// </summary>
+    ///
+    public string ResVersion = "10001";
+
+    /// <summary>
     /// 热更下载地址
     /// </summary>
     public string SvrResIp = "http://192.168.11.18:8082/";

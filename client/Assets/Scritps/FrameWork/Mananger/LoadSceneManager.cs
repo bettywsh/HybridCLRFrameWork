@@ -6,7 +6,6 @@ using UnityEngine.U2D;
 using UnityEngine.SceneManagement;
 using YooAsset;
 using Cysharp.Threading.Tasks;
-using Codice.CM.SEIDInfo;
 
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {

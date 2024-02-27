@@ -22,6 +22,7 @@ public class UpdatePanel : BasePanel
         }
         else
         {
+            //这里需要添加强更代码
             await UpdatePackageVersion();
         }
     }
@@ -49,15 +50,15 @@ public class UpdatePanel : BasePanel
         }
         Debug.LogError("包体版本"+package.GetPackageVersion());
         Debug.LogError("远程版本" + versionOperation.PackageVersion);
-        if (int.Parse(package.GetPackageVersion()) > int.Parse(versionOperation.PackageVersion))
-        { 
-            //大版本更新
+        if (int.Parse(package.GetPackageVersion()) < int.Parse(versionOperation.PackageVersion))
+        {
+            //小版本更新
+            await UpdatePackageManifest();
         }
         else
         {
             StartGame();
-        }
-        await UpdatePackageManifest();
+        }        
     }
 
     //获取资源列表
@@ -83,7 +84,7 @@ public class UpdatePanel : BasePanel
         int downloadingMaxNum = 10;
         int failedTryAgain = 3;
         downloader = package.CreateResourceDownloader(downloadingMaxNum, failedTryAgain);
-
+        await downloader;
         //没有需要下载的资源
         if (downloader.TotalDownloadCount == 0)
         {
@@ -165,9 +166,9 @@ public class UpdatePanel : BasePanel
 
     //}
 
-    void StartGame() {
+    async void StartGame() {
         UIManager.Instance.Close<UpdatePanel>();
-        HybridCLRManager.Instance.LoadDll();
+        await HybridCLRManager.Instance.LoadDll();
     }
 
 

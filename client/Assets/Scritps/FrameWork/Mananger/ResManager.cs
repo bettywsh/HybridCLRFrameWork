@@ -136,6 +136,15 @@ public class ResManager : Singleton<ResManager>
         await package.LoadSceneAsync(location, LoadSceneMode.Single, false).Task.AsUniTask();
     }
 
+    #region 配表专用
+    public TextAsset LoadAsset<T>(string location) where T : UnityEngine.Object
+    {
+        AssetHandle ah = package.LoadAssetSync<T>(location);
+        package.TryUnloadUnusedAsset(location);
+        return ah.AssetObject as TextAsset;
+    }
+    #endregion
+
 
     #region 资源加载标识
     private void AddResloader(string resName, AssetHandle assetHandle)

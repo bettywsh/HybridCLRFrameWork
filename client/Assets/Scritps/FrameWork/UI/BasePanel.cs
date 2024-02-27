@@ -32,6 +32,11 @@ public class BasePanel
     
     }
 
+    public virtual void Close()
+    {
+        //UIManager.Instance.Close<this>();
+    }
+
     public virtual void OnClose()
     {
         EventHelper.UnRegisterEvent(this);

@@ -11,9 +11,9 @@ public enum EUILayer : int
 }
 
 
-public enum EScene
+public enum EScene : int
 { 
-    Login,
+    Login = 1,
     Main,
     Battle,
 }

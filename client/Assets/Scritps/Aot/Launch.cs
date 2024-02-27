@@ -16,7 +16,7 @@ public class Launch : MonoBehaviour
 
         LoadSceneManager.Instance.Init();
         await ResManager.Instance.Init();
-        await AotText.Instance.Init();
+        //await AotText.Instance.Init();
         await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         UIManager.Instance.Init();

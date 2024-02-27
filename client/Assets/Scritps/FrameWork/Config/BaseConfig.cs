@@ -6,14 +6,9 @@ using UnityEngine;
 
 public class BaseConfig 
 {
-    public virtual void Init()
+    public virtual async UniTask Init()
     { 
     
-    }
-
-    public virtual async UniTaskVoid InitUniTask()
-    {
-        await UniTask.Yield();
     }
 
     public async UniTask<T> LoadConfig<T>(Type type) where T : class

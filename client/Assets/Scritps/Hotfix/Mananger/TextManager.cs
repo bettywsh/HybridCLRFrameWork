@@ -9,6 +9,7 @@ public class TextManager : Singleton<TextManager>
     string language;
     public override async UniTask Init()
     {
+        await base.Init();
         string startLanguage = PlayerPrefs.GetString("language", "");
         if (startLanguage == "")
         {
@@ -29,15 +30,14 @@ public class TextManager : Singleton<TextManager>
 
     public string GetText(string key)
     {
-        LanguageConfigItem languageConfigItem = ConfigManager.Instance.LoadConfig<LanguageConfig>().GetById(key);
-        string str = "Not Found" + key;
-        try
+        cfg.Language languageItem = ConfigManager.Instance.Tables.LanguageConfig.Get(key);
+        if (languageItem != null)
         {
-            str = typeof(LanguageConfigItem).GetField(language).GetValue(languageConfigItem) as string;
+            return languageItem.Chinese;
         }
-        catch {
-
+        else
+        { 
+            return "Not Found" + key;
         }
-        return str;
     }
 }

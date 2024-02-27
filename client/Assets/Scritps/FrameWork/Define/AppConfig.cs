@@ -13,12 +13,6 @@ public class AppConfig : ScriptableObject
     public EPlayMode EPlayMode = EPlayMode.EditorSimulateMode;
 
     /// <summary>
-    /// app版本
-    /// </summary>
-    ///
-    public string AppVersion = "1.01";
-
-    /// <summary>
     /// 资源版本
     /// </summary>
     ///

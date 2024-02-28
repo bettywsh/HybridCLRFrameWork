@@ -7,15 +7,9 @@ public class DialogPanel : BasePanel
 {
     DialogInfo dialogInfo;
 
-    public override async UniTask OnBindEvent()
-    {
-        base.OnBindEvent();
-    }
-
     public override async UniTask OnOpen()
     {        
         base.OnOpen();
-
         dialogInfo = args[0] as DialogInfo;
         transform.GetComponent<Canvas>().sortingOrder = (int)dialogInfo.layer;
         referenceData["txtMsg"].tmptxtValue.text = dialogInfo.txtMsg;
@@ -41,13 +35,15 @@ public class DialogPanel : BasePanel
         }
     }
 
-    void OnClick_btnOk()
+    [OnClick("btnOk")]
+    public void OnClick_btnOk()
     {
         dialogInfo.okFun?.Invoke();
         UIManager.Instance.Close<DialogPanel>();
     }
 
-    void OnClick_btnCancel()
+    [OnClick("btnCancel")]
+    public void OnClick_btnCancel()
     {
         dialogInfo.calFun?.Invoke();
         UIManager.Instance.Close<DialogPanel>();
@@ -55,6 +51,6 @@ public class DialogPanel : BasePanel
 
     public override void OnClose()
     {
-        
+        base.OnClose();
     }
 }

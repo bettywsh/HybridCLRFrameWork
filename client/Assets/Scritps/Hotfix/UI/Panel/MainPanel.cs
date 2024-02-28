@@ -6,29 +6,27 @@ using UnityEngine;
 public class MainPanel : BasePanel
 {
 
-    public override async UniTask OnBindEvent()
-    {
-        base.OnBindEvent();
-    }
-
     public override async UniTask OnOpen()
     {        
         base.OnOpen();
     }
 
-    void OnClick_Bag()
+    [OnClick("btnBag")]
+    public void OnClick_Bag()
     {
         UIManager.Instance.Open<BagPanel>();
     }
 
-    void OnClick_DialogOne()
+    [OnClick("btnDialogOne")]
+    public void OnClick_DialogOne()
     {
         DialogManager.Instance.ShowDialogOne("", new Vector3(1,2,3).z + "一个按钮", () => {
             Debug.Log("确定");
         });
     }
 
-    void OnClick_DialogTwo() 
+    [OnClick("btnDialogTwo")]
+    public void OnClick_DialogTwo() 
     { 
         DialogManager.Instance.ShowDialogTwo("", "两个按钮", ()=> {
             Debug.Log("确定");
@@ -38,7 +36,9 @@ public class MainPanel : BasePanel
         });
     }
 
-    void OnClick_FlyingText() {
+    [OnClick("btnFlyingText")]
+    public void OnClick_FlyingText() 
+    {
         DialogManager.Instance.ShowTextFlying("漂字1");
         DialogManager.Instance.ShowTextFlying("漂字2");
         DialogManager.Instance.ShowTextFlying("漂字3");

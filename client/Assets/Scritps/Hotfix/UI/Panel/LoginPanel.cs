@@ -6,12 +6,6 @@ using UnityEngine;
 
 public class LoginPanel : BasePanel
 {
-
-    public override async UniTask OnBindEvent()
-    {        
-        await base.OnBindEvent();
-    }
-
     public override async UniTask OnOpen()
     {
         await base.OnOpen();

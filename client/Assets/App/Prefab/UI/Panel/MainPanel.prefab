@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2875684763979547235}
   - component: {fileID: 1360842222629050542}
   m_Layer: 5
-  m_Name: '#FlyingText'
+  m_Name: '#btnFlyingText'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_selectedIndex: 3
   data:
-  - name: Mask
+  - name: btnMask
     referenceData:
       tranValue: {fileID: 1804292436910473575}
       imgValue: {fileID: 1804292436910473574}
@@ -589,8 +589,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: Bag
+  - name: btnBag
     referenceData:
       tranValue: {fileID: 1524917412317710262}
       imgValue: {fileID: 3992717683224159800}
@@ -600,8 +601,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: DialogOne
+  - name: btnDialogOne
     referenceData:
       tranValue: {fileID: 6498956733077412501}
       imgValue: {fileID: 2703477919776844303}
@@ -611,8 +613,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: DialogTwo
+  - name: btnDialogTwo
     referenceData:
       tranValue: {fileID: 3059816138273530153}
       imgValue: {fileID: 5302428470915409643}
@@ -622,8 +625,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: FlyingText
+  - name: btnFlyingText
     referenceData:
       tranValue: {fileID: 826030851387840319}
       imgValue: {fileID: 2875684763979547235}
@@ -633,6 +637,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
 --- !u!1 &1804292436910473572
 GameObject:
@@ -647,7 +652,7 @@ GameObject:
   - component: {fileID: 1804292436910473574}
   - component: {fileID: 1851447704694099903}
   m_Layer: 5
-  m_Name: '#Mask'
+  m_Name: '#btnMask'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -768,7 +773,7 @@ GameObject:
   - component: {fileID: 5302428470915409643}
   - component: {fileID: 6087054077282706299}
   m_Layer: 5
-  m_Name: '#DialogTwo'
+  m_Name: '#btnDialogTwo'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1061,7 +1066,7 @@ GameObject:
   - component: {fileID: 2703477919776844303}
   - component: {fileID: 1804210031155732255}
   m_Layer: 5
-  m_Name: '#DialogOne'
+  m_Name: '#btnDialogOne'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1183,7 +1188,7 @@ GameObject:
   - component: {fileID: 3992717683224159800}
   - component: {fileID: 5249335819254337939}
   m_Layer: 5
-  m_Name: '#Bag'
+  m_Name: '#btnBag'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

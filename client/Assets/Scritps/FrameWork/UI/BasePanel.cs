@@ -20,7 +20,7 @@ public class BasePanel
     public List<int> netsList = new List<int>();
     public List<Button> clickList = new List<Button>();
 
-    public virtual async UniTask OnBindEvent()
+    public virtual void OnBindEvent()
     {
         referenceCollector = transform.GetComponent<ReferenceCollector>();
         referenceData = referenceCollector.data.ToDictionary(x => x.name, x => x.referenceData);
@@ -28,7 +28,6 @@ public class BasePanel
         //object[] atts = this.GetType().GetCustomAttributes(false);
         foreach (MethodInfo method in this.GetType().GetMethods())
         {
-            Debug.Log(method.Name);
             foreach (var att in method.GetCustomAttributes(true))
             {
                 if (att is OnClickAttribute) {

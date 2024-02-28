@@ -6,15 +6,10 @@ using UnityEngine;
 public class LoadingPanel : BasePanel
 {
 
-    public override async UniTask OnBindEvent()
-    {
-        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
-        base.OnBindEvent();
-    }
-
     public override async UniTask OnOpen()
     {
 		base.OnOpen();
+        transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
     }
 
     public override void OnClose()

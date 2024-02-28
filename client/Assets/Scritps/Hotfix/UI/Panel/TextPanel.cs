@@ -9,11 +9,6 @@ public class TextPanel : BasePanel
     bool isTween = false;
     Queue<string> queue = new Queue<string>();
 
-    public override async UniTask OnBindEvent()
-    {
-        base.OnBindEvent();
-    }
-
     public override async UniTask OnOpen()
     { 
 		base.OnOpen();

@@ -8,13 +8,10 @@ using UnityEngine.UI;
 
 public class BagCell : BaseCell
 {
-    public TextMeshProUGUI m_Text;
-    public Image m_Image;
-    
 
-    public async void SetData(int idx, cfg.Horse horseConfigItem)
+    public async void OnOpen(cfg.Horse horseConfigItem)
     {
-        m_Text.text = horseConfigItem.Name;
-        await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png");
+        referenceData["txtTitle"].tmptxtValue.text = horseConfigItem.Name;
+        referenceData["imgIcon"].imgValue.sprite = await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png");
     }
 }

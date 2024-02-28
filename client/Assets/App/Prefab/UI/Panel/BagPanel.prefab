@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2533bb6b3d49aeb4485e09b56803d9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_selectedIndex: -1
+  m_selectedIndex: 0
   data:
-  - name: Mask
+  - name: btnMask
     referenceData:
       tranValue: {fileID: 1804292436910473575}
       imgValue: {fileID: 1804292436910473574}
@@ -141,8 +141,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: ListView
+  - name: listListView
     referenceData:
       tranValue: {fileID: 2429131560077638940}
       imgValue: {fileID: 0}
@@ -152,6 +153,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 490196577254673882}
 --- !u!1 &1804292436910473572
 GameObject:
@@ -166,7 +168,7 @@ GameObject:
   - component: {fileID: 1804292436910473574}
   - component: {fileID: 7992053417872279330}
   m_Layer: 5
-  m_Name: '#Mask'
+  m_Name: '#btnMask'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,7 +289,7 @@ GameObject:
   - component: {fileID: 490196577254673882}
   - component: {fileID: 5129480996099315168}
   m_Layer: 5
-  m_Name: '#ListView'
+  m_Name: '#listListView'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

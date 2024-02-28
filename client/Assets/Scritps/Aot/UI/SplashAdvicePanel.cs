@@ -20,7 +20,7 @@ public class SplashAdvicePanel : BasePanel
         //动画完成回调
         seq.AppendCallback(() =>
         {
-            UIManager.Instance.Close<SplashAdvicePanel>();
+            this.Close();
             UIManager.Instance.Open<SplashIconPanel>();
         });
     }

@@ -133,14 +133,23 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
+    public void Close(Type type)
+    {
+        Close(type.Name);
+    }
+
     public void Close<T>() where T : BasePanel
     {
-        string prefabName = typeof(T).Name;
+        Close(typeof(T).Name);
+    }
+
+    void Close(string prefabName)
+    {
         BasePanel obj;
         if (uiList.TryGetValue(prefabName, out obj))
         {
             BasePanel basePanel = obj;
-            basePanel.OnClose();          
+            basePanel.OnClose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             uiList.Remove(prefabName);
         }

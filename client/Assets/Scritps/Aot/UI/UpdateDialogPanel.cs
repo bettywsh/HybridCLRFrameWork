@@ -35,13 +35,13 @@ public class UpdateDialogPanel : BasePanel
     void OnClick_btnOk()
     {
         dialogInfo.okFun?.Invoke();
-        UIManager.Instance.Close<UpdateDialogPanel>();
+        this.Close();
     }
 
     void OnClick_btnCancel()
     {
         dialogInfo.calFun?.Invoke();
-        UIManager.Instance.Close<UpdateDialogPanel>();
+        this.Close();
     }
 
 

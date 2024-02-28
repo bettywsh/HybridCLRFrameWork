@@ -167,7 +167,7 @@ public class UpdatePanel : BasePanel
     //}
 
     async void StartGame() {
-        UIManager.Instance.Close<UpdatePanel>();
+        this.Close();
         await HybridCLRManager.Instance.LoadDll();
     }
 

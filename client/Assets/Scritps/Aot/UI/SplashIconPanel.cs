@@ -18,7 +18,7 @@ public class SplashIconPanel : BasePanel
         //动画完成回调
         seq.AppendCallback(() =>
         {
-            UIManager.Instance.Close<SplashIconPanel>();
+            this.Close();
             UIManager.Instance.Open<UpdatePanel>();
         });
 

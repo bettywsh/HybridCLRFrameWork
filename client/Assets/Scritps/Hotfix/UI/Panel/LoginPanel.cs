@@ -9,16 +9,17 @@ public class LoginPanel : BasePanel
 
     public override async UniTask OnBindEvent()
     {        
-        base.OnBindEvent();
+        await base.OnBindEvent();
     }
 
     public override async UniTask OnOpen()
     {
-        base.OnOpen();
+        await base.OnOpen();
         //ObjectHelper.SetGrey(view.btn_Ok.transform, true);
     }
 
-    void OnMsg_Connected(object[] msgDatas)
+    [OnMessage("OnMsg_Connected")]
+    public void OnMsg_Connected(object[] msgDatas)
     {
         Debug.LogError("连接成功");
         LoginRequest lr = new LoginRequest();
@@ -29,19 +30,21 @@ public class LoginPanel : BasePanel
         NetworkManager.Instance.Send((int)CSMessageEnum.LoginRequest, lr);
     }
 
-    void OnNet_LoginResponse(object[] msgDatas)
+    [OnNet((int)SCMessageEnum.LoginResponse)]
+    public void OnNet_LoginResponse(object[] msgDatas)
     {
         Debug.LogError("LoginResponse");
     }
 
-    void OnClick_Ok()
+    [OnClick("Ok")]
+    public void OnClick_Ok()
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 
         //NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
 
         LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
-        UIManager.Instance.Close<LoginPanel>();
+        this.Close();
     }
 
     public override void OnClose()

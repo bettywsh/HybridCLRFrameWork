@@ -1,3 +1,0 @@
-python ExcelTools.py 
-
-pause

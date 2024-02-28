@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AppConfig
   m_EditorClassIdentifier: 
   EPlayMode: 0
-  ResVersion: 10002
+  ResVersion: 10001
   SvrResIp: http://192.168.14.129:8082/
   SvrGameIp: shiku.grandlink.net
   SvrGamePort: 8443

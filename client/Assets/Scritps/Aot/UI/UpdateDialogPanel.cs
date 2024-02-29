@@ -32,12 +32,14 @@ public class UpdateDialogPanel : BasePanel
         }
     }
 
+    [OnClick("btnOk")]
     void OnClick_btnOk()
     {
         dialogInfo.okFun?.Invoke();
         this.Close();
     }
 
+    [OnClick("btnCancel")]
     void OnClick_btnCancel()
     {
         dialogInfo.calFun?.Invoke();

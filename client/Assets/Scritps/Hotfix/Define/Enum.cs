@@ -6,7 +6,6 @@ public enum EUILayer : int
     Dialog = 111,
     Guide = 122,
     Loading = 133,
-
     DialogSystem = 151,
 }
 

@@ -46,7 +46,8 @@ public class HttpManager : Singleton<HttpManager>
             webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gb2312");
             webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
-            webRequest.SetRequestHeader("Token", token);
+            if (token != null)
+                webRequest.SetRequestHeader("Token", token);
             webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
 
             await webRequest.SendWebRequest().ToUniTask();

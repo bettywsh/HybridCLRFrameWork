@@ -7,6 +7,8 @@ using UnityEngine;
 using YooAsset;
 using TMPro;
 using UnityEngine.UI;
+using System.IO;
+using System.Runtime.ConstrainedExecution;
 
 public class UpdatePanel : BasePanel
 {
@@ -22,15 +24,51 @@ public class UpdatePanel : BasePanel
         }
         else
         {
-            //这里需要添加强更代码
+            package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
+            //判断是否是强更
+            string bigVersion = await HttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/ver.txt", null);
+            if (float.Parse(bigVersion) > float.Parse(Application.version))
+            {
+                AotDialog.Instance.ShowDialogOne("警告", "客户端版本过低，请重新下载", async () =>
+                {
+                    Application.OpenURL($"{AppSettings.AppConfig.SvrResIp}Android/{AppSettings.AppConfig.DownloadApkName}");
+                });
+                return;
+            }
+
+            //处理覆盖安装问题
+            string verdir = $"{package.GetPackageSandboxRootDirectory()}/{AppSettings.AppConfig.PackageName}";
+            string ver = $"{verdir}/ ver.txt";
+            if (!File.Exists(ver))
+            {
+                CreateVerSionSandbox(verdir, ver);
+            }
+            else {
+                string v = File.ReadAllText(ver);
+                if (float.Parse(v) < float.Parse(Application.version))
+                {
+                    CreateVerSionSandbox(verdir, ver);
+                }
+            }
+
+            //拉去资源版本判断小版本
             await UpdatePackageVersion();
         }
+    }
+
+    void CreateVerSionSandbox(string verdir, string ver) {
+        package.ClearPackageSandbox();
+        if (!Directory.Exists(verdir))
+        {
+            Directory.CreateDirectory(verdir);
+        }
+        File.WriteAllText(ver, Application.version);
     }
 
     //获取资源版本
     async UniTask UpdatePackageVersion()
     {
-        package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
+        
         var versionOperation = package.UpdatePackageVersionAsync();
         await versionOperation.Task.AsUniTask();
         if (versionOperation.Status == EOperationStatus.Succeed)
@@ -102,7 +140,7 @@ public class UpdatePanel : BasePanel
         //downloader.OnDownloadOverCallback = OnDownloadOverFunction;
         //downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
 
-        AotDialog.Instance.ShowDialogOne("警告", $"有新的资源需要下载,大小为{HumanReadableFilesize(totalDownloadBytes)}", async () => {
+        AotDialog.Instance.ShowDialogOne("警告", $"有新的资源需要下载,大小为{FileSizeString(totalDownloadBytes)}", async () => {
             await Download();
         });
     }
@@ -127,7 +165,7 @@ public class UpdatePanel : BasePanel
     /// </summary>
     /// <param name="size">字节值</param>
     /// <returns></returns>
-    private string HumanReadableFilesize(double size)
+    private string FileSizeString(double size)
     {
         String[] units = new String[] { "B", "KB", "MB", "GB", "TB", "PB" };
         double mod = 1024.0;

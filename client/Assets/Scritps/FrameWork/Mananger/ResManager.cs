@@ -98,7 +98,7 @@ public class ResManager : Singleton<ResManager>
     string GetHostServerURL()
     {
         string hostServerIP = AppSettings.AppConfig.SvrResIp;
-        string appVersion = $"v1.0";
+        string appVersion = $"";
 
 #if UNITY_EDITOR
         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)

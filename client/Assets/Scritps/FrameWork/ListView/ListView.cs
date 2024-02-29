@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using System.Linq;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(UnityEngine.UI.RectMask2D))]
 [RequireComponent(typeof(UnityEngine.UI.LoopScrollRect))]

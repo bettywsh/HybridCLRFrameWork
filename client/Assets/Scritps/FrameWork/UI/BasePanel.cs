@@ -26,7 +26,7 @@ public class BasePanel
         referenceData = referenceCollector.data.ToDictionary(x => x.name, x => x.referenceData);
 
         //object[] atts = this.GetType().GetCustomAttributes(false);
-        foreach (MethodInfo method in this.GetType().GetMethods())
+        foreach (MethodInfo method in this.GetType().GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
@@ -55,8 +55,8 @@ public class BasePanel
     }
 
     public virtual void OnUpdate()
-    { 
-    
+    {
+
     }
 
     public virtual void Close()

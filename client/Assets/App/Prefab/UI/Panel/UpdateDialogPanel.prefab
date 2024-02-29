@@ -950,6 +950,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
   - name: cngMsg
     referenceData:
@@ -961,6 +962,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 1425305453025213585}
       listValue: {fileID: 0}
   - name: txtMsg
     referenceData:
@@ -972,6 +974,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 4019639225460123371}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
   - name: btnCancel
     referenceData:
@@ -983,6 +986,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
   - name: txtCancel
     referenceData:
@@ -994,6 +998,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 1124492646915379185}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
   - name: btnOk
     referenceData:
@@ -1005,6 +1010,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
   - name: txtOk
     referenceData:
@@ -1016,6 +1022,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 2907113148085182964}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
 --- !u!1 &7210635767537150044
 GameObject:

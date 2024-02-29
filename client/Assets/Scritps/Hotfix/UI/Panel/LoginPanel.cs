@@ -31,7 +31,7 @@ public class LoginPanel : BasePanel
     }
 
     [OnClick("Ok")]
-    public void OnClick_Ok()
+    void OnClick_Ok()
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 

@@ -57,4 +57,9 @@ public class AppConfig : ScriptableObject
     /// 启动场景名
     /// </summary>
     public string StartSceneName = "Start";
+
+    /// <summary>
+    /// 强更文件名
+    /// </summary>
+    public string DownloadApkName = "ff.apk";
 }

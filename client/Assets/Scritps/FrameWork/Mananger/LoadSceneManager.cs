@@ -24,7 +24,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     public void Init(Action openUI = null)
     {
         openLoadingUI = openUI;
-        name = AppSettings.AppConfig.StartSceneName;
+        name = SceneManager.GetActiveScene().name;
     }
 
     public void LoadScene(string scene, bool loading)

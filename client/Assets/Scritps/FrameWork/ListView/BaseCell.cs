@@ -17,5 +17,6 @@ public class BaseCell : MonoBehaviour
         referenceCollector = transform.GetComponent<ReferenceCollector>();
         referenceData = referenceCollector.data.ToDictionary(x => x.name, x => x.referenceData);
 
+        EventHelper.RegisterUIEvent(this, referenceData);
     }
 }

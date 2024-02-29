@@ -1,4 +1,5 @@
 using HybridCLR.Editor.Commands;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ public class AssetsBuild
     public static List<string> HotUpdateDlls = new List<string> { "Hotfix.dll" };
 
     [MenuItem("Build/BuildAndroidAsset", false, 1)]
-    public static void BuildAndroid()
+    public static void BuildAndroidAsset()
     {
         Debug.Log($"开始构建 : 华佗dll");
         PrebuildCommand.GenerateAll();
@@ -68,10 +69,32 @@ public class AssetsBuild
         {
             Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
         }
-        AssetDatabase.Refresh();
-
+     
         Debug.Log($"写入版本文件");
         string verPath = $"{buildoutputRoot}/{BuildTarget.Android.ToString()}/DefaultPackage/{appConfig.ResVersion}/ver.txt";
         File.WriteAllText(verPath, Application.version);
+
+        AssetDatabase.Refresh();
+    }
+
+    [MenuItem("Build/BuildAndroidApk", false, 1)]
+    public static void BuildAndroidApk() {
+        BuildAndroidAsset();
+
+        var currentApkName = DateTime.Now.ToString("MM_dd_HH_mm_ss");
+        var apkDir = string.Format("{0}/_APK/{1}", $"{Application.dataPath}/../", currentApkName);
+        if (!Directory.Exists(apkDir))
+            Directory.CreateDirectory(apkDir);
+        string toPath = string.Format("{0}/mjdmx_{1}.apk", apkDir, currentApkName);
+
+        string[] scenes = { "Assets/App/Scene/Start.unity",
+                            "Assets/App/Scene/Main.unity",
+                            "Assets/App/Scene/Racing.unity",
+                            "Assets/App/Scene/Login.unity" };
+
+        PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
+        BuildPipeline.BuildPlayer(scenes, toPath, BuildTarget.Android, BuildOptions.CompressWithLz4HC);
+
+        Debug.Log("APK 完成");
     }
 }

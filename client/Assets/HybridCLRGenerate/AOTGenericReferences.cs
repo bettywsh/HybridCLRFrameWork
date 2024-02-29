@@ -19,7 +19,11 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// }} 
 
 	// {{ AOT generic types
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<BagPanel.<OnOpen>d__1>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<LoginPanel.<OnOpen>d__0>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask.<>c<TextManager.<Init>d__1>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<BagPanel.<OnOpen>d__1>
+	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<LoginPanel.<OnOpen>d__0>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTask<TextManager.<Init>d__1>
 	// Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<object>
 	// Cysharp.Threading.Tasks.CompilerServices.IStateMachineRunnerPromise<object>
@@ -218,22 +222,18 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 
 	public void RefMethods()
 	{
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,BagPanel.<OnOpen>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter&,BagPanel.<OnOpen>d__1&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,LoginPanel.<OnOpen>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter&,LoginPanel.<OnOpen>d__0&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,TextManager.<Init>d__1>(Cysharp.Threading.Tasks.UniTask.Awaiter&,TextManager.<Init>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<BagPanel.<OnBindEvent>d__1>(BagPanel.<OnBindEvent>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<BagPanel.<OnOpen>d__2>(BagPanel.<OnOpen>d__2&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<BagPanel.<OnOpen>d__1>(BagPanel.<OnOpen>d__1&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<ConfigManager.<Init>d__1>(ConfigManager.<Init>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<DialogPanel.<OnBindEvent>d__1>(DialogPanel.<OnBindEvent>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<DialogPanel.<OnOpen>d__2>(DialogPanel.<OnOpen>d__2&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<LoadingPanel.<OnBindEvent>d__0>(LoadingPanel.<OnBindEvent>d__0&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<LoadingPanel.<OnOpen>d__1>(LoadingPanel.<OnOpen>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<LoginPanel.<OnBindEvent>d__0>(LoginPanel.<OnBindEvent>d__0&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<LoginPanel.<OnOpen>d__1>(LoginPanel.<OnOpen>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<MainPanel.<OnBindEvent>d__0>(MainPanel.<OnBindEvent>d__0&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<MainPanel.<OnOpen>d__1>(MainPanel.<OnOpen>d__1&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<DialogPanel.<OnOpen>d__1>(DialogPanel.<OnOpen>d__1&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<LoadingPanel.<OnOpen>d__0>(LoadingPanel.<OnOpen>d__0&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<LoginPanel.<OnOpen>d__0>(LoginPanel.<OnOpen>d__0&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<MainPanel.<OnOpen>d__0>(MainPanel.<OnOpen>d__0&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<RedManager.<Init>d__2>(RedManager.<Init>d__2&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<TextManager.<Init>d__1>(TextManager.<Init>d__1&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<TextPanel.<OnBindEvent>d__2>(TextPanel.<OnBindEvent>d__2&)
-		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<TextPanel.<OnOpen>d__3>(TextPanel.<OnOpen>d__3&)
+		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder.Start<TextPanel.<OnOpen>d__2>(TextPanel.<OnOpen>d__2&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<object>.Start<ResManager.<CommonLoadAssetAsync>d__5<object>>(ResManager.<CommonLoadAssetAsync>d__5<object>&)
 		// System.Void Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder<object>.Start<ResManager.<SceneLoadAssetAsync>d__6<object>>(ResManager.<SceneLoadAssetAsync>d__6<object>&)
 		// object DG.Tweening.TweenSettingsExtensions.SetRelative<object>(object)
@@ -244,9 +244,9 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object System.Activator.CreateInstance<object>()
 		// object[] System.Array.Empty<object>()
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter,Launch.<Start>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter&,Launch.<Start>d__0&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,BagCell.<SetData>d__2>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,BagCell.<SetData>d__2&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,BagCell.<OnOpen>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,BagCell.<OnOpen>d__0&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.AwaitUnsafeOnCompleted<Cysharp.Threading.Tasks.UniTask.Awaiter<object>,Launch.<Start>d__0>(Cysharp.Threading.Tasks.UniTask.Awaiter<object>&,Launch.<Start>d__0&)
-		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<BagCell.<SetData>d__2>(BagCell.<SetData>d__2&)
+		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<BagCell.<OnOpen>d__0>(BagCell.<OnOpen>d__0&)
 		// System.Void System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Start<Launch.<Start>d__0>(Launch.<Start>d__0&)
 		// System.Void UIManager.Close<object>()
 		// object UIManager.Open<object>(object[])

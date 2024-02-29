@@ -27,6 +27,9 @@
     <type fullname="MessageManager" preserve="all" />
     <type fullname="MonoSingleton`1" preserve="all" />
     <type fullname="NetworkManager" preserve="all" />
+    <type fullname="OnClickAttribute" preserve="all" />
+    <type fullname="OnMessageAttribute" preserve="all" />
+    <type fullname="OnNetAttribute" preserve="all" />
     <type fullname="ReferenceData" preserve="all" />
     <type fullname="ResManager" preserve="all" />
     <type fullname="Singleton`1" preserve="all" />

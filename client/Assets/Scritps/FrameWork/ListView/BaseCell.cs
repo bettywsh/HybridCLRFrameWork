@@ -8,9 +8,15 @@ using System.Linq;
 
 public class BaseCell : MonoBehaviour
 {
-    public ReferenceCollector referenceCollector;
     public Dictionary<string, ReferenceData> referenceData;
     public Transform transform;
+    ReferenceCollector referenceCollector;
+    ListView listView;
+
+    public virtual void Init(ListView lv)
+    {
+        listView = lv;
+    }
 
     public virtual void OnBindEvent()
     {

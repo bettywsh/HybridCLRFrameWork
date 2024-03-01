@@ -29,7 +29,7 @@ public class UpdatePanel : BasePanel
             string bigVersion = await HttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/ver.txt", null);
             if (float.Parse(bigVersion) > float.Parse(Application.version))
             {
-                AotDialog.Instance.ShowDialogOne("警告", "客户端版本过低，请重新下载", async () =>
+                AotDialog.Instance.ShowDialogOne("警告", "客户端版本过低，请重新下载", () =>
                 {
                     Application.OpenURL($"{AppSettings.AppConfig.SvrResIp}Android/{AppSettings.AppConfig.DownloadApkName}");
                 });

@@ -39,14 +39,14 @@ public class DialogPanel : BasePanel
     public void OnClick_btnOk()
     {
         dialogInfo.okFun?.Invoke();
-        UIManager.Instance.Close<DialogPanel>();
+        this.Close();
     }
 
     [OnClick("btnCancel")]
     public void OnClick_btnCancel()
     {
         dialogInfo.calFun?.Invoke();
-        UIManager.Instance.Close<DialogPanel>();
+        this.Close();
     }
 
     public override void OnClose()

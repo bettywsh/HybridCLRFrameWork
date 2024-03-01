@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 2230105928255592779}
   - component: {fileID: 7620490312364507267}
   m_Layer: 5
-  m_Name: '#PassWorld'
+  m_Name: '#txtPassWorld'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 2840704615021609968}
   - component: {fileID: 2865176093585168501}
   m_Layer: 5
-  m_Name: '#Ok'
+  m_Name: '#btnOk'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_selectedIndex: 2
   data:
-  - name: Ok
+  - name: btnOk
     referenceData:
       tranValue: {fileID: 4739564722266252912}
       imgValue: {fileID: 2840704615021609968}
@@ -741,8 +741,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: Account
+  - name: txtAccount
     referenceData:
       tranValue: {fileID: 7236352688414893031}
       imgValue: {fileID: 2328040202474562895}
@@ -752,8 +753,9 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
-  - name: PassWorld
+  - name: txtPassWorld
     referenceData:
       tranValue: {fileID: 2797737558978709699}
       imgValue: {fileID: 2230105928255592779}
@@ -763,6 +765,7 @@ MonoBehaviour:
       toggleValue: {fileID: 0}
       sliderValue: {fileID: 0}
       tmptxtValue: {fileID: 0}
+      cngValue: {fileID: 0}
       listValue: {fileID: 0}
 --- !u!1 &7444510915783049605
 GameObject:
@@ -853,7 +856,7 @@ GameObject:
   - component: {fileID: 2328040202474562895}
   - component: {fileID: 5469443944754859813}
   m_Layer: 5
-  m_Name: '#Account'
+  m_Name: '#txtAccount'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

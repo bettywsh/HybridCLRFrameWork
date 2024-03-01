@@ -89,6 +89,7 @@ public class UIManager : MonoSingleton<UIManager>
         }      
         return t as T;
     }
+        
 
     public async void LoadPanel(string name, BasePanel basePanel, params object[] args)
     {
@@ -133,6 +134,7 @@ public class UIManager : MonoSingleton<UIManager>
         }
     }
 
+    //框架用
     public void Close(Type type)
     {
         Close(type.Name);

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc7fb86cfd43d44c9973e83fbbe54d0, type: 3}
+  m_Name: BuildinFileManifest
+  m_EditorClassIdentifier: 
+  BuildinFiles:
+  - PackageName: DefaultPackage
+    FileName: 03370a10999ce899a25d4e94c5ac854a.bundle
+    FileCRC32: ebbe1a88
+  - PackageName: DefaultPackage
+    FileName: 0aa5cc405c0942147ede7437cb90f9ab.bundle
+    FileCRC32: 0e8822bf
+  - PackageName: DefaultPackage
+    FileName: 0f19e92b40f29a18dbc38c365c69a56b.bundle
+    FileCRC32: d629e044
+  - PackageName: DefaultPackage
+    FileName: 186a29d20472641cb564ac1e0a22826d.bundle
+    FileCRC32: 7c1012f3
+  - PackageName: DefaultPackage
+    FileName: 1d72a328a911db8b2f181a501358575e.bundle
+    FileCRC32: 04d61d99
+  - PackageName: DefaultPackage
+    FileName: 2191541c9435902c462bd4e1f51571d3.bundle
+    FileCRC32: 104cafd0
+  - PackageName: DefaultPackage
+    FileName: 26981c8cc62a7a523aa26b535d73af19.bundle
+    FileCRC32: b8719216
+  - PackageName: DefaultPackage
+    FileName: 2b10ef6cefd1bd654f8c4b23b12ea8f3.bundle
+    FileCRC32: e2087d28
+  - PackageName: DefaultPackage
+    FileName: 2ff4223c83ed9fbbef2a3edd3ec15135.bundle
+    FileCRC32: 3cbf6b27
+  - PackageName: DefaultPackage
+    FileName: 305d9a57d50e15a188ed947118dc668e.bundle
+    FileCRC32: 312b36df
+  - PackageName: DefaultPackage
+    FileName: 3493c0a1f567d62b57f556feb0d3bacf.bundle
+    FileCRC32: 84ba8fc0
+  - PackageName: DefaultPackage
+    FileName: 3ea20dd8449c9b1b018d2a62d500cf10.bundle
+    FileCRC32: bd9ed18b
+  - PackageName: DefaultPackage
+    FileName: 472fa29d5e4cfc5f73e14ed73f37c736.bundle
+    FileCRC32: 117a43bd
+  - PackageName: DefaultPackage
+    FileName: 58906dd501e312e4fc33df8cdf0a40fa.bundle
+    FileCRC32: e58dd470
+  - PackageName: DefaultPackage
+    FileName: 590154f711e14b561ac605811c1df8aa.bundle
+    FileCRC32: 341042c7
+  - PackageName: DefaultPackage
+    FileName: 5a74121026487c63b3cbb64245235177.bundle
+    FileCRC32: 7375a5c0
+  - PackageName: DefaultPackage
+    FileName: 72cb4fb7fc1798f29d4e090bd1688fc0.bundle
+    FileCRC32: 6e82338f
+  - PackageName: DefaultPackage
+    FileName: 91f36366fdd60c8506899b1783da9c46.bundle
+    FileCRC32: 74373801
+  - PackageName: DefaultPackage
+    FileName: 929fa3844153d61dcf20476f5f81f576.bundle
+    FileCRC32: 2b709c39
+  - PackageName: DefaultPackage
+    FileName: 9803d7e98270d993e954944ee925a848.bundle
+    FileCRC32: 5e526a09
+  - PackageName: DefaultPackage
+    FileName: 9ad5cf300ae9c7919a6b50cd4879297c.bundle
+    FileCRC32: e2879386
+  - PackageName: DefaultPackage
+    FileName: 9c31b851750f368eec67b4a61fc53c9f.bundle
+    FileCRC32: f9e84460
+  - PackageName: DefaultPackage
+    FileName: a3816acca6d39a676986f5a00fdcf295.bundle
+    FileCRC32: 85442189
+  - PackageName: DefaultPackage
+    FileName: b61dbfd27c445c74ee6078118b28f9fa.bundle
+    FileCRC32: 10a11333
+  - PackageName: DefaultPackage
+    FileName: c153c6d3581cdd603b4ac905e82f7a9f.bundle
+    FileCRC32: 848b0091
+  - PackageName: DefaultPackage
+    FileName: d473c7e70a4b6f6a351cf2254e6ac3e1.bundle
+    FileCRC32: f229b96d
+  - PackageName: DefaultPackage
+    FileName: dd593431af485b1cfebaa5fc60e57e30.bundle
+    FileCRC32: 0049a9a6
+  - PackageName: DefaultPackage
+    FileName: e34bdc546534762d34192c67c4f3cac2.bundle
+    FileCRC32: 610f12d3
+  - PackageName: DefaultPackage
+    FileName: f6a07f2410a2216ea7d092cfad048f6a.bundle
+    FileCRC32: d9909d7a
+  - PackageName: DefaultPackage
+    FileName: f9a01128b023bb3ed234d670df5d998d.bundle
+    FileCRC32: 744b038c

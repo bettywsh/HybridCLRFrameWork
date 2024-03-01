@@ -41,7 +41,6 @@ public class AssetsBuild
 
         var buildoutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
         var streamingAssetsRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
-        Debug.LogError(buildoutputRoot);
         // 构建参数
         BuiltinBuildParameters buildParameters = new BuiltinBuildParameters();
         buildParameters.BuildOutputRoot = buildoutputRoot;
@@ -89,7 +88,7 @@ public class AssetsBuild
 
         string[] scenes = { "Assets/App/Scene/Start.unity",
                             "Assets/App/Scene/Main.unity",
-                            "Assets/App/Scene/Racing.unity",
+                            "Assets/App/Scene/Battle.unity",
                             "Assets/App/Scene/Login.unity" };
 
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);

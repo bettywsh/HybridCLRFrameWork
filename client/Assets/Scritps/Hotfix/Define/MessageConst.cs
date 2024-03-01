@@ -10,7 +10,11 @@ public class MessageConst
     //游戏切换后台
     public const string Msg_ApplicationPause = "Msg_ApplicationPause";
     //unity退出事件
-    public const string Msg_OnApplicationQuit = "Msg_OnApplicationQuit";
+    public const string Msg_ApplicationQuit = "Msg_ApplicationQuit";
+    //场景切换进度事件
+    public const string Msg_LoadingPanelProgress = "Msg_LoadingPanelProgress";
+    //场景切换进度事件
+    public const string Msg_LoadingPanelComplete= "Msg_LoadingPanelComplete";
 
 
     //////////////////////////////////上面是框架事件其他写下面

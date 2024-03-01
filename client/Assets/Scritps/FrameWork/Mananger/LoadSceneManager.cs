@@ -9,12 +9,6 @@ using Cysharp.Threading.Tasks;
 
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
-    // 加载进度
-    float loadPro = 0;
-    bool isfinish = false;
-    // 用以接受异步加载的返回值
-    SceneHandle handle = null;
-
     string name;
     bool loading;
     object sceneScript;
@@ -27,7 +21,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         name = SceneManager.GetActiveScene().name;
     }
 
-    public void LoadScene(string scene, bool loading)
+    public void LoadScene(string scene, bool loading = false, bool isSendComplete = false)
     {
         oldName = name;
         name = scene;
@@ -43,7 +37,6 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
 
     void UnLoadScene()
     {
-        loadPro = 0;
         Application.backgroundLoadingPriority = ThreadPriority.High;
         if (oldSceneScript != null)
         {
@@ -74,13 +67,17 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         return name;
     }
 
-    private void Update()
+
+    public void SetProgress(float progress)
     {
-        if (handle != null)//如果已经开始加载
-        {
-            loadPro = handle.Progress; //获取加载进度,此处特别注意:加载场景的progress值最大为0.9!!!
-        }
+        MessageManager.Instance.MessageNotify("Msg_LoadingPanelProgress", progress);
     }
+
+    public void SetComplete()
+    {
+        MessageManager.Instance.MessageNotify("Msg_LoadingPanelComplete");
+    }
+
 
     public void GC()
     {

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class BasePanel
 {
@@ -14,7 +15,7 @@ public class BasePanel
     public Dictionary<string, ReferenceData> referenceData;
     public Transform transform;
     public object[] args;
-
+    public CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
     public virtual void OnBindEvent()
     {
@@ -41,6 +42,7 @@ public class BasePanel
 
     public virtual void OnClose()
     {
+        cancellationTokenSource.Cancel();
         EventHelper.UnRegisterAllEvent(this);
     }
 }

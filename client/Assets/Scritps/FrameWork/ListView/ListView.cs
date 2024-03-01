@@ -11,8 +11,9 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
 {
     public GameObject Item;
     private int mtotalCount = -1;
-
     public Action<int, Transform> OnItemRender;
+    public Stack<Transform> pool = new Stack<Transform>();
+
     public int TotalCount
     {
         get
@@ -31,16 +32,17 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
     }
 
     // Implement your own Cache Pool here. The following is just for example.
-    Stack<Transform> pool = new Stack<Transform>();
+
     public GameObject GetObject(int index)
     {
         if (pool.Count == 0)
         {
-            GameObject go = Instantiate(Item);
+            GameObject go = Instantiate(Item);            
             Type type = HybridCLRManager.Instance._hotUpdateAss.GetType(Item.name, false);
             go.AddComponent(type);
             BaseCell baseCell = go.GetComponent<BaseCell>();
             baseCell.transform = go.transform;
+            baseCell.Init(this);
             baseCell.OnBindEvent();
             return go;
         }

@@ -12,6 +12,18 @@ public class LoadingPanel : BasePanel
         transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
     }
 
+    [OnMessage(MessageConst.Msg_LoadingPanelProgress)]
+    void OnSetProgress(float progress)
+    { 
+    
+    }
+
+    [OnMessage(MessageConst.Msg_LoadingPanelComplete)]
+    void OnSetComplete()
+    {
+        this.Close();
+    }
+
     public override void OnClose()
     {
         base.OnClose();

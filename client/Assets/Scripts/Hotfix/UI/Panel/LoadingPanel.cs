@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadingPanel : BasePanel
+public class LoadingPanel : PanelBase
 {
 
     public override async UniTask OnOpen()

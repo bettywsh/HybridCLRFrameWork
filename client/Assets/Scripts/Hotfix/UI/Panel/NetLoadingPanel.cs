@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NetLoadingPanel : BasePanel
+public class NetLoadingPanel : PanelBase
 {
     public override void OnBindEvent()
     {

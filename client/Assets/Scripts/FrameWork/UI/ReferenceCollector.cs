@@ -75,6 +75,16 @@ public class ReferenceCollector : SerializedMonoBehaviour
         return newData;
     }
 
+    public ReferenceData Get(string key)
+    {
+        ReferenceData referenceData;
+        if (!data.TryGetValue(key, out referenceData))
+        {
+            return null;
+        }
+        return referenceData;
+    }
+
 
     [Button("´´½¨Panel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreatePanel()

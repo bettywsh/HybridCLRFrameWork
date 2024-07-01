@@ -9,7 +9,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-public class BasePanel
+public class PanelBase
 {
     public ReferenceCollector referenceCollector;
     public Dictionary<string, ReferenceData> referenceData;

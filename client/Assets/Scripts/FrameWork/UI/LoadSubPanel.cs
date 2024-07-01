@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LoadSubPanel : MonoBehaviour
 {
 
-    public BasePanel basePanel;
+    public PanelBase basePanel;
     public async UniTask<T> Load<T>(string subPanelName, params object[] args)
     {
         string prefabName = typeof(T).Name;
@@ -20,7 +20,7 @@ public class LoadSubPanel : MonoBehaviour
         Canvas cv = go.AddComponent<Canvas>();
         cv.overrideSorting = true;
         go.AddComponent<GraphicRaycaster>();
-        basePanel = t as BasePanel;
+        basePanel = t as PanelBase;
         basePanel.args = args;
         basePanel.transform = go.transform;
         go.SetActive(true);

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BagPanel : BasePanel
+public class BagPanel : PanelBase
 {
     List<cfg.Horse> listHorseConfig;
 

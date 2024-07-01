@@ -7,7 +7,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class LoginPanel : BasePanel
+public class LoginPanel : PanelBase
 {
     public override async UniTask OnOpen()
     {

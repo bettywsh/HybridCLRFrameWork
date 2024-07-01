@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using System.IO;
 using System.Runtime.ConstrainedExecution;
 
-public class UpdatePanel : BasePanel
+public class UpdatePanel : PanelBase
 {
     ResourcePackage package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
     string packageVersion;

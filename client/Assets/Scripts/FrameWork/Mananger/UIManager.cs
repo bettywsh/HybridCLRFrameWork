@@ -14,7 +14,7 @@ public class UIManager : MonoSingleton<UIManager>
 {
     public GameObject canvasRoot;
     public Camera uiCamera;
-    private Dictionary<string, BasePanel> uiList = new Dictionary<string, BasePanel>();
+    private Dictionary<string, PanelBase> uiList = new Dictionary<string, PanelBase>();
     private Transform baseCanvas;
 
     public override async UniTask Init()
@@ -51,9 +51,9 @@ public class UIManager : MonoSingleton<UIManager>
 
     }
 
-    public T GetUI<T>() where T : BasePanel
+    public T GetUI<T>() where T : PanelBase
     {
-        foreach ((string name, BasePanel basePanel) in uiList)
+        foreach ((string name, PanelBase basePanel) in uiList)
         {
             if (name == typeof(T).Name)
             {
@@ -74,16 +74,16 @@ public class UIManager : MonoSingleton<UIManager>
     //}
 
 
-    public T Open<T>(params object[] args) where T : BasePanel
+    public T Open<T>(params object[] args) where T : PanelBase
     {
         string prefabName = typeof(T).Name;
-        BasePanel bp = null;
+        PanelBase bp = null;
         T t = default;
         if (!uiList.TryGetValue(typeof(T).Name, out bp))
         {
             t = Activator.CreateInstance<T>();
-            uiList.Add(typeof(T).Name, t as BasePanel);
-            LoadPanel(typeof(T).Name, t as BasePanel, args);
+            uiList.Add(typeof(T).Name, t as PanelBase);
+            LoadPanel(typeof(T).Name, t as PanelBase, args);
         }
         else
         {
@@ -93,7 +93,7 @@ public class UIManager : MonoSingleton<UIManager>
     }
         
 
-    public async void LoadPanel(string name, BasePanel basePanel, params object[] args)
+    public async void LoadPanel(string name, PanelBase basePanel, params object[] args)
     {
         GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/{name}.prefab");
         go = GameObject.Instantiate(go);
@@ -141,17 +141,17 @@ public class UIManager : MonoSingleton<UIManager>
         Close(type.Name);
     }
 
-    public void Close<T>() where T : BasePanel
+    public void Close<T>() where T : PanelBase
     {
         Close(typeof(T).Name);
     }
 
     void Close(string prefabName)
     {
-        BasePanel obj;
+        PanelBase obj;
         if (uiList.TryGetValue(prefabName, out obj))
         {
-            BasePanel basePanel = obj;
+            PanelBase basePanel = obj;
             basePanel.OnClose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             uiList.Remove(prefabName);
@@ -160,7 +160,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void CloseAll()
     {
-        foreach ((string name, BasePanel basePanel) in uiList)
+        foreach ((string name, PanelBase basePanel) in uiList)
         {
             basePanel.OnClose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
@@ -170,10 +170,10 @@ public class UIManager : MonoSingleton<UIManager>
 
     private void Update()
     {
-        foreach ((string name, BasePanel bp) in uiList)
+        foreach ((string name, PanelBase bp) in uiList)
         {
             if (bp.transform == null) { return; }
-            BasePanel basePanel = bp;
+            PanelBase basePanel = bp;
             basePanel.OnUpdate();
         }
     }

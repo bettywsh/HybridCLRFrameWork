@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogPanel : BasePanel
+public class DialogPanel : PanelBase
 {
     DialogInfo dialogInfo;
 

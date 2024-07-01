@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextPanel : BasePanel
+public class TextPanel : PanelBase
 {
     bool isTween = false;
     Queue<string> queue = new Queue<string>();

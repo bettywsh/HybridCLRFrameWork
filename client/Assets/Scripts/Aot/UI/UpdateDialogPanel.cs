@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Cysharp.Threading.Tasks;
 
-public class UpdateDialogPanel : BasePanel
+public class UpdateDialogPanel : PanelBase
 {
     AotDialogInfo dialogInfo;
     public override async UniTask OnOpen()

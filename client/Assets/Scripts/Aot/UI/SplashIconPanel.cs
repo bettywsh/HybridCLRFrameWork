@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
 
-public class SplashIconPanel : BasePanel
+public class SplashIconPanel : PanelBase
 {
     public CanvasGroup cng_BG;
     public override async UniTask OnOpen()

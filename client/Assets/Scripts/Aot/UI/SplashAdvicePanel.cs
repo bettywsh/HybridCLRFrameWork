@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplashAdvicePanel : BasePanel
+public class SplashAdvicePanel : PanelBase
 {
     public CanvasGroup cng_Content;
 

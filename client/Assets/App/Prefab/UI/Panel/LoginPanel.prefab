@@ -729,44 +729,241 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2533bb6b3d49aeb4485e09b56803d9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_selectedIndex: 2
-  data:
-  - name: btnOk
-    referenceData:
-      tranValue: {fileID: 4739564722266252912}
-      imgValue: {fileID: 2840704615021609968}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 2865176093585168501}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: txtAccount
-    referenceData:
-      tranValue: {fileID: 7236352688414893031}
-      imgValue: {fileID: 2328040202474562895}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 0}
-      tmpinputValue: {fileID: 5469443944754859813}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: txtPassWorld
-    referenceData:
-      tranValue: {fileID: 2797737558978709699}
-      imgValue: {fileID: 2230105928255592779}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 0}
-      tmpinputValue: {fileID: 7620490312364507267}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 5313593294115467104}
+    - {fileID: 6999070902554014756}
+    - {fileID: 4739564722266252912}
+    - {fileID: 3661262990835579472}
+    - {fileID: 2840704615021609968}
+    - {fileID: 2865176093585168501}
+    - {fileID: 7236352688414893031}
+    - {fileID: 7489802822410729559}
+    - {fileID: 2328040202474562895}
+    - {fileID: 5469443944754859813}
+    - {fileID: 2797737558978709699}
+    - {fileID: 1570312201385417791}
+    - {fileID: 2230105928255592779}
+    - {fileID: 7620490312364507267}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: data
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ReferenceData,
+        FrameWork]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: transform
+    - Name: $v
+      Entry: 7
+      Data: 2|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 0
+    - Name: goValue
+      Entry: 10
+      Data: 1
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: btnOk
+    - Name: $v
+      Entry: 7
+      Data: 3|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 2
+    - Name: goValue
+      Entry: 10
+      Data: 3
+    - Name: imgValue
+      Entry: 10
+      Data: 4
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 10
+      Data: 5
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: txtAccount
+    - Name: $v
+      Entry: 7
+      Data: 4|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 6
+    - Name: goValue
+      Entry: 10
+      Data: 7
+    - Name: imgValue
+      Entry: 10
+      Data: 8
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 10
+      Data: 9
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: txtPassWorld
+    - Name: $v
+      Entry: 7
+      Data: 5|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 10
+    - Name: goValue
+      Entry: 10
+      Data: 11
+    - Name: imgValue
+      Entry: 10
+      Data: 12
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 10
+      Data: 13
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &7444510915783049605
 GameObject:
   m_ObjectHideFlags: 0

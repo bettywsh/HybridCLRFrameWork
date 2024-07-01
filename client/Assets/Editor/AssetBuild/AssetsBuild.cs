@@ -49,7 +49,7 @@ public class AssetsBuild
         buildParameters.BuildTarget = BuildTarget.Android;
         buildParameters.BuildMode = EBuildMode.ForceRebuild;
         buildParameters.PackageName = "DefaultPackage";
-        buildParameters.PackageVersion = appConfig.ResVersion;
+        buildParameters.PackageVersion = appConfig.ResVersion.ToString();
         buildParameters.VerifyBuildingResult = true;
         buildParameters.FileNameStyle = EFileNameStyle.HashName;
         buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
@@ -68,10 +68,10 @@ public class AssetsBuild
         {
             Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
         }
-     
+
         Debug.Log($"写入版本文件");
         string verPath = $"{buildoutputRoot}/{BuildTarget.Android.ToString()}/DefaultPackage/{appConfig.ResVersion}/ver.txt";
-        File.WriteAllText(verPath, Application.version);
+        File.WriteAllText(verPath, appConfig.AppVersion.ToString());
 
         AssetDatabase.Refresh();
     }

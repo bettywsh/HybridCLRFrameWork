@@ -938,92 +938,445 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2533bb6b3d49aeb4485e09b56803d9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_selectedIndex: -1
-  data:
-  - name: btnMask
-    referenceData:
-      tranValue: {fileID: 6892950659735519920}
-      imgValue: {fileID: 6892950659735519921}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 3205869160973664831}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: cngMsg
-    referenceData:
-      tranValue: {fileID: 6892950659824766841}
-      imgValue: {fileID: 0}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 0}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 1425305453025213585}
-      listValue: {fileID: 0}
-  - name: txtMsg
-    referenceData:
-      tranValue: {fileID: 2600479699441333795}
-      imgValue: {fileID: 0}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 0}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 4019639225460123371}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: btnCancel
-    referenceData:
-      tranValue: {fileID: 6892950659194578253}
-      imgValue: {fileID: 6892950659194578251}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 9209158942939812679}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: txtCancel
-    referenceData:
-      tranValue: {fileID: 7530168494710954252}
-      imgValue: {fileID: 0}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 0}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 1124492646915379185}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: btnOk
-    referenceData:
-      tranValue: {fileID: 6892950660287096085}
-      imgValue: {fileID: 6892950660287096083}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 1801836610224784588}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 0}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
-  - name: txtOk
-    referenceData:
-      tranValue: {fileID: 966834575709750462}
-      imgValue: {fileID: 0}
-      txtValue: {fileID: 0}
-      btnValue: {fileID: 0}
-      tmpinputValue: {fileID: 0}
-      toggleValue: {fileID: 0}
-      sliderValue: {fileID: 0}
-      tmptxtValue: {fileID: 2907113148085182964}
-      cngValue: {fileID: 0}
-      listValue: {fileID: 0}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 6892950660369249228}
+    - {fileID: 6892950660369249231}
+    - {fileID: 6892950659735519920}
+    - {fileID: 6892950659735519923}
+    - {fileID: 6892950659735519921}
+    - {fileID: 3205869160973664831}
+    - {fileID: 6892950659824766841}
+    - {fileID: 6892950659824766840}
+    - {fileID: 1425305453025213585}
+    - {fileID: 2600479699441333795}
+    - {fileID: 817815952192888093}
+    - {fileID: 4019639225460123371}
+    - {fileID: 6892950659194578253}
+    - {fileID: 6892950659194578252}
+    - {fileID: 6892950659194578251}
+    - {fileID: 9209158942939812679}
+    - {fileID: 7530168494710954252}
+    - {fileID: 6643297658622258319}
+    - {fileID: 1124492646915379185}
+    - {fileID: 6892950660287096085}
+    - {fileID: 6892950660287096084}
+    - {fileID: 6892950660287096083}
+    - {fileID: 1801836610224784588}
+    - {fileID: 966834575709750462}
+    - {fileID: 1671789924151058539}
+    - {fileID: 2907113148085182964}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: data
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[ReferenceData,
+        FrameWork]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: transform
+    - Name: $v
+      Entry: 7
+      Data: 2|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 0
+    - Name: goValue
+      Entry: 10
+      Data: 1
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: btnMask
+    - Name: $v
+      Entry: 7
+      Data: 3|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 2
+    - Name: goValue
+      Entry: 10
+      Data: 3
+    - Name: imgValue
+      Entry: 10
+      Data: 4
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 10
+      Data: 5
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: cngMsg
+    - Name: $v
+      Entry: 7
+      Data: 4|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 6
+    - Name: goValue
+      Entry: 10
+      Data: 7
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 10
+      Data: 8
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: txtMsg
+    - Name: $v
+      Entry: 7
+      Data: 5|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 9
+    - Name: goValue
+      Entry: 10
+      Data: 10
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 10
+      Data: 11
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: btnCancel
+    - Name: $v
+      Entry: 7
+      Data: 6|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 12
+    - Name: goValue
+      Entry: 10
+      Data: 13
+    - Name: imgValue
+      Entry: 10
+      Data: 14
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 10
+      Data: 15
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: txtCancel
+    - Name: $v
+      Entry: 7
+      Data: 7|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 16
+    - Name: goValue
+      Entry: 10
+      Data: 17
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 10
+      Data: 18
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: btnOk
+    - Name: $v
+      Entry: 7
+      Data: 8|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 19
+    - Name: goValue
+      Entry: 10
+      Data: 20
+    - Name: imgValue
+      Entry: 10
+      Data: 21
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 10
+      Data: 22
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: txtOk
+    - Name: $v
+      Entry: 7
+      Data: 9|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 23
+    - Name: goValue
+      Entry: 10
+      Data: 24
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 10
+      Data: 25
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &7210635767537150044
 GameObject:
   m_ObjectHideFlags: 0

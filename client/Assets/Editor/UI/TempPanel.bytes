@@ -1,24 +1,27 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class #CLASSNAME# : BasePanel
 {
-	public #CLASSNAME#View view;
-	
-	public override void BindEvent()
+    public override void OnBindEvent()
     {
-        view = transform.GetComponent<#CLASSNAME#View>();
-        base.BindEvent();
+        base.OnBindEvent();
     }
-	
-    public override void OnOpen()
-    {
-		base.OnOpen();
+    public override async UniTask OnOpen()
+    { 
+        await base.OnOpen();
+    }
+
+    public override void OnUnBindEvent()
+    { 
+        base.OnUnBindEvent();
     }
 
     public override void OnClose()
     {
-        base.OnClose();
+        cancellationTokenSource.Cancel();
     }
 }

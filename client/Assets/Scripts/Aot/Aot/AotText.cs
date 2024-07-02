@@ -3,8 +3,9 @@ using LitJson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class AotText : Singleton<AotText>
+public class AotText : AotSingleton<AotText>
 {
     string language;
     JsonData data;
@@ -20,7 +21,7 @@ public class AotText : Singleton<AotText>
         {
             language = startLanguage;
         }
-        TextAsset ta = await ResManager.Instance.SceneLoadAssetAsync<TextAsset>("Assets/App/Config/Language.json");
+        TextAsset ta = await AotResManager.Instance.SceneLoadAssetAsync<TextAsset>(SceneManager.GetActiveScene().name, "Assets/App/Config/Language.json");
         data = LitJson.JsonMapper.ToObject(ta.text);
     }
 

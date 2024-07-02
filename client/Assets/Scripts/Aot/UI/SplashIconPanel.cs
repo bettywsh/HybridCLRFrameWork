@@ -4,12 +4,11 @@ using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
 
-public class SplashIconPanel : PanelBase
+public class SplashIconPanel : AotPanelBase
 {
-    public CanvasGroup cng_BG;
-    public override async UniTask OnOpen()
+    public CanvasGroup cngBG;
+    private void Awake()
     {
-        CanvasGroup cngBG = referenceData["cngBG"].cngValue;
         cngBG.alpha = 0;
         Sequence seq = DOTween.Sequence();
         seq.Append(cngBG.DOFade(1, 1));
@@ -19,14 +18,8 @@ public class SplashIconPanel : PanelBase
         seq.AppendCallback(() =>
         {
             this.Close();
-            UIManager.Instance.Open<UpdatePanel>();
+            AotUIManager.Instance.Open<UpdatePanel>();
         });
 
     }
-
-    public override void OnClose()
-    {
-
-    }
-
 }

@@ -4,14 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SplashAdvicePanel : PanelBase
+public class SplashAdvicePanel : AotPanelBase
 {
-    public CanvasGroup cng_Content;
+    public CanvasGroup cngContent;
 
-
-    public override async UniTask OnOpen()
+    private void Awake()
     {
-        CanvasGroup cngContent = referenceData["cngContent"].cngValue;
         cngContent.alpha = 0;
         Sequence seq = DOTween.Sequence();
         seq.Append(cngContent.DOFade(1, 1));
@@ -21,12 +19,7 @@ public class SplashAdvicePanel : PanelBase
         seq.AppendCallback(() =>
         {
             this.Close();
-            UIManager.Instance.Open<SplashIconPanel>();
+            AotUIManager.Instance.Open<SplashIconPanel>();
         });
-    }
-
-    public override void OnClose()
-    { 
-    
     }
 }

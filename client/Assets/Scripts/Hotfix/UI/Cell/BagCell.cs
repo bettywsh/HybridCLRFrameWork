@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
-public class BagCell : BaseCell
+public class BagCell : CellBase
 {
 
     public async void OnOpen(cfg.Horse horseConfigItem)

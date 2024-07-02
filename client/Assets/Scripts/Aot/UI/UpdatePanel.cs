@@ -10,25 +10,30 @@ using UnityEngine.UI;
 using System.IO;
 using System.Runtime.ConstrainedExecution;
 
-public class UpdatePanel : PanelBase
+public class UpdatePanel : AotPanelBase
 {
-    ResourcePackage package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
+    public TextMeshProUGUI txtContent;
+    public Image imgProgress;
+
+    ResourcePackage package;
     string packageVersion;
     ResourceDownloaderOperation downloader;
     CancellationTokenSource cancelToken = new CancellationTokenSource();
-    public override async UniTask OnOpen()
+    private async void Awake()
     {
+        Debug.LogError(1);
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
         {
             StartGame();
         }
         else
         {
+            package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
             //判断是否是强更
-            string bigVersion = await HttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/ver.txt", null);
+            string bigVersion = await AotHttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/ver.txt", null);
             if (int.Parse(bigVersion) > AppSettings.AppConfig.AppVersion)
             {
-                AotDialog.Instance.ShowDialogOne("警告", "客户端版本过低，请重新下载", () =>
+                AotDialogManager.Instance.ShowDialogOne("警告", "客户端版本过低，请重新下载", () =>
                 {
                     Application.OpenURL($"{AppSettings.AppConfig.SvrResIp}Android/{AppSettings.AppConfig.DownloadApkName}");
                 });
@@ -79,7 +84,7 @@ public class UpdatePanel : PanelBase
         }
         else
         {
-            AotDialog.Instance.ShowDialogOne("警告", "获取资源版本失败，请检查网络", async () => {
+            AotDialogManager.Instance.ShowDialogOne("警告", "获取资源版本失败，请检查网络", async () => {
                 await UpdatePackageVersion();
             });
             //更新失败
@@ -107,7 +112,7 @@ public class UpdatePanel : PanelBase
 
         if (manifestOperation.Status != EOperationStatus.Succeed)
         {
-            AotDialog.Instance.ShowDialogOne("警告", "更新资源清单失败，请检查网络", async () => {
+            AotDialogManager.Instance.ShowDialogOne("警告", "更新资源清单失败，请检查网络", async () => {
                 await UpdatePackageManifest();
             });
             //更新失败
@@ -140,7 +145,7 @@ public class UpdatePanel : PanelBase
         //downloader.OnDownloadOverCallback = OnDownloadOverFunction;
         //downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
 
-        AotDialog.Instance.ShowDialogOne("警告", $"有新的资源需要下载,大小为{FileSizeString(totalDownloadBytes)}", async () => {
+        AotDialogManager.Instance.ShowDialogOne("警告", $"有新的资源需要下载,大小为{FileSizeString(totalDownloadBytes)}", async () => {
             await Download();
         });
     }
@@ -181,7 +186,7 @@ public class UpdatePanel : PanelBase
 
     void OnDownloadErrorFunction(string fileName, string error)
     {
-        AotDialog.Instance.ShowDialogOne("警告", "下载文件失败，是否重新下载", async () => {
+        AotDialogManager.Instance.ShowDialogOne("警告", "下载文件失败，是否重新下载", async () => {
             downloader.CancelDownload();
             await Download();        
         });
@@ -189,8 +194,8 @@ public class UpdatePanel : PanelBase
 
     void OnDownloadProgressUpdateFunction(int totalDownloadCount, int currentDownloadCount, long totalDownloadBytes, long currentDownloadBytes)
     {
-        referenceData["txtContent"].tmptxtValue.text = $"下载最新资源({currentDownloadCount})/({totalDownloadCount})";
-        referenceData["imgProgress"].imgValue.fillAmount = currentDownloadBytes / totalDownloadBytes;
+        txtContent.text = $"下载最新资源({currentDownloadCount})/({totalDownloadCount})";
+        imgProgress.fillAmount = currentDownloadBytes / totalDownloadBytes;
 
     }
 
@@ -209,10 +214,5 @@ public class UpdatePanel : PanelBase
         await HybridCLRManager.Instance.LoadDll();
     }
 
-
-    public override void OnClose()
-    {
-        
-    }
 
 }

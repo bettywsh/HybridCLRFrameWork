@@ -8,11 +8,10 @@ public class Launch
     // Start is called before the first frame update
     public static async void Start()
     {
-        AotText.Instance.Dispose();
-        ResManager.Instance.UnLoadAssetBundle(LoadSceneManager.Instance.CurScene());
-        LoadSceneManager.Instance.Dispose();
-        ResManager.Instance.Dispose();
-        AotDialog.Instance.Dispose();
+        AotDialogManager.Instance.Dispose();
+        AotHttpManager.Instance.Dispose();
+        AotUIManager.Instance.Dispose();
+        AotResManager.Instance.Dispose();
 
         //await ResManager.Instance.Init();
         await SoundManager.Instance.Init();

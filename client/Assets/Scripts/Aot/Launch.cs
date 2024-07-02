@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Launch : MonoBehaviour
 {
@@ -14,13 +15,13 @@ public class Launch : MonoBehaviour
         QualitySettings.vSyncCount = 2;
         Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;
 
-        LoadSceneManager.Instance.Init();
-        await ResManager.Instance.Init();
+
+        await AotResManager.Instance.Init();
         //await AotText.Instance.Init();
-        await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
-        await ResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
-        UIManager.Instance.Init();
-        UIManager.Instance.Open<SplashAdvicePanel>();
+        await AotResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>(SceneManager.GetActiveScene().name, "Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
+        await AotResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>(SceneManager.GetActiveScene().name, "Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
+        await AotUIManager.Instance.Init();
+        AotUIManager.Instance.Open<SplashAdvicePanel>();
      
     }
 }

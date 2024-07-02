@@ -32,16 +32,6 @@ public class AppConfig : ScriptableObject
     public string SvrResIp = "http://192.168.11.18:8082/";
 
     /// <summary>
-    /// 游戏启动ip地址
-    /// </summary>
-    public string SvrGameIp = "shiku.grandlink.net";
-
-    /// <summary>
-    /// 游戏启动端口
-    /// </summary>
-    public int SvrGamePort = 8443;
-
-    /// <summary>
     /// 打印Log模式
     /// </summary>
     public bool DebugLog = true;
@@ -55,11 +45,6 @@ public class AppConfig : ScriptableObject
     /// yooasset 包名
     /// </summary>
     public string PackageName = "DefaultPackage";
-
-    /// <summary>
-    /// ProtoBuff 包名
-    /// </summary>
-    public string ProtoBuffPackageName = "com.bochsler.protocol.";
 
     /// <summary>
     /// 强更文件名

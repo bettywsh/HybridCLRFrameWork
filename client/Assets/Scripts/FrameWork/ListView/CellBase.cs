@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Linq;
 
 
-public class BaseCell : MonoBehaviour
+public class CellBase : MonoBehaviour
 {
     public Dictionary<string, ReferenceData> referenceData;
     public Transform transform;

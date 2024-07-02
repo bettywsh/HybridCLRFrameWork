@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
-public abstract class AotSingleton<T> where T : class, new()
+public abstract class AotSingleton<T> : IDisposable where T : class, new()
 {
 	private static T m_instance;
 	public static T Instance
@@ -27,10 +27,10 @@ public abstract class AotSingleton<T> where T : class, new()
     public virtual void Dispose()
 	{
 		m_instance = null;
-	}
+    }
 
 	~AotSingleton()
 	{
-		Debug.LogError("Ïú»Ù");
+		Debug.LogError("Ïú»Ù" + this.GetType());
 	}
 }

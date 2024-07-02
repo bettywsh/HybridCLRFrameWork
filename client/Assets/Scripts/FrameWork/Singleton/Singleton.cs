@@ -2,7 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 
-public abstract class Singleton<T> where T : class, new()
+public abstract class Singleton<T> : IDisposable where T : class, new()
 {
 	private static T m_instance;
 	public static T Instance

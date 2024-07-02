@@ -21,7 +21,6 @@ public class UpdatePanel : AotPanelBase
     CancellationTokenSource cancelToken = new CancellationTokenSource();
     private async void Awake()
     {
-        Debug.LogError(1);
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
         {
             StartGame();

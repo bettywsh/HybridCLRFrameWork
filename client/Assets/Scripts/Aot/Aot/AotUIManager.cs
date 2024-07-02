@@ -130,10 +130,4 @@ public class AotUIManager : AotSingleton<AotUIManager>
             uiList.Remove(prefabName);
         }
     }
-
-
-    public override void Dispose()
-    {
-        base.Dispose();
-    }
 }

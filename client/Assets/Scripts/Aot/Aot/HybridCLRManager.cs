@@ -6,6 +6,7 @@ using System.Reflection;
 using System;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using UnityEngine.SceneManagement;
 
 public class HybridCLRManager : AotSingleton<HybridCLRManager>
 {
@@ -45,11 +46,16 @@ public class HybridCLRManager : AotSingleton<HybridCLRManager>
         HomologousImageMode mode = HomologousImageMode.SuperSet;
         foreach (var aotDllName in AOTMetaAssemblyFiles)
         {
-            TextAsset ta = await AotResManager.Instance.CommonLoadAssetAsync<TextAsset>("Assets/App/Dll/" + aotDllName);
+            TextAsset ta = await AotResManager.Instance.SceneLoadAssetAsync<TextAsset>(SceneManager.GetActiveScene().name, "Assets/App/Dll/" + aotDllName);
             byte[] dllBytes = ta.bytes;
             // 加载assembly对应的dll，会自动为它hook。一旦aot泛型函数的native函数不存在，用解释器版本代码
             LoadImageErrorCode err = RuntimeApi.LoadMetadataForAOTAssembly(dllBytes, mode);
             Debug.Log($"LoadMetadataForAOTAssembly:{aotDllName}. mode:{mode} ret:{err}");
         }
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
     }
 }

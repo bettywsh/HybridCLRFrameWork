@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using YooAsset;
 
 public class Launch
 {
@@ -11,9 +13,12 @@ public class Launch
         AotDialogManager.Instance.Dispose();
         AotHttpManager.Instance.Dispose();
         AotUIManager.Instance.Dispose();
+        YooAssets.DestroyPackage(AppSettings.AppConfig.PackageName);
+        YooAssets.Destroy();
+        AotResManager.Instance.UnLoadAssetBundle(SceneManager.GetActiveScene().name);
         AotResManager.Instance.Dispose();
 
-        //await ResManager.Instance.Init();
+        await ResManager.Instance.Init();
         await SoundManager.Instance.Init();
         await UIManager.Instance.Init();
         await AtlasManager.Instance.Init();

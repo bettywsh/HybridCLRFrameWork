@@ -158,7 +158,7 @@ public class AotResManager : AotSingleton<AotResManager>
         }
         for (int i = 0; i < assetHandles.Count; i++)
         {
-            assetHandles[i].Release();
+            assetHandles[i].Dispose();
         }
         ResLoaders.Remove(resLoaderName);
     }
@@ -166,12 +166,7 @@ public class AotResManager : AotSingleton<AotResManager>
 
     public void GC()
     {
-        var package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
         package.UnloadUnusedAssets();
     }
 
-    public override void Dispose()
-    {
-        base.Dispose();
-    }
 }

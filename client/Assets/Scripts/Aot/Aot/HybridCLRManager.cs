@@ -54,8 +54,4 @@ public class HybridCLRManager : AotSingleton<HybridCLRManager>
         }
     }
 
-    public override void Dispose()
-    {
-        base.Dispose();
-    }
 }

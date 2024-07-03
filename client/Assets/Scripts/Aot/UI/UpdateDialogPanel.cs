@@ -7,44 +7,50 @@ using Cysharp.Threading.Tasks;
 
 public class UpdateDialogPanel : AotPanelBase
 {
-    //public  txtMsg
+    public TextMeshProUGUI txtMsg;
+    public TextMeshProUGUI txtOk;
+    public TextMeshProUGUI txtCancel;
+    public Button btnOk;
+    public Button btnCancel;
+
     AotDialogInfo dialogInfo;
     private void Awake()
     {
-        //dialogInfo = args[0] as AotDialogInfo;
-        //referenceData["txtMsg"].tmptxtValue.text = dialogInfo.txtMsg;
-        //referenceData["txtOk"].tmptxtValue.text = "确定";
-        //referenceData["txtCancel"].tmptxtValue.text = "取消";
-        //if (dialogInfo.txtOk != null)
-        //{
-        //    //txt_Ok.text = TextMgr:GetText(dialogInfo.txtOk);
-        //}
+        dialogInfo = args[0] as AotDialogInfo;
+        txtMsg.text = dialogInfo.txtMsg;
+        txtOk.text = "确定";
+        txtCancel.text = "取消";
+        if (dialogInfo.txtOk != null)
+        {
+            //txt_Ok.text = TextMgr:GetText(dialogInfo.txtOk);
+        }
 
-        //if (dialogInfo.txtCal != null) { 
-        //    //txt_Cancel.text = TextMgr:GetText(dialogInfo.txtCal);
-        //}
+        if (dialogInfo.txtCal != null)
+        {
+            //txt_Cancel.text = TextMgr:GetText(dialogInfo.txtCal);
+        }
 
-        //if (dialogInfo.okFun != null)
-        //{
-        //    referenceData["btnOk"].btnValue.gameObject.SetActive(true);
-        //}
-        //if (dialogInfo.calFun != null) {
-        //    referenceData["btnCancel"].btnValue.gameObject.SetActive(true);
-        //}
+        if (dialogInfo.okFun != null)
+        {
+            btnOk.gameObject.SetActive(true);
+        }
+        if (dialogInfo.calFun != null)
+        {
+            btnCancel.gameObject.SetActive(true);
+        }
+        btnOk.onClick.AddListener(OnClick_btnOk);
+        btnCancel.onClick.AddListener(OnClick_btnCancel);
     }
 
-
-    //[OnClick("btnOk")]
     void OnClick_btnOk()
     {
-        //dialogInfo.okFun?.Invoke();
+        dialogInfo.okFun?.Invoke();
         this.Close();
     }
 
-    //[OnClick("btnCancel")]
     void OnClick_btnCancel()
     {
-        //dialogInfo.calFun?.Invoke();
+        dialogInfo.calFun?.Invoke();
         this.Close();
     }
 

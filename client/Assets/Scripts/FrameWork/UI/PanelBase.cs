@@ -9,7 +9,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-public class PanelBase
+public class PanelBase : IDisposable
 {
     public ReferenceCollector referenceCollector;
     public Dictionary<string, ReferenceData> referenceData;
@@ -48,5 +48,10 @@ public class PanelBase
     public virtual void OnClose()
     {
         cancellationTokenSource.Cancel();        
+    }
+
+    public virtual void Dispose()
+    { 
+    
     }
 }

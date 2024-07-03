@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseScene 
+public class SceneBase : IDisposable
 {
     public virtual void LoadScene()
     {
@@ -14,4 +15,8 @@ public class BaseScene
 
     }
 
+    public virtual void Dispose()
+    {
+
+    }
 }

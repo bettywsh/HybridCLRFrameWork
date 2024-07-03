@@ -10,9 +10,9 @@ using Cysharp.Threading.Tasks;
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
     string name;
-    BaseScene sceneScript;
+    SceneBase sceneScript;
     string oldName;
-    BaseScene oldSceneScript;
+    SceneBase oldSceneScript;
     public override async UniTask Init()
     {
         await base.Init();
@@ -47,7 +47,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         Type type = HybridCLRManager.Instance._hotUpdateAss.GetType(name + "Scene", false);
         if (type != null)
         {
-            sceneScript = Activator.CreateInstance(type) as BaseScene;
+            sceneScript = Activator.CreateInstance(type) as SceneBase;
             sceneScript.LoadScene();
         }
         else

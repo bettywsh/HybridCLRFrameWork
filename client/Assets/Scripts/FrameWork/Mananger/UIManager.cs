@@ -153,6 +153,7 @@ public class UIManager : MonoSingleton<UIManager>
         {
             PanelBase basePanel = obj;
             basePanel.OnClose();
+            basePanel.Dispose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             uiList.Remove(prefabName);
         }

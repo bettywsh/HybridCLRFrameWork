@@ -66,7 +66,7 @@ public class AotUIManager : AotSingleton<AotUIManager>
 
     public async void LoadPanel(string name, params object[] args)
     {
-        GameObject go = await AotResManager.Instance.SceneLoadAssetAsync<GameObject>(SceneManager.GetActiveScene().name, $"Assets/App/Prefab/AotUI/{name}.prefab");
+        GameObject go = await AotResManager.Instance.LoadAsset<GameObject>($"Assets/App/Prefab/AotUI/{name}.prefab");
         go = GameObject.Instantiate(go);
         go.name = name;
         go.transform.SetParent(baseCanvas, false);

@@ -10,26 +10,22 @@ using Cysharp.Threading.Tasks;
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
     string name;
-    bool loading;
-    object sceneScript;
+    BaseScene sceneScript;
     string oldName;
-    object oldSceneScript;
-    Action openLoadingUI;
-    public void Init(Action openUI = null)
+    BaseScene oldSceneScript;
+    public override async UniTask Init()
     {
-        openLoadingUI = openUI;
+        await base.Init();
         name = SceneManager.GetActiveScene().name;
     }
 
-    public void LoadScene(string scene, bool loading = false, bool isSendComplete = false)
+    public void LoadScene(string scene, bool isSendComplete = false)
     {
         oldName = name;
         name = scene;
-        this.loading = loading;
-        if (this.loading)
+        if (sceneScript != null)
         {
-            openLoadingUI?.Invoke();
-            //UIManager.Instance.Open<>();
+            oldSceneScript = sceneScript;
         }
         UnLoadScene();
         ChangeScene(name);
@@ -40,8 +36,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         Application.backgroundLoadingPriority = ThreadPriority.High;
         if (oldSceneScript != null)
         {
-            BaseScene baseScene = oldSceneScript as BaseScene;
-            baseScene.UnLoadScene();
+            oldSceneScript.UnLoadScene();
         }
         GC();
     }
@@ -52,9 +47,8 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         Type type = HybridCLRManager.Instance._hotUpdateAss.GetType(name + "Scene", false);
         if (type != null)
         {
-            sceneScript = Activator.CreateInstance(type);
-            BaseScene baseScene = sceneScript as BaseScene;
-            baseScene.LoadScene();
+            sceneScript = Activator.CreateInstance(type) as BaseScene;
+            sceneScript.LoadScene();
         }
         else
         {

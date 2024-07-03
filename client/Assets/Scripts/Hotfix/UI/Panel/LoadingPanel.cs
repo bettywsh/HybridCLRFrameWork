@@ -8,7 +8,7 @@ public class LoadingPanel : PanelBase
 
     public override async UniTask OnOpen()
     {
-		base.OnOpen();
+		await base.OnOpen();
         transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
     }
 

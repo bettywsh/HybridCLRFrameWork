@@ -21,7 +21,7 @@ public class AotText : AotSingleton<AotText>
         {
             language = startLanguage;
         }
-        TextAsset ta = await AotResManager.Instance.SceneLoadAssetAsync<TextAsset>(SceneManager.GetActiveScene().name, "Assets/App/Config/Language.json");
+        TextAsset ta = await AotResManager.Instance.LoadAsset<TextAsset>("Assets/App/Config/Language.json");
         data = LitJson.JsonMapper.ToObject(ta.text);
     }
 

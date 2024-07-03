@@ -13,9 +13,6 @@ public class Launch
         AotDialogManager.Instance.Dispose();
         AotHttpManager.Instance.Dispose();
         AotUIManager.Instance.Dispose();
-        YooAssets.DestroyPackage(AppSettings.AppConfig.PackageName);
-        YooAssets.Destroy();
-        AotResManager.Instance.UnLoadAssetBundle(SceneManager.GetActiveScene().name);
         AotResManager.Instance.Dispose();
 
         await ResManager.Instance.Init();
@@ -26,9 +23,8 @@ public class Launch
         await ConfigManager.Instance.Init();
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
-        LoadSceneManager.Instance.Init(()=> UIManager.Instance.Open<LoadingPanel>());
+        await LoadSceneManager.Instance.Init();
         LoadSceneManager.Instance.LoadScene(EScene.Login.ToString(), false);
-        //UIManager.Instance.Open("LoginPanel");
     }
 
  

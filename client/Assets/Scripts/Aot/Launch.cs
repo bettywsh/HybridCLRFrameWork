@@ -18,8 +18,8 @@ public class Launch : MonoBehaviour
 
         await AotResManager.Instance.Init();
         //await AotText.Instance.Init();
-        await AotResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>(SceneManager.GetActiveScene().name, "Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
-        await AotResManager.Instance.SceneLoadAssetAsync<TMP_FontAsset>(SceneManager.GetActiveScene().name, "Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
+        await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
+        await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         await AotUIManager.Instance.Init();
         AotUIManager.Instance.Open<SplashAdvicePanel>();
      

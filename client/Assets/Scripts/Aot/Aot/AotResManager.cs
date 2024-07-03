@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.IO;
 using System.Threading;
+using static Sirenix.OdinInspector.Editor.UnityPropertyEmitter;
 
 public class AotResManager : AotSingleton<AotResManager>
 {
-
-    Dictionary<string, List<AssetHandle>> ResLoaders = new Dictionary<string, List<AssetHandle>>();
-
     ResourcePackage package;
+
     public override async UniTask Init()
     {
         // 初始化资源系统
@@ -99,74 +98,29 @@ public class AotResManager : AotSingleton<AotResManager>
 #endif
     }
 
-    public async UniTask<T> CommonLoadAssetAsync<T>(string location) where T : UnityEngine.Object
-    {
-        return await LoadAssetAsync<T>("Common", location, default);
-    }
-
-    public async UniTask<T> SceneLoadAssetAsync<T>(string sceneName, string location, CancellationToken ct = default) where T : UnityEngine.Object
-    {
-        return await LoadAssetAsync<T>(sceneName, location, ct);
-    }
-
     #region 框架专用
     public async UniTask LoadSceneAsync(string location)
     {
         await package.LoadSceneAsync(location, LoadSceneMode.Single, false).Task.AsUniTask();
     }
-    public TextAsset LoadAsset<T>(string location) where T : UnityEngine.Object
+    public async UniTask<T> LoadAsset<T>(string location) where T : UnityEngine.Object
     {
         AssetHandle ah = package.LoadAssetSync<T>(location);
-        package.TryUnloadUnusedAsset(location);
-        return ah.AssetObject as TextAsset;
-    }
-    #endregion
-
-
-    #region 资源加载标识
-    private void AddResloader(string resName, AssetHandle assetHandle)
-    {
-        if (resName == "Common") return;
-        List<AssetHandle> assetHandles = null;
-        if (!ResLoaders.TryGetValue(resName, out assetHandles))
-        {
-            assetHandles = new List<AssetHandle>();
-            assetHandles.Add(assetHandle);
-            ResLoaders.Add(resName, assetHandles);
-        }
-        else
-        {
-            assetHandles.Add(assetHandle);
-        }
-    }
-
-    private async UniTask<T> LoadAssetAsync<T>(string resName, string location, CancellationToken ct) where T : UnityEngine.Object
-    {
-        AssetHandle handle = package.LoadAssetAsync<T>(location);
-        await handle.WithCancellation(ct).SuppressCancellationThrow();
-        T t = (T)handle.AssetObject;
-        AddResloader(resName, handle);
+        await ah.Task.AsUniTask();
+        T t = (T)ah.AssetObject;
         return t;
     }
-
-    public void UnLoadAssetBundle(string resLoaderName)
-    {
-        List<AssetHandle> assetHandles = null;
-        if (!ResLoaders.TryGetValue(resLoaderName, out assetHandles))
-        {
-            return;
-        }
-        for (int i = 0; i < assetHandles.Count; i++)
-        {
-            assetHandles[i].Dispose();
-        }
-        ResLoaders.Remove(resLoaderName);
-    }
     #endregion
 
-    public void GC()
+
+
+    public override void Dispose()
     {
-        package.UnloadUnusedAssets();
+        package.ForceUnloadAllAssets();
+        YooAssets.DestroyPackage(AppSettings.AppConfig.PackageName);
+        YooAssets.Destroy();
+        System.GC.Collect();
+        base.Dispose();  
     }
 
 }

@@ -9,7 +9,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
+
+[InlineProperty(LabelWidth = 90)]
 public class ReferenceData
 {
     public Transform tranValue;
@@ -33,11 +34,11 @@ public class ReferenceCollector : SerializedMonoBehaviour
     //view层模版文件路径
     private string PanelTempletePath = "Assets/Editor/UI/TempPanel.bytes";
 
-    [DictionaryDrawerSettings()]
-    [ShowInInspector]
+
+    [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
     public Dictionary<string, ReferenceData> data = new Dictionary<string, ReferenceData>();
 
-    [Button("自动绑定UI", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    [Button("自动绑定UI", buttonSize: ButtonSizes.Large), GUIColor(0.4f, 0.8f, 1)]
     public void AutoBind()
     {
         data.Clear();

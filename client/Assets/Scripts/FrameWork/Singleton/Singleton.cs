@@ -30,7 +30,7 @@ public abstract class Singleton<T> : IDisposable where T : class, new()
 
     public virtual void Dispose()
 	{
-		m_instance = null;
+        m_instance = null;
 	}
 
 }

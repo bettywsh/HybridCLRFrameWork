@@ -1,14 +1,32 @@
-
-
 using System;
 
-public class ConfigAttribute : Attribute
+[AttributeUsage(AttributeTargets.Class)]
+public class BaseAttribute : Attribute
+{
+}
+
+public class EventAttribute : BaseAttribute
+{
+
+}
+
+public class UIAttribute : BaseAttribute
+{
+
+}
+
+public class SceneAttribute : BaseAttribute
+{
+
+}
+
+public class ConfigAttribute : BaseAttribute
 {
 
 }
 
 
-public class DataAttribute : Attribute
+public class DataAttribute : BaseAttribute
 { 
 
 }

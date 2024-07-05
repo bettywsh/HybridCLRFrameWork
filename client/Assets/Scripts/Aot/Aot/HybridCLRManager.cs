@@ -23,11 +23,9 @@ public class HybridCLRManager : AotSingleton<HybridCLRManager>
 #if !UNITY_EDITOR
         TextAsset ta = await ResManager.Instance.SceneLoadAssetAsync<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
         _hotUpdateAss = Assembly.Load(ta.bytes);
-        ResManager.Instance.UnLoadAssetBundle(LoadSceneManager.Instance.CurScene());
 #else
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
 #endif
-        //AotRes.Instance.UnLoadAssetBundle();
         Debug.Log("dllº”‘ÿÕÍ≥…");
         Type entryType = _hotUpdateAss.GetType("Launch");
         

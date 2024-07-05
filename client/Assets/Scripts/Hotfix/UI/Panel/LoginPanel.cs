@@ -11,15 +11,7 @@ public class LoginPanel : PanelBase
 {
     public override async UniTask OnOpen()
     {
-        await base.OnOpen();
-        await UnityWebRequest.Get("http://google.co.jp").SendWebRequest().WithCancellation(cancellationTokenSource.Token).SuppressCancellationThrow();
-        await UnityWebRequest.Get("http://google.co.jp").SendWebRequest().WithCancellation(cancellationTokenSource.Token).SuppressCancellationThrow();
-        await UnityWebRequest.Get("http://google.co.jp").SendWebRequest().WithCancellation(cancellationTokenSource.Token).SuppressCancellationThrow();
-        if (cancellationTokenSource.IsCancellationRequested)
-        {
-            return;
-        }
-        Debug.LogError(11111);
+        await base.OnOpen();       
     }
 
     [OnMessage(MessageConst.Msg_Connected)]

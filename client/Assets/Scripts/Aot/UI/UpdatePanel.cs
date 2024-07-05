@@ -30,6 +30,13 @@ public class UpdatePanel : AotPanelBase
             package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
             //判断是否是强更
             string bigVersion = await AotHttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/ver.txt", null);
+            if (bigVersion == "")
+            {
+                AotDialogManager.Instance.ShowDialogOne("警告", "获取资源版本失败，请检查网络", () => {
+                    this.Awake();
+                });
+                return;
+            }
             if (int.Parse(bigVersion) > AppSettings.AppConfig.AppVersion)
             {
                 AotDialogManager.Instance.ShowDialogOne("警告", "客户端版本过低，请重新下载", () =>

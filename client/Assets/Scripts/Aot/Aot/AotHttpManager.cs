@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -49,10 +50,15 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
             if (token != null)
                 webRequest.SetRequestHeader("Token", token);
             webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
-
-            await webRequest.SendWebRequest().ToUniTask();
-
-            if (webRequest.isHttpError || webRequest.isNetworkError)
+            try
+            {
+                await webRequest.SendWebRequest();
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+            if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text + "   " + url);
                 return "";
@@ -80,9 +86,15 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
             webRequest.SetRequestHeader("Token", token);
             webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
 
-            await webRequest.SendWebRequest().ToUniTask();
+            try
+            {
+                await webRequest.SendWebRequest().ToUniTask();
+            }
+            catch (Exception e) {
+                return "";
+            }
 
-            if (webRequest.isHttpError || webRequest.isNetworkError)
+            if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
             {
                 Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text);
                 return "";

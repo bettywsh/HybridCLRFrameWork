@@ -51,7 +51,7 @@ public class PanelBase : IDisposable
     }
 
     public virtual void Dispose()
-    { 
-    
+    {
+        OnClose();
     }
 }

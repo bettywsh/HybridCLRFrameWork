@@ -11,8 +11,10 @@ public class DataManager : Singleton<DataManager>
     Dictionary<Type, object> configs = new Dictionary<Type, object>();
     public override async UniTask Init()
     {
-        Assembly Hotfix = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
-        foreach (Type type in Hotfix.GetTypes())
+        await base.Init();
+        //Assembly Hotfix = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
+        var types = AssemblyManager.Instance.GetTypes(typeof(DataAttribute));
+        foreach (Type type in types)
         {
             if (type.IsAbstract)
             {

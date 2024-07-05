@@ -42,7 +42,6 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
             Type type = HybridCLRManager.Instance._hotUpdateAss.GetType(Item.name, false);
             go.AddComponent(type);
             CellBase baseCell = go.GetComponent<CellBase>();
-            baseCell.transform = go.transform;
             baseCell.Init(this);
             baseCell.OnBindEvent();
             return go;

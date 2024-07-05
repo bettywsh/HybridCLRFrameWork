@@ -9,7 +9,6 @@ using System.Linq;
 public class CellBase : MonoBehaviour
 {
     public Dictionary<string, ReferenceData> referenceData;
-    public Transform transform;
     ReferenceCollector referenceCollector;
     ListView listView;
 
@@ -21,8 +20,7 @@ public class CellBase : MonoBehaviour
     public virtual void OnBindEvent()
     {
         referenceCollector = transform.GetComponent<ReferenceCollector>();
-        referenceData = referenceCollector.data;
 
-        EventHelper.RegisterUIEvent(this, referenceData);
+        EventHelper.RegisterUIEvent(this, referenceCollector);
     }
 }

@@ -12,26 +12,26 @@ public class DialogPanel : PanelBase
         await base.OnOpen();
         dialogInfo = args[0] as DialogInfo;
         transform.GetComponent<Canvas>().sortingOrder = (int)dialogInfo.layer;
-        referenceData["txtMsg"].tmptxtValue.text = dialogInfo.txtMsg;
-        referenceData["txtOk"].tmptxtValue.text = "确定";
-        referenceData["txtCancel"].tmptxtValue.text = "取消";
+        referenceCollector.Get("txtMsg").tmptxtValue.text = dialogInfo.txtMsg;
+        referenceCollector.Get("txtOk").tmptxtValue.text = "确定";
+        referenceCollector.Get("txtCancel").tmptxtValue.text = "取消";
         if (dialogInfo.txtOk != null)
         {
-            referenceData["txtOk"].tmptxtValue.text = "确定";
+            referenceCollector.Get("txtOk").tmptxtValue.text = "确定";
         }
 
         if (dialogInfo.txtCal != null)
         {
-            referenceData["txtCancel"].tmptxtValue.text = "取消";
+            referenceCollector.Get("txtCancel").tmptxtValue.text = "取消";
         }
 
         if (dialogInfo.okFun != null)
         {
-            referenceData["btnCancel"].btnValue.gameObject.SetActive(true);
+            referenceCollector.Get("btnCancel").btnValue.gameObject.SetActive(true);
         }
         if (dialogInfo.calFun != null)
         {
-            referenceData["btnOk"].btnValue.gameObject.SetActive(true);
+            referenceCollector.Get("btnOk").btnValue.gameObject.SetActive(true);
         }
     }
 

@@ -12,7 +12,6 @@ using System.Threading;
 public class PanelBase : IDisposable
 {
     public ReferenceCollector referenceCollector;
-    public Dictionary<string, ReferenceData> referenceData;
     public Transform transform;
     public object[] args;
     public CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
@@ -20,9 +19,8 @@ public class PanelBase : IDisposable
     public virtual void OnBindEvent()
     {
         referenceCollector = transform.GetComponent<ReferenceCollector>();
-        referenceData = referenceCollector.data;
 
-        EventHelper.RegisterAllEvent(this, referenceData);
+        EventHelper.RegisterAllEvent(this, referenceCollector);
     }
 
     public virtual async UniTask OnOpen()

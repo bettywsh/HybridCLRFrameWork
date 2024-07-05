@@ -10,11 +10,11 @@ public static class EventHelper
 {
     public static Dictionary<string, List<string>> dirMessages = new Dictionary<string, List<string>>();
     public static Dictionary<string, List<int>> dirNets = new Dictionary<string, List<int>>();
-    public static void RegisterAllEvent(object obj, Dictionary<string, ReferenceData> referenceData)
+    public static void RegisterAllEvent(object obj, ReferenceCollector referenceCollector)
     {
         RegisterMessageEvent(obj);
         RegisterNetEvent(obj);
-        RegisterUIEvent(obj, referenceData);
+        RegisterUIEvent(obj, referenceCollector);
     }
 
     public static void RegisterMessageEvent(object obj)
@@ -62,7 +62,7 @@ public static class EventHelper
         }
     }
 
-    public static void RegisterUIEvent(object obj, Dictionary<string, ReferenceData> referenceData)
+    public static void RegisterUIEvent(object obj, ReferenceCollector referenceCollector)
     {
         Type type = obj.GetType();
         foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
@@ -71,8 +71,7 @@ public static class EventHelper
             {
                 if (att is OnClickAttribute)
                 {
-                    ReferenceData btn;
-                    referenceData.TryGetValue((att as OnClickAttribute).Name, out btn);
+                    ReferenceData btn = referenceCollector.Get((att as OnClickAttribute).Name);
                     btn.btnValue.onClick.AddListener(() => { method.Invoke(obj, null); });
                     //clickList.Add(btn.btnValue);
                 }

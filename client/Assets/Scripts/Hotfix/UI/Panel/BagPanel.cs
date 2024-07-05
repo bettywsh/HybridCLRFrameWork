@@ -12,8 +12,8 @@ public class BagPanel : PanelBase
     {
         await base.OnOpen();
         listHorseConfig = ConfigManager.Instance.Tables.HorseConfig.DataList;
-        referenceData["listListView"].listValue.OnItemRender = OnItemRender;
-        referenceData["listListView"].listValue.TotalCount = listHorseConfig.Count;
+        referenceCollector.Get("listListView").listValue.OnItemRender = OnItemRender;
+        referenceCollector.Get("listListView").listValue.TotalCount = listHorseConfig.Count;
     }
 
     void OnItemRender(int idx, Transform tf)

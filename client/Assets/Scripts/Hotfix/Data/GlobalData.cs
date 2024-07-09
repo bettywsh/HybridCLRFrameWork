@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Data]
-public class PlayerData :DataBase
+public class GlobalData : DataBase
 {
     public override void Init()
     { 

@@ -25,14 +25,14 @@ public class DataManager : Singleton<DataManager>
             foreach (object o in objects)
             {
                 object obj = Activator.CreateInstance(type);
-                BaseData baseData = obj as BaseData;
+                DataBase baseData = obj as DataBase;
                 baseData.Init();
                 configs.Add(type, baseData);
             }
         }
     }
 
-    public T GetData<T>() where T : BaseData
+    public T GetData<T>() where T : DataBase
     {
         object obj;
         configs.TryGetValue(typeof(T), out obj);

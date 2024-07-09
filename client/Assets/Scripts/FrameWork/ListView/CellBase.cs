@@ -19,11 +19,7 @@ public class CellBase: IDisposable
         referenceCollector = transform.GetComponent<ReferenceCollector>();
     }
 
-    public virtual void OnClose()
-    {
+    public virtual void Dispose() {
         cancellationTokenSource.Cancel();
-    }
-    public virtual void Dispose() { 
-    
     }
 }

@@ -24,6 +24,7 @@ public class ReferenceData
     public TextMeshProUGUI tmptxtValue;
     public CanvasGroup cngValue;
     public ListView listValue;
+    public LoadSubPanel loadSubPanelValue;
 }
 
 
@@ -73,6 +74,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         newData.tmptxtValue = tran.GetComponent<TextMeshProUGUI>();
         newData.cngValue = tran.GetComponent<CanvasGroup>();
         newData.listValue = tran.GetComponent<ListView>();
+        newData.loadSubPanelValue = tran.GetComponent<LoadSubPanel>();
         return newData;
     }
 

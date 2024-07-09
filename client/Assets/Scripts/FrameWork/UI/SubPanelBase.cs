@@ -9,7 +9,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-public class PanelBase : IDisposable
+public class SubPanelBase : IDisposable
 {
     public ReferenceCollector referenceCollector;
     public Transform transform;
@@ -45,7 +45,7 @@ public class PanelBase : IDisposable
 
     public virtual void OnClose()
     {
-        cancellationTokenSource.Cancel();
+        cancellationTokenSource.Cancel();        
     }
 
     public virtual void Dispose()

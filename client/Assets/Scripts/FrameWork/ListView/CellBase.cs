@@ -4,23 +4,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Threading;
 
-
-public class CellBase : MonoBehaviour
+public class CellBase: IDisposable
 {
-    public Dictionary<string, ReferenceData> referenceData;
-    ReferenceCollector referenceCollector;
-    ListView listView;
+    public Transform transform;
+    public ReferenceCollector referenceCollector;
+    public CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
-    public virtual void Init(ListView lv)
+
+    public virtual void Init(Transform tf)
     {
-        listView = lv;
+        transform = tf;
+        referenceCollector = transform.GetComponent<ReferenceCollector>();
     }
 
-    public virtual void OnBindEvent()
+    public virtual void OnClose()
     {
-        referenceCollector = transform.GetComponent<ReferenceCollector>();
-
-        EventHelper.RegisterUIEvent(this, referenceCollector);
+        cancellationTokenSource.Cancel();
+    }
+    public virtual void Dispose() { 
+    
     }
 }

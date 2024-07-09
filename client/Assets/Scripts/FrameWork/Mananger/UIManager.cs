@@ -73,7 +73,6 @@ public class UIManager : MonoSingleton<UIManager>
     //    }
     //}
 
-
     public T Open<T>(params object[] args) where T : PanelBase
     {
         string prefabName = typeof(T).Name;
@@ -152,8 +151,9 @@ public class UIManager : MonoSingleton<UIManager>
         if (uiList.TryGetValue(prefabName, out obj))
         {
             PanelBase basePanel = obj;
-            basePanel.OnClose();
-            basePanel.Dispose();
+            basePanel?.OnClose();
+            basePanel?.OnUnBindEvent();
+            basePanel?.Dispose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             uiList.Remove(prefabName);
         }
@@ -163,7 +163,9 @@ public class UIManager : MonoSingleton<UIManager>
     {
         foreach ((string name, PanelBase basePanel) in uiList)
         {
-            basePanel.OnClose();
+            basePanel?.OnClose();
+            basePanel?.OnUnBindEvent();
+            basePanel?.Dispose();
             GameObject.DestroyImmediate(basePanel.transform.gameObject);
             uiList.Remove(name);
         }
@@ -175,7 +177,7 @@ public class UIManager : MonoSingleton<UIManager>
         {
             if (bp.transform == null) { return; }
             PanelBase basePanel = bp;
-            basePanel.OnUpdate();
+            basePanel?.OnUpdate();
         }
     }
 

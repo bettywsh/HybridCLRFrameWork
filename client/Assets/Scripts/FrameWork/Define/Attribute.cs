@@ -10,7 +10,16 @@ public class EventAttribute : BaseAttribute
 
 }
 
-public class UIAttribute : BaseAttribute
+public class PanelAttribute : BaseAttribute
+{
+
+}
+
+public class SubPanelAttribute : BaseAttribute
+{
+
+}
+public class CellAttribute : BaseAttribute
 {
 
 }

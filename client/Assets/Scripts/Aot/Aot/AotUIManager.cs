@@ -77,11 +77,12 @@ public class AotUIManager : AotSingleton<AotUIManager>
         cv.overrideSorting = true;
         go.AddComponent<GraphicRaycaster>();
         OrderCanvas(go);
-        AotPanelBase basePanel = go.GetComponent<AotPanelBase>();
-        basePanel.args = args;
-        basePanel.transform = go.transform;
         go.SetActive(true);
+        AotPanelBase basePanel = go.GetComponent<AotPanelBase>();        
+        basePanel.args = args;
         uiList.Add(name, basePanel);
+        basePanel.OnOpen();
+     
     }
 
     void OrderCanvas(GameObject go)

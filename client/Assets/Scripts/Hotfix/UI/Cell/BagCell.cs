@@ -6,12 +6,13 @@ using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
+[Cell]
 public class BagCell : CellBase
 {
 
-    public async void OnOpen(cfg.Horse horseConfigItem)
+    public async void SetData(cfg.Horse horseConfigItem)
     {
-        referenceData["txtTitle"].tmptxtValue.text = horseConfigItem.Name;
-        referenceData["imgIcon"].imgValue.sprite = await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png");
+        referenceCollector.Get("txtTitle").tmptxtValue.text = horseConfigItem.Name;
+        referenceCollector.Get("imgIcon").imgValue.sprite = await ResManager.Instance.SceneLoadAssetAsync<Sprite>($"Assets/App/Texture/item/{horseConfigItem.Icon}.png", cancellationTokenSource.Token);
     }
 }

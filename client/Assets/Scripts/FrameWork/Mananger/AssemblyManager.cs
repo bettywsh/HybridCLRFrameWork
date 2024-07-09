@@ -10,7 +10,12 @@ public class AssemblyManager : Singleton<AssemblyManager>
 {
     private readonly Dictionary<string, Type> allTypes = new();
     private readonly UnOrderMultiMapSet<Type, Type> types = new();
-    Assembly[] assemblies;
+    private Assembly[] assemblies;
+    private Dictionary<string, Type> allPanel = new Dictionary<string, Type>();
+    private Dictionary<string, Type> allSubPanel = new Dictionary<string, Type>();
+    private Dictionary<string, Type> allCell = new Dictionary<string, Type>();
+    private Dictionary<string, Type> allScene = new Dictionary<string, Type>();
+
     public async void Init(Assembly[] assemblies)
     { 
         this.assemblies = assemblies;
@@ -23,12 +28,10 @@ public class AssemblyManager : Singleton<AssemblyManager>
         foreach ((string fullName, Type type) in addTypes)
         {
             this.allTypes[fullName] = type;
-
             if (type.IsAbstract)
             {
                 continue;
             }
-
             // 记录所有的有BaseAttribute标记的的类型
             object[] objects = type.GetCustomAttributes(typeof(BaseAttribute), true);
 
@@ -36,6 +39,29 @@ public class AssemblyManager : Singleton<AssemblyManager>
             {
                 this.types.Add(o.GetType(), type);
             }
+        }
+        var types = GetTypes(typeof(CellAttribute));
+        foreach (Type type in types)
+        {
+            allCell.Add(type.FullName, type);
+        }
+
+        types = GetTypes(typeof(PanelAttribute));
+        foreach (Type type in types)
+        {
+            allPanel.Add(type.FullName, type);
+        }
+
+        types = GetTypes(typeof(SubPanelAttribute));
+        foreach (Type type in types)
+        {
+            allSubPanel.Add(type.FullName, type);
+        }
+
+        types = GetTypes(typeof(SceneAttribute));
+        foreach (Type type in types)
+        {
+            allScene.Add(type.FullName, type);
         }
     }
 
@@ -63,4 +89,27 @@ public class AssemblyManager : Singleton<AssemblyManager>
 
         return this.types[systemAttributeType];
     }
+
+    public Type GetType(EAttribute eattr, string name)
+    {
+        Type t = null;
+        switch (eattr)
+        {
+            case EAttribute.Cell:
+                this.allCell.TryGetValue(name, out t);
+                break;
+            case EAttribute.Panel:
+                this.allPanel.TryGetValue(name, out t);
+                break;
+            case EAttribute.SubPanel:
+                this.allSubPanel.TryGetValue(name, out t);
+                break;
+            case EAttribute.Scene:
+                this.allScene.TryGetValue(name, out t);
+                break;
+        }
+
+        return t;
+    }
+
 }

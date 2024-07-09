@@ -19,7 +19,7 @@ public class UpdatePanel : AotPanelBase
     string packageVersion;
     ResourceDownloaderOperation downloader;
     CancellationTokenSource cancelToken = new CancellationTokenSource();
-    private async void Awake()
+    public override async void OnOpen()
     {
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
         {
@@ -33,7 +33,7 @@ public class UpdatePanel : AotPanelBase
             if (bigVersion == "")
             {
                 AotDialogManager.Instance.ShowDialogOne("警告", "获取资源版本失败，请检查网络", () => {
-                    this.Awake();
+                    this.OnOpen();
                 });
                 return;
             }

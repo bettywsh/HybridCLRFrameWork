@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 public class SplashIconPanel : AotPanelBase
 {
     public CanvasGroup cngBG;
-    private void Awake()
+    public override void OnOpen()
     {
         cngBG.alpha = 0;
         Sequence seq = DOTween.Sequence();

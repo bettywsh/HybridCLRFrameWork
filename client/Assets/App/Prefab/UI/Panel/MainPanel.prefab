@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 6148163773556004922}
   - component: {fileID: 6053578952584137500}
   m_Layer: 5
-  m_Name: '##SubPanel'
+  m_Name: '#SubPanel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

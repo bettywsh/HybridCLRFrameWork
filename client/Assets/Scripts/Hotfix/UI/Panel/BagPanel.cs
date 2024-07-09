@@ -16,9 +16,10 @@ public class BagPanel : PanelBase
         referenceCollector.Get("listListView").listValue.TotalCount = listHorseConfig.Count;
     }
 
-    void OnItemRender(int idx, Transform tf)
+    void OnItemRender(int idx, CellBase cb)
     {
-        tf.GetComponent<BagCell>().OnOpen(ConfigManager.Instance.Tables.HorseConfig.Get(idx + 1));
+        BagCell cell = cb as BagCell;
+        cell.SetData(ConfigManager.Instance.Tables.HorseConfig.Get(idx + 1));
     }
 
     [OnClick("btnMask")]

@@ -39,8 +39,8 @@ public class LoginPanel : PanelBase
 
         //NetworkManager.Instance.Connect(AppConst.SvrGameIp, AppConst.SvrGamePort);
 
-        //LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
-        //this.Close();
+        LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
+        this.Close();
         cancellationTokenSource.Cancel();
     }
 

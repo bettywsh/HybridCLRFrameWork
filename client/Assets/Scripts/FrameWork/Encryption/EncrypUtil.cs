@@ -188,7 +188,7 @@ public class EncrypUtil
             byte[] kb = System.Text.Encoding.UTF8.GetBytes(key);
             return encoding.GetString(DecryptKey(buff, kb));
         }
-        catch(Exception e)
+        catch
         {
             return String.Empty;
         }

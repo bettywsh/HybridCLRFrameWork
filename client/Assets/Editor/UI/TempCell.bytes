@@ -1,0 +1,11 @@
+using UnityEngine;
+
+[Cell]
+public class #CLASSNAME# : CellBase
+{
+
+    public void SetData(cfg.Horse horseConfigItem)
+    {
+        
+    }
+}

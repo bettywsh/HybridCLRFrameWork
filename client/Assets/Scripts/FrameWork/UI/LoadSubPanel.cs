@@ -11,6 +11,10 @@ public class LoadSubPanel : MonoBehaviour
     SubPanelBase subPanelBase;
     public async UniTask<T> Open<T>(string subPanelName, params object[] args)
     {
+        if (subPanelBase != null)
+        {
+            Close();
+        }
         string prefabName = typeof(T).Name;
         T t = Activator.CreateInstance<T>();
         GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/SubPanel/{prefabName}.prefab");
@@ -55,8 +59,6 @@ public class LoadSubPanel : MonoBehaviour
 
     private void OnDestroy()
     {
-        subPanelBase?.OnUnBindEvent();
-        subPanelBase?.OnClose();
-        subPanelBase?.Dispose();
+        subPanelBase?.Close();
     }
 }

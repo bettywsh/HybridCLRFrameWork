@@ -19,6 +19,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 	//clinet
 	public override async UniTask Init()
 	{
+		await base.Init();
 		NetworkProtocol networkProtocol = NetworkProtocol.TCP;
         switch (networkProtocol)
 		{

@@ -9,6 +9,7 @@ public class AtlasManager : MonoSingleton<AtlasManager>
     Dictionary<string, SpriteAtlas> spriteAtlasList = new Dictionary<string, SpriteAtlas>();
     public override async UniTask Init()
     {
+        await base.Init();
         SpriteAtlasManager.atlasRequested += RequestAtlas;
     }
 

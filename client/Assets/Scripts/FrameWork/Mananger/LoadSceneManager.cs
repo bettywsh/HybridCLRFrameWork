@@ -44,7 +44,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     public async void ChangeScene(string name)
     {
         await ResManager.Instance.LoadSceneAsync("Assets/App/Scene/" + name);
-        Type type = HybridCLRManager.Instance._hotUpdateAss.GetType(name + "Scene", false);
+        Type type = AssemblyManager.Instance.GetType(EAttribute.Scene, name + "Scene");
         if (type != null)
         {
             sceneScript = Activator.CreateInstance(type) as SceneBase;

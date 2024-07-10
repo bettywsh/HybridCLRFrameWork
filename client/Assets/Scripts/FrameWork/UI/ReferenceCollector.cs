@@ -30,10 +30,20 @@ public class ReferenceData
 
 public class ReferenceCollector : SerializedMonoBehaviour
 {
-    //panel层代码路径
+    //Panel层代码路径
     private string PanelDir = "/Scripts/Hotfix/UI/Panel";
     //view层模版文件路径
     private string PanelTempletePath = "Assets/Editor/UI/TempPanel.bytes";
+
+    //SubPanel层代码路径
+    private string SubPanelDir = "/Scripts/Hotfix/UI/SubPanel";
+    //view层模版文件路径
+    private string SubPanelTempletePath = "Assets/Editor/UI/TempSubPanel.bytes";
+
+    //SubPanel层代码路径
+    private string CellDir = "/Scripts/Hotfix/UI/Cell";
+    //view层模版文件路径
+    private string CellTempletePath = "Assets/Editor/UI/TempCell.bytes";
 
 
     [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
@@ -44,12 +54,14 @@ public class ReferenceCollector : SerializedMonoBehaviour
     {
         data.Clear();
         data.Add("transform", SetReferenceCollectorData(transform));
-        DeepSearch(transform);
+        //DeepSearch(transform);
+        for (int i = 0, count = transform.childCount; i < count; i++)
+            DeepSearch(transform.GetChild(i));
     }
 
     private void DeepSearch(Transform tran)
     {
-        if (tran.name[0] == '#' && tran.name[1] == '#')
+        if (tran.GetComponent<ReferenceCollector>() != null)
             return;
         if (tran.name[0] == '#')
         {
@@ -107,5 +119,45 @@ public class ReferenceCollector : SerializedMonoBehaviour
         File.WriteAllBytes(fullFilePath, buffer2);
         AssetDatabase.Refresh();
         EditorUtility.DisplayDialog("成功", "创建Panel成功!!!", "知道了");
+    }
+
+    [Button("创建SubPanel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    public void CreateSubPanel()
+    {
+        var fullFilePath = EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + SubPanelDir, transform.name, "cs");
+
+        if (File.Exists(fullFilePath))
+        {
+            Debug.LogError("文件已存在");
+            return;
+        }
+
+        string tempcs = AssetDatabase.LoadAssetAtPath<TextAsset>(SubPanelTempletePath).text;
+        tempcs = tempcs.Replace("#CLASSNAME#", transform.name);
+        byte[] buffer1 = Encoding.Default.GetBytes(tempcs.ToString());
+        byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
+        File.WriteAllBytes(fullFilePath, buffer2);
+        AssetDatabase.Refresh();
+        EditorUtility.DisplayDialog("成功", "创建SubPanel成功!!!", "知道了");
+    }
+
+    [Button("创建Cell.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    public void CreateCell()
+    {
+        var fullFilePath = EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + CellDir, transform.name, "cs");
+
+        if (File.Exists(fullFilePath))
+        {
+            Debug.LogError("文件已存在");
+            return;
+        }
+
+        string tempcs = AssetDatabase.LoadAssetAtPath<TextAsset>(CellTempletePath).text;
+        tempcs = tempcs.Replace("#CLASSNAME#", transform.name);
+        byte[] buffer1 = Encoding.Default.GetBytes(tempcs.ToString());
+        byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
+        File.WriteAllBytes(fullFilePath, buffer2);
+        AssetDatabase.Refresh();
+        EditorUtility.DisplayDialog("成功", "创建Cell成功!!!", "知道了");
     }
 }

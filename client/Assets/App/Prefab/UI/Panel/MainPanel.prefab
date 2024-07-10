@@ -604,6 +604,9 @@ MonoBehaviour:
     - {fileID: 388194099739108506}
     - {fileID: 2875684763979547235}
     - {fileID: 1360842222629050542}
+    - {fileID: 6148163773556004922}
+    - {fileID: 7866637175743000094}
+    - {fileID: 6053578952584137500}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -622,7 +625,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 6
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -663,6 +666,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -713,6 +719,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -759,6 +768,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -809,6 +821,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -855,6 +870,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -905,6 +923,60 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: LoadSubPanel
+    - Name: $v
+      Entry: 7
+      Data: 8|ReferenceData, FrameWork
+    - Name: tranValue
+      Entry: 10
+      Data: 22
+    - Name: goValue
+      Entry: 10
+      Data: 23
+    - Name: imgValue
+      Entry: 6
+      Data: 
+    - Name: txtValue
+      Entry: 6
+      Data: 
+    - Name: btnValue
+      Entry: 6
+      Data: 
+    - Name: tmpinputValue
+      Entry: 6
+      Data: 
+    - Name: toggleValue
+      Entry: 6
+      Data: 
+    - Name: sliderValue
+      Entry: 6
+      Data: 
+    - Name: tmptxtValue
+      Entry: 6
+      Data: 
+    - Name: cngValue
+      Entry: 6
+      Data: 
+    - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
+      Entry: 10
+      Data: 24
     - Name: 
       Entry: 8
       Data: 
@@ -1306,7 +1378,7 @@ GameObject:
   - component: {fileID: 6148163773556004922}
   - component: {fileID: 6053578952584137500}
   m_Layer: 5
-  m_Name: '#SubPanel'
+  m_Name: '#LoadSubPanel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1327,10 +1399,10 @@ RectTransform:
   m_Father: {fileID: 8720741940138437114}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6053578952584137500
 MonoBehaviour:

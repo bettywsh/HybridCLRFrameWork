@@ -54,7 +54,7 @@ public class HttpManager : Singleton<HttpManager>
             {
                 await webRequest.SendWebRequest();
             }
-            catch (Exception ex)
+            catch
             {
                 return "";
             }
@@ -90,7 +90,7 @@ public class HttpManager : Singleton<HttpManager>
             {
                 await webRequest.SendWebRequest().ToUniTask();
             }
-            catch (Exception e)
+            catch
             {
                 return "";
             }

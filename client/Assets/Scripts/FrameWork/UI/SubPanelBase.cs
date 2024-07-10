@@ -28,14 +28,11 @@ public class SubPanelBase : IDisposable
         await UniTask.CompletedTask;
     }
 
-    public virtual void OnUpdate()
-    {
-
-    }
-
     public virtual void Close()
     {
-        UIManager.Instance.Close(this.GetType());
+        OnUnBindEvent();
+        OnClose();
+        Dispose();
     }
 
     public virtual void OnUnBindEvent()
@@ -50,6 +47,6 @@ public class SubPanelBase : IDisposable
 
     public virtual void Dispose()
     {
-        OnClose();
+
     }
 }

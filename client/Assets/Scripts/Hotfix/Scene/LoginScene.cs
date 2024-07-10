@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Scene]
 public class LoginScene : SceneBase
 {
     public override void LoadScene()

@@ -22,6 +22,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public override async UniTask Init()
     {
+        await base.Init();
         if (audio == null)
         {
             //创建一个名称为Sound的空GameObject

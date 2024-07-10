@@ -3,38 +3,46 @@ using System;
 [AttributeUsage(AttributeTargets.Class)]
 public class BaseAttribute : Attribute
 {
+
 }
 
+[AttributeUsage(AttributeTargets.Class)]
 public class EventAttribute : BaseAttribute
 {
 
 }
 
+[AttributeUsage(AttributeTargets.Class)]
 public class PanelAttribute : BaseAttribute
 {
 
 }
 
+[AttributeUsage(AttributeTargets.Class)]
 public class SubPanelAttribute : BaseAttribute
 {
 
 }
+
+[AttributeUsage(AttributeTargets.Class)]
 public class CellAttribute : BaseAttribute
 {
 
 }
 
+[AttributeUsage(AttributeTargets.Class)]
 public class SceneAttribute : BaseAttribute
 {
 
 }
 
+[AttributeUsage(AttributeTargets.Class)]
 public class ConfigAttribute : BaseAttribute
 {
 
 }
 
-
+[AttributeUsage(AttributeTargets.Class)]
 public class DataAttribute : BaseAttribute
 { 
 

@@ -221,6 +221,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -269,6 +272,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -315,6 +321,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 

@@ -17,7 +17,7 @@ public class ReferenceData
     public GameObject goValue;
     public Image imgValue;
     public Text txtValue;
-    public Button btnValue;
+    public UButton btnValue;
     public TMP_InputField tmpinputValue;
     public Toggle toggleValue;
     public Slider sliderValue;
@@ -44,7 +44,6 @@ public class ReferenceCollector : SerializedMonoBehaviour
     private string CellDir = "/Scripts/Hotfix/UI/Cell";
     //view层模版文件路径
     private string CellTempletePath = "Assets/Editor/UI/TempCell.bytes";
-
 
     [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
     public Dictionary<string, ReferenceData> data = new Dictionary<string, ReferenceData>();
@@ -79,7 +78,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         newData.goValue = tran.gameObject;
         newData.imgValue = tran.GetComponent<Image>();
         newData.txtValue = tran.GetComponent<Text>();
-        newData.btnValue = tran.GetComponent<Button>();
+        newData.btnValue = tran.GetComponent<UButton>();
         newData.tmpinputValue = tran.GetComponent<TMP_InputField>();
         newData.toggleValue = tran.GetComponent<Toggle>();
         newData.sliderValue = tran.GetComponent<Slider>();
@@ -100,7 +99,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         return referenceData;
     }
 
-
+    [ShowIf("@transform.name.Contains(\"Panel\") && transform.name.Contains(\"SubPanel\") == false")]
     [Button("创建Panel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreatePanel()
     {
@@ -121,6 +120,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         EditorUtility.DisplayDialog("成功", "创建Panel成功!!!", "知道了");
     }
 
+    [ShowIf("@transform.name.Contains(\"SubPanel\")")]
     [Button("创建SubPanel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreateSubPanel()
     {
@@ -141,6 +141,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         EditorUtility.DisplayDialog("成功", "创建SubPanel成功!!!", "知道了");
     }
 
+    [ShowIf("@transform.name.Contains(\"Cell\")")]
     [Button("创建Cell.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreateCell()
     {

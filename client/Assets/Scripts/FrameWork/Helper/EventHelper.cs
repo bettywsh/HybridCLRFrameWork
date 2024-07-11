@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -72,8 +73,20 @@ public static class EventHelper
                 if (att is OnClickAttribute)
                 {
                     ReferenceData btn = referenceCollector.Get((att as OnClickAttribute).Name);
+                    btn.btnValue.onClick.RemoveAllListeners();
                     btn.btnValue.onClick.AddListener(() => { method.Invoke(obj, null); });
-                    //clickList.Add(btn.btnValue);
+                }
+                else if (att is OnToggleChangedAttribute)
+                {
+                    ReferenceData btn = referenceCollector.Get((att as OnToggleChangedAttribute).Name);
+                    btn.toggleValue.onValueChanged.RemoveAllListeners();
+                    btn.toggleValue.onValueChanged.AddListener((bool select) => { method.Invoke(obj, new object[1] { select }); });
+                }
+                else if (att is OnSliderChangedAttribute)
+                {
+                    ReferenceData btn = referenceCollector.Get((att as OnSliderChangedAttribute).Name);
+                    btn.sliderValue.onValueChanged.RemoveAllListeners();
+                    btn.sliderValue.onValueChanged.AddListener((float value) => { method.Invoke(obj, new object[1] { value }); });
                 }
             }
         }

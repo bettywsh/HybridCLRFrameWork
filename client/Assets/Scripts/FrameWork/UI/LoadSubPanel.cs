@@ -9,7 +9,7 @@ public class LoadSubPanel : MonoBehaviour
 {
 
     SubPanelBase subPanelBase;
-    public async UniTask<T> Open<T>(string subPanelName, params object[] args)
+    public async UniTask<T> Open<T>(params object[] args)
     {
         if (subPanelBase != null)
         {

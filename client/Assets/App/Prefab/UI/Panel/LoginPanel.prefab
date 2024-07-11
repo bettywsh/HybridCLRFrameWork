@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 4739564722266252912}
   - component: {fileID: 2700916870136012816}
   - component: {fileID: 2840704615021609968}
-  - component: {fileID: 2865176093585168501}
+  - component: {fileID: 8030747173747805642}
   m_Layer: 5
   m_Name: '#btnOk'
   m_TagString: Untagged
@@ -511,7 +511,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2865176093585168501
+--- !u!114 &8030747173747805642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3661262990835579472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -553,6 +553,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2840704615021609968}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4075542958648562510
@@ -775,7 +798,7 @@ MonoBehaviour:
     - {fileID: 4739564722266252912}
     - {fileID: 3661262990835579472}
     - {fileID: 2840704615021609968}
-    - {fileID: 2865176093585168501}
+    - {fileID: 8030747173747805642}
     - {fileID: 7236352688414893031}
     - {fileID: 7489802822410729559}
     - {fileID: 2328040202474562895}
@@ -845,6 +868,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -891,6 +917,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -941,6 +970,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -987,6 +1019,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 

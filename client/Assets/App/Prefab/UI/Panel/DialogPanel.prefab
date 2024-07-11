@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 6892950659194578253}
   - component: {fileID: 6892950659194578248}
   - component: {fileID: 6892950659194578251}
-  - component: {fileID: 4915779630928011442}
+  - component: {fileID: 8546227630827519866}
   m_Layer: 5
   m_Name: '#btnCancel'
   m_TagString: Untagged
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4915779630928011442
+--- !u!114 &8546227630827519866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,7 +594,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950659194578252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -629,6 +629,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6892950659735519923
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +663,7 @@ GameObject:
   - component: {fileID: 6892950659735519920}
   - component: {fileID: 6892950659735519950}
   - component: {fileID: 6892950659735519921}
-  - component: {fileID: 8709362757361441936}
+  - component: {fileID: 8080038846112951294}
   m_Layer: 5
   m_Name: '#btnMask'
   m_TagString: Untagged
@@ -706,7 +729,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8709362757361441936
+--- !u!114 &8080038846112951294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -715,7 +738,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950659735519923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -725,7 +748,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -748,6 +771,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6892950659735519921}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 0
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 1}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6892950659824766840
@@ -813,7 +859,7 @@ GameObject:
   - component: {fileID: 6892950660287096085}
   - component: {fileID: 6892950660287096080}
   - component: {fileID: 6892950660287096083}
-  - component: {fileID: 6699926027544091769}
+  - component: {fileID: 3663666539999988892}
   m_Layer: 5
   m_Name: '#btnOk'
   m_TagString: Untagged
@@ -880,7 +926,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6699926027544091769
+--- !u!114 &3663666539999988892
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -889,7 +935,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6892950660287096084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -922,6 +968,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6892950660287096083}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6892950660369249231
@@ -984,7 +1053,7 @@ MonoBehaviour:
     - {fileID: 6892950659735519920}
     - {fileID: 6892950659735519923}
     - {fileID: 6892950659735519921}
-    - {fileID: 8709362757361441936}
+    - {fileID: 8080038846112951294}
     - {fileID: 6892950659824766841}
     - {fileID: 6892950659824766840}
     - {fileID: 1425305453025213585}
@@ -994,14 +1063,14 @@ MonoBehaviour:
     - {fileID: 6892950659194578253}
     - {fileID: 6892950659194578252}
     - {fileID: 6892950659194578251}
-    - {fileID: 4915779630928011442}
+    - {fileID: 8546227630827519866}
     - {fileID: 7530168494710954252}
     - {fileID: 6643297658622258319}
     - {fileID: 1124492646915379185}
     - {fileID: 6892950660287096085}
     - {fileID: 6892950660287096084}
     - {fileID: 6892950660287096083}
-    - {fileID: 6699926027544091769}
+    - {fileID: 3663666539999988892}
     - {fileID: 966834575709750462}
     - {fileID: 1671789924151058539}
     - {fileID: 2907113148085182964}
@@ -1066,6 +1135,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -1112,6 +1184,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -1162,6 +1237,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -1208,6 +1286,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -1258,6 +1339,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -1304,6 +1388,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 
@@ -1354,6 +1441,9 @@ MonoBehaviour:
     - Name: listValue
       Entry: 6
       Data: 
+    - Name: loadSubPanelValue
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -1400,6 +1490,9 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: listValue
+      Entry: 6
+      Data: 
+    - Name: loadSubPanelValue
       Entry: 6
       Data: 
     - Name: 

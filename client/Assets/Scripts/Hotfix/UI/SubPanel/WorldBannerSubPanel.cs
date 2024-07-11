@@ -29,7 +29,7 @@ public class WorldBannerSubPanel : SubPanelBase
         if (!isAnim)
         {
             isAnim = true;
-            referenceCollector.Get("MainPanel").tranValue.gameObject.SetActive(true);
+            referenceCollector.Get("MainPanel").goValue.SetActive(true);
             MsgShowAnim();
         }
     }
@@ -74,7 +74,7 @@ public class WorldBannerSubPanel : SubPanelBase
             else
             {
                 isAnim = false;
-                referenceCollector.Get("MainPanel").tranValue.gameObject.SetActive(false);
+                referenceCollector.Get("MainPanel").goValue.SetActive(false);
             }
         });
     }

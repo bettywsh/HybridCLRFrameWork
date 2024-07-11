@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 826030851387840319}
   - component: {fileID: 5918005329858521684}
   - component: {fileID: 2875684763979547235}
-  - component: {fileID: 1360842222629050542}
+  - component: {fileID: 545605485302859551}
   m_Layer: 5
   m_Name: '#btnFlyingText'
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1360842222629050542
+--- !u!114 &545605485302859551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 388194099739108506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -120,6 +120,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2875684763979547235}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &734260165500368849
@@ -587,23 +610,22 @@ MonoBehaviour:
     - {fileID: 1804292436910473575}
     - {fileID: 1804292436910473572}
     - {fileID: 1804292436910473574}
-    - {fileID: 1851447704694099903}
     - {fileID: 1524917412317710262}
     - {fileID: 8820742184081294078}
     - {fileID: 3992717683224159800}
-    - {fileID: 5249335819254337939}
+    - {fileID: 7628432351731752645}
     - {fileID: 6498956733077412501}
     - {fileID: 7970135865902736816}
     - {fileID: 2703477919776844303}
-    - {fileID: 1804210031155732255}
+    - {fileID: 7014397959398609451}
     - {fileID: 3059816138273530153}
     - {fileID: 3393597819076623497}
     - {fileID: 5302428470915409643}
-    - {fileID: 6087054077282706299}
+    - {fileID: 1218587840074747518}
     - {fileID: 826030851387840319}
     - {fileID: 388194099739108506}
     - {fileID: 2875684763979547235}
-    - {fileID: 1360842222629050542}
+    - {fileID: 545605485302859551}
     - {fileID: 6148163773556004922}
     - {fileID: 7866637175743000094}
     - {fileID: 6053578952584137500}
@@ -699,8 +721,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: btnValue
-      Entry: 10
-      Data: 5
+      Entry: 6
+      Data: 
     - Name: tmpinputValue
       Entry: 6
       Data: 
@@ -739,19 +761,19 @@ MonoBehaviour:
       Data: 4|ReferenceData, FrameWork
     - Name: tranValue
       Entry: 10
-      Data: 6
+      Data: 5
     - Name: goValue
       Entry: 10
-      Data: 7
+      Data: 6
     - Name: imgValue
       Entry: 10
-      Data: 8
+      Data: 7
     - Name: txtValue
       Entry: 6
       Data: 
     - Name: btnValue
       Entry: 10
-      Data: 9
+      Data: 8
     - Name: tmpinputValue
       Entry: 6
       Data: 
@@ -790,19 +812,19 @@ MonoBehaviour:
       Data: 5|ReferenceData, FrameWork
     - Name: tranValue
       Entry: 10
-      Data: 10
+      Data: 9
     - Name: goValue
       Entry: 10
-      Data: 11
+      Data: 10
     - Name: imgValue
       Entry: 10
-      Data: 12
+      Data: 11
     - Name: txtValue
       Entry: 6
       Data: 
     - Name: btnValue
       Entry: 10
-      Data: 13
+      Data: 12
     - Name: tmpinputValue
       Entry: 6
       Data: 
@@ -841,19 +863,19 @@ MonoBehaviour:
       Data: 6|ReferenceData, FrameWork
     - Name: tranValue
       Entry: 10
-      Data: 14
+      Data: 13
     - Name: goValue
       Entry: 10
-      Data: 15
+      Data: 14
     - Name: imgValue
       Entry: 10
-      Data: 16
+      Data: 15
     - Name: txtValue
       Entry: 6
       Data: 
     - Name: btnValue
       Entry: 10
-      Data: 17
+      Data: 16
     - Name: tmpinputValue
       Entry: 6
       Data: 
@@ -892,19 +914,19 @@ MonoBehaviour:
       Data: 7|ReferenceData, FrameWork
     - Name: tranValue
       Entry: 10
-      Data: 18
+      Data: 17
     - Name: goValue
       Entry: 10
-      Data: 19
+      Data: 18
     - Name: imgValue
       Entry: 10
-      Data: 20
+      Data: 19
     - Name: txtValue
       Entry: 6
       Data: 
     - Name: btnValue
       Entry: 10
-      Data: 21
+      Data: 20
     - Name: tmpinputValue
       Entry: 6
       Data: 
@@ -943,10 +965,10 @@ MonoBehaviour:
       Data: 8|ReferenceData, FrameWork
     - Name: tranValue
       Entry: 10
-      Data: 22
+      Data: 21
     - Name: goValue
       Entry: 10
-      Data: 23
+      Data: 22
     - Name: imgValue
       Entry: 6
       Data: 
@@ -976,7 +998,7 @@ MonoBehaviour:
       Data: 
     - Name: loadSubPanelValue
       Entry: 10
-      Data: 24
+      Data: 23
     - Name: 
       Entry: 8
       Data: 
@@ -1121,7 +1143,7 @@ GameObject:
   - component: {fileID: 3059816138273530153}
   - component: {fileID: 243307044760419558}
   - component: {fileID: 5302428470915409643}
-  - component: {fileID: 6087054077282706299}
+  - component: {fileID: 1218587840074747518}
   m_Layer: 5
   m_Name: '#btnDialogTwo'
   m_TagString: Untagged
@@ -1188,7 +1210,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6087054077282706299
+--- !u!114 &1218587840074747518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1197,7 +1219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3393597819076623497}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1230,6 +1252,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5302428470915409643}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5373305608999928875
@@ -1427,7 +1472,7 @@ GameObject:
   - component: {fileID: 6498956733077412501}
   - component: {fileID: 1116048630426149418}
   - component: {fileID: 2703477919776844303}
-  - component: {fileID: 1804210031155732255}
+  - component: {fileID: 7014397959398609451}
   m_Layer: 5
   m_Name: '#btnDialogOne'
   m_TagString: Untagged
@@ -1494,7 +1539,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1804210031155732255
+--- !u!114 &7014397959398609451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1503,7 +1548,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7970135865902736816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1538,6 +1583,29 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8820742184081294078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,7 +1617,7 @@ GameObject:
   - component: {fileID: 1524917412317710262}
   - component: {fileID: 1678850957067871721}
   - component: {fileID: 3992717683224159800}
-  - component: {fileID: 5249335819254337939}
+  - component: {fileID: 7628432351731752645}
   m_Layer: 5
   m_Name: '#btnBag'
   m_TagString: Untagged
@@ -1616,7 +1684,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5249335819254337939
+--- !u!114 &7628432351731752645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1625,7 +1693,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8820742184081294078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5361635609fb36b499302e42f7059586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1658,6 +1726,29 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3992717683224159800}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ScaleTweenInfo:
+    shouldTween: 1
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    localScale: {x: 0.9, y: 0.9, z: 0.9}
+    duration: 0.2
+  m_DoubleTime: 0.3
+  m_LongClickTime: 0.4
+  m_LongPressTime: 0.4
+  m_LongIntervalTime: 0.1
+  m_OnDoubleClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongClick:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLongPress:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &9117288941002699490

@@ -49,6 +49,26 @@ public class DataAttribute : BaseAttribute
 }
 
 [AttributeUsage(AttributeTargets.Method)]
+public class OnSliderChangedAttribute : Attribute
+{
+    public string Name;
+    public OnSliderChangedAttribute(string name)
+    {
+        Name = name;
+    }
+}
+
+[AttributeUsage(AttributeTargets.Method)]
+public class OnToggleChangedAttribute : Attribute
+{
+    public string Name;
+    public OnToggleChangedAttribute(string name)
+    {
+        Name = name;
+    }
+}
+
+[AttributeUsage(AttributeTargets.Method)]
 public class OnClickAttribute : Attribute
 {
     public string Name;

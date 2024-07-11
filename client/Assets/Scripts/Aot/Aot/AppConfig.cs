@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class AppConfig : ScriptableObject
     /// <summary>
     /// 热更下载地址
     /// </summary>
-    public string SvrResIp = "http://192.168.11.18:8082/";
+    public string SvrResIp = "http://192.168.14.149:8082/";
 
     /// <summary>
     /// 打印Log模式
@@ -50,4 +51,31 @@ public class AppConfig : ScriptableObject
     /// 强更文件名
     /// </summary>
     public string DownloadApkName = "ff.apk";
+
+    /// <summary>
+    /// 补充元数据
+    /// </summary>
+    public List<string> AotDll = new List<string>() { "mscorlib.dll", "System.Core.dll", "System.dll" };
+
+    /// <summary>
+    /// 热更dll数据
+    /// </summary>
+    public List<string> HotfixDll = new List<string>() { "Hotfix.dll", "FrameWork.dll" };
+
+    public static string[] Modes = new string[] { "编辑器", "测试服", "正式服"};
+    [OnValueChanged("SetMode")]
+    [ValueDropdown("Modes")]
+    public string Mode = "编辑器";
+
+    public void SetMode()
+    {
+        if (Mode == "编辑器")
+        {
+            EPlayMode = EPlayMode.EditorSimulateMode;
+        }
+        else if (Mode == "测试服")
+        {
+            EPlayMode = EPlayMode.HostPlayMode;
+        }
+    }
 }

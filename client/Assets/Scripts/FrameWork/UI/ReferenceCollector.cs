@@ -99,6 +99,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         return referenceData;
     }
 
+#if UNITY_EDITOR
     [ShowIf("@transform.name.Contains(\"Panel\") && transform.name.Contains(\"SubPanel\") == false")]
     [Button("创建Panel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreatePanel()
@@ -161,4 +162,5 @@ public class ReferenceCollector : SerializedMonoBehaviour
         AssetDatabase.Refresh();
         EditorUtility.DisplayDialog("成功", "创建Cell成功!!!", "知道了");
     }
+#endif
 }

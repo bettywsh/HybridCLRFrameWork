@@ -12,14 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be708a707b5662a44a27a96344ee1908, type: 3}
   m_Name: AppConfig
   m_EditorClassIdentifier: 
-  EPlayMode: 0
+  EPlayMode: 2
+  AppVersion: 1
   ResVersion: 10001
-  SvrResIp: http://192.168.14.31:8082/
-  SvrGameIp: shiku.grandlink.net
-  SvrGamePort: 8443
+  ChannelId: 8002
+  SvrResIp: http://192.168.14.149:8082/
   DebugLog: 1
   GameFrameRate: 30
   PackageName: DefaultPackage
-  ProtoBuffPackageName: com.bochsler.protocol.
-  StartSceneName: Start
   DownloadApkName: ff.apk
+  AotDll:
+  - mscorlib.dll
+  - System.Core.dll
+  - System.dll
+  - UnityEngine.CoreModule.dll
+  - UnityEngine.UI.dll
+  - UniTask.dll
+  - YooAsset.dll
+  - DOTween.dll
+  - ThirdParty.dll
+  - LitJson.dll
+  HotfixDll:
+  - Hotfix.dll
+  - FrameWork.dll
+  Mode: "\u6D4B\u8BD5\u670D"

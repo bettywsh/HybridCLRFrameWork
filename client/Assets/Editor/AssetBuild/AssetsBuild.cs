@@ -9,8 +9,6 @@ using YooAsset.Editor;
 
 public class AssetsBuild
 {
-    public static List<string> AssembliesPostIl2CppStrip = new List<string>{"mscorlib.dll", "System.Core.dll", "System.dll" };
-    public static List<string> HotUpdateDlls = new List<string> { "Hotfix.dll" };
 
     [MenuItem("Build/BuildAndroidAsset", false, 1)]
     public static void BuildAndroidAsset()
@@ -18,14 +16,17 @@ public class AssetsBuild
         Debug.Log($"开始构建 : 华佗dll");
         PrebuildCommand.GenerateAll();
         AssetDatabase.Refresh();
+        AppConfig appConfig = AssetDatabase.LoadAssetAtPath<AppConfig>("Assets/Resources/AppConfig.asset");
         string SourceDir = $"{Application.dataPath}/../HybridCLRData/HotUpdateDlls/{BuildTarget.Android.ToString()}/";
         string TargetDir = $"{Application.dataPath}/App/Dll/";
+        List<string> HotUpdateDlls = appConfig.HotfixDll;
         foreach (string file in HotUpdateDlls)
         {
-            File.Copy(SourceDir+file, TargetDir+file+ ".bytes",true);
+            File.Copy(SourceDir + file, TargetDir + file + ".bytes", true);
         }
 
         SourceDir = $"{Application.dataPath}/../HybridCLRData/AssembliesPostIl2CppStrip/{BuildTarget.Android.ToString()}/";
+        List<string> AssembliesPostIl2CppStrip = appConfig.AotDll;
         foreach (string file in AssembliesPostIl2CppStrip)
         {
             File.Copy(SourceDir + file, TargetDir + file + ".bytes", true);
@@ -33,11 +34,6 @@ public class AssetsBuild
         AssetDatabase.Refresh();
 
         Debug.Log($"开始构建 : {BuildTarget.Android}");
-        AppConfig appConfig = AssetDatabase.LoadAssetAtPath<AppConfig>("Assets/Resources/AppConfig.asset");
-        //appConfig.AppVersion = Application.version;
-        //EditorUtility.SetDirty(appConfig);
-        //AssetDatabase.SaveAssets();
-        //AssetDatabase.Refresh();
 
         var buildoutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
         var streamingAssetsRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
@@ -76,10 +72,9 @@ public class AssetsBuild
         AssetDatabase.Refresh();
     }
 
-    [MenuItem("Build/BuildAndroidApk", false, 1)]
-    public static void BuildAndroidApk() {
-        BuildAndroidAsset();
-
+    [MenuItem("Build/BuildAndroidApk", false, 2)]
+    public static void BuildAndroidApk()
+    {
         var currentApkName = DateTime.Now.ToString("MM_dd_HH_mm_ss");
         var apkDir = string.Format("{0}/_APK/{1}", $"{Application.dataPath}/../", currentApkName);
         if (!Directory.Exists(apkDir))
@@ -95,5 +90,12 @@ public class AssetsBuild
         BuildPipeline.BuildPlayer(scenes, toPath, BuildTarget.Android, BuildOptions.CompressWithLz4HC);
 
         Debug.Log("APK 完成");
+    }
+
+    [MenuItem("Build/BuildAndroidAssetAndApk", false, 2)]
+    public static void BuildAndroidAssetAndApk()
+    {
+        BuildAndroidAsset();
+        BuildAndroidApk();
     }
 }

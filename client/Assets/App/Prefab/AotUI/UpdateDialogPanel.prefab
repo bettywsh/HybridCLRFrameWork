@@ -938,7 +938,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc13e5a3e0255147adccc052653a69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 0}
+  txtMsg: {fileID: 4019639225460123371}
+  txtOk: {fileID: 2907113148085182964}
+  txtCancel: {fileID: 1124492646915379185}
+  btnOk: {fileID: 1801836610224784588}
+  btnCancel: {fileID: 9209158942939812679}
 --- !u!1 &7210635767537150044
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,6 @@ using YooAsset;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using System.IO;
-using System.Threading;
-using static Sirenix.OdinInspector.Editor.UnityPropertyEmitter;
 
 public class AotResManager : AotSingleton<AotResManager>
 {

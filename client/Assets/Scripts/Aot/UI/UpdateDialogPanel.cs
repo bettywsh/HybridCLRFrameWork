@@ -14,7 +14,7 @@ public class UpdateDialogPanel : AotPanelBase
     public Button btnCancel;
 
     AotDialogInfo dialogInfo;
-    private void Awake()
+    public override void OnOpen()
     {
         dialogInfo = args[0] as AotDialogInfo;
         txtMsg.text = dialogInfo.txtMsg;

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BattleMangager : Singleton<BattleMangager>
 {
-    InputData inputData;
     public void CreatePlayer()
     { 
     

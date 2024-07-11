@@ -553,9 +553,6 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 	// System.Func<object,object,object>
 	// System.Func<object,object>
 	// System.Func<object>
-	// System.IComparable<TrueSync.FP>
-	// System.IEquatable<TrueSync.FP>
-	// System.IEquatable<TrueSync.TSVector2>
 	// System.Linq.Buffer<object>
 	// System.Linq.EnumerableSorter<object,object>
 	// System.Linq.EnumerableSorter<object>

@@ -9,7 +9,7 @@ public class MainPanel : PanelBase
     public override async UniTask OnOpen()
     {        
         await base.OnOpen();
-        await referenceCollector.Get("LoadSubPanel").loadSubPanelValue.Open<WorldBannerSubPanel>();
+        await GetUI("LoadSubPanel").loadSubPanelValue.Open<WorldBannerSubPanel>();
     }
 
     [OnClick("btnBag")]

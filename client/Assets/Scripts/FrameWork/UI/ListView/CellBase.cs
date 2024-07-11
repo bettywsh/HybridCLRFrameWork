@@ -19,6 +19,11 @@ public class CellBase: IDisposable
         referenceCollector = transform.GetComponent<ReferenceCollector>();
     }
 
+    public virtual ReferenceData GetUI(string valua)
+    {
+        return referenceCollector.Get(valua);
+    }
+
     public virtual void Dispose() {
         cancellationTokenSource.Cancel();
     }

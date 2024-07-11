@@ -28,6 +28,11 @@ public class SubPanelBase : IDisposable
         await UniTask.CompletedTask;
     }
 
+    public virtual ReferenceData GetUI(string valua)
+    {
+        return referenceCollector.Get(valua);
+    }
+
     public virtual void Close()
     {
         OnUnBindEvent();

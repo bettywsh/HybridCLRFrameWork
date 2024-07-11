@@ -20,8 +20,8 @@ public class TextPanel : PanelBase
         if (!isTween && queue.Count > 0)
         {
             isTween = true;
-            referenceCollector.Get("txtTextMesh").tmptxtValue.text = queue.Dequeue();
-            Transform run = GameObjectHelper.Instantiate(referenceCollector.Get("objContent").tranValue, referenceCollector.Get("imgBg").tranValue.gameObject);
+            GetUI("txtTextMesh").tmptxtValue.text = queue.Dequeue();
+            Transform run = GameObjectHelper.Instantiate(GetUI("objContent").tranValue, GetUI("imgBg").tranValue.gameObject);
             run.gameObject.SetActive(true);
             Sequence seq = DOTween.Sequence();
             seq.Append(run.GetComponent<RectTransform>().DOAnchorPosY(125, 1).SetRelative());

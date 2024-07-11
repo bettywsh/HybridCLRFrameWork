@@ -1,4 +1,3 @@
-using Codice.Client.Common;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
@@ -29,7 +28,7 @@ public class WorldBannerSubPanel : SubPanelBase
         if (!isAnim)
         {
             isAnim = true;
-            referenceCollector.Get("MainPanel").goValue.SetActive(true);
+            GetUI("MainPanel").goValue.SetActive(true);
             MsgShowAnim();
         }
     }
@@ -40,9 +39,9 @@ public class WorldBannerSubPanel : SubPanelBase
         float time = 0;
         float maxTime = 0;
         string msg = msgs.Pop();
-        referenceCollector.Get("txtMsg").tmptxtValue.text = msg;
-        referenceCollector.Get("txtMsg").tranValue.localPosition = new Vector3(0, -35, 0);
-        float txtWidth = referenceCollector.Get("txtMsg").tmptxtValue.preferredWidth;
+        GetUI("txtMsg").tmptxtValue.text = msg;
+        GetUI("txtMsg").tranValue.localPosition = new Vector3(0, -35, 0);
+        float txtWidth = GetUI("txtMsg").tmptxtValue.preferredWidth;
         x = (txtWidth - 920) * 0.5f;
         if (x > 0)
         {
@@ -62,10 +61,10 @@ public class WorldBannerSubPanel : SubPanelBase
             x = 0;
         }
         Sequence seq = DOTween.Sequence();
-        seq.Append(referenceCollector.Get("txtMsg").tranValue.DOLocalMoveY(0, 0.5f));
-        seq.Append(referenceCollector.Get("txtMsg").tranValue.DOLocalMoveX(x * - 1, time).SetEase(DG.Tweening.Ease.Linear));
+        seq.Append(GetUI("txtMsg").tranValue.DOLocalMoveY(0, 0.5f));
+        seq.Append(GetUI("txtMsg").tranValue.DOLocalMoveX(x * - 1, time).SetEase(DG.Tweening.Ease.Linear));
         seq.AppendInterval(1);
-        seq.Append(referenceCollector.Get("txtMsg").tranValue.DOLocalMoveY(40, 0.5f));
+        seq.Append(GetUI("txtMsg").tranValue.DOLocalMoveY(40, 0.5f));
         seq.AppendCallback(() =>{
             if (msgs.Count > 0)
             {
@@ -74,7 +73,7 @@ public class WorldBannerSubPanel : SubPanelBase
             else
             {
                 isAnim = false;
-                referenceCollector.Get("MainPanel").goValue.SetActive(false);
+                GetUI("MainPanel").goValue.SetActive(false);
             }
         });
     }

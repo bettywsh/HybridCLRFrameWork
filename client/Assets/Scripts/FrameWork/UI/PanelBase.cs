@@ -27,6 +27,10 @@ public class PanelBase : IDisposable
     {
         await UniTask.CompletedTask;
     }
+    public virtual ReferenceData GetUI(string valua)
+    {
+        return referenceCollector.Get(valua);
+    }
 
     public virtual void OnUpdate()
     {

@@ -6,13 +6,13 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace com.bochsler.protocol
+namespace Proto.basepb
 {
 
     [global::ProtoBuf.ProtoContract()]
     public enum CSMessageEnum
     {
-        LoginRequest = 10001,
+        LoginRequest = 100003,
         PingRequest = 10002,
         ReconnectRequest = 10003,
         GmOrderRequest = 10009,
@@ -25,6 +25,8 @@ namespace com.bochsler.protocol
         FaceRequest = 10102,
         DanceRequest = 10103,
         SeatRequest = 10104,
+        [global::ProtoBuf.ProtoEnum(Name = @"Request_PhoneCode")]
+        RequestPhoneCode = 100043,
     }
 
 }

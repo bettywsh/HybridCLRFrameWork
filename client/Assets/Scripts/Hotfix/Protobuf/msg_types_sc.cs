@@ -6,13 +6,13 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace com.bochsler.protocol
+namespace Proto.basepb
 {
 
     [global::ProtoBuf.ProtoContract()]
     public enum SCMessageEnum
     {
-        LoginResponse = 10001,
+        LoginResponse = 100004,
         PingResponse = 10002,
         ReconnectResponse = 10003,
         SCChannelExpired = 10004,
@@ -30,6 +30,8 @@ namespace com.bochsler.protocol
         FaceResponse = 10102,
         DanceResponse = 10103,
         SeatResponse = 10104,
+        [global::ProtoBuf.ProtoEnum(Name = @"Response_PhoneCode")]
+        ResponsePhoneCode = 100044,
     }
 
 }

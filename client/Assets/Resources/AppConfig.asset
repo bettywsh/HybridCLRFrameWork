@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be708a707b5662a44a27a96344ee1908, type: 3}
   m_Name: AppConfig
   m_EditorClassIdentifier: 
-  EPlayMode: 2
+  EPlayMode: 0
   AppVersion: 1
   ResVersion: 10001
   ChannelId: 8002
@@ -21,6 +21,9 @@ MonoBehaviour:
   GameFrameRate: 30
   PackageName: DefaultPackage
   DownloadApkName: ff.apk
+  ProtoBuffPackageName: Proto.basepb.
+  SvrGameIp: 47.101.158.105
+  SvrGamePort: 30108
   AotDll:
   - mscorlib.dll
   - System.Core.dll
@@ -35,4 +38,4 @@ MonoBehaviour:
   HotfixDll:
   - Hotfix.dll
   - FrameWork.dll
-  Mode: "\u6D4B\u8BD5\u670D"
+  Mode: "\u7F16\u8F91\u5668"

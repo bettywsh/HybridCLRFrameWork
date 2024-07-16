@@ -27,7 +27,7 @@ public static class EventHelper
             {
                 if (att is OnMessageAttribute)
                 {
-                    MessageManager.Instance.RegisterMessageHandler((att as OnMessageAttribute).Name, (msgDatas) => { method.Invoke(obj, null); });
+                    MessageManager.Instance.RegisterMessageHandler((att as OnMessageAttribute).Name, (msgDatas) => { method.Invoke(obj, msgDatas); });
                     List<string> messages;
                     if (!dirMessages.TryGetValue(type.Name, out messages))
                     {
@@ -50,7 +50,9 @@ public static class EventHelper
                 if (att is OnNetAttribute)
                 {
                     int id = (att as OnNetAttribute).Id;
-                    MessageManager.Instance.RegisterNetMessageHandler(id, (msgDatas) => { method.Invoke(obj, null); });
+                    MessageManager.Instance.RegisterNetMessageHandler(id, (object[] msgDatas) => {
+                        method.Invoke(obj, msgDatas);
+                    });
                     List<int> nets;
                     if (!dirNets.TryGetValue(type.Name, out nets))
                     {

@@ -53,6 +53,21 @@ public class AppConfig : ScriptableObject
     public string DownloadApkName = "ff.apk";
 
     /// <summary>
+    /// ProtoBuff 包名
+    /// </summary>
+    public string ProtoBuffPackageName = "com.bochsler.protocol.";
+
+    /// <summary>
+    /// 游戏启动ip地址
+    /// </summary>
+    public string SvrGameIp = "shiku.grandlink.net";
+
+    /// <summary>
+    /// 游戏启动端口
+    /// </summary>
+    public int SvrGamePort = 8443;
+
+    /// <summary>
     /// 补充元数据
     /// </summary>
     public List<string> AotDll = new List<string>() { "mscorlib.dll", "System.Core.dll", "System.dll" };

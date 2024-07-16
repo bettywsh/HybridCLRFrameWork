@@ -6,7 +6,7 @@
 
 #region Designer generated code
 #pragma warning disable CS0612, CS0618, CS1591, CS3021, IDE0079, IDE1006, RCS1036, RCS1057, RCS1085, RCS1192
-namespace com.bochsler.protocol
+namespace Proto.basepb
 {
 
     [global::ProtoBuf.ProtoContract()]
@@ -16,28 +16,164 @@ namespace com.bochsler.protocol
         global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
-        [global::ProtoBuf.ProtoMember(1, Name = @"username", IsRequired = true)]
-        public string Username { get; set; }
-
-        [global::ProtoBuf.ProtoMember(2, Name = @"password", IsRequired = true)]
-        public string Password { get; set; }
-
-        [global::ProtoBuf.ProtoMember(3, IsRequired = true)]
-        public LoginType loginType { get; set; }
-
-        [global::ProtoBuf.ProtoMember(4, IsRequired = true)]
-        public SceneType sceneType { get; set; }
-
-        [global::ProtoBuf.ProtoMember(5)]
+        [global::ProtoBuf.ProtoMember(1, Name = @"account")]
         [global::System.ComponentModel.DefaultValue("")]
-        public string sceneMap
+        public string Account
         {
-            get => __pbn__sceneMap ?? "";
-            set => __pbn__sceneMap = value;
+            get => __pbn__Account ?? "";
+            set => __pbn__Account = value;
         }
-        public bool ShouldSerializesceneMap() => __pbn__sceneMap != null;
-        public void ResetsceneMap() => __pbn__sceneMap = null;
-        private string __pbn__sceneMap;
+        public bool ShouldSerializeAccount() => __pbn__Account != null;
+        public void ResetAccount() => __pbn__Account = null;
+        private string __pbn__Account;
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"passward")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Passward
+        {
+            get => __pbn__Passward ?? "";
+            set => __pbn__Passward = value;
+        }
+        public bool ShouldSerializePassward() => __pbn__Passward != null;
+        public void ResetPassward() => __pbn__Passward = null;
+        private string __pbn__Passward;
+
+        [global::ProtoBuf.ProtoMember(6, Name = @"deviceid")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Deviceid
+        {
+            get => __pbn__Deviceid ?? "";
+            set => __pbn__Deviceid = value;
+        }
+        public bool ShouldSerializeDeviceid() => __pbn__Deviceid != null;
+        public void ResetDeviceid() => __pbn__Deviceid = null;
+        private string __pbn__Deviceid;
+
+        [global::ProtoBuf.ProtoMember(7, Name = @"channel")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Channel
+        {
+            get => __pbn__Channel ?? "";
+            set => __pbn__Channel = value;
+        }
+        public bool ShouldSerializeChannel() => __pbn__Channel != null;
+        public void ResetChannel() => __pbn__Channel = null;
+        private string __pbn__Channel;
+
+        [global::ProtoBuf.ProtoMember(9, Name = @"imei")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Imei
+        {
+            get => __pbn__Imei ?? "";
+            set => __pbn__Imei = value;
+        }
+        public bool ShouldSerializeImei() => __pbn__Imei != null;
+        public void ResetImei() => __pbn__Imei = null;
+        private string __pbn__Imei;
+
+    }
+
+    [global::ProtoBuf.ProtoContract()]
+    public partial class LoginResponse : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1, Name = @"account")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Account
+        {
+            get => __pbn__Account ?? "";
+            set => __pbn__Account = value;
+        }
+        public bool ShouldSerializeAccount() => __pbn__Account != null;
+        public void ResetAccount() => __pbn__Account = null;
+        private string __pbn__Account;
+
+        [global::ProtoBuf.ProtoMember(2, Name = @"token")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Token
+        {
+            get => __pbn__Token ?? "";
+            set => __pbn__Token = value;
+        }
+        public bool ShouldSerializeToken() => __pbn__Token != null;
+        public void ResetToken() => __pbn__Token = null;
+        private string __pbn__Token;
+
+        [global::ProtoBuf.ProtoMember(3, Name = @"name")]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string Name
+        {
+            get => __pbn__Name ?? "";
+            set => __pbn__Name = value;
+        }
+        public bool ShouldSerializeName() => __pbn__Name != null;
+        public void ResetName() => __pbn__Name = null;
+        private string __pbn__Name;
+
+        [global::ProtoBuf.ProtoMember(4)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string gameIP
+        {
+            get => __pbn__gameIP ?? "";
+            set => __pbn__gameIP = value;
+        }
+        public bool ShouldSerializegameIP() => __pbn__gameIP != null;
+        public void ResetgameIP() => __pbn__gameIP = null;
+        private string __pbn__gameIP;
+
+        [global::ProtoBuf.ProtoMember(9, Name = @"platform")]
+        public int Platform
+        {
+            get => __pbn__Platform.GetValueOrDefault();
+            set => __pbn__Platform = value;
+        }
+        public bool ShouldSerializePlatform() => __pbn__Platform != null;
+        public void ResetPlatform() => __pbn__Platform = null;
+        private int? __pbn__Platform;
+
+        [global::ProtoBuf.ProtoMember(22)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string registerChannel
+        {
+            get => __pbn__registerChannel ?? "";
+            set => __pbn__registerChannel = value;
+        }
+        public bool ShouldSerializeregisterChannel() => __pbn__registerChannel != null;
+        public void ResetregisterChannel() => __pbn__registerChannel = null;
+        private string __pbn__registerChannel;
+
+        [global::ProtoBuf.ProtoMember(23)]
+        public int loginType
+        {
+            get => __pbn__loginType.GetValueOrDefault();
+            set => __pbn__loginType = value;
+        }
+        public bool ShouldSerializeloginType() => __pbn__loginType != null;
+        public void ResetloginType() => __pbn__loginType = null;
+        private int? __pbn__loginType;
+
+    }
+
+    [global::ProtoBuf.ProtoContract(Name = @"Request_PhoneCode")]
+    public partial class RequestPhoneCode : global::ProtoBuf.IExtensible
+    {
+        private global::ProtoBuf.IExtension __pbn__extensionData;
+        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
+
+        [global::ProtoBuf.ProtoMember(1)]
+        [global::System.ComponentModel.DefaultValue("")]
+        public string phoneNumber
+        {
+            get => __pbn__phoneNumber ?? "";
+            set => __pbn__phoneNumber = value;
+        }
+        public bool ShouldSerializephoneNumber() => __pbn__phoneNumber != null;
+        public void ResetphoneNumber() => __pbn__phoneNumber = null;
+        private string __pbn__phoneNumber;
 
     }
 
@@ -179,108 +315,6 @@ namespace com.bochsler.protocol
     }
 
     [global::ProtoBuf.ProtoContract()]
-    public partial class LoginResponse : global::ProtoBuf.IExtensible
-    {
-        private global::ProtoBuf.IExtension __pbn__extensionData;
-        global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-            => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
-
-        [global::ProtoBuf.ProtoMember(1)]
-        public PlayerInfo playerInfo { get; set; }
-
-        [global::ProtoBuf.ProtoMember(2)]
-        public int timeZone
-        {
-            get => __pbn__timeZone.GetValueOrDefault();
-            set => __pbn__timeZone = value;
-        }
-        public bool ShouldSerializetimeZone() => __pbn__timeZone != null;
-        public void ResettimeZone() => __pbn__timeZone = null;
-        private int? __pbn__timeZone;
-
-        [global::ProtoBuf.ProtoMember(3, Name = @"servertime")]
-        public long Servertime
-        {
-            get => __pbn__Servertime.GetValueOrDefault();
-            set => __pbn__Servertime = value;
-        }
-        public bool ShouldSerializeServertime() => __pbn__Servertime != null;
-        public void ResetServertime() => __pbn__Servertime = null;
-        private long? __pbn__Servertime;
-
-        [global::ProtoBuf.ProtoMember(4, Name = @"result")]
-        [global::System.ComponentModel.DefaultValue(LoginResult.LoginSuccess)]
-        public LoginResult Result
-        {
-            get => __pbn__Result ?? LoginResult.LoginSuccess;
-            set => __pbn__Result = value;
-        }
-        public bool ShouldSerializeResult() => __pbn__Result != null;
-        public void ResetResult() => __pbn__Result = null;
-        private LoginResult? __pbn__Result;
-
-        [global::ProtoBuf.ProtoMember(5, Name = @"serverkey")]
-        [global::System.ComponentModel.DefaultValue("")]
-        public string Serverkey
-        {
-            get => __pbn__Serverkey ?? "";
-            set => __pbn__Serverkey = value;
-        }
-        public bool ShouldSerializeServerkey() => __pbn__Serverkey != null;
-        public void ResetServerkey() => __pbn__Serverkey = null;
-        private string __pbn__Serverkey;
-
-        [global::ProtoBuf.ProtoMember(6)]
-        public int resetTime
-        {
-            get => __pbn__resetTime.GetValueOrDefault();
-            set => __pbn__resetTime = value;
-        }
-        public bool ShouldSerializeresetTime() => __pbn__resetTime != null;
-        public void ResetresetTime() => __pbn__resetTime = null;
-        private int? __pbn__resetTime;
-
-        [global::ProtoBuf.ProtoMember(7)]
-        public bool isNewRole
-        {
-            get => __pbn__isNewRole.GetValueOrDefault();
-            set => __pbn__isNewRole = value;
-        }
-        public bool ShouldSerializeisNewRole() => __pbn__isNewRole != null;
-        public void ResetisNewRole() => __pbn__isNewRole = null;
-        private bool? __pbn__isNewRole;
-
-        [global::ProtoBuf.ProtoMember(8, Name = @"data")]
-        public LoginExtraData Data { get; set; }
-
-        [global::ProtoBuf.ProtoMember(9)]
-        [global::System.ComponentModel.DefaultValue("")]
-        public string opGameId
-        {
-            get => __pbn__opGameId ?? "";
-            set => __pbn__opGameId = value;
-        }
-        public bool ShouldSerializeopGameId() => __pbn__opGameId != null;
-        public void ResetopGameId() => __pbn__opGameId = null;
-        private string __pbn__opGameId;
-
-        [global::ProtoBuf.ProtoMember(10)]
-        [global::System.ComponentModel.DefaultValue("")]
-        public string opId
-        {
-            get => __pbn__opId ?? "";
-            set => __pbn__opId = value;
-        }
-        public bool ShouldSerializeopId() => __pbn__opId != null;
-        public void ResetopId() => __pbn__opId = null;
-        private string __pbn__opId;
-
-        [global::ProtoBuf.ProtoMember(11, IsRequired = true)]
-        public LoginType loginType { get; set; }
-
-    }
-
-    [global::ProtoBuf.ProtoContract()]
     public partial class ReconnectRequest : global::ProtoBuf.IExtensible
     {
         private global::ProtoBuf.IExtension __pbn__extensionData;
@@ -288,7 +322,7 @@ namespace com.bochsler.protocol
             => global::ProtoBuf.Extensible.GetExtensionObject(ref __pbn__extensionData, createIfMissing);
 
         [global::ProtoBuf.ProtoMember(1, IsRequired = true)]
-        public LoginType loginType { get; set; }
+        public global::com.bochsler.protocol.LoginType loginType { get; set; }
 
         [global::ProtoBuf.ProtoMember(2, IsRequired = true)]
         public SuperSdkInfo sdkInfo { get; set; }

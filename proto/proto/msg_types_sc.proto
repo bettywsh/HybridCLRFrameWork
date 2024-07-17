@@ -1,10 +1,12 @@
-package com.bochsler.protocol;
+syntax = "proto2";
+
+package Proto.base_pb;
 
 //option optimize_for = LITE_RUNTIME;
 
 // 所有服务器->客户端的消息类型	LUA端为20000以上 C#端为20000以下
 enum SCMessageEnum {
-  LoginResponse = 10001;
+  LoginResponse = 100004;
   PingResponse = 10002;
   ReconnectResponse = 10003; //断线重连
   SCChannelExpired = 10004;
@@ -24,4 +26,5 @@ enum SCMessageEnum {
   FaceResponse = 10102;//表情
   DanceResponse = 10103;//跳舞
   SeatResponse = 10104;//坐
+  Response_PhoneCode = 100044;
 }

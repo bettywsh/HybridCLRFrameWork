@@ -1,4 +1,6 @@
-package com.bochsler.protocol;
+syntax = "proto2";
+
+package Proto.base_pb;
 
 import "proto_common.proto";
 
@@ -26,13 +28,26 @@ enum LoginResult {
 
 // 登陆请求
 message LoginRequest {
-  // optional SuperSdkInfo sdkInfo = 2;
-  // optional ClientInfo clientInfo = 3;
-  required string username = 1;
-  required string password = 2;
-  required LoginType loginType = 3;
-  required SceneType sceneType = 4; //登录场景类型
-  optional string sceneMap = 5; 	//默认为"",用在游客登陆直接进入指定地图
+	optional string account = 1;
+	optional string passward = 2;
+	optional string deviceid = 6;//机器码
+	optional string channel = 7;//渠道
+	optional string imei = 9;
+}
+
+// 登陆响应
+message LoginResponse {
+    optional string account = 1;
+    optional string token = 2;
+	optional string name = 3;
+    optional string gameIP = 4;
+	optional int32 platform = 9;//登陆平台
+	optional string registerChannel = 22;    //玩家的注册渠道
+	optional int32 loginType = 23;    //玩家登录类型 注册or 登录
+}
+
+message Request_PhoneCode{
+    optional string phoneNumber = 1;
 }
 
 message SuperSdkInfo {
@@ -57,20 +72,6 @@ message ClientInfo {
   optional string clientTimeZone = 13;  //客户端时区
 }
 
-// 登陆响应
-message LoginResponse {
-  optional PlayerInfo playerInfo = 1; // 玩家角色信息
-  optional int32 timeZone = 2; // 服务器时区
-  optional int64 servertime = 3;
-  optional LoginResult result = 4; // 登陆结果
-  optional string serverkey = 5; //    临时密钥
-  optional int32 resetTime = 6;  //重连重置时间（秒）
-  optional bool isNewRole = 7; // 是否是新注册角色
-  optional LoginExtraData data = 8; //额外参数
-  optional string opGameId = 9;//opgameid
-  optional string opId = 10;//opId
-  required LoginType loginType = 11; // 登录类型
-}
 
 // 重连请求
 message ReconnectRequest {

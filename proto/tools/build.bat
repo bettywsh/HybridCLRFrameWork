@@ -9,8 +9,8 @@ FOR /F "delims==" %%i IN ('dir /b *.proto') DO (
 
 
 ::拷贝到项目
-XCOPY /y .\cs\*.cs .\..\..\client\Assets\Hotfix\Protobuf
+XCOPY /y .\cs\*.cs .\..\..\client\Assets\Scripts\Hotfix\Protobuf
 
 del/F /S /Q *.proto
-del/F /S /Q .\cs\*.cs
+::del/F /S /Q .\cs\*.cs
 pause

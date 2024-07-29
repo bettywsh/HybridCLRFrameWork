@@ -22,6 +22,9 @@ public class MessageManager : Singleton<MessageManager>
             list = new List<MessageHandler>();
             netHandlerDic.Add(cmdID, list);
         }
+        else {
+            Debug.LogError($"{cmdID}事件已经被注册，不建议注册多个网络事件");
+        }
         if (!list.Contains(message))
             list.Add(message);
     }

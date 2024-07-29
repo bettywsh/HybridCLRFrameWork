@@ -2,21 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class TimerManager : MonoSingleton<TimerManager>
 {
 
-    public int ServerTimer
-    {
-        get {
-            return mServerTimer + (int)(Time.realtimeSinceStartup - validStartGameTime); }
-    }
-    public int mServerTimer = 0;
+    public long mServerTimer = 0;
     public float validStartGameTime = 0;
+    public long ServerTimer
+    {
+        get 
+        {
+            return mServerTimer + (long)(Time.realtimeSinceStartup - validStartGameTime);
+        }
+        set 
+        {
+            validStartGameTime = Time.realtimeSinceStartup;
+            mServerTimer = value;
+        }
+    }
+
+    private DateTime dt1970;
+    // 线程安全
+    public long ClientTimer
+    {
+        get
+        {
+            return (DateTime.UtcNow.Ticks - this.dt1970.Ticks) / 10000;
+        }
+    }
+
 
     public delegate void OnChangeTime(int time);
     private static System.Random mRandom;
+
+    public override async UniTask Init()
+    {
+        await base.Init();
+        this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+    }
+
     /// <summary>
     /// 获取随机名称 通过在name后添加随机时间戳
     /// </summary>
@@ -329,14 +355,11 @@ public class TimerManager : MonoSingleton<TimerManager>
     }
     #endregion
 
-    #region 时间戳
-    public void SetServerTimer(int time)
+    public async UniTask<bool> WaitAsync(float time, CancellationToken cancellationToken = default(CancellationToken))
     {
-        validStartGameTime = Time.realtimeSinceStartup;
-        mServerTimer = time;
+        bool canel = await UniTask.Delay(TimeSpan.FromSeconds(time), false, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow();
+        return canel;
     }
-
-    #endregion
 
     public class Timer
     {

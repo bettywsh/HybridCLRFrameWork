@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RedPointConst
 {
-    public const string Main = "Main";
+    public const string Root = "Root";
     public const string Model1 = "Root|Model1";
     public const string Model1_Model1 = "Root|Model1|Model1";
     public const string Model2 = "Root|Model2";
@@ -16,51 +16,75 @@ public class RedPointConst
 
 public class RedManager : Singleton<RedManager>
 {
-    RedNode main;
+    RedNode root;
 
     List<string> redPointList = new List<string>
     {
-        RedPointConst.Main
+        RedPointConst.Root
     };
     public override async UniTask Init()
     {
-        main = new RedNode();
-        main.name = RedPointConst.Main;
+        await base.Init();
+        root = new RedNode();
         foreach (string s in redPointList)
         {
-            var node = main;
-            var treeNodes = s.Split("|");
-            if (treeNodes[0] != main.name)
-            {
-                continue;
-            }
-            if (treeNodes.Length > 1)
-            {
-                for (int i = 0; i < treeNodes.Length; i++)
-                {
-                    if (!node.childs.ContainsKey(treeNodes[i]))
-                    {
-                        node.childs.Add(treeNodes[i], new RedNode());
-                    }
-                    node.childs[treeNodes[i]].name = treeNodes[i];
-                    node.childs[treeNodes[i]].parent = node;
-                    node = node.childs[treeNodes[i]];
-                }
-            }
+            InsterNode(s);
         }
     }
 
+    public void InsterNode(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            return;
+        }
+        if (SearchNode(name) != null)
+        {
+            Debug.Log("你已经插入了该节点" + name);
+            return;
+        }
+
+        RedNode parent = root;
+        string[] nodes = name.Split('|');
+        foreach (var node in nodes)
+        {
+            if (!parent.childs.ContainsKey(node))
+            {
+                parent.childs.Add(node, new RedNode(node, parent));
+            }
+            parent = parent.childs[node];
+        }
+    }
+
+    public RedNode SearchNode(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            return null;
+        }
+        RedNode parent = null;
+        string[] nodes = name.Split('|');
+        foreach (var node in nodes)
+        {
+            if (!parent.childs.ContainsKey(node))
+            { 
+                return null;
+            }
+            parent = parent.childs[node];
+        }
+        return parent;
+    } 
 
     public void SetNum(string nodeName, int num)
     {
         var nodeList = nodeName.Split("|");
         if (nodeList.Length == 1)
         {
-            if (nodeList[0] != RedPointConst.Main)
+            if (nodeList[0] != RedPointConst.Root)
             {
                 return;
             }
-            var node = main;
+            var node = root;
             for (int i = 0; i < nodeList.Length; i++)
             {
                 if (!node.childs.ContainsKey(nodeList[i]))
@@ -80,11 +104,31 @@ public class RedManager : Singleton<RedManager>
 
 public class RedNode
 {
+    /// <summary>
+    /// 节点名
+    /// </summary>
     public string name;
+
+    /// <summary>
+    /// 红点数
+    /// </summary>
     public int num;
-    public RedNode parent;    
+
+    public RedNode parent;
+
     public Action updateCb;
+
     public Dictionary<string, RedNode> childs = new Dictionary<string, RedNode>();
+
+    public RedNode()
+    {
+        this.name = RedPointConst.Root;
+    }
+    public RedNode(string name, RedNode parent)
+    { 
+        this.name = name;
+        this.parent = parent;
+    }
 
     public void SetRedPointNum(int num)
     {

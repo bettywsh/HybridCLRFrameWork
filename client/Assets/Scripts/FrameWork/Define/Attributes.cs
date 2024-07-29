@@ -97,3 +97,13 @@ public class OnNetAttribute : Attribute
         Id = id;
     }
 }
+
+[AttributeUsage(AttributeTargets.Method)]
+public class RedPointAttribute : Attribute
+{
+    public int Id;
+    public RedPointAttribute(int id)
+    {
+        Id = id;
+    }
+}

@@ -18,8 +18,8 @@ public class LoginPanel : PanelBase
         Debug.LogError("LoginResponse");
     }
 
-    [OnClick("btnOk")]
-    void OnClick_Ok()
+    [OnClick("LoginWX")]
+    void OnClickLoginWX()
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
 

@@ -75,18 +75,30 @@ public static class EventHelper
                 if (att is OnClickAttribute)
                 {
                     ReferenceData btn = referenceCollector.Get((att as OnClickAttribute).Name);
+                    if (btn.btnValue == null)
+                    {
+                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                    }
                     btn.btnValue.onClick.RemoveAllListeners();
                     btn.btnValue.onClick.AddListener(() => { method.Invoke(obj, null); });
                 }
                 else if (att is OnToggleChangedAttribute)
                 {
                     ReferenceData btn = referenceCollector.Get((att as OnToggleChangedAttribute).Name);
+                    if (btn.toggleValue == null)
+                    {
+                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                    }
                     btn.toggleValue.onValueChanged.RemoveAllListeners();
                     btn.toggleValue.onValueChanged.AddListener((bool select) => { method.Invoke(obj, new object[1] { select }); });
                 }
                 else if (att is OnSliderChangedAttribute)
                 {
                     ReferenceData btn = referenceCollector.Get((att as OnSliderChangedAttribute).Name);
+                    if (btn.sliderValue == null)
+                    {
+                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                    }
                     btn.sliderValue.onValueChanged.RemoveAllListeners();
                     btn.sliderValue.onValueChanged.AddListener((float value) => { method.Invoke(obj, new object[1] { value }); });
                 }

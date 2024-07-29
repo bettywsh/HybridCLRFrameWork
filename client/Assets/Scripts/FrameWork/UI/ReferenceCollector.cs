@@ -16,7 +16,6 @@ public class ReferenceData
     public Transform tranValue;
     public GameObject goValue;
     public Image imgValue;
-    public Text txtValue;
     public UButton btnValue;
     public TMP_InputField tmpinputValue;
     public Toggle toggleValue;
@@ -77,7 +76,6 @@ public class ReferenceCollector : SerializedMonoBehaviour
         newData.tranValue = tran;
         newData.goValue = tran.gameObject;
         newData.imgValue = tran.GetComponent<Image>();
-        newData.txtValue = tran.GetComponent<Text>();
         newData.btnValue = tran.GetComponent<UButton>();
         newData.tmpinputValue = tran.GetComponent<TMP_InputField>();
         newData.toggleValue = tran.GetComponent<Toggle>();

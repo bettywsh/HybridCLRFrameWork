@@ -8,7 +8,7 @@ public class BaseConfig
 {
     public virtual async UniTask Init()
     { 
-    
+        await UniTask.Yield();
     }
 
     public async UniTask<T> LoadConfig<T>(Type type) where T : class

@@ -46,7 +46,6 @@ public sealed class Session:IDisposable
 
     private void OnRead(long channelId, MemoryBuffer memoryBuffer)
     {
-        Debug.LogError("收到消息");
         var (id, data)  = protobufPacker.DeserializeFrom(memoryBuffer);
         if (AppSettings.AppConfig.DebugLog)
         {
@@ -54,10 +53,9 @@ public sealed class Session:IDisposable
             Debug.Log(AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id));
             Type dataType = HybridCLRManager.Instance._hotUpdateAss.GetType(AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id));
             object obj = ProtobufHelper.Deserialize(dataType, data, 0, data.Length);
-            Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{LitJson.JsonMapper.ToJson(obj)}");
-            MessageManager.Instance.NetNotify(id, data);
+            Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{LitJson.JsonMapper.ToJson(obj)}");            
         }
-
+        MessageManager.Instance.NetNotify(id, data);
     }
 
     public void Update()

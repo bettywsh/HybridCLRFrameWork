@@ -76,12 +76,12 @@ public class UButton : Button
     protected bool m_isFouces = false;
     protected bool m_isInBtn = true;
 
-    public virtual void OnSubmit(BaseEventData eventData)
+    public override void OnSubmit(BaseEventData eventData)
     {
 
     }
 
-    public virtual void OnPointerClick(BaseEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
 
     }

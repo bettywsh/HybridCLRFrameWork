@@ -54,7 +54,7 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
             {
                 await webRequest.SendWebRequest();
             }
-            catch (Exception ex)
+            catch
             {
                 return "";
             }
@@ -90,7 +90,8 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
             {
                 await webRequest.SendWebRequest().ToUniTask();
             }
-            catch (Exception e) {
+            catch
+            {
                 return "";
             }
 

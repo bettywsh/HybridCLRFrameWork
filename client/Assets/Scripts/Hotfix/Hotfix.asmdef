@@ -11,7 +11,9 @@
         "YooAsset",
         "FrameWork",
         "Luban.Runtime",
-        "Aot"
+        "Aot",
+        "UniTask.DOTween",
+        "UniTask.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

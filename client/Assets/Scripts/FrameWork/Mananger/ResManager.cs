@@ -10,7 +10,7 @@ using System.Threading;
 public class ResManager : Singleton<ResManager>
 {
 
-    Dictionary<string, List<AssetHandle>> ResLoaders = new Dictionary<string, List<AssetHandle>>();
+    UnOrderMultiMapSet<string, AssetHandle> ResLoaders = new UnOrderMultiMapSet<string, AssetHandle>();
 
     ResourcePackage package;
     public override async UniTask Init()
@@ -150,17 +150,7 @@ public class ResManager : Singleton<ResManager>
     private void AddResloader(string resName, AssetHandle assetHandle)
     {
         if (resName == "Common") return;
-        List<AssetHandle> assetHandles = null;
-        if (!ResLoaders.TryGetValue(resName, out assetHandles))
-        {
-            assetHandles = new List<AssetHandle>();
-            assetHandles.Add(assetHandle);
-            ResLoaders.Add(resName, assetHandles);
-        }
-        else
-        {
-            assetHandles.Add(assetHandle);
-        }
+        ResLoaders.Add(resName, assetHandle);
     }
 
     private async UniTask<T> LoadAssetAsync<T>(string resName, string location, CancellationToken ct) where T : UnityEngine.Object
@@ -174,14 +164,13 @@ public class ResManager : Singleton<ResManager>
 
     public void UnLoadAssetBundle(string resLoaderName)
     {
-        List<AssetHandle> assetHandles = null;
-        if (!ResLoaders.TryGetValue(resLoaderName, out assetHandles))
+        if (!ResLoaders.TryGetValue(resLoaderName, out var assetHandles))
         {
             return;
         }
-        for (int i = 0; i < assetHandles.Count; i++)
+        foreach (var assetHandle in assetHandles)
         {
-            assetHandles[i].Release();
+            assetHandle.Release();
         }
         ResLoaders.Remove(resLoaderName);
     }

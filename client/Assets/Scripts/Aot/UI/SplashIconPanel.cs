@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 public class SplashIconPanel : AotPanelBase
 {
     public CanvasGroup cngBG;
-    public override void OnOpen()
+    public override async void OnOpen()
     {
         cngBG.alpha = 0;
         Sequence seq = DOTween.Sequence();
@@ -15,11 +15,14 @@ public class SplashIconPanel : AotPanelBase
         seq.AppendInterval(1);
         seq.Append(cngBG.DOFade(0, 1));
         //动画完成回调
-        seq.AppendCallback(() =>
-        {
-            this.Close();
-            AotUIManager.Instance.Open<UpdatePanel>();
-        });
-
+        //seq.AppendCallback(() =>
+        //{
+        //    this.Close();
+        //    AotUIManager.Instance.Open<UpdatePanel>();
+        //});
+        await seq;
+        await UniTask.SwitchToMainThread();
+        AotUIManager.Instance.Open<UpdatePanel>();
+        this.Close();
     }
 }

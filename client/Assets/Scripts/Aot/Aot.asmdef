@@ -7,7 +7,8 @@
         "ThirdParty",
         "UniTask",
         "YooAsset",
-        "YooAsset.Editor"
+        "YooAsset.Editor",
+        "UniTask.DOTween"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

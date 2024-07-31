@@ -30,8 +30,8 @@ public class LoginPanel : PanelBase
     public void OnNet_LoginResponse(byte[] msgDatas)
     {
         Debug.LogError("LoginResponse");
-        LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
         this.Close();
+        LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);  
     }
 
     [OnClick("LoginWX")]

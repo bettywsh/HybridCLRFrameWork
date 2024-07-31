@@ -8,7 +8,7 @@ public class SplashAdvicePanel : AotPanelBase
 {
     public CanvasGroup cngContent;
 
-    public override void OnOpen()
+    public override async void OnOpen()
     {
         cngContent.alpha = 0;
         Sequence seq = DOTween.Sequence();
@@ -16,10 +16,15 @@ public class SplashAdvicePanel : AotPanelBase
         seq.AppendInterval(1);
         seq.Append(cngContent.DOFade(0, 1));
         //动画完成回调
-        seq.AppendCallback(() =>
-        {
-            this.Close();
-            AotUIManager.Instance.Open<SplashIconPanel>();
-        });
+        //seq.AppendCallback(() =>
+        //{
+        //    this.Close();
+        //    AotUIManager.Instance.Open<SplashIconPanel>();
+        //});
+        await seq;        
+        AotUIManager.Instance.Open<SplashIconPanel>();
+        this.Close();
+        //await transform.DOMoveX(2, 10);
+        //await DOTween.To(() => timeCount, a => timeCount = a, 1, 3);
     }
 }

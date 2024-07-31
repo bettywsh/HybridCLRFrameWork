@@ -223,4 +223,9 @@ public class UButton : Button
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        transform.DOKill();
+    }
 }

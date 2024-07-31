@@ -11,7 +11,7 @@ public class PoolInfo
     public int poolSize;
     public bool fixedSize;
 }
-public class PoolManager : Singleton<MessageManager>
+public class PoolManager : Singleton<EventManager>
 {
     private int maxSize;
     private int poolSize;

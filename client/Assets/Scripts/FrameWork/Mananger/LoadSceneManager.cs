@@ -6,6 +6,7 @@ using UnityEngine.U2D;
 using UnityEngine.SceneManagement;
 using YooAsset;
 using Cysharp.Threading.Tasks;
+using System.Runtime.Remoting.Messaging;
 
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
@@ -13,10 +14,19 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     SceneBase sceneScript;
     string oldName;
     SceneBase oldSceneScript;
+    int msgProgress;
+    int msgComplete;
     public override async UniTask Init()
     {
         await base.Init();
         name = SceneManager.GetActiveScene().name;
+    }
+
+    public async UniTask Init(int progress, int complete)
+    {
+        msgProgress = progress;
+        msgComplete = complete;
+        await Init();
     }
 
     public void LoadScene(string scene, bool isSendComplete = false)
@@ -64,12 +74,12 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
 
     public void SetProgress(float progress)
     {
-        MessageManager.Instance.MessageNotify("Msg_LoadingPanelProgress", progress);
+        EventManager.Instance.MessageNotify(msgProgress, progress);
     }
 
     public void SetComplete()
     {
-        MessageManager.Instance.MessageNotify("Msg_LoadingPanelComplete");
+        EventManager.Instance.MessageNotify(msgComplete);
     }
 
 

@@ -10,20 +10,34 @@ public class LoginPanel : PanelBase
     {
         await base.OnOpen();
         NetworkManager.Instance.Create(NetworkProtocol.WebSocket).Create(NetworkProtocol.WebSocket, EServer.Login, AppSettings.AppConfig.SvrGameIp, AppSettings.AppConfig.SvrGamePort);
+        //TimerManager.Instance.OnceTimer(TimerConst.SessionAcceptTimeout, 5f);
+        TimerManager.Instance.RepeatedTimer(TimerConst.AITimer, 5f, 1f);
+    }
+
+    [OnTimer(TimerConst.SessionAcceptTimeout)]
+    public void OnTimer_SessionAcceptTimeout()
+    {
+        Debug.LogError("SessionAcceptTimeout");
+    }
+
+    [OnTimer(TimerConst.AITimer)]
+    public void OnTimer_AITimer(int time)
+    {
+        Debug.LogError("AITimer" + time);
     }
 
     [OnNet((int)SCMessageEnum.LoginResponse)]
     public void OnNet_LoginResponse(byte[] msgDatas)
     {
         Debug.LogError("LoginResponse");
+        LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
+        this.Close();
     }
 
     [OnClick("LoginWX")]
     void OnClickLoginWX()
     {
         //List<HorseConfigItem> list = ConfigManager.Instance.LoadConfig<HorseConfig>().GetAll();
-
-
         LoginRequest lr = new LoginRequest();
         lr.Account = "ºÆºÆ57";
         lr.Passward = "e10adc3949ba59abbe56e057f20f883e";
@@ -36,6 +50,12 @@ public class LoginPanel : PanelBase
 
         //LoadSceneManager.Instance.LoadScene(EScene.Main.ToString(), false);
         //this.Close();
+    }
+
+    [OnClick("LoginPhone")]
+    void OnClickLoginPhone()
+    { 
+        DialogManager.Instance.ShowNetLoading(5f);
     }
 
     public override void OnClose()

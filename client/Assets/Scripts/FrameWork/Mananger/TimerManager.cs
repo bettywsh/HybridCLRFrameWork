@@ -12,11 +12,11 @@ public class TimerManager : MonoSingleton<TimerManager>
     public float validStartGameTime = 0;
     public long ServerTimer
     {
-        get 
+        get
         {
             return mServerTimer + (long)(Time.realtimeSinceStartup - validStartGameTime);
         }
-        set 
+        set
         {
             validStartGameTime = Time.realtimeSinceStartup;
             mServerTimer = value;
@@ -33,325 +33,157 @@ public class TimerManager : MonoSingleton<TimerManager>
         }
     }
 
-
-    public delegate void OnChangeTime(int time);
-    private static System.Random mRandom;
-
     public override async UniTask Init()
     {
         await base.Init();
         this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
     }
 
-    /// <summary>
-    /// 获取随机名称 通过在name后添加随机时间戳
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
-    private string GetRandomName(string name)
-    {
-        if (mRandom == null)
-        {
-            mRandom = new System.Random(0);
-        }
-        System.Text.StringBuilder builder = new System.Text.StringBuilder(name);
-        builder.Append(System.DateTime.Now.Ticks);
-        builder.Append(mRandom.NextDouble());
-        return builder.ToString();
-    }
-    protected class TimerUnit
-    {
-        public string mName = "";
-        public float mSeconds = 0;
-        public Action mCall;
-        public Coroutine mCoroutine;
-        public TimerUnit(float seconds, string name, Action call)
-        {
-            this.mSeconds = seconds;
-            this.mName = name;
-            this.mCall = call;
-        }
-
-
-        public void Dispose()
-        {
-            this.mCall = null;
-            this.mCoroutine = null;
-        }
-    }
 
     #region 延时定时器
-    private Dictionary<string, TimerUnit> mDictTimer = new Dictionary<string, TimerUnit>();
 
-    /// <summary>
-    /// 设置定时器 seconds后调用 call方法
-    /// </summary>
-    /// <param name="seconds"></param>
-    /// <param name="name"></param>
-    /// <param name="call"></param>
-    public void SetTimer(string name, float seconds, Action call)
+    public void OnceTimer(int timerId, float time)
     {
-        //if (mDictTimer.ContainsKey(name))
-        //{
-        //    Debug.LogError("错误: SetTimer 【重复name】=" + name);
-        //    return;
-        //}
-        //需求 先取消上一个存在的定时器
-        ClearTimer(name);
-
-        TimerUnit unit = new TimerUnit(seconds, name, call);
-        //启用协程
-        unit.mCoroutine = StartCoroutine(_WaitForSeconds(unit));
-        mDictTimer.Add(name, unit);
-    }
-    /// <summary>
-    /// 设置定时器 seconds后调用 call方法
-    /// </summary>
-    /// <param name="seconds"></param>
-    /// <param name="call"></param>
-    public void SetTimer(float seconds, Action call)
-    {
-        SetTimer(GetRandomName("SetTimer_"), seconds, call);
-    }
-    /// <summary>
-    /// 重置定时器
-    /// </summary>
-    /// <param name="name">指定定时器</param>
-    /// <param name="seconds">0为使用原来的定时器时间</param>
-    /// <param name="call">默认为原来的回调函数</param>
-    public void ResetTimer(string name, float seconds = 0, Action call = null)
-    {
-        TimerUnit unit;
-        if (!mDictTimer.TryGetValue(name, out unit))
+        if (time < 0.1f)
         {
-            Debug.LogError("错误: ResetTimer 【不存在name】=" + name);
+            Debug.LogError("定时器结束时间太小");
             return;
         }
-        StopCoroutine(unit.mCoroutine);
-        if (seconds > 0)
+        if (timerInfos.TryGetValue(timerId, out TimerInfo timerInfo))
         {
-            unit.mSeconds = seconds;
-        }
-        if (call != null)
-        {
-            unit.mCall = call;
-        }
-        //启用协程
-        unit.mCoroutine = StartCoroutine(_WaitForSeconds(unit));
-    }
-    /// <summary>
-    /// 是否存在指定的定时器
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
-    public bool HasTimer(string name)
-    {
-        return mDictTimer.ContainsKey(name);
-    }
-    /// <summary>
-    /// 删除指定的延时定时器
-    /// </summary>
-    /// <param name="name"></param>
-    public void ClearTimer(string name)
-    {
-        if (string.IsNullOrEmpty(name))
+            Debug.LogError("已经有相同ID的定时器");
             return;
-
-        TimerUnit unit = null;
-        if (mDictTimer.TryGetValue(name, out unit))
-        {
-            StopCoroutine(unit.mCoroutine);
-            mDictTimer.Remove(name);
-            unit.Dispose();
         }
-    }
-    /// <summary>
-    /// 删除所有的定时器
-    /// </summary>
-    public void ClearTimers()
-    {
-        //第一种方式
-        //List<TimerUnit> unitList = new List<TimerUnit>(mDictTimer.Values);
-        //for (int i = 0; i < unitList.Count; ++i)
-        //{
-        //    ClearTimer(unitList[i].mName);
-        //}
-
-        //第二种方式
-        foreach (KeyValuePair<string, TimerUnit> item in mDictTimer)
-        {
-            StopCoroutine(item.Value.mCoroutine);
-            item.Value.Dispose();
-        }
-        mDictTimer.Clear();
-    }
-    /// <summary>
-    /// 协程方法 等待n秒后运行
-    /// </summary>
-    /// <param name="unit"></param>
-    /// <returns></returns>
-    private IEnumerator _WaitForSeconds(TimerUnit unit)
-    {
-        yield return new WaitForSeconds(unit.mSeconds);
-
-        Action call = unit.mCall;
-
-        ClearTimer(unit.mName);
-        call();
+        int t = (int)(time * 1000);
+        TimerInfo timer = new(GetNow(), GetNow() + t, t, TimerType.OnceTimer);
+        AddTimer(timerId, ref timer);
     }
     #endregion
 
-    #region 间隔定时器
-    private Dictionary<string, TimerUnit> mDictInterval = new Dictionary<string, TimerUnit>();
-
-    /// <summary>
-    /// 设置间隔器 每隔seconds秒后调用一次 call方法
-    /// </summary>
-    /// <param name="seconds">每隔seconds秒后调用一次</param>
-    /// <param name="name"></param>
-    /// <param name="call"></param>
-    public void SetInterval(string name, float seconds, Action call)
+    #region 倒计时定时器
+    public void RepeatedTimer(int timerId, float time, float interval)
     {
-        if (mDictInterval.ContainsKey(name))
+        if (time < 0.1f)
         {
-            Debug.LogError("错误: SetInterval 【重复name】=" + name);
+            Debug.LogError("定时器结束时间太小");
             return;
         }
-
-        TimerUnit unit = new TimerUnit(seconds, name, call);
-        //启用协程
-        unit.mCoroutine = StartCoroutine(_WaitForInterval(unit));
-        mDictInterval.Add(name, unit);
-    }
-    /// <summary>
-    /// 设置间隔器 每隔seconds秒后调用一次 call方法
-    /// </summary>
-    /// <param name="seconds">每隔seconds秒后调用一次</param>
-    /// <param name="call"></param>
-    public void SetInterval(float seconds, Action call)
-    {
-        SetInterval(GetRandomName("SetInterval_"), seconds, call);
-    }
-    /// <summary>
-    /// 重置间隔器
-    /// </summary>
-    /// <param name="name">指定间隔器</param>
-    /// <param name="seconds">0为使用原来的定时器间隔</param>
-    /// <param name="call">默认为原来的回调函数</param>
-    public void ResetInterval(string name, float seconds = 0, Action call = null)
-    {
-        TimerUnit unit;
-        if (!mDictInterval.TryGetValue(name, out unit))
+        if (timerInfos.TryGetValue(timerId, out TimerInfo timerInfo))
         {
-            Debug.LogError("错误: ResetInterval 【不存在 name】=" + name);
+            Debug.LogError("已经有相同ID的定时器");
             return;
         }
-        StopCoroutine(unit.mCoroutine);
-        if (seconds > 0)
-        {
-            unit.mSeconds = seconds;
-        }
-        if (call != null)
-        {
-            unit.mCall = call;
-        }
-        //启用协程
-        unit.mCoroutine = StartCoroutine(_WaitForInterval(unit));
-    }
-    /// <summary>
-    /// 是否存在指定的间隔器
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
-    public bool HasInterval(string name)
-    {
-        return mDictInterval.ContainsKey(name);
-    }
-    /// <summary>
-    /// 删除指定的间隔器
-    /// </summary>
-    /// <param name="name"></param>
-    public void ClearInterval(string name)
-    {
-        if (string.IsNullOrEmpty(name))
-            return;
-
-        TimerUnit unit = null;
-        if (mDictInterval.TryGetValue(name, out unit))
-        {
-            StopCoroutine(unit.mCoroutine);
-            mDictInterval.Remove(name);
-            unit.Dispose();
-        }
-    }
-    /// <summary>
-    /// 删除所有的间隔器
-    /// </summary>
-    public void ClearIntervals()
-    {
-        //第一种方式
-        //List<TimerUnit> unitList = new List<TimerUnit>(mDictInterval.Values);
-        //for (int i = 0; i < unitList.Count; ++i)
-        //{
-        //    ClearInterval(unitList[i].mName);
-        //}
-
-        //第二种方式
-        foreach (KeyValuePair<string, TimerUnit> item in mDictInterval)
-        {
-            StopCoroutine(item.Value.mCoroutine);
-            item.Value.Dispose();
-        }
-        mDictInterval.Clear();
-    }
-    /// <summary>
-    /// 协程方法 间隔n秒后调用一次
-    /// </summary>
-    /// <param name="unit"></param>
-    /// <returns></returns>
-    private IEnumerator _WaitForInterval(TimerUnit unit)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(unit.mSeconds);
-            unit.mCall();
-        }
+        int i = (int)(interval * 1000);
+        int t = (int)(time * 1000);
+        TimerInfo timer = new(GetNow(), GetNow() + t, i, TimerType.RepeatedTimer);
+        AddTimer(timerId, ref timer);
     }
     #endregion
 
-    #region 倒计时
-    //基于 间隔定时器
-    /// <summary>
-    /// 设置倒计时
-    /// </summary>
-    /// <param name="name">名称</param>
-    /// <param name="times">倒计时数</param>
-    /// <param name="interval">间隔数</param>
-    /// <param name="call">回调方法 会传递当前倒计时数</param>
-    public void SetCountDown(string name, int times, int interval, Action<int> call)
+    #region 定时器逻辑
+    public NativeCollection.MultiMap<long, int> timeId = new(1000);
+    public Dictionary<long, TimerInfo> timerInfos = new();
+    public Queue<long> timeOutTime = new();
+
+    public long minTime = long.MaxValue;
+    public bool Remove(long id)
     {
-        //如果存在该倒计时 则删除 以便后面重新设置
-        if (HasInterval(name))
+        if (id == 0)
         {
-            ClearInterval(name);
+            return false;
         }
 
-        call(times);
-        SetInterval(name, interval, () =>
+        if (!timerInfos.Remove(id))
         {
-            times -= interval;
+            return false;
+        }
+        return true;
+    }
 
-            if (times <= 0)
+    private long GetNow()
+    {
+        return ClientTimer;
+    }
+
+    private void AddTimer(int timerId, ref TimerInfo timer)
+    {
+        long tillTime = timer.StartTime + timer.Interval;
+        timeId.Add(tillTime, timerId);
+        timerInfos.Add(timerId, timer);
+        if (tillTime < minTime)
+        {
+            minTime = tillTime;
+        }
+    }
+
+    public void Update()
+    {
+        if (timeId.Count == 0)
+        {
+            return;
+        }
+        long timeNow = GetNow();
+
+        if (timeNow < minTime)
+        {
+            return;
+        }
+
+        //去除最小时间
+        foreach (var kv in timeId)
+        {
+            long k = kv.Key;
+            if (k > timeNow)
             {
-                ClearInterval(name);
+                minTime = k;
+                break;
             }
 
-            call(times);
-        });
+            timeOutTime.Enqueue(k);
+        }
+
+        while (timeOutTime.Count > 0)
+        {
+            long time = timeOutTime.Dequeue();
+            var list = timeId[time];
+            for (int i = 0; i < list.Length; ++i)
+            {
+                int timerId = list[i];
+                if (!timerInfos.Remove(timerId, out TimerInfo timerInfo))
+                {
+                    continue;
+                }
+                Run(timerId, timerInfo);
+            }
+            timeId.Remove(time);
+        }
+
     }
-    public void SetCountDown(string name, int times, Action<int> call)
+
+    private void Run(int timerId, TimerInfo timerInfo)
     {
-        SetCountDown(name, times, 1, call);
+        switch (timerInfo.TimerType)
+        {
+            case TimerType.OnceTimer:
+                {
+                    //发送消息
+                    EventManager.Instance.TimerNotify(timerId, null);
+                    break;
+                }
+            case TimerType.RepeatedTimer:
+                {
+                    long timeNow = GetNow();
+                    if (timerInfo.EndTime > timeNow)
+                    {
+                        timerInfo.StartTime = timerInfo.StartTime + timerInfo.Interval;
+                        AddTimer(timerId, ref timerInfo);
+                    }
+                    decimal t = (timerInfo.EndTime - timeNow) / 1000.0m;
+                    //发送消息
+                    EventManager.Instance.TimerNotify(timerId, (int)Math.Ceiling(t));
+                    break;
+                }
+        }
     }
     #endregion
 
@@ -361,11 +193,30 @@ public class TimerManager : MonoSingleton<TimerManager>
         return canel;
     }
 
-    public class Timer
+}
+
+public struct TimerInfo
+{
+    public TimerInfo(long startTime, long endTime, int interval, TimerType timerType)
     {
-        public float time;
-        public float updateTime = 1;
-        public OnChangeTime changeTime;
+        this.StartTime = startTime;
+        this.EndTime = endTime;
+        this.Interval = interval;
+        this.TimerType = timerType;
     }
 
+    public int Interval;
+
+    public long StartTime;
+
+    public long EndTime;
+
+    public TimerType TimerType;
+}
+
+public enum TimerType
+{
+    None,
+    OnceTimer,
+    RepeatedTimer,
 }

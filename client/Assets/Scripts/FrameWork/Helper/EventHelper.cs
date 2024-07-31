@@ -1,3 +1,4 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections;
@@ -9,11 +10,13 @@ using UnityEngine.UI;
 
 public static class EventHelper
 {
-    public static Dictionary<string, List<string>> dirMessages = new Dictionary<string, List<string>>();
+    public static Dictionary<string, List<int>> dirMessages = new Dictionary<string, List<int>>();
     public static Dictionary<string, List<int>> dirNets = new Dictionary<string, List<int>>();
+    public static Dictionary<string, List<int>> dirTimers = new Dictionary<string, List<int>>();
     public static void RegisterAllEvent(object obj, ReferenceCollector referenceCollector)
     {
         RegisterMessageEvent(obj);
+        RegisterTimerEvent(obj);
         RegisterNetEvent(obj);
         RegisterUIEvent(obj, referenceCollector);
     }
@@ -21,20 +24,44 @@ public static class EventHelper
     public static void RegisterMessageEvent(object obj)
     {
         Type type = obj.GetType();
-        foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+        var methods = AssemblyManager.Instance.GetMethods(type);
+        foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
                 if (att is OnMessageAttribute)
                 {
-                    MessageManager.Instance.RegisterMessageHandler((att as OnMessageAttribute).Name, (msgDatas) => { method.Invoke(obj, msgDatas); });
-                    List<string> messages;
+                    EventManager.Instance.RegisterMessageHandler((att as OnMessageAttribute).Name, (msgDatas) => { method.Invoke(obj, msgDatas); });
+                    List<int> messages;
                     if (!dirMessages.TryGetValue(type.Name, out messages))
                     {
-                        messages = new List<string>();
+                        messages = new List<int>();
+                        dirMessages.Add(type.Name, messages);
                     }
-                    messages.Add((att as OnMessageAttribute).Name);
-                    dirMessages.Add(type.Name, messages);
+                    messages.Add((att as OnMessageAttribute).Name);                    
+                }
+            }
+        }
+    }
+
+    public static void RegisterTimerEvent(object obj)
+    {
+        Type type = obj.GetType();
+        var methods = AssemblyManager.Instance.GetMethods(type);
+        foreach (MethodInfo method in methods)
+        {
+            foreach (var att in method.GetCustomAttributes(true))
+            {
+                if (att is OnTimerAttribute)
+                {
+                    EventManager.Instance.RegisterTimerHandler((att as OnTimerAttribute).Name, (msgDatas) => { method.Invoke(obj, msgDatas); });
+                    List<int> timers;
+                    if (!dirTimers.TryGetValue(type.Name, out timers))
+                    {
+                        timers = new List<int>();
+                        dirTimers.Add(type.Name, timers);
+                    }
+                    timers.Add((att as OnTimerAttribute).Name);
                 }
             }
         }
@@ -43,23 +70,24 @@ public static class EventHelper
     public static void RegisterNetEvent(object obj)
     {
         Type type = obj.GetType();
-        foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+        var methods = AssemblyManager.Instance.GetMethods(type);
+        foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
                 if (att is OnNetAttribute)
                 {
                     int id = (att as OnNetAttribute).Id;
-                    MessageManager.Instance.RegisterNetMessageHandler(id, (object[] msgDatas) => {
+                    EventManager.Instance.RegisterNetMessageHandler(id, (object[] msgDatas) => {
                         method.Invoke(obj, msgDatas);
                     });
                     List<int> nets;
                     if (!dirNets.TryGetValue(type.Name, out nets))
                     {
                         nets = new List<int>();
+                        dirNets.Add(type.Name, nets);
                     }
-                    nets.Add(id);
-                    dirNets.Add(type.Name, nets);
+                    nets.Add(id);                    
                 }
             }
         }
@@ -67,8 +95,8 @@ public static class EventHelper
 
     public static void RegisterUIEvent(object obj, ReferenceCollector referenceCollector)
     {
-        Type type = obj.GetType();
-        foreach (MethodInfo method in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+        var methods = AssemblyManager.Instance.GetMethods(obj.GetType());
+        foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
@@ -109,15 +137,26 @@ public static class EventHelper
     public static void UnRegisterAllEvent(object obj)
     {
         Type type = obj.GetType();
-        List<string> messages;
+        List<int> messages;
         dirMessages.TryGetValue(type.Name, out messages);
         if (messages != null)
         {
-            foreach (string m in messages)
+            foreach (int m in messages)
             {
-                MessageManager.Instance.RemoveMessage(m);
+                EventManager.Instance.RemoveMessage(m);
             }
             dirMessages.Remove(type.Name);
+        }
+
+        List<int> timers;
+        dirTimers.TryGetValue(type.Name, out timers);
+        if (timers != null)
+        {
+            foreach (int m in timers)
+            {
+                EventManager.Instance.RemoveMessage(m);
+            }
+            dirTimers.Remove(type.Name);
         }
 
         List<int> nets;
@@ -126,7 +165,7 @@ public static class EventHelper
         {
             foreach (int n in nets)
             {
-                MessageManager.Instance.RemoveNetMessage(n);
+                EventManager.Instance.RemoveNetMessage(n);
             }
             dirNets.Remove(type.Name);
         }

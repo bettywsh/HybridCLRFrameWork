@@ -24,9 +24,11 @@ public class Launch
         await AtlasManager.Instance.Init();
         await NetworkManager.Instance.Init();
         await ConfigManager.Instance.Init();
+        await TimerManager.Instance.Init();
+        await DialogManager.Instance.Init();
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
-        await LoadSceneManager.Instance.Init();
+        await LoadSceneManager.Instance.Init(MessageConst.Msg_LoadingPanelProgress, MessageConst.Msg_LoadingPanelComplete);
         LoadSceneManager.Instance.LoadScene(EScene.Login.ToString(), false);
     }
 

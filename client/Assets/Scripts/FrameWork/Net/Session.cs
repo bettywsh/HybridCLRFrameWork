@@ -11,9 +11,9 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 using static log4net.Appender.ColoredConsoleAppender;
 
-public sealed class Session:IDisposable
+public sealed class Session : IDisposable
 {
-    public int Id { get; protected set; }
+    public int Id { get;  set; }
     public AService AService { get; set; }
 
     public ProtobufPacker protobufPacker = new ProtobufPacker();
@@ -55,7 +55,7 @@ public sealed class Session:IDisposable
             object obj = ProtobufHelper.Deserialize(dataType, data, 0, data.Length);
             Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{LitJson.JsonMapper.ToJson(obj)}");            
         }
-        MessageManager.Instance.NetNotify(id, data);
+        EventManager.Instance.NetNotify(id, data);
     }
 
     public void Update()

@@ -2205,9 +2205,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 6
       Data: 
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 6
       Data: 
@@ -2256,9 +2253,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 10
       Data: 4
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 10
       Data: 5
@@ -2307,9 +2301,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 10
       Data: 8
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 10
       Data: 9
@@ -2358,9 +2349,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 10
       Data: 12
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 10
       Data: 13
@@ -2409,9 +2397,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 10
       Data: 16
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 10
       Data: 17
@@ -2460,9 +2445,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 10
       Data: 20
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 10
       Data: 21
@@ -2511,9 +2493,6 @@ MonoBehaviour:
     - Name: imgValue
       Entry: 10
       Data: 24
-    - Name: txtValue
-      Entry: 6
-      Data: 
     - Name: btnValue
       Entry: 10
       Data: 25
@@ -2560,9 +2539,6 @@ MonoBehaviour:
       Entry: 10
       Data: 27
     - Name: imgValue
-      Entry: 6
-      Data: 
-    - Name: txtValue
       Entry: 6
       Data: 
     - Name: btnValue

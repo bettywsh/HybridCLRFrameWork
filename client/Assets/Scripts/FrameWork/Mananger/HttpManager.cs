@@ -8,10 +8,6 @@ using UnityEngine.Networking;
 
 public class HttpManager : Singleton<HttpManager>
 {
-    /// <summary>
-    /// 时间戳计时开始时间
-    /// </summary>
-    private static DateTime timeStampStartTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
     /// <summary>
     /// DateTime转换为10位时间戳（单位：秒）

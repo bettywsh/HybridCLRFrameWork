@@ -1,23 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class MessageConst
+public static class MessageConst
 {
+    // 框架层100-200，逻辑层的从200起
     //连接到服务器
-    public const string Msg_Connected = "Msg_Connected";
+    public const int Msg_Connected = 101;
     //断开服务器
-    public const string Msg_Disconnected = "Msg_Disconnected";
+    public const int Msg_Disconnected = 102;
     //游戏切换后台
-    public const string Msg_ApplicationPause = "Msg_ApplicationPause";
+    public const int Msg_ApplicationPause = 103;
     //unity退出事件
-    public const string Msg_ApplicationQuit = "Msg_ApplicationQuit";
+    public const int Msg_ApplicationQuit = 104;
     //场景切换进度事件
-    public const string Msg_LoadingPanelProgress = "Msg_LoadingPanelProgress";
+    public const int Msg_LoadingPanelProgress = 105;
     //场景切换进度事件
-    public const string Msg_LoadingPanelComplete= "Msg_LoadingPanelComplete";
+    public const int Msg_LoadingPanelComplete = 106;
 
+    
 
-    //////////////////////////////////上面是框架事件其他写下面
+    // 框架层100-200，逻辑层的 200-300
+
     //新手引导点击事件
-    public const string Msg_GuideClickComplete = "Msg_GuideClickComplete";
+    public const int Msg_GuideClickComplete = 201;
 }

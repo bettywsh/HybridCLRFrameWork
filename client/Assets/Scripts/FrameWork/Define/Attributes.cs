@@ -81,8 +81,18 @@ public class OnClickAttribute : Attribute
 [AttributeUsage(AttributeTargets.Method)]
 public class OnMessageAttribute : Attribute
 {
-    public string Name;
-    public OnMessageAttribute(string name)
+    public int Name;
+    public OnMessageAttribute(int name)
+    {
+        Name = name;
+    }
+}
+
+[AttributeUsage(AttributeTargets.Method)]
+public class OnTimerAttribute : Attribute
+{
+    public int Name;
+    public OnTimerAttribute(int name)
     {
         Name = name;
     }

@@ -1,8 +1,8 @@
 using Cysharp.Threading.Tasks;
-using ET;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ public class AssemblyManager : Singleton<AssemblyManager>
 {
     private readonly Dictionary<string, Type> allTypes = new();
     private readonly UnOrderMultiMapSet<Type, Type> types = new();
+    private readonly UnOrderMultiMapSet<Type, MethodInfo> methods = new();
     private Assembly[] assemblies;
     private Dictionary<string, Type> allPanel = new Dictionary<string, Type>();
     private Dictionary<string, Type> allSubPanel = new Dictionary<string, Type>();
@@ -38,6 +39,13 @@ public class AssemblyManager : Singleton<AssemblyManager>
             foreach (object o in objects)
             {
                 this.types.Add(o.GetType(), type);
+            }
+            foreach (MethodInfo methodInfo in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+            {
+                if (methodInfo.GetCustomAttributes(true).Length > 0)
+                {
+                    this.methods.Add(type, methodInfo);
+                }
             }
         }
         var types = GetTypes(typeof(CellAttribute));
@@ -112,4 +120,9 @@ public class AssemblyManager : Singleton<AssemblyManager>
         return t;
     }
 
+    public object[] GetMethods(Type typeClass)
+    {
+        this.methods.TryGetValue(typeClass, out var methods);
+        return methods.ToArray<MethodInfo>();
+    }
 }

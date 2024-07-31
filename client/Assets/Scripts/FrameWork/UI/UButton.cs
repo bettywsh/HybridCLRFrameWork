@@ -83,7 +83,7 @@ public class UButton : Button
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-
+        base.OnPointerClick(eventData);
     }
 
     public override void OnPointerEnter(PointerEventData eventData)

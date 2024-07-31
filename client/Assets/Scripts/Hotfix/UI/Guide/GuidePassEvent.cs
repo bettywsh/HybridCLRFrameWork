@@ -13,7 +13,7 @@ public class GuidePassEvent : MonoBehaviour, IPointerClickHandler
         RectGuidanceController rectGuidanceController = transform.GetComponent<RectGuidanceController>();
         if (transform.GetComponent<RectGuidanceController>().IsRect(eventData.position))
         {
-            MessageManager.Instance.MessageNotify(MessageConst.Msg_GuideClickComplete);
+            EventManager.Instance.MessageNotify(MessageConst.Msg_GuideClickComplete);
             if (isButton)
             {
                 rectGuidanceController.target.GetComponent<Button>().onClick.Invoke();

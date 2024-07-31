@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,12 @@ public class DialogManager : Singleton<DialogManager>
 {
     TextPanel msgPanel;
     NetLoadingPanel netLoadingPanel;
+
+    public override async UniTask Init()
+    {
+        await base.Init();
+        EventHelper.RegisterTimerEvent(this);
+    }
 
     #region Æ®×Ö
     public void ShowTextFlying(string value)
@@ -32,17 +39,14 @@ public class DialogManager : Singleton<DialogManager>
         {
             netLoadingPanel = UIManager.Instance.Open<NetLoadingPanel>();
         }
-        TimerManager.Instance.ClearTimer("net");
-        TimerManager.Instance.SetTimer("net", timeout, () =>
-        {
-            HideNetLoading();
-        });
+        TimerManager.Instance.Remove(TimerConst.NetLoading);
+        TimerManager.Instance.OnceTimer(TimerConst.NetLoading, timeout);
     }
 
+    [OnTimer(TimerConst.NetLoading)]
     public void HideNetLoading()
     {
-        TimerManager.Instance.ClearTimer("net");
-        netLoadingPanel.Close();
+        netLoadingPanel?.Close();
         netLoadingPanel = null;
     }
     #endregion

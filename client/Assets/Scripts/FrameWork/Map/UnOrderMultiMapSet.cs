@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-namespace ET
-{
     public class UnOrderMultiMapSet<T, K>: Dictionary<T, HashSet<K>>
     {
         // 重用HashSet
@@ -78,4 +76,3 @@ namespace ET
             }
         }
     }
-}

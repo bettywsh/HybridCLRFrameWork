@@ -1,15 +1,8 @@
-﻿using dnlib.DotNet;
-using log4net.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Reflection;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
-using UnityEngine.EventSystems;
-using static log4net.Appender.ColoredConsoleAppender;
+using Newtonsoft.Json;
 
 public sealed class Session : IDisposable
 {
@@ -53,7 +46,7 @@ public sealed class Session : IDisposable
             Debug.Log(AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id));
             Type dataType = HybridCLRManager.Instance._hotUpdateAss.GetType(AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id));
             object obj = ProtobufHelper.Deserialize(dataType, data, 0, data.Length);
-            Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{LitJson.JsonMapper.ToJson(obj)}");            
+            Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{JsonConvert.SerializeObject(obj)}");            
         }
         EventManager.Instance.NetNotify(id, data);
     }
@@ -73,7 +66,7 @@ public sealed class Session : IDisposable
         if (AppSettings.AppConfig.DebugLog)
         {
             Type enumType = HybridCLRManager.Instance._hotUpdateAss.GetType(AppSettings.AppConfig.ProtoBuffPackageName + "CSMessageEnum");
-            Debug.Log($"发送网络消息：{Enum.GetName(enumType, messageEnum)},{LitJson.JsonMapper.ToJson(data)}");
+            Debug.Log($"发送网络消息：{Enum.GetName(enumType, messageEnum)},{JsonConvert.SerializeObject(data)}");
         }
         Send(eserver, (long)messageEnum, ProtobufHelper.Serialize(data));
     }

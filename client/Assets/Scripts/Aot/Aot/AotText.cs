@@ -1,14 +1,15 @@
 using Cysharp.Threading.Tasks;
-using LitJson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 public class AotText : AotSingleton<AotText>
 {
     string language;
-    JsonData data;
+    JObject data;
     public override async UniTask Init()
     {
         string startLanguage = PlayerPrefs.GetString("language", "");
@@ -22,7 +23,7 @@ public class AotText : AotSingleton<AotText>
             language = startLanguage;
         }
         TextAsset ta = await AotResManager.Instance.LoadAsset<TextAsset>("Assets/App/Config/Language.json");
-        data = LitJson.JsonMapper.ToObject(ta.text);
+        data = (JObject)JsonConvert.DeserializeObject(ta.text);
     }
 
 

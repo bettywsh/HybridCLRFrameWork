@@ -16,10 +16,10 @@ public class HybridCLRManager : AotSingleton<HybridCLRManager>
     {
         await LoadMetadataForAOTAssemblies();
 #if !UNITY_EDITOR
-        TextAsset ta = await AotResManager.Instance.LoadAsset<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
-        _hotUpdateAss = Assembly.Load(ta.bytes);
-        ta = await AotResManager.Instance.LoadAsset<TextAsset>("Assets/App/Dll/FrameWork.dll.bytes");
+        TextAsset ta = await AotResManager.Instance.LoadAsset<TextAsset>("Assets/App/Dll/FrameWork.dll.bytes");
         _frameWorkAss = Assembly.Load(ta.bytes);
+        ta = await AotResManager.Instance.LoadAsset<TextAsset>("Assets/App/Dll/Hotfix.dll.bytes");
+        _hotUpdateAss = Assembly.Load(ta.bytes);
 #else
         _frameWorkAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "FrameWork");
         _hotUpdateAss = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");

@@ -34,7 +34,7 @@ MonoBehaviour:
   - YooAsset.dll
   - DOTween.dll
   - ThirdParty.dll
-  - LitJson.dll
+  - Newtonsoft.Json.dll
   HotfixDll:
   - Hotfix.dll
   - FrameWork.dll

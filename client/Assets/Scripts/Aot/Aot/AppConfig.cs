@@ -75,7 +75,7 @@ public class AppConfig : ScriptableObject
     /// <summary>
     /// 热更dll数据
     /// </summary>
-    public List<string> HotfixDll = new List<string>() { "Hotfix.dll", "FrameWork.dll" };
+    public List<string> HotfixDll = new List<string>() { "FrameWork.dll", "Hotfix.dll" };
 
     public static string[] Modes = new string[] { "编辑器", "测试服", "正式服"};
     [OnValueChanged("SetMode")]

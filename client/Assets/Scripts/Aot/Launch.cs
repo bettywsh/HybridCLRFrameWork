@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using YooAsset;
 
 public class Launch : MonoBehaviour
 {
@@ -22,7 +23,15 @@ public class Launch : MonoBehaviour
         await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
         await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         await AotUIManager.Instance.Init();
-        AotUIManager.Instance.Open<SplashAdvicePanel>();
+        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
+        {
+            await HybridCLRManager.Instance.LoadDll();
+        }
+        else
+        {
+            AotUIManager.Instance.Open<SplashAdvicePanel>();
+        }
+            
      
     }
 }

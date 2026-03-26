@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//签到活动相关
+
+message SignRecordInfo{
+    //玩家名
+    string PlayerName = 1;
+    //获得魔币
+    int64 PlayerGet = 2;
+}
+
+message SignPoolInfo{
+    //活动id
+    int32 SignId = 1;
+    //池子
+    int64 Pool = 2;
+    //昨日签 0没有  1-10命中签
+    int32 OldNumber = 3;
+    //玩家的签 0没有  1-10对应签
+    int32 OwnNumber = 4;
+    //中奖玩家
+    repeated SignRecordInfo Record = 5;
+}
+
+//获取活动信息
+message GetSignActivityInfo{}
+
+//回复
+message GetSignActivityInfoRes{
+    //活动信息
+    repeated SignPoolInfo Datas = 1;
+}
+
+
+//购买成功后给的签
+message NewSignNumber{
+    //签
+    int32 Number = 1;
+    //时间
+    int64 BuyTime = 2;
+    //商品名
+    int32 GiftId = 3;
+}
+
+message SignRewardAction{
+    //0 发放奖励中  1奖励发放完成
+    int32 RecordStatus = 1;
+}

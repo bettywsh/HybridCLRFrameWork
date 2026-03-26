@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+
+//获取奖励
+message GetRechargeActivityReward{ 
+    //活动id
+    uint32 ActivityId = 1;
+}
+
+//回复
+message GetRechargeActivityRewardRes{
+    //结果 0成功 大于0失败 1：充值不够 2:已经领过了 3：其他错误 配置错误 活动未开启等
+    uint32 Result = 1;
+    //活动id
+    uint32 ActivityId = 2;
+}
+
+
+//活动信息
+message PlayerRechargeActivityInfo{
+    //活动id
+    int32 ActivityId = 1;
+    //领取状态
+    int32 ActivityStatus = 2;
+    //上次领取时间
+    int64 GetTime = 3;
+}
+
+//获取活动信息
+message GetRechargeActivityInfo{}
+//回复
+message GetRechargeActivityInfoRes{
+    //活动状态 0关闭 1开启
+    int32 ActivityStatus = 1;
+    //活动开始状态下数据
+    //活动结束时间
+    int64 ActivityEndTime = 2;
+    //开始时间
+    int64 StartTime = 3;
+    //玩家活动数据
+    //金额
+    int32 RechargeCounts = 4;
+    repeated PlayerRechargeActivityInfo PlayerInfo = 5;
+}
+
+//活动刷新 
+message RechargeActivityFresh{}

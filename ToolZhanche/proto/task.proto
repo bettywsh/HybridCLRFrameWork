@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//任务相关
+
+//任务信息
+//整合任务 将所有任务相关整理在一起 通过登录成功后主动下发消息获取
+//目前任务有1.每日任务:1>魔导石任务 2>挑战券任务 3>魔币任务 4>充值任务 2.一本万利任务 3.新手6万魔导石任务 4.魔法阵任务(特殊处理了)
+message PlayerTaskInfo{
+    //每日获得魔导石
+    int64 DayModaoshi = 1;
+    //每日使用魔币
+    int64 DayUseSpar = 2;
+    //每日充值 登录包 PlayerBaseInfo里
+
+    //每日任务信息 领取奖励 GetDayTaskReward
+    repeated TaskData DayTask = 3;
+    //每日充值任务详细信息配置 id3开头，从3000000起累加
+    //repeated RechargeDayTaskInfo RechargeTaskCfg = 4;
+
+    //一本万利活动相关 task 领取奖励 GetTaskRewardReq
+	HighlyproTaskInfo HighlyproInfo = 4;
+	//6万魔导石任务 任务id:77777 魔法阵经验达到3算完成可以领取奖励 GetTaskRewardReq
+	TaskData ModaoshiTask = 5;
+    //每日任务配置
+    //repeated DayTaskCfgInfo TaskCfg = 6;
+}
+
+//任务信息
+message TaskData{
+    //任务id
+    int32 TaskId = 1;
+    //任务领取状态 0没领取奖励 1领取了奖励
+    int32 TaskStatus = 2;
+}
+
+//领取每日任务奖励
+message GetDayTaskReward{
+    //任务id
+    int32 TaskId= 1;
+}
+
+message GetDayTaskRewardRes{
+    //任务id
+    int32 TaskId = 1;
+    //领取结果
+    enum GetTaskRewardResult{
+        //成功
+        GTRR_Success = 0;
+        //未完成
+        GTRR_DisComplete = 1;
+        //已经领取过奖励了
+        GTRR_AlreadyGet = 2;
+        //其他错误
+        GTRR_OtherError = 3;
+    }
+    GetTaskRewardResult result = 2;
+}
+
+//扩展
+//每日任务详细信息同每日任务表
+message DayTaskCfgInfo{
+    //id
+    int32 Id = 1;
+    //描述
+    string Description = 2;
+    //类型
+    int32 Tapy = 3;
+    //完成数量
+    int64 Quantity = 4;
+    //奖励
+    int32 Reward = 5;
+    //数量
+    int32 Amount = 6;
+}
+
+//修改任务列表信息 现在登录成功不下发，主动获取
+//主动获取每日任务信息 直接回复DayTaskInfo
+// http://服务器地址+/API/Web/GetDayTaskConfigReq
+//请求类型 post
+//请求json {"task_type":int} 4所有任务 1魔导石 2挑战券 3魔币
+//回复:json{"code":int,"message":string,data:{"task_info":[{task_id:int,task_type:int,task_des:string,task_target:int,task_reward:int,reward_counts:int},...]}}
+//task_id  //任务id task_type//任务类型 1.魔导石 2.挑战券 3.魔币 task_des  //任务描述 target_counts //完成条件 task_reward //奖励物品 reward_counts //奖励数量
+message GetPlayerTaskInfo{} 
+
+//充值任务配置修改更新 有变化会主动下发自己更新
+message DayTaskChangeNotice{}
+///////////////////////////////////////////////////
+//一本万利活动
+message HighlyproTaskInfo{
+    //一本万利活动 1-7阶激活状态对应0-6位位与值 0未激活 1激活
+    int32 HighlyproStatus = 1;
+    //一本万利每阶段激活后无尽模式获得魔币 0-6对应1-7阶的数量 购买激活进度才开始累计 任务都完成后重置
+    repeated int64 GetSpar = 2;
+    //一本万利任务信息
+    repeated TaskData task = 3;
+}
+
+//领取任务奖励
+message GetTaskRewardReq{
+    //任务id
+    int32 TaskId= 1;
+    //任务类型 201：周期任务
+    int32 TaskType = 2;
+}
+
+message GetTaskRewardRes{
+    //任务id
+    int32 TaskId = 1;
+    //领取结果
+    enum GetTaskRewardResult{
+        //成功
+        GTRR_Success = 0;
+        //未完成
+        GTRR_DisComplete = 1;
+        //已经领取过奖励了
+        GTRR_AlreadyGet = 2;
+        //未解锁
+        GTRR_TaskLock = 3;
+        //其他错误
+        GTRR_OtherError = 4;
+    }
+    GetTaskRewardResult result = 2;
+}
+
+//一键领取每日任务奖励
+//任务类型
+//每日任务类型101魔导石任务 102挑战券任务 103魔币任务 104 充值任务 201一本万利 301周期任务
+message GetAllTaskRewardReq{
+    //任务类型
+    int32 TaskType = 1;
+    //任务id
+    repeated int32 TaskList = 2;
+}
+
+message GetAllTaskRewardRes{
+    //任务类型
+    int32 TaskType = 1;
+    //任务列表
+    repeated int32 TaskList = 2;
+    //成功列表
+    repeated int32 SuccessTask = 3;
+}
+
+///////////////////////////////////
+//周期任务 没有一键领取
+message GetCycleTaskInfo{}
+
+message GetCycleTaskInfoRes{
+    //完成任务数
+    int32 CompleteTask = 1;
+    //击杀boss数
+    int32 KillBoss = 2;
+    //任务列表
+    repeated TaskData task = 3;
+}

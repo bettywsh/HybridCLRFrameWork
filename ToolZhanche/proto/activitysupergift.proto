@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//超值豪礼+存钱罐
+
+//获取活动信息
+message GetSuperGiftInfo{}
+
+//回复
+message GetSuperGiftInfoRes{
+    //魔币进度
+    int64 SparProgress = 1;
+    //充值进度
+    int64 RechargeProgress = 2;
+    //任务情况 空的代表活动关闭
+    repeated SuperGiftTask TaskDatas = 3;
+}
+
+message SuperGiftTask{
+    //任务id
+    int32 TaskID = 1;
+    //任务状态 0/1  0：未领取奖励  1：领取了奖励 
+    int32 TaskStatus = 2;
+}
+
+
+//领取任务奖励
+message GetSuperTaskReward{
+    //任务id
+    int32 TaskID = 1;
+}
+
+message GetSuperTaskRewardRes{
+    //任务id
+    int32 TaskID = 1;
+    //结果 0 成功 大于0失败 1活动未开放 2配置异常 3任务id异常 4任务已完成 5任务类型异常 6未完成
+    int32 Result = 2;
+    //奖励类型 0晶石/灵石/魔币 1金币 2钻石 3魔导石 4绑金 5英雄币
+    int32 RewardType = 3;
+    //奖励数量
+    int64 RewardNumber = 4;
+}
+
+/////////////////////////////////////////////////
+//存钱罐 活动开启期间每次到大厅时候主动拉取一次
+message GetMoneyboxInfo{}
+
+//每天0点 满足条件的减10%
+//每天最多买2次
+message GetMoneyboxInfoRes{
+	//存钱罐数据 只要大于1就可以买
+	int64 MoneyBoxNumber = 1;
+    //购买次数
+    int32 DayBuyCounts = 2;
+}

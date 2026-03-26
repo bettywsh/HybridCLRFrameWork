@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//充值卡相关
+
+//卡类型枚举
+enum RechargeCardType{
+    //周卡
+    Week_Card = 0;
+    //月卡
+    Month_Card = 1;
+    //季卡
+    Season_Card = 2;
+}
+
+//卡信息
+message RechargeCardInfo{
+    //周卡
+    //购买时间戳
+    int64 WeekCardBuyTime = 1;
+    //上次领取时间戳
+    int64 WeekCardGetRewardTime = 2;
+    //月卡
+    //购买时间戳
+    int64 MonthCardBuyTime = 3;
+    //上次领取时间戳
+    int64 MonthCardGetRewardTime = 4;
+    //季卡
+    //购买时间戳
+    int64 SeasonCardBuyTime = 5;
+    //上次领取时间戳
+    int64 SeasonCardGetRewardTime = 6;
+}
+
+
+//购买卡结果 看充值结果
+//所有充值结果都放一起的
+//shop.proto RMBBuyGoodsResult包
+
+
+
+//领取卡奖励
+message GetRechargeCardReward{
+    //卡类型
+    RechargeCardType cardType = 1;
+}
+
+//回
+message GetRechargeCardRewardRes{
+    //卡类型
+    RechargeCardType cardType = 1;
+    //结果
+    enum GetRechargeCardResult{
+        //成功
+        GRCR_Success = 0;
+        //已经领取了
+        GRCR_AlreadyGet = 1;
+        //还没办卡的
+        GRCR_NoCard = 2;
+        //错误配置
+        GRCR_CfgErro = 3;
+        //其他错误配置
+        GRCR_OtherErro = 4;
+    }
+
+    GetRechargeCardResult resultCode = 2;
+}
+
+//这里给了随机石头 随机石头可以使用开出石头
+message OpenRandStone{
+    //使用的数量
+    int32 OpenCounts = 1;
+}
+
+//开随机石头数据
+message OpenStoneData{
+    //石头id
+    int32 StoneId = 1;
+    //石头数量
+    int32 StoneCount = 2;
+}
+
+message OpenRandStoneRes{
+    //使用结果 为空说明石头使用失败
+    repeated OpenStoneData stoneData = 1;
+}

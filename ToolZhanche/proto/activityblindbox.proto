@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+import "newrank.proto";
+
+//盲盒活动开关对应id:1004
+
+//开盒
+message OpenBlindBoxReq{
+	//开盒位置 0-8
+	repeated int32 OpenPos = 1;
+}
+
+message OpenBlindBoxRes{
+	//结果 0成功 大于0失败 1次数不够 2活动关了
+	int32 Result = 1;
+	//结果 奖励id
+	repeated int32 OpenLists = 2;
+	//开的结果
+	repeated int32 OpenHistory = 3;
+}
+
+//重置
+message ResetBlindBoxReq{}
+
+//重置
+message ResetBlindBoxRes{
+	//结果 0成功 大于0失败
+	int32 Result = 1;
+}
+
+//获取盒子信息
+message GetBlindBoxInfo{}
+
+message GetBlindBoxInfoRes{
+	//开的次数
+	int32 OpenCount = 1;
+	//开的历史 奖励id id为0表示没开 OpenHistory为空的化表示活动没开启
+	repeated int32 OpenHistory = 2;
+	//开的次数
+	int64 OpenCounts = 3;
+	//排行榜单
+	repeated PlayerRankInfo OpenRank = 4;
+}

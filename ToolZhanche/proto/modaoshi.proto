@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//魔导石相关
+
+//每日礼包
+message ModaoshiGoodsInfo{
+	//魔导石商品id
+	int64 ModaoshiID = 1;
+	//上次购买礼包时间
+	int64 LastBuyTime = 2;
+	//购买次数
+	int32 BuyCount = 3;
+}
+
+//获取魔导石信息
+message GetModaoshiInfo{}
+//回复
+message ModaoshiInfoRes{
+	//魔导石商城情况
+	repeated ModaoshiGoodsInfo modaoshiGoodsInfo = 1;
+}
+
+//绑定支付宝
+message BindAliPayReq{
+	//绑定方式
+	enum BindAliPayType{
+		//USER_ID 支付宝的会员ID
+		BAT_ALIPAY_USER_ID = 0;
+		//这个方式先不用 LOGON_ID：支付宝登录号 必须要有支付宝绑定实名
+		BAT_ALIPAY_LOGON_ID= 1;
+		//OPEN_ID：支付宝openid
+		BAT_ALIPAY_OPEN_ID = 2;
+	}
+
+	BindAliPayType bindType = 1;
+	//对应支付宝信息
+	string AliPayInfo = 2;
+	//支付宝实名姓名 支付宝登录账号的话这个必须填
+	string AliRealName = 3;
+}
+
+//回复
+message BindAliPayRes{
+	enum BindAliPayResult{
+		//成功
+		BAPR_Success = 0;
+		//达到上限 一个身份证最多5个账号
+		BAPR_MaxCounts = 1;
+		//错误
+		BAPR_OtherError = 2;
+		//已经绑了
+		BAPR_AlreadyBind = 3;
+	}
+
+	//结果
+	BindAliPayResult result = 1;
+	//当前index 1-5
+	uint32 index = 2;
+}
+
+//提现到支付宝
+message GetModaoshiToAliPayReq{
+	//提现id
+	uint64 ModaoshiGoodsID = 1;
+}
+
+//回复
+message GetModaoshiToAliPayRes{
+	//结果
+	enum GetAliPayModaoshiResult{
+		//成功
+		GAHR_Success = 0;
+		//魔导石不足 魔导石不够
+		GAHR_NoModaoshi = 1;
+		//兑换次数不够
+		GAHR_NoTimes = 2;
+		//vip等级不够
+		GAHR_VipError = 3;
+		//没绑定支付宝
+		GAHR_NoAliPay = 4;
+		//配置有误
+		GAHR_NoGoods = 5;
+		//其他错误 调用支付宝发魔导石错误
+		GAHR_OtherError = 6;
+	}
+	GetAliPayModaoshiResult result = 1;
+	//提现商品id
+	uint64 ModaoshiGoodsID = 2;
+}

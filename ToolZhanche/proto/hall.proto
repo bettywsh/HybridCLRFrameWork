@@ -1,0 +1,354 @@
+syntax = "proto3";
+
+package msg;
+
+option go_package=".";
+
+//大厅里消息相关
+
+//全服广播
+message FullServiceBroadcast{
+    string BroadcastMsg = 1;
+}
+
+//系统消息
+message SysMsg{
+	
+	enum SysMsgType{
+		//正常通知公告
+		SYSMT_Normal = 0;
+		//强制关闭通知
+		SYSMT_Close = 1;
+		//返回登录
+		SYSMT_BackLogin = 2;
+		//返回大厅
+		SYSMT_BackHall = 3;
+	}
+
+	//消息类型
+	SysMsgType MsgType = 1;
+	//消息内容
+	string MsgText = 2;
+}
+
+//补给类型
+enum SupplyType{
+	//钻石
+	ST_Diamond = 0; //钻石
+	ST_Gold = 1;//金币
+	ST_Spar = 2;//晶石
+	ST_VipBox = 3;//vip每日宝箱补给
+}
+
+//领取补给请求
+message GetSupplyReq{
+	SupplyType gtype = 1;
+}
+
+//回复
+message GetSupplyRes{
+	//结果
+	enum GetSupplyResult{
+		GSR_OK = 0;//成功
+		GSR_TimeOut = 1;//时间错误 已经领了
+		GSR_TypeErro = 2;//类型 错误
+		GSR_OterErro = 3;//其他错误
+	}
+	GetSupplyResult gCode = 1;
+	//类型
+	SupplyType stype = 2;
+	//数量
+	uint32 SupplyGet = 3;
+	//更新时间戳
+	int64 Time = 4;	
+}
+
+//装备升级
+message UpgradeEquipReq{
+	//升级的部位
+	uint32 UpgradePos = 1;
+}
+
+//回复
+message UpgradeEquipRes{
+	//升级的部位
+	uint32 UpgradePos = 1;
+	//升级结果
+	enum UpgradeResult{
+		UPE_Success = 0; //成功
+		UPE_NoGold = 1;//金币不足
+		UPE_AlreadyMax = 2;//已经最大等级了不能再升级了
+		UPE_NoStone = 3;//石头不足
+		UPE_Fail = 4;//其他错误
+	}
+
+	UpgradeResult upCode = 2;
+	//升级后的等级
+	uint32 UpLevel = 3;
+}
+
+
+//天赋类型
+enum AddTalentType{
+	//伤害
+	ATT_Damage = 0;
+	//血量
+	ATT_HP = 1;
+	//暴击
+	ATT_CriticalHit = 2;
+	//特殊天赋
+	ATT_SpecialSkill = 3;
+}
+
+//天赋加点
+message AddTalentReq{
+	AddTalentType atType = 1;
+	//升级天赋等级
+	uint32 TalentLv = 2;
+}
+
+//回复
+message AddTalentRes{
+	AddTalentType atType = 1;
+	enum AddTalentResult{
+		ATTR_Success = 0; //成功
+		ATTR_NoGold = 1;//金币不够
+		ATTR_AlreadyMax = 2;//最大了
+		ATTR_TypeErro = 3;//传的类型
+		ATTR_LvErro = 4;//传的等级有误
+		ATTR_Fail = 5;//其他错误 比如特殊等级不满足
+	}
+
+	AddTalentResult atrCode = 2;
+	//升级后的等级
+	uint32 AddTalentLevel = 3;
+}
+
+
+//新手引导完成更新
+message ChangeGuide{
+	//要更新的值
+	uint32 changeVulue = 1;
+}
+
+//回调
+message ChangeGuideRes{
+	//要更新的值
+	uint32 GuidIndex = 1;
+}
+
+//服务器新的一天时间
+message NewServerDay{
+	//服务器当前时间
+	int64 ServerTime = 1;
+}
+
+//第三方使用魔导石变化
+message ThirdUseModaoshi{
+	//魔导石剩余值
+	uint64 RestModaoshi = 1;
+	//用的值
+	uint64 UseModaoshi = 2;
+}
+
+//通关福利 通关第50关给200万魔导石
+message GetPassGift{
+	//0-4位与值:0未领取 1领取了  0-4:表示前50关通关进度的5个奖励
+    //领取的奖励的位数 0-4
+    int32 RewardPos = 1;
+}
+
+//结果回调
+message GetPassGiftRes{
+	enum GetPassGitResult{
+		GPGR_Success = 0; //成功
+		GPGR_PassLvErro = 1;//条件没满足
+		GPGR_AlreadyGet = 2;//已经领取了
+		GPGR_Erro = 3;//其他错误
+	}
+
+	//领取结果
+	GetPassGitResult result = 1;
+}
+
+//注销账号
+message DeleteAccountReq{}
+
+//如果注销成功 返回登录 客户端清除相关账号本地所有缓存
+//失败提示重试或者咨询客服 注销的账号有15天保护期 15天内再登录视为放弃注销
+message DeleteAccountRes{
+	enum DeleteAccountResult{
+		DAR_Success = 0; //成功
+		DAR_Fail = 1;//失败
+	}
+
+	//注销结果
+	DeleteAccountResult Result = 1;
+}
+
+//调用第三方商城api结束
+//一点过要收到第三方api返回结果后再发，未收到引导一直卡那一步
+message GetMoneyToAliEnd{
+	string AliAccount = 1;
+}
+
+message GetMoneyToAliEndRes{
+	//除了0和1 其他都是失败即步骤卡住
+	enum GetMoneyToAliResult{
+		GMTALR_Success = 0;//成功
+		GMTALR_AlreadyGet = 1;//提取过了
+		GMTALR_NoName = 2;//未实名
+		GMTALR_NoModaoshi = 3;//魔导石不够
+		GMTALR_NoToken = 4;//没token
+		GMTALR_Fail = 5;//失败
+	}
+	//结果
+	GetMoneyToAliResult result = 1;
+	//魔导石剩余
+	uint64 Modaoshi = 2;
+}
+
+
+//修改玩家信息
+//改名字和头像
+//名字终生只能改一次  判断只有名字=玩家+id 的玩家才能修改名字
+//头像24个对应24个英雄解锁状态 按顺序0-23: 101-104 201-208 301-308  401-404
+message ChangePlayerInfoReq{
+	enum ChangePlayerInfoType{
+		CPIT_Head = 0; //头像
+		CPIT_Name = 1; //名字
+	}
+
+	//修改类型
+	ChangePlayerInfoType ChangeType = 1;
+	//修改的值
+	oneof ChangeData {
+		string Name=2;    //修改名字
+		int32 Head=3;     //修改的头像
+	}
+}
+
+message ChangePlayerInfoRes{
+	enum ChangePlayerInfoResult{
+		CPIR_Success = 0; //成功
+		CPIR_NameRepeat = 1; //重复姓名 已被使用
+		CPIR_HeadIndexErr = 2;//没有这个头像或者未解锁
+		CPIR_IsHeading = 3;//头像使用中客户端自己判断 直接CPIR_Fail
+		CPIR_Fail = 4; //其他失败
+	}
+
+	//结果
+	ChangePlayerInfoResult Result = 1;
+	//修改后的值
+	oneof NewData {
+		string NewName=2;    //修改名字
+		int32 NewHead=3;     //修改的头像
+	}
+}
+
+//触发跑马灯玩家的信息
+message TriggerPlayerInfo{
+	//玩家id
+	int64 PlayerID = 1;
+	//玩家昵称
+	string PlayerName = 2;
+	//VIP等级
+	int32 PlayerVip = 3;
+	//在的场景 1/2/3/4 初/中/奖金/m场  0大厅
+	int32 AtScene = 4;
+}
+
+//跑马灯消息
+message ShowPaomadengMsg{
+	//触发跑马灯玩家信息
+	TriggerPlayerInfo TriggerPlayer = 1;
+	//触发类型
+	enum TriggerTargetType{
+		//杀怪掉魔币
+		TTT_ActMonsterDropSpar = 0;
+		//活动获得奖励
+		TTT_ActivityGetMoney = 1;
+	}
+	
+	TriggerTargetType TargetType = 2;
+	//触发物id/活动id 1004盲盒活动获得魔币
+	int32 TargetID = 3;
+	//结果数量
+	int32 Number = 4;
+}
+
+//rank信息
+message RankInfo{
+	//玩家id
+	int32 PlayerID = 1;
+	//头像
+	int32 PlayerHead = 2;
+	//昵称
+	string PlayerName = 3;
+	//数值
+	int64 RankNumber = 4;
+	//类型 0魔币 1魔导石 2通关  200龙王活动排行 //100怪物草原讨伐首领 101危险沙漠讨伐首领 102火焰之地讨伐首领 
+	int32 RankType = 5; 
+	//名次
+	int32 Rank = 6;
+	//vip
+	int32 PlayerVip = 7;
+	//击杀boss
+	//int32 KillBoss = 8;
+}
+
+message OwnRankInfo{
+	//魔币 仅关卡中获得魔币+(包括怪掉落 通关奖励)
+	int64 RankSpar = 1;
+	//魔导石 仅关卡中获得魔导石+(包括怪掉落 boss宝箱 通关奖励)
+	int64 RankModaohi = 2;
+	//通关 仅通关大于20关卡+
+	int32 PassChapterLv = 3;
+	//场1击杀boss
+	//int32 KillBoss1 = 4;
+	//场2击杀boss
+	//int32 KillBoss2 = 5;
+	//场3击杀boss
+	//int32 KillBoss3 = 6;
+}
+
+message GameRankDatas{
+	//获得魔币
+	repeated RankInfo SparRank= 1;
+	//获得魔导石
+	repeated RankInfo ModaoshiRank= 2;
+	//通关
+	repeated RankInfo PassLvRank= 3;
+	//自己的rank数据
+	OwnRankInfo OwnRank = 4;
+	//初/中/奖金 击杀boss
+	//repeated RankInfo KillBoss1Rank= 5;
+	//repeated RankInfo KillBoss2Rank= 6;
+	//repeated RankInfo KillBoss3Rank= 7;
+}
+
+
+//使用兑换码 vip666
+message UseRedeemCode{
+	//兑换码
+	string RedeemCode = 1;
+}
+
+//兑换结果
+message UseRedeemCodeResult{
+	//兑换结果
+	int32 Result = 1;
+	//奖励物品
+	int32 RewardItem = 2;
+	//奖励数量
+	int32 RewardCounts = 3;
+}
+
+
+//3分钟数据刷新消息
+//一些需要获取新数据的统一这里处理
+//排行榜 龙王秘宝 赏金赛等根据开启情况获取相应数据
+message ThreeMinTimeRefresh{}
+
+//魔导石进度清零了
+message NoticeModaoshiScheduleReset{}

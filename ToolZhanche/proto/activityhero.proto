@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//新英雄活动
+
+message HeroRewardInfo{
+    //奖励id
+    int32 RewardId = 1;
+    //奖励状态 0未领取 1领取了
+    int32 RewardStatus = 2;
+
+}
+
+//获取活动该数据
+message GetActivityHeroInfo{}
+//回复
+message GetActivityHeroInfoRes{
+    //进度值
+    int64 ExchangeProgress = 1;
+    //奖励详情
+    repeated HeroRewardInfo RewardInfo = 2;
+}
+
+//获取奖励
+message GetActivityHeroReward{
+    //奖励id
+    int32 RewardId = 1;
+}
+
+//回复
+message GetActivityHeroRewardRes{
+    //结果 0成功 大于0失败 5活动数据异常 4配置异常 3奖励数据异常 2已经领取了 1兑换积分不足
+    int32 Result = 1;
+    //奖励id
+    int32 RewardId = 2;
+}

@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package msg;
+
+option go_package=".";
+
+//vip等级提升通知 vip等级提升对应的vip宝箱补给时间重置为0
+message VipLevelUp{
+	//vip等级
+	uint32 VipLevel = 1;
+	//vip经验
+	uint64 VipExp = 2;
+}
+
+//商店等购买相关
+enum ShopType{
+	//shop表里的商品(不包括魔导石提现)
+	STB_ShopGoods = 0;
+
+	//充值商品购买 这个类型直接回 RMBBuyGoodsResult消息
+	STB_RechargeGoods = 1;
+
+	//礼包  活动等相关商品
+	//礼包表 活动表
+}
+
+//购买请求
+message BuyShopItemReq{
+	//购买类型
+	ShopType bsType = 1;
+	//买的物品id
+	uint32 BuyItemID = 2;
+	//数量 目前只有钻石买强化石和金币有数量选择
+	uint32 counts = 3;
+}
+
+//回复
+message BuyShopItemRes{
+	//购买类型
+	ShopType stType = 1;
+
+	enum BuyShopItemResult{
+		BSIR_Success = 0;//成功
+		BSIR_NoCurrency = 1;//货币不足
+		BSIR_NoShopItem = 2;//没有对应id商品
+		BSIR_BuyCountError = 3;//购买次数限制
+		BSIR_VipError = 4;//购买vip限制
+		BSIR_TimeError = 5;//时间错误
+		BSIR_GetItemError = 6;//商品给的物品id错误
+		BSIR_OtherError = 7;//其他错误
+	}
+	//购买结果
+	BuyShopItemResult bsiCode = 2;
+	//买到的商品id
+	uint32 BuyItemID = 3;
+}
+
+//英雄卡解锁 钻石购买
+message UnlockHeroCardReq{
+	//英雄卡id
+	uint32 CardId = 1;
+}
+
+//回复
+message UnlockHeroCardRes{	
+	//解锁结果
+	enum UnlockResulltCode{
+		//成功
+		URC_Success = 0;
+		
+		//id错误没有相关配置
+		URC_CardError = 1;
+		//钻石不够
+		URC_NoDiamond = 2;
+		//已经解锁了
+		URC_AlreadyUnlock = 3;
+		//其他错误
+		URC_OtherError = 4;
+	}
+
+	UnlockResulltCode resultCode = 1;
+	//英雄卡id
+	uint32 CardId = 2;
+}
+
+//充值
+//现金购买结果
+message RMBBuyGoodsResult{
+	enum RMBResult{
+		//支付成功 购买成功
+		RMBR_Success = 0;
+		//购买失败
+		RMBR_Fail = 1;
+	}
+	//购买结果
+	RMBResult result = 1;
+	//购买的物品id
+	string	RMBGoodsID = 2;
+	//vip经验
+	uint32 VipExp = 3;
+	//当天充值额度
+	int32 DayRecharge = 4;
+}

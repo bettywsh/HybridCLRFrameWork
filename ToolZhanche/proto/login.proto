@@ -1,0 +1,318 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//import "mail.proto";
+import "activity.proto";
+import "modaoshi.proto";
+import "rechargecard.proto";
+import "challenge.proto";
+
+
+//登录相关
+//版本
+message SignUpResponse
+{
+	int32 errorCode = 1;
+	float version = 2;
+}
+
+//验证码登录请求 正式环境流程
+message VerificationCodeLogin{
+	//电话号码
+	string phoneNumber = 1;
+	//验证码
+	string code = 2;
+	//渠道
+	int32 channel = 3;
+	//包版本
+	int32 packVersion = 4;
+}
+
+//正式环境电话号码登录（保存账号登录） 没账号的需要验证码登录
+message PhoneNumberLogin
+{
+	//账号 11位电话号码	
+	string account = 1;
+	//渠道
+	int32 channel = 2;
+	//包版本
+	int32 packVersion = 3;
+}
+
+//登录注册(用于测试环境) 没有账号会自动注册新账号
+message Login
+{
+	string account = 1; //账号 6-12位
+	string passward = 2; //密码 同上
+	int32 channel = 3; //渠道
+	//包版本
+	int32 packVersion = 4;
+}
+
+//玩家基础信息
+message PlayerBaseInfo
+{
+	//玩家id
+	uint32 PlayerID = 1;
+	//玩家名称
+	string Name = 2;
+	//晶石 = 灵石
+	uint64 Spar  = 3;
+	//魔导石 = 魔导石
+	uint64 Modaoshi = 4;
+	//钻石 = 水晶
+	uint32 Diamond = 5;
+	//新手引导
+	uint32 GuideIndex = 6;
+	//vip等级
+	uint32 VipLevel = 7;
+	//充值累积 = vip经验
+	uint32 VipExp = 8;
+	//绑定的实名index 0没绑 大于0代表同身份证绑的第几个
+	int32 CertificationIndex = 9;
+	//绑定的支付宝index 0没绑 大于0代表绑的第几个
+	//int32 BindAlipayIndex = 10;
+	//挑战门票
+	int32  ChallengeTickets = 10;
+	//服务器时间
+	int64 ServerTime = 11;
+	//先删减部分
+	//金币
+	uint64 Gold = 12;
+	//关卡章节进度 0开始  能玩的关卡1到Chapter+1
+	uint32 Chapter = 13;
+	//通关福利 0-4位的位与值0未领取1已经领取 全部领取条件Chapter>=50
+	int32 PassLevelGift = 14;
+	//解锁的最大炮口 切跑不能大于这个值
+	int32 MaxBullet = 15;
+	//炮口升级经验
+	int32 BulletExp = 16;
+	//实名
+	string Realname = 17;
+	//使用魔币 改为免费复活时间 判断是否是当天，非当天能免费复活
+	int64 FreeReviveTime = 18;
+	//每天充值 0点重置 每天限额3000
+	int32 DayRecharge = 19;
+	//是否新注册
+	bool IsNew = 20;
+	//头像 0开始
+	int32 HeadIndex = 21;
+	//是否获取了设备号 0未获取
+	int32 IsDevice = 22;
+	//两个进度相关 客户端展示*0.8
+	uint64 SparSchedule1 = 23;
+	uint64 SparSchedule2 = 24;
+	//已经改名次数 
+	int32 ChangeNameCounts = 25;
+
+	//英雄币
+	//uint32 HeroCoins = 12;
+	//int64 ServerTime = 14;
+}
+
+//补给信息 这里的时间是上次领取时间 一天一次
+message PlayerSupplyInfo{
+	//钻石
+	int64 DiamondSupplyTime = 1;
+	//金币
+	int64 GoldSupplyTime = 2;
+	//晶石
+	int64 SparTime = 3;
+	//vip宝箱补给
+	int64 VipboxTime = 4;
+}
+
+//装备信息
+//EquipPos:1-6  1-4头盔 铠甲 手套 鞋子 56表示戒指项链
+message EquipInfo{
+	//部位 1-6
+	uint32 EquipPos = 1;
+	//等级 1开始
+	uint32 EquipLevel = 2;
+}
+
+//装备信息 以部位保存
+message PlayerEquipInfo{
+	repeated EquipInfo einfo = 1;
+}
+
+//英雄卡信息
+message HeroCard{
+	//卡id
+	int32 HeroCardID  = 1;
+	//状态 1解锁  0或者其他未解锁
+	int32 CardStatus = 2;
+}
+
+message PlayerHeroCard{
+	repeated HeroCard cardinfo = 1;
+}
+
+//天赋信息 等级是从0开始的
+message TalentInfo{
+	//血量等级
+	int32 HpLevel = 1;
+	//伤害等级
+	int32 DamageLevel = 2;
+	//暴击等级
+	int32 CriticalhitLevel = 3;
+	//特殊等级
+	int32 SpecialLevel = 4; 
+}
+
+message BagItem{
+	//物品唯一id 对应配置表
+	uint32 ItemID = 1;
+	//物品数量
+	uint32 ItemCount = 2;
+}
+
+//背包信息 当前只有强化石 强化石数量可以为0
+message BagInfo{
+	repeated BagItem bagList = 1;
+}
+
+//充值记录 登录成功 登录数据中
+//钻石充值 商品id：9000-9005 判断首次双倍
+//活动1 每日限购商品id：71101-71105 判断当天能否购买
+message RMBGoodsBuyInfo{
+	//商品id
+	uint32 GoodsId = 1;
+	//购买时间
+	uint64 BuyTime = 2;
+	//购买次数
+	uint32 BuyCounts = 3;
+}
+
+//第三方商城信息
+message ThirdShopInfo{
+	//是否显示第三方商城 0不显示 1显示
+	int32 IsShow = 1;
+	//第三方商城token 显示商城的话不为空
+	string Shoptoken = 2;
+	//第三方appid
+	string AppId = 3;
+}
+
+message RegisterInfo{
+	//账号注册时间
+	int64 RegisterTime = 1;
+	//注册渠道
+	int32 RegisterChannel = 2;
+}
+
+//登录成功
+message LoginSuccessfull
+{
+	//登录成功 下发玩家基础数据
+	PlayerBaseInfo playerBaseInfo  = 1;
+	//装备信息
+	PlayerEquipInfo equipInfo = 2;
+	//英雄卡
+	PlayerHeroCard heroCardList = 3;
+	//背包 当前只有石头
+	BagInfo bagList = 4;
+	//补给信息
+	PlayerSupplyInfo supplyInfo = 5;
+
+	//活动1信息
+	ActivityInfoRes activtyInfo = 6;
+	//魔导石魔导石
+	repeated ModaoshiGoodsInfo modaoshiGoodsInfo = 7;
+	//充值物品信息 每日限购 钻石商城 聚划算
+	repeated RMBGoodsBuyInfo RMBGoodsList = 8;
+	
+	//开卡信息
+	RechargeCardInfo rechargeCardInfo = 9;
+
+	//每日通关挑战信息
+	DayChallengeInfo chanllengeInfo = 10;
+
+	//三方商城信息
+	ThirdShopInfo ThirdShop = 11;
+
+	//账号注册时间
+	RegisterInfo RegisterData = 12;
+
+
+	//邮件信息
+	//repeated MailData mailData = 9;
+
+	//每日任务信息
+	//DayTaskInfo dayTaskInfo = 10;
+
+	//一本万利活动 task
+	//HighlyproTaskInfo HighlyproInfo = 13;
+
+	//5万魔导石任务 任务id:77777 魔法阵经验达到3算完成可以领取奖励 GetTaskRewardReq
+	//TaskData ModaoshiTask = 15;
+
+	//天赋信息
+	//TalentInfo talentInfo = 6;
+}
+
+//登录失败
+message LoginFaild
+{
+	enum ErrorCode
+	{
+		 AccountOrPasswardNotMatch = 0; //账号密码错误，没有这个账号
+		 AccountInvalid = 1;//账号密码不符合规范
+		 LoginRepeat = 2;//重复登录 已经在线了，不需要再登录 服务端会强制都下线
+		 InnerError = 3;//其他错误
+		 VerificationCodeErro = 4;//验证码有问题 过期或者错误 重发验证码
+		 ErrorChannel = 5;//渠道错误
+		 AccountLock = 6;//账号被锁定限制登录,联系客服
+		 BlackListUser = 7;//黑名单用户 限制登录
+		 DeleteAccount = 8;//已经申请了注销
+		 LimitRegister = 9;//限制注册
+	}
+
+	ErrorCode code = 1;
+}
+
+//实名信息 
+//登录成功 进行实名 http验证成功后 给服务器再发送一次来拿到certificationIndex
+message AuthenticationInfo{
+	//姓名
+	string RealName = 1;
+	//身份证号
+	string CardId = 2;
+}
+
+//回复
+message AuthenticationInfoRes{
+	//玩家实名标识 小于0失败 1-5根据该值做相关处理
+	uint32 certificationIndex = 1;
+}
+
+//心跳 登录成功激活心跳
+message HeartBeat {}
+
+//新注册用户保存设备相关信息
+//正式服 闲玩主渠道为7
+//Idfa和Oaid必有一个不为空
+message UpdatePlayerDeviceInfo{
+	//设备类型 1 iphone 2 安卓
+	int32 DeviceType = 1; 
+	//ios标识
+	string Idfa = 2; 
+	//设备相关信息
+	string Imei = 3; 
+	string Imei2 = 4;
+	string Meid = 5;
+	string Oaid = 6;
+	string Oaid2 = 7;
+	//注册主渠道
+	string Channel = 8;
+}
+
+message UpdatePlayerDeviceInfoRes{
+	//结果
+	int32 Result = 1;//1成功 0失败
+	//成功绑定的渠道 默认绑定注册主渠道
+	//闲玩渠道绑定成功后 如果BindChannel!=7 表示其他渠道注册的
+	int32 BindChannel = 2;
+}

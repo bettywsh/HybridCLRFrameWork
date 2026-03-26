@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+//时间戳统一毫秒级别
+
+
+//连购礼包相关
+
+message ContinuousGoodInfo{
+    //商品id
+    int32 GoodsId = 1;
+    //商品状态 0默认状态 未购买（能否购买根据第一个购买时间判断） 1购买了 2过期了 3可以直接购买(过期后花钱解锁了的状态)
+    int32 BuyStatus = 2;
+    //购买时间
+    int64 BuyTime = 3;
+}
+
+//获取信息
+message GetContinuousGoodsInfo{}
+
+//回复
+message GetContinuousGoodsInfoRes{
+    //商品信息
+    repeated ContinuousGoodInfo GoodsInfo = 1;
+}
+
+message GetEndGoodsReward{}
+
+message GetEndGoodsRewardRes{
+    //获取结果 0成功 大于0失败 5活动数据异常 4配置异常 3商品数据异常 2已经领取了 1不满足领取条件
+    int32 RewardResult = 1;
+}
+
+message UnlockContinuousGoodsReq{
+    //商品id
+    int32 GoodsID = 1;
+}
+
+message UnlockContinuousGoodsRes{
+    //商品id
+    int32 GoodsID = 1;
+    //结果 0成功了 大于0没解锁成功 5.活动数据异常 4.商品配置异常 3.商品数据异常 2.状态异常 1.魔导石不足
+    int32 Result = 2;
+}

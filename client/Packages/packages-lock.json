@@ -22,15 +22,15 @@
       "dependencies": {},
       "hash": "de0348c453844f91d52e736be681f0713ae47201"
     },
-    "com.coffee.ui-particle": {
-      "version": "5.0.0-preview.16",
+    "com.coplaydev.unity-mcp": {
+      "version": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
       "depth": 0,
-      "source": "registry",
+      "source": "git",
       "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.particlesystem": "1.0.0"
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.test-framework": "1.1.31"
       },
-      "url": "https://package.openupm.com"
+      "hash": "73eb27aeccfa8e0676eaf3304136e9b85953d913"
     },
     "com.cysharp.unitask": {
       "version": "file:UniTask",

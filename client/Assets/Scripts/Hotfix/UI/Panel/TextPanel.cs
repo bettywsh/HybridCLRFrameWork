@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class TextPanel : PanelBase
 {
-    bool isTween = false;
     Queue<string> queue = new Queue<string>();
+    Sequence seq;
 
     public override async UniTask OnOpen()
     { 
@@ -17,25 +17,25 @@ public class TextPanel : PanelBase
 
     public override void OnUpdate()
      {
-        if (!isTween && queue.Count > 0)
+        if (queue.Count > 0)
         {
-            isTween = true;
             GetUI("txtTextMesh").tmptxtValue.text = queue.Dequeue();
             Transform run = GameObjectHelper.Instantiate(GetUI("objContent").tranValue, GetUI("imgBg").tranValue.gameObject);
             run.gameObject.SetActive(true);
-            Sequence seq = DOTween.Sequence();
+            seq = DOTween.Sequence();
+            seq.SetUpdate(true);
             seq.Append(run.GetComponent<RectTransform>().DOAnchorPosY(125, 1).SetRelative());
             seq.Append(run.GetComponent<CanvasGroup>().DOFade(0, 1));
             seq.AppendCallback(() =>
             {
-                isTween = false;
                 GameObject.Destroy(run.gameObject);
             });
         }
      }
 
     public void Fly(string value)
-    {    
+    {
+        seq?.Kill(true);
         queue.Enqueue(value);
     }
 

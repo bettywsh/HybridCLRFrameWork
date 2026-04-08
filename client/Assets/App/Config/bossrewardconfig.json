@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1001,
+    "Reward": 10002,
+    "Number": 300,
+    "Extra": 40,
+    "Tax": 100
+  },
+  {
+    "Id": 1002,
+    "Reward": 10002,
+    "Number": 3000,
+    "Extra": 40,
+    "Tax": 100
+  },
+  {
+    "Id": 1003,
+    "Reward": 10003,
+    "Number": 50,
+    "Extra": 50,
+    "Tax": 100
+  },
+  {
+    "Id": 1004,
+    "Reward": 10002,
+    "Number": 50,
+    "Extra": 100,
+    "Tax": 100
+  }
+]

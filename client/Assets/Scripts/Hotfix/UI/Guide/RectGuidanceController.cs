@@ -1,10 +1,22 @@
-﻿using System.Collections;
+﻿using cfg;
+using Cysharp.Threading.Tasks;
+using Msg;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RectGuidanceController : MonoBehaviour
+public class RectGuidanceController : MonoBehaviour, IPointerClickHandler
 {
+
+    public bool isButton;
+
+    public Action clickOnComplete;
+
+    public Action animationOnComplete;
     //获取画布
     private Canvas canvas;
 
@@ -12,6 +24,8 @@ public class RectGuidanceController : MonoBehaviour
     /// 高亮显示的目标
     /// </summary>
     public RectTransform target;
+
+    public RectTransform boder;
 
     /// <summary>
     /// 区域范围缓存
@@ -56,6 +70,8 @@ public class RectGuidanceController : MonoBehaviour
     private float _shrinkTime = 0.2f;
 
 
+    CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
     /// <summary>
     /// 世界坐标到画布坐标的转换
     /// </summary>
@@ -75,22 +91,26 @@ public class RectGuidanceController : MonoBehaviour
         return UIManager.Instance.uiCamera.WorldToScreenPoint(centerWorld);
     }
 
+   
 
-    public void SetTarget(Transform target)
+    public async void SetTarget(Transform target)
     {
         this.target = target as RectTransform;
         _material = GetComponent<Image>().material;
         _material.SetFloat("_SliderX", 0);
         _material.SetFloat("_SliderY", 0);
-        Invoke("RefreshMask", 0.5f);
-        //RefreshMask();
+        bool isCanel = await UniTask.WaitForSeconds(0.5f, true, cancellationToken: cancellationTokenSource.Token).SuppressCancellationThrow();
+        if (isCanel)
+            return;
+        RefreshMask();
     }
 
-    private void RefreshMask()
+    private async void RefreshMask()
     {
-        canvas = UIManager.Instance.canvasRoot.GetComponent<Canvas>();
+        canvas = UIManager.Instance.uiCanvas;
         //获取高亮区域四个顶点的世界坐标
         target.GetWorldCorners(_corners);
+
         //计算高亮显示区域咋画布中的范围
         _targetOffsetX = Vector2.Distance(WorldToCanvasPos(canvas, _corners[0]), WorldToCanvasPos(canvas, _corners[3])) / 2f;
         _targetOffsetY = Vector2.Distance(WorldToCanvasPos(canvas, _corners[0]), WorldToCanvasPos(canvas, _corners[1])) / 2f;
@@ -122,6 +142,19 @@ public class RectGuidanceController : MonoBehaviour
         //设置遮罩材质中当前偏移的变量
         _material.SetFloat("_SliderX", _currentOffsetX);
         _material.SetFloat("_SliderY", _currentOffsetY);
+        //Invoke("AnimationComplete", _shrinkTime + 0.5f);
+        bool isCanel = await UniTask.WaitForSeconds(_shrinkTime + 0.5f, true, cancellationToken: cancellationTokenSource.Token).SuppressCancellationThrow();
+        if (isCanel)
+            return;
+        AnimationComplete();
+    }
+
+    public void AnimationComplete()
+    {
+        boder.sizeDelta = new Vector2(target.sizeDelta.x + 55, target.sizeDelta.y + 55);
+        boder.gameObject.SetActive(true);
+        if (animationOnComplete != null)
+            animationOnComplete();
     }
 
     private float _shrinkVelocityX = 0f;
@@ -130,8 +163,9 @@ public class RectGuidanceController : MonoBehaviour
     private void Update()
     {
         //从当前偏移值到目标偏移值差值显示收缩动画
-        float valueX = Mathf.SmoothDamp(_currentOffsetX, _targetOffsetX, ref _shrinkVelocityX, _shrinkTime);
-        float valueY = Mathf.SmoothDamp(_currentOffsetY, _targetOffsetY, ref _shrinkVelocityY, _shrinkTime);
+        float valueX = Mathf.SmoothDamp(_currentOffsetX, _targetOffsetX, ref _shrinkVelocityX, _shrinkTime, float.PositiveInfinity, Time.unscaledDeltaTime);
+        float valueY = Mathf.SmoothDamp(_currentOffsetY, _targetOffsetY, ref _shrinkVelocityY, _shrinkTime, float.PositiveInfinity, Time.unscaledDeltaTime);
+
         if (!Mathf.Approximately(valueX, _currentOffsetX))
         {
             _currentOffsetX = valueX;
@@ -144,25 +178,97 @@ public class RectGuidanceController : MonoBehaviour
             _material.SetFloat("_SliderY", _currentOffsetY);
         }
     }
-    //void OnGUI()
-    //{
-    //    if (GUILayout.Button("Test"))
-    //    {
-    //        RefreshMask();
-    //    }
-    //}
 
     public bool IsRect(Vector2 sp)
     {
         Vector3 center = WorldToScreenPoint();
-        if (center.x - _targetOffsetX < sp.x && center.x + _targetOffsetX > sp.x &&
-            center.y - _targetOffsetY < sp.y && center.y + _targetOffsetY > sp.y)
+        bool result = RectTransformUtility.RectangleContainsScreenPoint(target, sp, UIManager.Instance.uiCamera);
+        return result;
+        //if (center.x - _targetOffsetX < sp.x && center.x + _targetOffsetX > sp.x &&
+        //    center.y - _targetOffsetY < sp.y && center.y + _targetOffsetY > sp.y)
+        //{
+        //    return true;
+        //}
+        //else
+        //{
+        //    return false;
+        //}
+    }
+
+    //监听点击
+    public void OnPointerClick(PointerEventData eventData)
+    {   
+        if (IsRect(eventData.position))
         {
-            return true;
+            if (clickOnComplete != null)
+                clickOnComplete();
+            //MessageMgr.Instance.MessageNotify(MessageConst.MsgGuideClickComplete);
+            if (isButton)
+            {
+                //rectGuidanceController.target.GetComponent<Button>().onClick.Invoke();
+                Button button = target.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.OnPointerClick(eventData);
+                }
+                else
+                {
+                    Toggle toggle = target.GetComponent<Toggle>();
+                    if (toggle != null)
+                    {
+                        toggle.OnPointerClick(eventData);
+                    }
+                }
+            }
+            else
+            {
+                PassEvent(eventData, ExecuteEvents.submitHandler);
+                PassEvent(eventData, ExecuteEvents.pointerClickHandler);
+                //PassEvent(eventData, ExecuteEvents.c);
+                Button button = target.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.OnPointerClick(eventData);
+                }
+             
+            }
+
+          
         }
-        else
+
+        //PassEvent(eventData, ExecuteEvents.pointerClickHandler);
+    }
+    //监听按下
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        PassEvent(eventData, ExecuteEvents.pointerDownHandler);
+    }
+    //监听抬起
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        PassEvent(eventData, ExecuteEvents.pointerUpHandler);
+    }
+
+    //把事件透下去
+    public void PassEvent<T>(PointerEventData data, ExecuteEvents.EventFunction<T> function)
+        where T : IEventSystemHandler
+    {
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(data, results);
+        GameObject current = data.pointerCurrentRaycast.gameObject;
+        for (int i = 0; i < results.Count; i++)
         {
-            return false;
+            if (current != results[i].gameObject)
+            {
+                ExecuteEvents.Execute(results[i].gameObject, data, function);
+                break;
+                //RaycastAll后ugui会自己排序，如果你只想响应透下去的最近的一个响应，这里ExecuteEvents.Execute后直接break就行。
+            }
         }
+    }
+
+    private void OnDestroy()
+    {
+        cancellationTokenSource.Cancel();
     }
 }

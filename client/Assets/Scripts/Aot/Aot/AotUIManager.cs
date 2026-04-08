@@ -12,6 +12,9 @@ public class AotUIManager : AotSingleton<AotUIManager>
     public Camera uiCamera;
     private Dictionary<string, AotPanelBase> uiList = new Dictionary<string, AotPanelBase>();
     private Transform baseCanvas;
+    //UISafeArea UISafeArea;
+    //Transform adaptation;
+    //Transform inputCanvas;
 
     public override async UniTask Init()
     {
@@ -20,7 +23,11 @@ public class AotUIManager : AotSingleton<AotUIManager>
         GameObject.DontDestroyOnLoad(canvasRoot);
         uiCamera = GameObject.Find("Canvas/UICamera").GetComponent<Camera>();
         baseCanvas = GameObject.Find("Canvas/UICanvas/BaseCanvas").transform;
+        //adaptation = canvasRoot.transform.Find("UICanvas/Adaptation");
+        //inputCanvas = canvasRoot.transform.Find("UICanvas/InputCanvas");
         CanvasScale();
+        //UISafeArea = new UISafeArea();
+        //UISafeArea.InitSafeArea(inputCanvas, baseCanvas, adaptation);
     }
 
     public void CanvasScale()
@@ -66,7 +73,7 @@ public class AotUIManager : AotSingleton<AotUIManager>
 
     public async void LoadPanel(string name, params object[] args)
     {
-        GameObject go = await AotResManager.Instance.LoadAsset<GameObject>($"Assets/App/Prefab/AotUI/{name}.prefab");
+        GameObject go = Resources.Load<GameObject>($"AotUI/{name}");
         go = GameObject.Instantiate(go);
         go.name = name;
         go.transform.SetParent(baseCanvas, false);
@@ -108,6 +115,18 @@ public class AotUIManager : AotSingleton<AotUIManager>
                 r[i].sortingOrder = order + r[i].sortingOrder;
             }
         }
+    }
+
+    public T GetUI<T>() where T : AotPanelBase
+    {
+        foreach ((string name, AotPanelBase basePanel) in uiList)
+        {
+            if (name == typeof(T).Name)
+            {
+                return basePanel as T;
+            }
+        }
+        return default;
     }
 
     //框架用

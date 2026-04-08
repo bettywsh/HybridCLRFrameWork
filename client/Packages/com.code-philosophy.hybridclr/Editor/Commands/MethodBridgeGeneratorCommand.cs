@@ -2,6 +2,7 @@
 using HybridCLR.Editor.ABI;
 using HybridCLR.Editor.Meta;
 using HybridCLR.Editor.MethodBridge;
+using HybridCLR.Editor.ReversePInvokeWrap;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace HybridCLR.Editor.Commands
@@ -29,56 +31,58 @@ namespace HybridCLR.Editor.Commands
             Directory.Delete(il2cppBuildCachePath, true);
         }
 
-        private static void GenerateMethodBridgeCppFile(Analyzer analyzer, PlatformABI platform, string templateCode, string outputFile)
+        private static void GenerateMethodBridgeCppFile(IReadOnlyCollection<GenericMethod> genericMethods, List<RawReversePInvokeMethodInfo> reversePInvokeMethods,  string outputFile)
         {
+            string templateCode = File.ReadAllText(outputFile, Encoding.UTF8);
             var g = new Generator(new Generator.Options()
             {
-                PlatformABI = platform,
                 TemplateCode = templateCode,
                 OutputFile = outputFile,
-                GenericMethods = analyzer.GenericMethods,
-                NotGenericMethods = analyzer.NotGenericMethods,
-                SpeicalPreserveMethods = analyzer.SpeicalPreserveMethods,
+                GenericMethods = genericMethods,
+                ReversePInvokeMethods = reversePInvokeMethods,
+                Development = EditorUserBuildSettings.development,
             });
 
-            g.PrepareMethods();
             g.Generate();
-            Debug.LogFormat("== output:{0} ==", outputFile);
+            Debug.LogFormat("[MethodBridgeGeneratorCommand] output:{0}", outputFile);
         }
 
-        [MenuItem("HybridCLR/Generate/MethodBridge", priority = 101)]
-        public static void CompileAndGenerateMethodBridge()
+        [MenuItem("HybridCLR/Generate/MethodBridgeAndReversePInvokeWrapper", priority = 101)]
+        public static void GenerateMethodBridgeAndReversePInvokeWrapper()
         {
             BuildTarget target = EditorUserBuildSettings.activeBuildTarget;
-            CompileDllCommand.CompileDll(target);
-            GenerateMethodBridge(target);
+            GenerateMethodBridgeAndReversePInvokeWrapper(target);
         }
 
-        public static void GenerateMethodBridge(BuildTarget target)
+        public static void GenerateMethodBridgeAndReversePInvokeWrapper(BuildTarget target)
         {
-            List<string> hotUpdateDllNames = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
-            using (AssemblyReferenceDeepCollector collector = new AssemblyReferenceDeepCollector(MetaUtil.CreateHotUpdateAndAOTAssemblyResolver(target, hotUpdateDllNames), hotUpdateDllNames))
+            string aotDllDir = SettingsUtil.GetAssembliesPostIl2CppStripDir(target);
+            List<string> aotAssemblyNames = Directory.Exists(aotDllDir) ?
+                Directory.GetFiles(aotDllDir, "*.dll", SearchOption.TopDirectoryOnly).Select(Path.GetFileNameWithoutExtension).ToList()
+                : new List<string>();
+            if (aotAssemblyNames.Count == 0)
             {
-                var analyzer = new Analyzer(new Analyzer.Options
-                {
-                    MaxIterationCount = Math.Min(20, SettingsUtil.HybridCLRSettings.maxMethodBridgeGenericIteration),
-                    Collector = collector,
-                });
-
-                analyzer.Run();
-
-                var tasks = new List<Task>();
-                string templateCode = File.ReadAllText($"{SettingsUtil.TemplatePathInPackage}/MethodBridgeStub.cpp");
-                foreach (PlatformABI platform in Enum.GetValues(typeof(PlatformABI)))
-                {
-                    string outputFile = $"{SettingsUtil.GeneratedCppDir}/MethodBridge_{platform}.cpp";
-                    tasks.Add(Task.Run(() =>
-                    {
-                        GenerateMethodBridgeCppFile(analyzer, platform, templateCode, outputFile);
-                    }));
-                }
-                Task.WaitAll(tasks.ToArray());
+                throw new Exception($"no aot assembly found. please run `HybridCLR/Generate/All` or `HybridCLR/Generate/AotDlls` to generate aot dlls before runing `HybridCLR/Generate/MethodBridge`");
             }
+            AssemblyReferenceDeepCollector collector = new AssemblyReferenceDeepCollector(MetaUtil.CreateAOTAssemblyResolver(target), aotAssemblyNames);
+
+            var methodBridgeAnalyzer = new Analyzer(new Analyzer.Options
+            {
+                MaxIterationCount = Math.Min(20, SettingsUtil.HybridCLRSettings.maxMethodBridgeGenericIteration),
+                Collector = collector,
+            });
+
+            methodBridgeAnalyzer.Run();
+
+            List<string> hotUpdateDlls = SettingsUtil.HotUpdateAssemblyNamesExcludePreserved;
+            var cache = new AssemblyCache(MetaUtil.CreateHotUpdateAndAOTAssemblyResolver(target, hotUpdateDlls));
+
+            var reversePInvokeAnalyzer = new ReversePInvokeWrap.Analyzer(cache, hotUpdateDlls);
+            reversePInvokeAnalyzer.Run();
+
+            string outputFile = $"{SettingsUtil.GeneratedCppDir}/MethodBridge.cpp";
+
+            GenerateMethodBridgeCppFile(methodBridgeAnalyzer.GenericMethods, reversePInvokeAnalyzer.ReversePInvokeMethods, outputFile);
 
             CleanIl2CppBuildCache();
         }

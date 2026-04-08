@@ -15,14 +15,15 @@ public class SplashAdvicePanel : AotPanelBase
         seq.Append(cngContent.DOFade(1, 1));
         seq.AppendInterval(1);
         seq.Append(cngContent.DOFade(0, 1));
-        //动画完成回调
+        //鍔ㄧ敾瀹屾垚鍥炶皟
         //seq.AppendCallback(() =>
         //{
         //    this.Close();
         //    AotUIManager.Instance.Open<SplashIconPanel>();
         //});
-        await seq;        
-        AotUIManager.Instance.Open<SplashIconPanel>();
+        await seq;
+        await UniTask.SwitchToMainThread();
+        AotUIManager.Instance.Open<UpdatePanel>();
         this.Close();
         //await transform.DOMoveX(2, 10);
         //await DOTween.To(() => timeCount, a => timeCount = a, 1, 3);

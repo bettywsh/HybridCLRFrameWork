@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HybridCLR.Editor.Installer
@@ -63,20 +64,34 @@ namespace HybridCLR.Editor.Installer
             {
                 UnityEngine.Debug.Log($"[BashUtil] RemoveDir dir:{dir}");
             }
-            if (!Directory.Exists(dir))
+
+            int maxTryCount = 5;
+            for (int i = 0; i < maxTryCount; ++i)
             {
-                return;
+                try
+                {
+                    if (!Directory.Exists(dir))
+                    {
+                        return;
+                    }
+                    foreach (var file in Directory.GetFiles(dir))
+                    {
+                        File.SetAttributes(file, FileAttributes.Normal);
+                        File.Delete(file);
+                    }
+                    foreach (var subDir in Directory.GetDirectories(dir))
+                    {
+                        RemoveDir(subDir);
+                    }
+                    Directory.Delete(dir);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    UnityEngine.Debug.LogError($"[BashUtil] RemoveDir:{dir} with exception:{e}. try count:{i}");
+                    Thread.Sleep(100);
+                }
             }
-            foreach (var file in Directory.GetFiles(dir))
-            {
-                File.SetAttributes(file, FileAttributes.Normal);
-                File.Delete(file);
-            }
-            foreach (var subDir in Directory.GetDirectories(dir))
-            {
-                RemoveDir(subDir);
-            }
-            Directory.Delete(dir);
         }
 
         public static void RecreateDir(string dir)
@@ -90,12 +105,16 @@ namespace HybridCLR.Editor.Installer
 
         private static void CopyWithCheckLongFile(string srcFile, string dstFile)
         {
-            if (srcFile.Length > 255)
+            var maxPathLength = 255;
+#if UNITY_EDITOR_OSX
+            maxPathLength = 1024;
+#endif
+            if (srcFile.Length > maxPathLength)
             {
                 UnityEngine.Debug.LogError($"srcFile:{srcFile} path is too long. copy ignore!");
                 return;
             }
-            if (dstFile.Length > 255)
+            if (dstFile.Length > maxPathLength)
             {
                 UnityEngine.Debug.LogError($"dstFile:{dstFile} path is too long. copy ignore!");
                 return;

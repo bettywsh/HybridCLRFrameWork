@@ -3,24 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - IgnoreUI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyBullet
+  - PlayerBullet
+  - Obstacle
+  - EnemyImpactZone
+  - PlayerAbsorb
+  - ItemInGame
+  - BoxResource
+  - EnemyRange
+  - BlockEnemyBullet
   - 
   - 
   - 
@@ -40,4 +41,37 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 3405898051
+    locked: 0
+  - name: BGObj
+    uniqueID: 3326263191
+    locked: 0
+  - name: Obstacle
+    uniqueID: 2214610763
+    locked: 0
+  - name: Object
+    uniqueID: 1817535125
+    locked: 0
+  - name: Bullet
+    uniqueID: 3776925657
+    locked: 0
+  - name: Fx
+    uniqueID: 1946328703
+    locked: 0
+  - name: TopObstacle
+    uniqueID: 1614279523
+    locked: 0
+  - name: Flying
+    uniqueID: 3319303717
+    locked: 0
+  - name: FxFlying
+    uniqueID: 771433035
+    locked: 0
+  - name: UI
+    uniqueID: 1503434321
+    locked: 0
+  - name: UI_Fx
+    uniqueID: 1846845787
     locked: 0

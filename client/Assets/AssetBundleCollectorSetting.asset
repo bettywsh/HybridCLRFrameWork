@@ -21,8 +21,8 @@ MonoBehaviour:
     EnableAddressable: 0
     LocationToLower: 0
     IncludeAssetGUID: 0
-    IgnoreDefaultType: 1
-    AutoCollectShaders: 1
+    AutoCollectShaders: 0
+    IgnoreRuleName: NormalIgnoreRule
     Groups:
     - GroupName: Atlas
       GroupDesc: 
@@ -89,19 +89,6 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-    - GroupName: Sound
-      GroupDesc: 
-      AssetTags: 
-      ActiveRuleName: EnableGroup
-      Collectors:
-      - CollectPath: Assets/App/Sound
-        CollectorGUID: c76e835d3e2ee8a49930d1348160f8bd
-        CollectorType: 0
-        AddressRuleName: AddressByFileName
-        PackRuleName: PackSeparately
-        FilterRuleName: CollectAll
-        AssetTags: 
-        UserData: 
     - GroupName: Scene
       GroupDesc: 
       AssetTags: 
@@ -124,7 +111,59 @@ MonoBehaviour:
         CollectorGUID: 001eb8bb7fc0cc245986299561d7c38a
         CollectorType: 0
         AddressRuleName: AddressByFileName
-        PackRuleName: PackDirectory
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Material
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Material
+        CollectorGUID: 2d721c1fb60e8c04497e3f87df4101c5
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Asset
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Asset
+        CollectorGUID: 5884b30e4e5bcb048beb676ed1e0dac5
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Sound
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Sound
+        CollectorGUID: 6b4c20d88f0e01946b0aeeb428ebb11b
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Txt
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/App/Txt
+        CollectorGUID: 8b8b91cfd5c34d14a8d91b610e300743
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackSeparately
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 

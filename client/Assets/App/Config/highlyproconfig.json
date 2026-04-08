@@ -1,0 +1,93 @@
+[
+  {
+    "Id": 10000,
+    "Name": "一阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 450000
+      }
+    ],
+    "ProgressLimit": 47800,
+    "TasksNumber": 7,
+    "Price": 6
+  },
+  {
+    "Id": 10001,
+    "Name": "二阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 2820000
+      }
+    ],
+    "ProgressLimit": 319200,
+    "TasksNumber": 7,
+    "Price": 38
+  },
+  {
+    "Id": 10002,
+    "Name": "三阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 5257000
+      }
+    ],
+    "ProgressLimit": 462400,
+    "TasksNumber": 7,
+    "Price": 68
+  },
+  {
+    "Id": 10003,
+    "Name": "四阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 10308000
+      }
+    ],
+    "ProgressLimit": 691200,
+    "TasksNumber": 7,
+    "Price": 128
+  },
+  {
+    "Id": 10004,
+    "Name": "五阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 32510000
+      }
+    ],
+    "ProgressLimit": 1629600,
+    "TasksNumber": 7,
+    "Price": 388
+  },
+  {
+    "Id": 10005,
+    "Name": "六阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 49980000
+      }
+    ],
+    "ProgressLimit": 2940000,
+    "TasksNumber": 7,
+    "Price": 588
+  },
+  {
+    "Id": 10006,
+    "Name": "七阶",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 76549000
+      }
+    ],
+    "ProgressLimit": 5150400,
+    "TasksNumber": 7,
+    "Price": 888
+  }
+]

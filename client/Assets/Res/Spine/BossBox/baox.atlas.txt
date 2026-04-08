@@ -1,0 +1,16 @@
+baox.png
+size:795,299
+filter:Linear,Linear
+pma:true
+baox1
+bounds:287,36,241,261
+offsets:1,1,243,263
+baox2
+bounds:530,96,263,201
+offsets:1,1,265,203
+daoju1
+bounds:530,2,157,92
+offsets:1,1,159,94
+guanx
+bounds:2,13,283,284
+offsets:7,7,300,300

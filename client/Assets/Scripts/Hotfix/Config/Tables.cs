@@ -8,31 +8,224 @@
 //------------------------------------------------------------------------------
 
 using Luban;
+using SimpleJSON;
 
 namespace cfg
 {
 public partial class Tables
 {
+    public TurntableConfig TurntableConfig {get; }
+    public FirstRewardConfig FirstRewardConfig {get; }
+    public AIConfig AIConfig {get; }
+    public DailyCheckInConfig DailyCheckInConfig {get; }
+    public DailyLoginConfig DailyLoginConfig {get; }
+    public EndlessModeConfig EndlessModeConfig {get; }
+    public EquipmentLevelConfig EquipmentLevelConfig {get; }
+    public ExtraConfig ExtraConfig {get; }
+    public HerosConfig HerosConfig {get; }
+    public ItemsConfig ItemsConfig {get; }
+    public LevelConfig LevelConfig {get; }
+    public PerDayGiftPackConfig PerDayGiftPackConfig {get; }
+    public PushFunctionalitySettingConfig PushFunctionalitySettingConfig {get; }
+    public SessionConfig SessionConfig {get; }
+    public ShopConfig ShopConfig {get; }
+    public TalentConfig TalentConfig {get; }
+    public VipConfig VipConfig {get; }
+    public TalentSkillConfig TalentSkillConfig {get; }
+    public DayTaskConfig DayTaskConfig {get; }
+    public MonthlyPassConfig MonthlyPassConfig {get; }
+    public LevelModeConfig LevelModeConfig {get; }
+    public CorrectConfig CorrectConfig {get; }
+    public MatrixConfig MatrixConfig {get; }
+    public JuhuasuanConfig JuhuasuanConfig {get; }
+    public HighlyProConfig HighlyProConfig {get; }
+    public ActiveTaskConfig ActiveTaskConfig {get; }
+    public MagicCircleConfig MagicCircleConfig {get; }
+    public FormationPackConfig FormationPackConfig {get; }
+    public LevelMissionsConfig LevelMissionsConfig {get; }
+    public GuideConfig GuideConfig {get; }
+    public StarterPackConfig StarterPackConfig {get; }
+    public Session2Config Session2Config {get; }
+    public RechargeGoodsInfoConfig RechargeGoodsInfoConfig {get; }
+    public InventoryBuffConfig InventoryBuffConfig {get; }
+    public EnhancementPacksConfig EnhancementPacksConfig {get; }
+    public LeaderboardConfig LeaderboardConfig {get; }
+    public HeroHeadConfig HeroHeadConfig {get; }
+    public FortunePackConfig FortunePackConfig {get; }
+    public RechargeBuffConfig RechargeBuffConfig {get; }
+    public RandomConfig RandomConfig {get; }
+    public BeginnerConfig BeginnerConfig {get; }
+    public RechargeLimitConfig RechargeLimitConfig {get; }
+    public VipGiftConfig VipGiftConfig {get; }
+    public MateridlConfig MateridlConfig {get; }
+    public BossRewardConfig BossRewardConfig {get; }
+    public DragonTreasureConfig DragonTreasureConfig {get; }
+    public AccumulationConfig AccumulationConfig {get; }
+    public CoPurPacksConfig CoPurPacksConfig {get; }
+    public ExchangeMissionsConfig ExchangeMissionsConfig {get; }
+    public EggRewardsConfig EggRewardsConfig {get; }
+    public EggPriceConfig EggPriceConfig {get; }
+    public LuckyDrawingConfig LuckyDrawingConfig {get; }
+    public BountyRankingConfig BountyRankingConfig {get; }
+    public ZeroDollarPurchaseConfig ZeroDollarPurchaseConfig {get; }
+    public MhGiftConfig MhGiftConfig {get; }
+    public MhPrizeConfig MhPrizeConfig {get; }
+    public MhlistConfig MhlistConfig {get; }
+    public ExterminateConfig ExterminateConfig {get; }
+    public GreatGiftConfig GreatGiftConfig {get; }
+    public PiggyBankConfig PiggyBankConfig {get; }
+    public ZptaskConfig ZptaskConfig {get; }
+    public ZpgiftConfig ZpgiftConfig {get; }
+    public ZprewardConfig ZprewardConfig {get; }
+    public PlayerUpgradeConfig PlayerUpgradeConfig {get; }
     public GlobalConfig GlobalConfig {get; }
-    public LanguageConfig LanguageConfig {get; }
-    public SoundsConfig SoundsConfig {get; }
-    public HorseConfig HorseConfig {get; }
+    public TankConfig TankConfig {get; }
+    public CycleTaskConfig CycleTaskConfig {get; }
+    public EquipmentConfig EquipmentConfig {get; }
 
-    public Tables(System.Func<string, ByteBuf> loader)
+    public Tables(System.Func<string, JSONNode> loader)
     {
+        TurntableConfig = new TurntableConfig(loader("turntableconfig"));
+        FirstRewardConfig = new FirstRewardConfig(loader("firstrewardconfig"));
+        AIConfig = new AIConfig(loader("aiconfig"));
+        DailyCheckInConfig = new DailyCheckInConfig(loader("dailycheckinconfig"));
+        DailyLoginConfig = new DailyLoginConfig(loader("dailyloginconfig"));
+        EndlessModeConfig = new EndlessModeConfig(loader("endlessmodeconfig"));
+        EquipmentLevelConfig = new EquipmentLevelConfig(loader("equipmentlevelconfig"));
+        ExtraConfig = new ExtraConfig(loader("extraconfig"));
+        HerosConfig = new HerosConfig(loader("herosconfig"));
+        ItemsConfig = new ItemsConfig(loader("itemsconfig"));
+        LevelConfig = new LevelConfig(loader("levelconfig"));
+        PerDayGiftPackConfig = new PerDayGiftPackConfig(loader("perdaygiftpackconfig"));
+        PushFunctionalitySettingConfig = new PushFunctionalitySettingConfig(loader("pushfunctionalitysettingconfig"));
+        SessionConfig = new SessionConfig(loader("sessionconfig"));
+        ShopConfig = new ShopConfig(loader("shopconfig"));
+        TalentConfig = new TalentConfig(loader("talentconfig"));
+        VipConfig = new VipConfig(loader("vipconfig"));
+        TalentSkillConfig = new TalentSkillConfig(loader("talentskillconfig"));
+        DayTaskConfig = new DayTaskConfig(loader("daytaskconfig"));
+        MonthlyPassConfig = new MonthlyPassConfig(loader("monthlypassconfig"));
+        LevelModeConfig = new LevelModeConfig(loader("levelmodeconfig"));
+        CorrectConfig = new CorrectConfig(loader("correctconfig"));
+        MatrixConfig = new MatrixConfig(loader("matrixconfig"));
+        JuhuasuanConfig = new JuhuasuanConfig(loader("juhuasuanconfig"));
+        HighlyProConfig = new HighlyProConfig(loader("highlyproconfig"));
+        ActiveTaskConfig = new ActiveTaskConfig(loader("activetaskconfig"));
+        MagicCircleConfig = new MagicCircleConfig(loader("magiccircleconfig"));
+        FormationPackConfig = new FormationPackConfig(loader("formationpackconfig"));
+        LevelMissionsConfig = new LevelMissionsConfig(loader("levelmissionsconfig"));
+        GuideConfig = new GuideConfig(loader("guideconfig"));
+        StarterPackConfig = new StarterPackConfig(loader("starterpackconfig"));
+        Session2Config = new Session2Config(loader("session2config"));
+        RechargeGoodsInfoConfig = new RechargeGoodsInfoConfig(loader("rechargegoodsinfoconfig"));
+        InventoryBuffConfig = new InventoryBuffConfig(loader("inventorybuffconfig"));
+        EnhancementPacksConfig = new EnhancementPacksConfig(loader("enhancementpacksconfig"));
+        LeaderboardConfig = new LeaderboardConfig(loader("leaderboardconfig"));
+        HeroHeadConfig = new HeroHeadConfig(loader("heroheadconfig"));
+        FortunePackConfig = new FortunePackConfig(loader("fortunepackconfig"));
+        RechargeBuffConfig = new RechargeBuffConfig(loader("rechargebuffconfig"));
+        RandomConfig = new RandomConfig(loader("randomconfig"));
+        BeginnerConfig = new BeginnerConfig(loader("beginnerconfig"));
+        RechargeLimitConfig = new RechargeLimitConfig(loader("rechargelimitconfig"));
+        VipGiftConfig = new VipGiftConfig(loader("vipgiftconfig"));
+        MateridlConfig = new MateridlConfig(loader("materidlconfig"));
+        BossRewardConfig = new BossRewardConfig(loader("bossrewardconfig"));
+        DragonTreasureConfig = new DragonTreasureConfig(loader("dragontreasureconfig"));
+        AccumulationConfig = new AccumulationConfig(loader("accumulationconfig"));
+        CoPurPacksConfig = new CoPurPacksConfig(loader("copurpacksconfig"));
+        ExchangeMissionsConfig = new ExchangeMissionsConfig(loader("exchangemissionsconfig"));
+        EggRewardsConfig = new EggRewardsConfig(loader("eggrewardsconfig"));
+        EggPriceConfig = new EggPriceConfig(loader("eggpriceconfig"));
+        LuckyDrawingConfig = new LuckyDrawingConfig(loader("luckydrawingconfig"));
+        BountyRankingConfig = new BountyRankingConfig(loader("bountyrankingconfig"));
+        ZeroDollarPurchaseConfig = new ZeroDollarPurchaseConfig(loader("zerodollarpurchaseconfig"));
+        MhGiftConfig = new MhGiftConfig(loader("mhgiftconfig"));
+        MhPrizeConfig = new MhPrizeConfig(loader("mhprizeconfig"));
+        MhlistConfig = new MhlistConfig(loader("mhlistconfig"));
+        ExterminateConfig = new ExterminateConfig(loader("exterminateconfig"));
+        GreatGiftConfig = new GreatGiftConfig(loader("greatgiftconfig"));
+        PiggyBankConfig = new PiggyBankConfig(loader("piggybankconfig"));
+        ZptaskConfig = new ZptaskConfig(loader("zptaskconfig"));
+        ZpgiftConfig = new ZpgiftConfig(loader("zpgiftconfig"));
+        ZprewardConfig = new ZprewardConfig(loader("zprewardconfig"));
+        PlayerUpgradeConfig = new PlayerUpgradeConfig(loader("playerupgradeconfig"));
         GlobalConfig = new GlobalConfig(loader("globalconfig"));
-        LanguageConfig = new LanguageConfig(loader("languageconfig"));
-        SoundsConfig = new SoundsConfig(loader("soundsconfig"));
-        HorseConfig = new HorseConfig(loader("horseconfig"));
+        TankConfig = new TankConfig(loader("tankconfig"));
+        CycleTaskConfig = new CycleTaskConfig(loader("cycletaskconfig"));
+        EquipmentConfig = new EquipmentConfig(loader("equipmentconfig"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
+        TurntableConfig.ResolveRef(this);
+        FirstRewardConfig.ResolveRef(this);
+        AIConfig.ResolveRef(this);
+        DailyCheckInConfig.ResolveRef(this);
+        DailyLoginConfig.ResolveRef(this);
+        EndlessModeConfig.ResolveRef(this);
+        EquipmentLevelConfig.ResolveRef(this);
+        ExtraConfig.ResolveRef(this);
+        HerosConfig.ResolveRef(this);
+        ItemsConfig.ResolveRef(this);
+        LevelConfig.ResolveRef(this);
+        PerDayGiftPackConfig.ResolveRef(this);
+        PushFunctionalitySettingConfig.ResolveRef(this);
+        SessionConfig.ResolveRef(this);
+        ShopConfig.ResolveRef(this);
+        TalentConfig.ResolveRef(this);
+        VipConfig.ResolveRef(this);
+        TalentSkillConfig.ResolveRef(this);
+        DayTaskConfig.ResolveRef(this);
+        MonthlyPassConfig.ResolveRef(this);
+        LevelModeConfig.ResolveRef(this);
+        CorrectConfig.ResolveRef(this);
+        MatrixConfig.ResolveRef(this);
+        JuhuasuanConfig.ResolveRef(this);
+        HighlyProConfig.ResolveRef(this);
+        ActiveTaskConfig.ResolveRef(this);
+        MagicCircleConfig.ResolveRef(this);
+        FormationPackConfig.ResolveRef(this);
+        LevelMissionsConfig.ResolveRef(this);
+        GuideConfig.ResolveRef(this);
+        StarterPackConfig.ResolveRef(this);
+        Session2Config.ResolveRef(this);
+        RechargeGoodsInfoConfig.ResolveRef(this);
+        InventoryBuffConfig.ResolveRef(this);
+        EnhancementPacksConfig.ResolveRef(this);
+        LeaderboardConfig.ResolveRef(this);
+        HeroHeadConfig.ResolveRef(this);
+        FortunePackConfig.ResolveRef(this);
+        RechargeBuffConfig.ResolveRef(this);
+        RandomConfig.ResolveRef(this);
+        BeginnerConfig.ResolveRef(this);
+        RechargeLimitConfig.ResolveRef(this);
+        VipGiftConfig.ResolveRef(this);
+        MateridlConfig.ResolveRef(this);
+        BossRewardConfig.ResolveRef(this);
+        DragonTreasureConfig.ResolveRef(this);
+        AccumulationConfig.ResolveRef(this);
+        CoPurPacksConfig.ResolveRef(this);
+        ExchangeMissionsConfig.ResolveRef(this);
+        EggRewardsConfig.ResolveRef(this);
+        EggPriceConfig.ResolveRef(this);
+        LuckyDrawingConfig.ResolveRef(this);
+        BountyRankingConfig.ResolveRef(this);
+        ZeroDollarPurchaseConfig.ResolveRef(this);
+        MhGiftConfig.ResolveRef(this);
+        MhPrizeConfig.ResolveRef(this);
+        MhlistConfig.ResolveRef(this);
+        ExterminateConfig.ResolveRef(this);
+        GreatGiftConfig.ResolveRef(this);
+        PiggyBankConfig.ResolveRef(this);
+        ZptaskConfig.ResolveRef(this);
+        ZpgiftConfig.ResolveRef(this);
+        ZprewardConfig.ResolveRef(this);
+        PlayerUpgradeConfig.ResolveRef(this);
         GlobalConfig.ResolveRef(this);
-        LanguageConfig.ResolveRef(this);
-        SoundsConfig.ResolveRef(this);
-        HorseConfig.ResolveRef(this);
+        TankConfig.ResolveRef(this);
+        CycleTaskConfig.ResolveRef(this);
+        EquipmentConfig.ResolveRef(this);
     }
 }
 

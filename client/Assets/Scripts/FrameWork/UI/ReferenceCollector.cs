@@ -29,25 +29,30 @@ public class ReferenceData
 
 public class ReferenceCollector : SerializedMonoBehaviour
 {
-    //Panel²ã´úÂëÂ·¾¶
+    //Panelä»£ç è·¯å¾„
     private string PanelDir = "/Scripts/Hotfix/UI/Panel";
-    //view²ãÄ£°æÎÄ¼şÂ·¾¶
-    private string PanelTempletePath = "Assets/Editor/UI/TempPanel.bytes";
+    //Panelæ¨¡ç‰ˆæ–‡ä»¶è·¯å¾„
+    private string PanelTempletePath = "Assets/Scripts/Editor/UI/TempPanel.bytes";
 
-    //SubPanel²ã´úÂëÂ·¾¶
+    //Dataä»£ç è·¯å¾„
+    private string DataDir = "/Scripts/Hotfix/Data";
+    //Dataæ¨¡ç‰ˆæ–‡ä»¶è·¯å¾„
+    private string DataTempletePath = "Assets/Scripts/Editor/UI/TempData.bytes";
+
+    //SubPanelå±‚ä»£ç è·¯å¾„
     private string SubPanelDir = "/Scripts/Hotfix/UI/SubPanel";
-    //view²ãÄ£°æÎÄ¼şÂ·¾¶
-    private string SubPanelTempletePath = "Assets/Editor/UI/TempSubPanel.bytes";
+    //SubPanelæ¨¡ç‰ˆæ–‡ä»¶è·¯å¾„
+    private string SubPanelTempletePath = "Assets/Scripts/Editor/UI/TempSubPanel.bytes";
 
-    //SubPanel²ã´úÂëÂ·¾¶
+    //Cellå±‚ä»£ç è·¯å¾„
     private string CellDir = "/Scripts/Hotfix/UI/Cell";
-    //view²ãÄ£°æÎÄ¼şÂ·¾¶
-    private string CellTempletePath = "Assets/Editor/UI/TempCell.bytes";
+    //Cellæ¨¡ç‰ˆæ–‡ä»¶è·¯å¾„
+    private string CellTempletePath = "Assets/Scripts/Editor/UI/TempCell.bytes";
 
     [DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
     public Dictionary<string, ReferenceData> data = new Dictionary<string, ReferenceData>();
 
-    [Button("×Ô¶¯°ó¶¨UI", buttonSize: ButtonSizes.Large), GUIColor(0.4f, 0.8f, 1)]
+    [Button("è‡ªåŠ¨ç»‘å®šUI", buttonSize: ButtonSizes.Large), GUIColor(0.4f, 0.8f, 1)]
     public void AutoBind()
     {
         data.Clear();
@@ -92,6 +97,7 @@ public class ReferenceCollector : SerializedMonoBehaviour
         ReferenceData referenceData;
         if (!data.TryGetValue(key, out referenceData))
         {
+            Debug.LogError($"UIæ‰¾ä¸åˆ°key{key}");
             return null;
         }
         return referenceData;
@@ -99,14 +105,14 @@ public class ReferenceCollector : SerializedMonoBehaviour
 
 #if UNITY_EDITOR
     [ShowIf("@transform.name.Contains(\"Panel\") && transform.name.Contains(\"SubPanel\") == false")]
-    [Button("´´½¨Panel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    [Button("åˆ›å»ºPanel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreatePanel()
     {
         var fullFilePath = EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + PanelDir, transform.name, "cs");
 
         if (File.Exists(fullFilePath))
         {
-            Debug.LogError("ÎÄ¼şÒÑ´æÔÚ");
+            Debug.LogError("æ–‡ä»¶å·²å­˜åœ¨");
             return;
         }
  
@@ -116,18 +122,39 @@ public class ReferenceCollector : SerializedMonoBehaviour
         byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
         File.WriteAllBytes(fullFilePath, buffer2);
         AssetDatabase.Refresh();
-        EditorUtility.DisplayDialog("³É¹¦", "´´½¨Panel³É¹¦!!!", "ÖªµÀÁË");
+        EditorUtility.DisplayDialog("æˆåŠŸ", "åˆ›å»ºPanelæˆåŠŸ!!!", "çŸ¥é“äº†");
+    }
+
+    [ShowIf("@transform.name.Contains(\"Panel\") && transform.name.Contains(\"SubPanel\") == false")]
+    [Button("åˆ›å»ºData.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    public void CreateData()
+    {
+        var fullFilePath = EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + DataDir, transform.name.Replace("Panel","Data"), "cs");
+
+        if (File.Exists(fullFilePath))
+        {
+            Debug.LogError("æ–‡ä»¶å·²å­˜åœ¨");
+            return;
+        }
+
+        string tempcs = AssetDatabase.LoadAssetAtPath<TextAsset>(DataTempletePath).text;
+        tempcs = tempcs.Replace("#CLASSNAME#", transform.name);
+        byte[] buffer1 = Encoding.Default.GetBytes(tempcs.ToString());
+        byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
+        File.WriteAllBytes(fullFilePath, buffer2);
+        AssetDatabase.Refresh();
+        EditorUtility.DisplayDialog("æˆåŠŸ", "åˆ›å»ºDataæˆåŠŸ!!!", "çŸ¥é“äº†");
     }
 
     [ShowIf("@transform.name.Contains(\"SubPanel\")")]
-    [Button("´´½¨SubPanel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    [Button("åˆ›å»ºSubPanel.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreateSubPanel()
     {
         var fullFilePath = EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + SubPanelDir, transform.name, "cs");
 
         if (File.Exists(fullFilePath))
         {
-            Debug.LogError("ÎÄ¼şÒÑ´æÔÚ");
+            Debug.LogError("æ–‡ä»¶å·²å­˜åœ¨");
             return;
         }
 
@@ -137,18 +164,18 @@ public class ReferenceCollector : SerializedMonoBehaviour
         byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
         File.WriteAllBytes(fullFilePath, buffer2);
         AssetDatabase.Refresh();
-        EditorUtility.DisplayDialog("³É¹¦", "´´½¨SubPanel³É¹¦!!!", "ÖªµÀÁË");
+        EditorUtility.DisplayDialog("æˆåŠŸ", "åˆ›å»ºSubPanelæˆåŠŸ!!!", "çŸ¥é“äº†");
     }
 
     [ShowIf("@transform.name.Contains(\"Cell\")")]
-    [Button("´´½¨Cell.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
+    [Button("åˆ›å»ºCell.cs", buttonSize: ButtonSizes.Large), GUIColor(0, 1, 0)]
     public void CreateCell()
     {
         var fullFilePath = EditorUtility.SaveFilePanel($"Please select a folder to create", Application.dataPath + CellDir, transform.name, "cs");
 
         if (File.Exists(fullFilePath))
         {
-            Debug.LogError("ÎÄ¼şÒÑ´æÔÚ");
+            Debug.LogError("æ–‡ä»¶å·²å­˜åœ¨");
             return;
         }
 
@@ -158,7 +185,8 @@ public class ReferenceCollector : SerializedMonoBehaviour
         byte[] buffer2 = Encoding.Convert(Encoding.UTF8, Encoding.Default, buffer1, 0, buffer1.Length);
         File.WriteAllBytes(fullFilePath, buffer2);
         AssetDatabase.Refresh();
-        EditorUtility.DisplayDialog("³É¹¦", "´´½¨Cell³É¹¦!!!", "ÖªµÀÁË");
+        EditorUtility.DisplayDialog("æˆåŠŸ", "åˆ›å»ºCellæˆåŠŸ!!!", "çŸ¥é“äº†");
     }
 #endif
+ 
 }

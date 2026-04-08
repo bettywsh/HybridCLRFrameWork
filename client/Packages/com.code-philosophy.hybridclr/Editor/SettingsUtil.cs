@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using HybridCLR.Editor.Settings;
 
 
 namespace HybridCLR.Editor
@@ -44,6 +45,10 @@ namespace HybridCLR.Editor
         public static string GeneratedCppDir => $"{LocalIl2CppDir}/libil2cpp/hybridclr/generated";
 
         public static string Il2CppBuildCacheDir { get; } = $"{ProjectDir}/Library/Il2cppBuildCache";
+
+        public static string GlobalgamemanagersBinFile { get; } = "globalgamemanagers";
+
+        public static string Dataunity3dBinFile { get; } = "data.unity3d";
 
         public static string GetHotUpdateDllsOutputDirByTarget(BuildTarget target)
         {
@@ -95,7 +100,7 @@ namespace HybridCLR.Editor
                     {
                         if (allAsses.Contains(assemblyName))
                         {
-                            throw new Exception($"[HotUpdateAssemblyNamesIncludePreserved] assembly:'{assemblyName}' 重复");
+                            throw new Exception($"[HotUpdateAssemblyNamesIncludePreserved] assembly:'{assemblyName}' is duplicated");
                         }
                         allAsses.Add(assemblyName);
                     }

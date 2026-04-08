@@ -2,7 +2,8 @@
     "name": "ThirdParty",
     "rootNamespace": "",
     "references": [
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "ZString"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

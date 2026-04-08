@@ -1,0 +1,422 @@
+[
+  {
+    "Id": 101,
+    "StartStatus": 1,
+    "EndStatus": 1,
+    "WinType": 0,
+    "Weight": 1000
+  },
+  {
+    "Id": 102,
+    "StartStatus": 2,
+    "EndStatus": 2,
+    "WinType": 0,
+    "Weight": 2000
+  },
+  {
+    "Id": 103,
+    "StartStatus": 3,
+    "EndStatus": 3,
+    "WinType": 0,
+    "Weight": 4000
+  },
+  {
+    "Id": 104,
+    "StartStatus": 4,
+    "EndStatus": 4,
+    "WinType": 0,
+    "Weight": 2000
+  },
+  {
+    "Id": 105,
+    "StartStatus": 5,
+    "EndStatus": 5,
+    "WinType": 0,
+    "Weight": 1000
+  },
+  {
+    "Id": 111,
+    "StartStatus": 1,
+    "EndStatus": 1,
+    "WinType": 1,
+    "Weight": 0
+  },
+  {
+    "Id": 112,
+    "StartStatus": 1,
+    "EndStatus": 2,
+    "WinType": 1,
+    "Weight": 2000
+  },
+  {
+    "Id": 113,
+    "StartStatus": 1,
+    "EndStatus": 3,
+    "WinType": 1,
+    "Weight": 3000
+  },
+  {
+    "Id": 114,
+    "StartStatus": 1,
+    "EndStatus": 4,
+    "WinType": 1,
+    "Weight": 4000
+  },
+  {
+    "Id": 115,
+    "StartStatus": 1,
+    "EndStatus": 5,
+    "WinType": 1,
+    "Weight": 1000
+  },
+  {
+    "Id": 121,
+    "StartStatus": 2,
+    "EndStatus": 1,
+    "WinType": 1,
+    "Weight": 500
+  },
+  {
+    "Id": 122,
+    "StartStatus": 2,
+    "EndStatus": 2,
+    "WinType": 1,
+    "Weight": 2500
+  },
+  {
+    "Id": 123,
+    "StartStatus": 2,
+    "EndStatus": 3,
+    "WinType": 1,
+    "Weight": 2500
+  },
+  {
+    "Id": 124,
+    "StartStatus": 2,
+    "EndStatus": 4,
+    "WinType": 1,
+    "Weight": 2700
+  },
+  {
+    "Id": 125,
+    "StartStatus": 2,
+    "EndStatus": 5,
+    "WinType": 1,
+    "Weight": 1800
+  },
+  {
+    "Id": 131,
+    "StartStatus": 3,
+    "EndStatus": 1,
+    "WinType": 1,
+    "Weight": 1000
+  },
+  {
+    "Id": 132,
+    "StartStatus": 3,
+    "EndStatus": 2,
+    "WinType": 1,
+    "Weight": 2000
+  },
+  {
+    "Id": 133,
+    "StartStatus": 3,
+    "EndStatus": 3,
+    "WinType": 1,
+    "Weight": 3000
+  },
+  {
+    "Id": 134,
+    "StartStatus": 3,
+    "EndStatus": 4,
+    "WinType": 1,
+    "Weight": 4000
+  },
+  {
+    "Id": 135,
+    "StartStatus": 3,
+    "EndStatus": 5,
+    "WinType": 1,
+    "Weight": 0
+  },
+  {
+    "Id": 141,
+    "StartStatus": 4,
+    "EndStatus": 1,
+    "WinType": 1,
+    "Weight": 1500
+  },
+  {
+    "Id": 142,
+    "StartStatus": 4,
+    "EndStatus": 2,
+    "WinType": 1,
+    "Weight": 2000
+  },
+  {
+    "Id": 143,
+    "StartStatus": 4,
+    "EndStatus": 3,
+    "WinType": 1,
+    "Weight": 3000
+  },
+  {
+    "Id": 144,
+    "StartStatus": 4,
+    "EndStatus": 4,
+    "WinType": 1,
+    "Weight": 3500
+  },
+  {
+    "Id": 145,
+    "StartStatus": 4,
+    "EndStatus": 5,
+    "WinType": 1,
+    "Weight": 0
+  },
+  {
+    "Id": 151,
+    "StartStatus": 5,
+    "EndStatus": 1,
+    "WinType": 1,
+    "Weight": 500
+  },
+  {
+    "Id": 152,
+    "StartStatus": 5,
+    "EndStatus": 2,
+    "WinType": 1,
+    "Weight": 2000
+  },
+  {
+    "Id": 153,
+    "StartStatus": 5,
+    "EndStatus": 3,
+    "WinType": 1,
+    "Weight": 3500
+  },
+  {
+    "Id": 154,
+    "StartStatus": 5,
+    "EndStatus": 4,
+    "WinType": 1,
+    "Weight": 4000
+  },
+  {
+    "Id": 155,
+    "StartStatus": 5,
+    "EndStatus": 5,
+    "WinType": 1,
+    "Weight": 0
+  },
+  {
+    "Id": 201,
+    "StartStatus": 1,
+    "EndStatus": 1,
+    "WinType": 0,
+    "Weight": 1000
+  },
+  {
+    "Id": 202,
+    "StartStatus": 2,
+    "EndStatus": 2,
+    "WinType": 0,
+    "Weight": 2000
+  },
+  {
+    "Id": 203,
+    "StartStatus": 3,
+    "EndStatus": 3,
+    "WinType": 0,
+    "Weight": 4000
+  },
+  {
+    "Id": 204,
+    "StartStatus": 4,
+    "EndStatus": 4,
+    "WinType": 0,
+    "Weight": 2000
+  },
+  {
+    "Id": 205,
+    "StartStatus": 5,
+    "EndStatus": 5,
+    "WinType": 0,
+    "Weight": 1000
+  },
+  {
+    "Id": 211,
+    "StartStatus": 1,
+    "EndStatus": 1,
+    "WinType": 2,
+    "Weight": 0
+  },
+  {
+    "Id": 212,
+    "StartStatus": 1,
+    "EndStatus": 2,
+    "WinType": 2,
+    "Weight": 2000
+  },
+  {
+    "Id": 213,
+    "StartStatus": 1,
+    "EndStatus": 3,
+    "WinType": 2,
+    "Weight": 3000
+  },
+  {
+    "Id": 214,
+    "StartStatus": 1,
+    "EndStatus": 4,
+    "WinType": 2,
+    "Weight": 4000
+  },
+  {
+    "Id": 215,
+    "StartStatus": 1,
+    "EndStatus": 5,
+    "WinType": 2,
+    "Weight": 1000
+  },
+  {
+    "Id": 221,
+    "StartStatus": 2,
+    "EndStatus": 1,
+    "WinType": 2,
+    "Weight": 500
+  },
+  {
+    "Id": 222,
+    "StartStatus": 2,
+    "EndStatus": 2,
+    "WinType": 2,
+    "Weight": 2500
+  },
+  {
+    "Id": 223,
+    "StartStatus": 2,
+    "EndStatus": 3,
+    "WinType": 2,
+    "Weight": 2500
+  },
+  {
+    "Id": 224,
+    "StartStatus": 2,
+    "EndStatus": 4,
+    "WinType": 2,
+    "Weight": 2700
+  },
+  {
+    "Id": 225,
+    "StartStatus": 2,
+    "EndStatus": 5,
+    "WinType": 2,
+    "Weight": 1800
+  },
+  {
+    "Id": 231,
+    "StartStatus": 3,
+    "EndStatus": 1,
+    "WinType": 2,
+    "Weight": 1000
+  },
+  {
+    "Id": 232,
+    "StartStatus": 3,
+    "EndStatus": 2,
+    "WinType": 2,
+    "Weight": 1500
+  },
+  {
+    "Id": 233,
+    "StartStatus": 3,
+    "EndStatus": 3,
+    "WinType": 2,
+    "Weight": 2870
+  },
+  {
+    "Id": 234,
+    "StartStatus": 3,
+    "EndStatus": 4,
+    "WinType": 2,
+    "Weight": 4000
+  },
+  {
+    "Id": 235,
+    "StartStatus": 3,
+    "EndStatus": 5,
+    "WinType": 2,
+    "Weight": 630
+  },
+  {
+    "Id": 241,
+    "StartStatus": 4,
+    "EndStatus": 1,
+    "WinType": 2,
+    "Weight": 1000
+  },
+  {
+    "Id": 242,
+    "StartStatus": 4,
+    "EndStatus": 2,
+    "WinType": 2,
+    "Weight": 1000
+  },
+  {
+    "Id": 243,
+    "StartStatus": 4,
+    "EndStatus": 3,
+    "WinType": 2,
+    "Weight": 1500
+  },
+  {
+    "Id": 244,
+    "StartStatus": 4,
+    "EndStatus": 4,
+    "WinType": 2,
+    "Weight": 2000
+  },
+  {
+    "Id": 245,
+    "StartStatus": 4,
+    "EndStatus": 5,
+    "WinType": 2,
+    "Weight": 4500
+  },
+  {
+    "Id": 251,
+    "StartStatus": 5,
+    "EndStatus": 1,
+    "WinType": 2,
+    "Weight": 500
+  },
+  {
+    "Id": 252,
+    "StartStatus": 5,
+    "EndStatus": 2,
+    "WinType": 2,
+    "Weight": 1000
+  },
+  {
+    "Id": 253,
+    "StartStatus": 5,
+    "EndStatus": 3,
+    "WinType": 2,
+    "Weight": 2000
+  },
+  {
+    "Id": 254,
+    "StartStatus": 5,
+    "EndStatus": 4,
+    "WinType": 2,
+    "Weight": 3000
+  },
+  {
+    "Id": 255,
+    "StartStatus": 5,
+    "EndStatus": 5,
+    "WinType": 2,
+    "Weight": 3500
+  }
+]

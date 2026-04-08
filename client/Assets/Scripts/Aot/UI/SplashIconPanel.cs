@@ -14,7 +14,7 @@ public class SplashIconPanel : AotPanelBase
         seq.Append(cngBG.DOFade(1, 1));
         seq.AppendInterval(1);
         seq.Append(cngBG.DOFade(0, 1));
-        //动画完成回调
+        //鍔ㄧ敾瀹屾垚鍥炶皟
         //seq.AppendCallback(() =>
         //{
         //    this.Close();

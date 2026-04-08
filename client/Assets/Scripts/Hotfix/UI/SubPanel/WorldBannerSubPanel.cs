@@ -3,83 +3,46 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorldBannerSubPanel : SubPanelBase
 {
-    public Stack<string> msgs = new Stack<string>();
-    private bool isAnim = false;
+    public bool isScrolling = false;
+    private float m_speed = 80f;
     public override void OnBindEvent()
     {
         base.OnBindEvent();
     }
     public override async UniTask OnOpen()
-    {
+    { 
         await base.OnOpen();
-        AddMsg("ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡");
-        AddMsg("ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡");
-        AddMsg("ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡");
-        AddMsg("ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡");
-        AddMsg("ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡");
-        AddMsg("ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡ÄãºÃ£¡Ç×°®µÄ×æ¹ú£¡£¡£¡");
+        transform.gameObject.SetActive(false);
     }
-
-    public void AddMsg(string msg) {
-        msgs.Push(msg);
-        if (!isAnim)
-        {
-            isAnim = true;
-            GetUI("MainPanel").goValue.SetActive(true);
-            MsgShowAnim();
-        }
-    }
-
-    private void MsgShowAnim()
+    [OnMessage(MessageConst.Msg_ShowWorldBanner)]
+    public void Scroll()
     {
-        float x = 0;
-        float time = 0;
-        float maxTime = 0;
-        string msg = msgs.Pop();
-        GetUI("txtMsg").tmptxtValue.text = msg;
-        GetUI("txtMsg").tranValue.localPosition = new Vector3(0, -35, 0);
-        float txtWidth = GetUI("txtMsg").tmptxtValue.preferredWidth;
-        x = (txtWidth - 920) * 0.5f;
-        if (x > 0)
-        {
-            if (x < 40)
-            {
-                x = 40;
-            }
-            maxTime = 1.5f;
-            time = x / 50;
-            if (time > maxTime)
-            {
-                time = maxTime;
-            }
-        }
-        else
-        {
-            x = 0;
-        }
-        Sequence seq = DOTween.Sequence();
-        seq.Append(GetUI("txtMsg").tranValue.DOLocalMoveY(0, 0.5f));
-        seq.Append(GetUI("txtMsg").tranValue.DOLocalMoveX(x * - 1, time).SetEase(DG.Tweening.Ease.Linear));
-        seq.AppendInterval(1);
-        seq.Append(GetUI("txtMsg").tranValue.DOLocalMoveY(40, 0.5f));
-        seq.AppendCallback(() =>{
-            if (msgs.Count > 0)
-            {
-                MsgShowAnim();
-            }
-            else
-            {
-                isAnim = false;
-                GetUI("MainPanel").goValue.SetActive(false);
-            }
-        });
+        if (isScrolling)
+            return;
+        string content = DataManager.Instance.GetData<WorldBannerData>().GetMsg();
+        Vector3 pos = GetUI("txtMsg").tranValue.GetComponent<RectTransform>().localPosition;
+        GetUI("txtMsg").tranValue.localPosition = new Vector3(0, pos.y, 0);
+        isScrolling = true;
+        transform.gameObject.SetActive(true);
+        GetUI("txtMsg").tmptxtValue.text = content;
+        float txtWidth = GetUI("txtMsg").tmptxtValue.preferredWidth;//æ–‡æœ¬è‡ªèº«çš„é•¿åº¦.
+        float distance = txtWidth / 2 + 476;
+        float duration = distance / m_speed;
+        Vector3 startPos = new Vector3(txtWidth / 2 + 476, pos.y, pos.z);
+        GetUI("txtMsg").tranValue.localPosition = startPos;
+        GetUI("txtMsg").tranValue.GetComponent<RectTransform>().DOLocalMoveX(-distance, duration)
+        .SetEase(Ease.Linear).SetUpdate(true).OnComplete(() => {
+            transform.gameObject.SetActive(false);
+            isScrolling = false;
+        }).SetUpdate(true);
     }
 
     public override void OnUnBindEvent()
-    {
+    { 
         base.OnUnBindEvent();
     }
 

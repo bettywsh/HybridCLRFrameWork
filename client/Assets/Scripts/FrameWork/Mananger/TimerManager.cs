@@ -14,7 +14,7 @@ public class TimerManager : MonoSingleton<TimerManager>
     {
         get
         {
-            return mServerTimer + (long)(Time.realtimeSinceStartup - validStartGameTime);
+            return mServerTimer + (long)(Time.realtimeSinceStartup - validStartGameTime) * 1000;
         }
         set
         {
@@ -42,7 +42,7 @@ public class TimerManager : MonoSingleton<TimerManager>
 
     #region 延时定时器
 
-    public void OnceTimer(int timerId, float time)
+    public void OnceTimer(int timerId, double time)
     {
         if (time < 0.1f)
         {
@@ -54,14 +54,14 @@ public class TimerManager : MonoSingleton<TimerManager>
             Debug.LogError("已经有相同ID的定时器");
             return;
         }
-        int t = (int)(time * 1000);
+        long t = (long)(time * 1000);
         TimerInfo timer = new(GetNow(), GetNow() + t, t, TimerType.OnceTimer);
         AddTimer(timerId, ref timer);
     }
     #endregion
 
     #region 倒计时定时器
-    public void RepeatedTimer(int timerId, float time, float interval)
+    public void RepeatedTimer(int timerId, double time, float interval)
     {
         if (time < 0.1f)
         {
@@ -70,11 +70,11 @@ public class TimerManager : MonoSingleton<TimerManager>
         }
         if (timerInfos.TryGetValue(timerId, out TimerInfo timerInfo))
         {
-            Debug.LogError("已经有相同ID的定时器");
+            Debug.LogError("已经有相同ID的定时器"+ timerId);
             return;
         }
         int i = (int)(interval * 1000);
-        int t = (int)(time * 1000);
+        long t = (long)(time * 1000);
         TimerInfo timer = new(GetNow(), GetNow() + t, i, TimerType.RepeatedTimer);
         AddTimer(timerId, ref timer);
     }
@@ -84,8 +84,40 @@ public class TimerManager : MonoSingleton<TimerManager>
     public NativeCollection.MultiMap<long, int> timeId = new(1000);
     public Dictionary<long, TimerInfo> timerInfos = new();
     public Queue<long> timeOutTime = new();
+    public Queue<long> timeOutTimes = new();
 
     public long minTime = long.MaxValue;
+
+    public void Clear(long id)
+    {
+        if (timerInfos.TryGetValue(id, out TimerInfo timer))
+        {
+            long allTime = timer.StartTime + timer.Interval;
+            if (timeId[allTime] != null)
+            {
+                timeId.Remove(allTime, (int)id);
+            }
+            if (timeId.Count > 0)
+            {
+                //去除最小时间
+                foreach (var kv in timeId)
+                {
+                    long k = kv.Key;
+                    if (k > GetNow())
+                    {
+                        minTime = k;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                minTime = int.MaxValue;
+            }
+            Remove(id);
+        }
+    }
+
     public bool Remove(long id)
     {
         if (id == 0)
@@ -148,14 +180,25 @@ public class TimerManager : MonoSingleton<TimerManager>
             var list = timeId[time];
             for (int i = 0; i < list.Length; ++i)
             {
-                int timerId = list[i];
-                if (!timerInfos.Remove(timerId, out TimerInfo timerInfo))
-                {
-                    continue;
-                }
-                Run(timerId, timerInfo);
+                long timerId = list[i];
+                timeOutTimes.Enqueue(timerId);
             }
             timeId.Remove(time);
+        }
+
+        if (timeId.Count == 0)
+        {
+            minTime = long.MaxValue;
+        }
+
+        while (timeOutTimes.Count > 0)
+        {
+            long timerId = timeOutTimes.Dequeue();
+            if (!timerInfos.Remove(timerId, out TimerInfo timerInfo))
+            {
+                continue;
+            }
+            Run((int)timerId, timerInfo);
         }
 
     }
@@ -189,15 +232,15 @@ public class TimerManager : MonoSingleton<TimerManager>
 
     public async UniTask<bool> WaitAsync(float time, CancellationToken cancellationToken = default(CancellationToken))
     {
-        bool canel = await UniTask.Delay(TimeSpan.FromSeconds(time), false, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow();
-        return canel;
+        var cannel = await UniTask.Delay(TimeSpan.FromSeconds(time), false, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow();
+        return cannel;
     }
 
 }
 
 public struct TimerInfo
 {
-    public TimerInfo(long startTime, long endTime, int interval, TimerType timerType)
+    public TimerInfo(long startTime, long endTime, long interval, TimerType timerType)
     {
         this.StartTime = startTime;
         this.EndTime = endTime;
@@ -205,7 +248,7 @@ public struct TimerInfo
         this.TimerType = timerType;
     }
 
-    public int Interval;
+    public long Interval;
 
     public long StartTime;
 

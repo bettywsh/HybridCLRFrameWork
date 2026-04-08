@@ -51,7 +51,7 @@ public class DataAttribute : BaseAttribute
 [AttributeUsage(AttributeTargets.Method)]
 public class OnSliderChangedAttribute : Attribute
 {
-    public string Name;
+    public readonly string Name;
     public OnSliderChangedAttribute(string name)
     {
         Name = name;
@@ -61,37 +61,37 @@ public class OnSliderChangedAttribute : Attribute
 [AttributeUsage(AttributeTargets.Method)]
 public class OnToggleChangedAttribute : Attribute
 {
-    public string Name;
+    public readonly string Name;
     public OnToggleChangedAttribute(string name)
     {
         Name = name;
     }
 }
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class OnClickAttribute : Attribute
 {
-    public string Name;
+    public readonly string Name;
     public OnClickAttribute(string name)
     {
         Name = name;
     }
 }
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class OnMessageAttribute : Attribute
 {
-    public int Name;
+    public readonly int Name;
     public OnMessageAttribute(int name)
     {
         Name = name;
     }
 }
 
-[AttributeUsage(AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
 public class OnTimerAttribute : Attribute
 {
-    public int Name;
+    public readonly int Name;
     public OnTimerAttribute(int name)
     {
         Name = name;
@@ -101,7 +101,7 @@ public class OnTimerAttribute : Attribute
 [AttributeUsage(AttributeTargets.Method)]
 public class OnNetAttribute : Attribute
 {
-    public int Id;
+    public readonly int Id;
     public OnNetAttribute(int id)
     {
         Id = id;
@@ -111,7 +111,7 @@ public class OnNetAttribute : Attribute
 [AttributeUsage(AttributeTargets.Method)]
 public class RedPointAttribute : Attribute
 {
-    public int Id;
+    public readonly int Id;
     public RedPointAttribute(int id)
     {
         Id = id;

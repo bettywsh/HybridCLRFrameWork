@@ -24,10 +24,10 @@ public static class TexturePreImporter
         iosSettings.overridden = true;
         andSettings.compressionQuality = iosSettings.compressionQuality = 50;
 
-        andSettings.format = TextureImporterFormat.ETC2_RGBA8;
+        andSettings.format = TextureImporterFormat.ASTC_6x6;
         andSettings.androidETC2FallbackOverride = AndroidETC2FallbackOverride.Quality32Bit;
         iosSettings.format = TextureImporterFormat.ASTC_6x6;
-        andSettings.maxTextureSize = iosSettings.maxTextureSize = 1024;
+        //andSettings.maxTextureSize = iosSettings.maxTextureSize = 4096;
 
         importer.SetPlatformTextureSettings(andSettings);
         importer.SetPlatformTextureSettings(iosSettings);

@@ -1,0 +1,541 @@
+[
+  {
+    "Id": 1000,
+    "TaskDescription": "无尽模式赢取4万魔币",
+    "NumberOfTasks": 40000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 1000
+      }
+    ]
+  },
+  {
+    "Id": 1001,
+    "TaskDescription": "无尽模式赢取10万魔币",
+    "NumberOfTasks": 100000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 2400
+      }
+    ]
+  },
+  {
+    "Id": 1002,
+    "TaskDescription": "无尽模式赢取30万魔币",
+    "NumberOfTasks": 300000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 4000
+      }
+    ]
+  },
+  {
+    "Id": 1003,
+    "TaskDescription": "无尽模式赢取96万魔币",
+    "NumberOfTasks": 960000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 4400
+      }
+    ]
+  },
+  {
+    "Id": 1004,
+    "TaskDescription": "无尽模式赢取192万魔币",
+    "NumberOfTasks": 1920000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 6000
+      }
+    ]
+  },
+  {
+    "Id": 1005,
+    "TaskDescription": "无尽模式赢取300万魔币",
+    "NumberOfTasks": 3000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 10000
+      }
+    ]
+  },
+  {
+    "Id": 1006,
+    "TaskDescription": "无尽模式赢取400万魔币",
+    "NumberOfTasks": 4000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 20000
+      }
+    ]
+  },
+  {
+    "Id": 2000,
+    "TaskDescription": "无尽模式赢取10万魔币",
+    "NumberOfTasks": 100000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 10000
+      }
+    ]
+  },
+  {
+    "Id": 2001,
+    "TaskDescription": "无尽模式赢取20万魔币",
+    "NumberOfTasks": 200000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 19200
+      }
+    ]
+  },
+  {
+    "Id": 2002,
+    "TaskDescription": "无尽模式赢取40万魔币",
+    "NumberOfTasks": 400000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 30000
+      }
+    ]
+  },
+  {
+    "Id": 2003,
+    "TaskDescription": "无尽模式赢取100万魔币",
+    "NumberOfTasks": 1000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 40000
+      }
+    ]
+  },
+  {
+    "Id": 2004,
+    "TaskDescription": "无尽模式赢取200万魔币",
+    "NumberOfTasks": 2000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 50000
+      }
+    ]
+  },
+  {
+    "Id": 2005,
+    "TaskDescription": "无尽模式赢取400万魔币",
+    "NumberOfTasks": 4000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 70000
+      }
+    ]
+  },
+  {
+    "Id": 2006,
+    "TaskDescription": "无尽模式赢取1000万魔币",
+    "NumberOfTasks": 10000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 100000
+      }
+    ]
+  },
+  {
+    "Id": 3000,
+    "TaskDescription": "无尽模式赢取20万魔币",
+    "NumberOfTasks": 200000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 16400
+      }
+    ]
+  },
+  {
+    "Id": 3001,
+    "TaskDescription": "无尽模式赢取40万魔币",
+    "NumberOfTasks": 400000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 20000
+      }
+    ]
+  },
+  {
+    "Id": 3002,
+    "TaskDescription": "无尽模式赢取100万魔币",
+    "NumberOfTasks": 1000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 50000
+      }
+    ]
+  },
+  {
+    "Id": 3003,
+    "TaskDescription": "无尽模式赢取200万魔币",
+    "NumberOfTasks": 2000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 60000
+      }
+    ]
+  },
+  {
+    "Id": 3004,
+    "TaskDescription": "无尽模式赢取360万魔币",
+    "NumberOfTasks": 3600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 76000
+      }
+    ]
+  },
+  {
+    "Id": 3005,
+    "TaskDescription": "无尽模式赢取760万魔币",
+    "NumberOfTasks": 7600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 116000
+      }
+    ]
+  },
+  {
+    "Id": 3006,
+    "TaskDescription": "无尽模式赢取1360万魔币",
+    "NumberOfTasks": 13600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 124000
+      }
+    ]
+  },
+  {
+    "Id": 4000,
+    "TaskDescription": "无尽模式赢取30万魔币",
+    "NumberOfTasks": 300000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 20000
+      }
+    ]
+  },
+  {
+    "Id": 4001,
+    "TaskDescription": "无尽模式赢取60万魔币",
+    "NumberOfTasks": 600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 36000
+      }
+    ]
+  },
+  {
+    "Id": 4002,
+    "TaskDescription": "无尽模式赢取160万魔币",
+    "NumberOfTasks": 1600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 60000
+      }
+    ]
+  },
+  {
+    "Id": 4003,
+    "TaskDescription": "无尽模式赢取400万魔币",
+    "NumberOfTasks": 4000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 80000
+      }
+    ]
+  },
+  {
+    "Id": 4004,
+    "TaskDescription": "无尽模式赢取1600万魔币",
+    "NumberOfTasks": 16000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 120000
+      }
+    ]
+  },
+  {
+    "Id": 4005,
+    "TaskDescription": "无尽模式赢取2400万魔币",
+    "NumberOfTasks": 24000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 160000
+      }
+    ]
+  },
+  {
+    "Id": 4006,
+    "TaskDescription": "无尽模式赢取3000万魔币",
+    "NumberOfTasks": 30000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 215200
+      }
+    ]
+  },
+  {
+    "Id": 5000,
+    "TaskDescription": "无尽模式赢取76万魔币",
+    "NumberOfTasks": 760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 43600
+      }
+    ]
+  },
+  {
+    "Id": 5001,
+    "TaskDescription": "无尽模式赢取176万魔币",
+    "NumberOfTasks": 1760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 80000
+      }
+    ]
+  },
+  {
+    "Id": 5002,
+    "TaskDescription": "无尽模式赢取516万魔币",
+    "NumberOfTasks": 5160000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 120000
+      }
+    ]
+  },
+  {
+    "Id": 5003,
+    "TaskDescription": "无尽模式赢取1176万魔币",
+    "NumberOfTasks": 11760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 170000
+      }
+    ]
+  },
+  {
+    "Id": 5004,
+    "TaskDescription": "无尽模式赢取1776万魔币",
+    "NumberOfTasks": 17760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 240000
+      }
+    ]
+  },
+  {
+    "Id": 5005,
+    "TaskDescription": "无尽模式赢取2760万魔币",
+    "NumberOfTasks": 27600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 400000
+      }
+    ]
+  },
+  {
+    "Id": 5006,
+    "TaskDescription": "无尽模式赢取5760万魔币",
+    "NumberOfTasks": 57600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 576000
+      }
+    ]
+  },
+  {
+    "Id": 6000,
+    "TaskDescription": "无尽模式赢取116万魔币",
+    "NumberOfTasks": 1160000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 96000
+      }
+    ]
+  },
+  {
+    "Id": 6001,
+    "TaskDescription": "无尽模式赢取216万魔币",
+    "NumberOfTasks": 2160000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 144000
+      }
+    ]
+  },
+  {
+    "Id": 6002,
+    "TaskDescription": "无尽模式赢取776万魔币",
+    "NumberOfTasks": 7760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 196000
+      }
+    ]
+  },
+  {
+    "Id": 6003,
+    "TaskDescription": "无尽模式赢取1576万魔币",
+    "NumberOfTasks": 15760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 276000
+      }
+    ]
+  },
+  {
+    "Id": 6004,
+    "TaskDescription": "无尽模式赢取2576万魔币",
+    "NumberOfTasks": 25760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 516000
+      }
+    ]
+  },
+  {
+    "Id": 6005,
+    "TaskDescription": "无尽模式赢取3760万魔币",
+    "NumberOfTasks": 37600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 776000
+      }
+    ]
+  },
+  {
+    "Id": 6006,
+    "TaskDescription": "无尽模式赢取7760万魔币",
+    "NumberOfTasks": 77600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 936000
+      }
+    ]
+  },
+  {
+    "Id": 7000,
+    "TaskDescription": "无尽模式赢取176万魔币",
+    "NumberOfTasks": 1760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 116000
+      }
+    ]
+  },
+  {
+    "Id": 7001,
+    "TaskDescription": "无尽模式赢取416万魔币",
+    "NumberOfTasks": 4160000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 166400
+      }
+    ]
+  },
+  {
+    "Id": 7002,
+    "TaskDescription": "无尽模式赢取1136万魔币",
+    "NumberOfTasks": 11360000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 316000
+      }
+    ]
+  },
+  {
+    "Id": 7003,
+    "TaskDescription": "无尽模式赢取3176万魔币",
+    "NumberOfTasks": 31760000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 440000
+      }
+    ]
+  },
+  {
+    "Id": 7004,
+    "TaskDescription": "无尽模式赢取5960万魔币",
+    "NumberOfTasks": 59600000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 976000
+      }
+    ]
+  },
+  {
+    "Id": 7005,
+    "TaskDescription": "无尽模式赢取1.36亿魔币",
+    "NumberOfTasks": 136000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 1376000
+      }
+    ]
+  },
+  {
+    "Id": 7006,
+    "TaskDescription": "无尽模式赢取4亿魔币",
+    "NumberOfTasks": 400000000,
+    "Price": [
+      {
+        "id": 10002,
+        "num": 1760000
+      }
+    ]
+  }
+]

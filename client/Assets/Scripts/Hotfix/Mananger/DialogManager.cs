@@ -5,9 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogManager : Singleton<DialogManager>
-{
-    TextPanel msgPanel;
-    NetLoadingPanel netLoadingPanel;
+{    
 
     public override async UniTask Init()
     {
@@ -15,43 +13,56 @@ public class DialogManager : Singleton<DialogManager>
         EventHelper.RegisterTimerEvent(this);
     }
 
-    #region ∆Æ◊÷
-    public void ShowTextFlying(string value)
+    #region È£òÂ≠ó
+    public async void ShowTextFlying(string value)
     {
+        TextPanel msgPanel = UIManager.Instance.GetUI<TextPanel>();
         if (msgPanel == null)
         {
-            msgPanel = UIManager.Instance.Open<TextPanel>(value);
+            msgPanel = await UIManager.Instance.Open<TextPanel>(value);
         }
-        Debug.LogError(value);
         msgPanel.Fly(value);
     }
 
-    public void ShowDialog(DialogInfo dialogInfo)
+    public async void ShowDialog(DialogInfo dialogInfo)
     {
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        await UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
     #endregion
 
-    #region Õ¯¬Áæ’ª®
-    public void ShowNetLoading(float timeout)
+    #region ÁΩëÁªúËèäËä±
+    public async void ShowNetLoading(float timeout)
     {
+        NetLoadingPanel netLoadingPanel = UIManager.Instance.GetUI<NetLoadingPanel>();
         if (netLoadingPanel == null)
         {
-            netLoadingPanel = UIManager.Instance.Open<NetLoadingPanel>();
+            netLoadingPanel = await UIManager.Instance.Open<NetLoadingPanel>();
         }
-        TimerManager.Instance.Remove(TimerConst.NetLoading);
+        TimerManager.Instance.Clear(TimerConst.NetLoading);
         TimerManager.Instance.OnceTimer(TimerConst.NetLoading, timeout);
+    }
+
+    public async void ShowNetLoading()
+    {
+        NetLoadingPanel netLoadingPanel = UIManager.Instance.GetUI<NetLoadingPanel>();
+        if (netLoadingPanel == null)
+        {
+            netLoadingPanel = await UIManager.Instance.Open<NetLoadingPanel>();
+        }
+        netLoadingPanel.Show();
     }
 
     [OnTimer(TimerConst.NetLoading)]
     public void HideNetLoading()
     {
-        netLoadingPanel?.Close();
-        netLoadingPanel = null;
+        NetLoadingPanel netLoadingPanel = UIManager.Instance.GetUI<NetLoadingPanel>();
+        netLoadingPanel?.Hide();
+        //netLoadingPanel?.Close();
+        //netLoadingPanel = null;
     }
     #endregion
 
-    #region ∆’Õ®º∂±
+    #region ÊôÆÈÄöÁ∫ßÂà´
 
     public void ShowDialogOne(string txtTitle, string txtMsg, Action okCb)
     {
@@ -60,6 +71,17 @@ public class DialogManager : Singleton<DialogManager>
         dialogInfo.txtTitle = txtTitle;
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okCb;
+        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+    }
+
+    public void ShowDialogOne(string txtTitle, string txtMsg, string txtOk, Action okCb)
+    {
+        DialogInfo dialogInfo = new DialogInfo();
+        dialogInfo.layer = EUILayer.Dialog;
+        dialogInfo.txtTitle = txtTitle;
+        dialogInfo.txtMsg = txtMsg;
+        dialogInfo.okFun = okCb;
+        dialogInfo.txtOk = txtOk;
         UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
 
@@ -73,18 +95,31 @@ public class DialogManager : Singleton<DialogManager>
         dialogInfo.calFun = calFun;
         UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
+
+    public void ShowDialogTwo(string txtTitle, string txtMsg, string txtOk, string txtCal, Action okFun, Action calFun)
+    {
+        DialogInfo dialogInfo = new DialogInfo();
+        dialogInfo.layer = EUILayer.Dialog;
+        dialogInfo.txtTitle = txtTitle;
+        dialogInfo.txtMsg = txtMsg;
+        dialogInfo.txtOk = txtOk;
+        dialogInfo.txtCal = txtCal;
+        dialogInfo.okFun = okFun;
+        dialogInfo.calFun = calFun;
+        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+    }
     #endregion
 
-    #region œµÕ≥º∂±≤„º∂∏ﬂ”⁄–¬ ÷“˝µº
+    #region Á≥ªÁªüÁ∫ßÂà´Â±ÇÁ∫ßÈ´ò‰∫éÊñ∞ÊâãÂºïÂØº
 
     public void ShowSystemDialogOne(string txtTitle, string txtMsg, Action okCb)
-    {
+    {        
         DialogInfo dialogInfo = new DialogInfo();
         dialogInfo.layer = EUILayer.DialogSystem;
         dialogInfo.txtTitle = txtTitle;
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okCb;
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogSystemPanel>(dialogInfo);
     }
 
     public void ShowSystemDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
@@ -95,7 +130,7 @@ public class DialogManager : Singleton<DialogManager>
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okFun;
         dialogInfo.calFun = calFun;
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogSystemPanel>(dialogInfo);
     }
     #endregion
 }
@@ -109,4 +144,5 @@ public class DialogInfo {
     public Action calFun;
     public string txtOk;
     public string txtCal;
+    public int time;
 }

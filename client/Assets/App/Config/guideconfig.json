@@ -1,0 +1,830 @@
+[
+  {
+    "Id": 1,
+    "Name": "领取新手奖励",
+    "next": 2,
+    "type": 1,
+    "step": 1,
+    "taskContent": "点击领取新手礼包",
+    "arrowPos": [
+      150,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 2,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      0,
+      -210
+    ],
+    "Sound": "1"
+  },
+  {
+    "Id": 2,
+    "Name": "选择无尽模式",
+    "next": 3,
+    "type": 3,
+    "step": 1,
+    "taskContent": "选择无尽模式",
+    "arrowPos": [
+      150,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 5,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      0,
+      -210
+    ],
+    "Sound": "2"
+  },
+  {
+    "Id": 3,
+    "Name": "点击第一关",
+    "next": 4,
+    "type": 3,
+    "step": 2,
+    "taskContent": "点击关卡地图进入战斗",
+    "arrowPos": [
+      150,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 5,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      0,
+      -210
+    ],
+    "Sound": "3"
+  },
+  {
+    "Id": 4,
+    "Name": "介绍晶核与Boss的关系",
+    "next": 5,
+    "type": 3,
+    "step": 3,
+    "taskContent": "玩家在战斗过程中，击败怪物会增加Boss的奖励。燃料系统等级越高，累计越快。领取Boss奖励后会重新累计。",
+    "arrowPos": [
+      280,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      700,
+      250
+    ],
+    "FontWightAndHeight": [
+      650,
+      200
+    ],
+    "FontPos": [
+      0,
+      -275
+    ],
+    "Sound": "4"
+  },
+  {
+    "Id": 5,
+    "Name": "点击选择燃料系统按钮",
+    "next": 6,
+    "type": 3,
+    "step": 4,
+    "taskContent": "点击选择燃料系统按钮",
+    "arrowPos": [
+      90,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      -80,
+      -200
+    ],
+    "Sound": "5"
+  },
+  {
+    "Id": 6,
+    "Name": "点击燃料系统",
+    "next": 7,
+    "type": 3,
+    "step": 5,
+    "taskContent": "燃料系统会为战斗提供能源并提供一定的攻击力，燃料系统阶级越高，消耗能源速度越快。",
+    "arrowPos": [
+      115,
+      -180
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      350
+    ],
+    "FontWightAndHeight": [
+      420,
+      400
+    ],
+    "FontPos": [
+      450,
+      0
+    ],
+    "Sound": "6"
+  },
+  {
+    "Id": 7,
+    "Name": "点击确认按钮开启阵法",
+    "next": 8,
+    "type": 3,
+    "step": 6,
+    "taskContent": "点击确认开启燃料系统",
+    "arrowPos": [
+      150,
+      -50
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      400,
+      200
+    ],
+    "FontPos": [
+      0,
+      150
+    ],
+    "Sound": "7"
+  },
+  {
+    "Id": 8,
+    "Name": "移动操作",
+    "next": 9,
+    "type": 3,
+    "step": 7,
+    "taskContent": "滑动屏幕，控制战车移动",
+    "arrowPos": [
+      0,
+      0
+    ],
+    "isarrow": 0,
+    "uiType": 3,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      0,
+      0
+    ],
+    "FontWightAndHeight": [
+      0,
+      0
+    ],
+    "FontPos": [
+      0,
+      0
+    ],
+    "Sound": "8"
+  },
+  {
+    "Id": 9,
+    "Name": "选择技能",
+    "next": 10,
+    "type": 3,
+    "step": 8,
+    "taskContent": "点击解锁战车技能",
+    "arrowPos": [
+      280,
+      -140
+    ],
+    "isarrow": 1,
+    "uiType": 6,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      650,
+      200
+    ],
+    "FontPos": [
+      370,
+      -315
+    ],
+    "Sound": "9"
+  },
+  {
+    "Id": 10,
+    "Name": "Boss刷新提示",
+    "next": 11,
+    "type": 3,
+    "step": 9,
+    "taskContent": "Boss刷新倒计时",
+    "arrowPos": [
+      200,
+      -70
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      400,
+      200
+    ],
+    "FontPos": [
+      0,
+      -150
+    ],
+    "Sound": "10"
+  },
+  {
+    "Id": 11,
+    "Name": "Boss奖励介绍",
+    "next": 12,
+    "type": 3,
+    "step": 10,
+    "taskContent": "击败Boss后获得宝箱,能开出大量晶核。",
+    "arrowPos": [
+      0,
+      0
+    ],
+    "isarrow": 0,
+    "uiType": 4,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      0,
+      0
+    ],
+    "FontWightAndHeight": [
+      0,
+      0
+    ],
+    "FontPos": [
+      0,
+      0
+    ],
+    "Sound": "11"
+  },
+  {
+    "Id": 12,
+    "Name": "Boss刷新",
+    "next": 13,
+    "type": 3,
+    "step": 11,
+    "taskContent": "",
+    "arrowPos": [],
+    "isarrow": 0,
+    "uiType": 0,
+    "arrowRota": 0,
+    "BgWightAndHeight": [],
+    "FontWightAndHeight": [],
+    "FontPos": [],
+    "Sound": ""
+  },
+  {
+    "Id": 13,
+    "Name": "开启Boss宝箱",
+    "next": 15,
+    "type": 3,
+    "step": 12,
+    "taskContent": "点击宝箱获得奖励,有概率开出更多晶核奖励！",
+    "arrowPos": [
+      150,
+      -100
+    ],
+    "isarrow": 1,
+    "uiType": 6,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      200
+    ],
+    "FontWightAndHeight": [
+      450,
+      20
+    ],
+    "FontPos": [
+      0,
+      -300
+    ],
+    "Sound": "12"
+  },
+  {
+    "Id": 14,
+    "Name": "返回大厅",
+    "next": 15,
+    "type": 3,
+    "step": 13,
+    "taskContent": "点击返回大厅按钮.",
+    "arrowPos": [
+      150,
+      -60
+    ],
+    "isarrow": 1,
+    "uiType": 2,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      600,
+      200
+    ],
+    "FontWightAndHeight": [
+      500,
+      0
+    ],
+    "FontPos": [
+      0,
+      -230
+    ],
+    "Sound": "13"
+  },
+  {
+    "Id": 15,
+    "Name": "点击积分按钮",
+    "next": 16,
+    "type": 5,
+    "step": 1,
+    "taskContent": "点击悬浮按钮\n进入<color=red>积分商城",
+    "arrowPos": [
+      120,
+      -70
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      400,
+      150
+    ],
+    "FontWightAndHeight": [
+      400,
+      0
+    ],
+    "FontPos": [
+      130,
+      -200
+    ],
+    "Sound": "14"
+  },
+  {
+    "Id": 16,
+    "Name": "点击兑换积分",
+    "next": 17,
+    "type": 5,
+    "step": 2,
+    "taskContent": "新手引导期间,消耗3000晶核即可获得30积分",
+    "arrowPos": [
+      121,
+      -55
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      200
+    ],
+    "FontWightAndHeight": [
+      430,
+      20
+    ],
+    "FontPos": [
+      -83,
+      -210
+    ],
+    "Sound": "15"
+  },
+  {
+    "Id": 17,
+    "Name": "兑换成功",
+    "next": 18,
+    "type": 5,
+    "step": 3,
+    "taskContent": "1",
+    "arrowPos": [
+      0,
+      0
+    ],
+    "isarrow": 0,
+    "uiType": 7,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      400,
+      150
+    ],
+    "FontWightAndHeight": [
+      400,
+      0
+    ],
+    "FontPos": [
+      0,
+      -200
+    ],
+    "Sound": ""
+  },
+  {
+    "Id": 18,
+    "Name": "打开积分商城",
+    "next": 19,
+    "type": 5,
+    "step": 4,
+    "taskContent": "恭喜您获得<color=red>积分</color>\n积分可在<color=red>礼品商城</color>兑换礼品",
+    "arrowPos": [
+      150,
+      -60
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      480,
+      220
+    ],
+    "FontWightAndHeight": [
+      400,
+      0
+    ],
+    "FontPos": [
+      0,
+      -200
+    ],
+    "Sound": "16"
+  },
+  {
+    "Id": 19,
+    "Name": "兑换金币",
+    "next": 20,
+    "type": 5,
+    "step": 5,
+    "taskContent": "解锁成功,点击兑换按钮,需要先<color=red>绑定支付宝账号",
+    "arrowPos": [
+      40,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      200
+    ],
+    "FontWightAndHeight": [
+      450,
+      0
+    ],
+    "FontPos": [
+      -100,
+      -240
+    ],
+    "Sound": "17"
+  },
+  {
+    "Id": 20,
+    "Name": "绑定信息兑换金币",
+    "next": 21,
+    "type": 5,
+    "step": 6,
+    "taskContent": "1",
+    "arrowPos": [
+      0,
+      0
+    ],
+    "isarrow": 0,
+    "uiType": 7,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      0,
+      0
+    ],
+    "FontWightAndHeight": [
+      0,
+      0
+    ],
+    "FontPos": [
+      0,
+      0
+    ],
+    "Sound": ""
+  },
+  {
+    "Id": 21,
+    "Name": "选择无尽模式",
+    "next": 22,
+    "type": 6,
+    "step": 1,
+    "taskContent": "选择无尽模式",
+    "arrowPos": [
+      150,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 5,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      0,
+      -210
+    ],
+    "Sound": "2"
+  },
+  {
+    "Id": 22,
+    "Name": "点击第一关",
+    "next": 23,
+    "type": 6,
+    "step": 2,
+    "taskContent": "点击关卡地图进入战斗",
+    "arrowPos": [
+      150,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 5,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      0,
+      -210
+    ],
+    "Sound": "3"
+  },
+  {
+    "Id": 23,
+    "Name": "点击解锁燃料系统",
+    "next": 24,
+    "type": 7,
+    "step": 1,
+    "taskContent": "点击解锁燃料系统",
+    "arrowPos": [
+      160,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      45,
+      -200
+    ],
+    "Sound": "18"
+  },
+  {
+    "Id": 24,
+    "Name": "点击选择燃料系统按钮",
+    "next": 25,
+    "type": 8,
+    "step": 1,
+    "taskContent": "恭喜解锁二阶燃料系统，点击查看",
+    "arrowPos": [
+      90,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      -80,
+      -200
+    ],
+    "Sound": "19"
+  },
+  {
+    "Id": 25,
+    "Name": "选择二级燃料系统",
+    "next": 26,
+    "type": 8,
+    "step": 2,
+    "taskContent": "点击选择二阶燃料",
+    "arrowPos": [
+      125,
+      -180
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      420,
+      400
+    ],
+    "FontPos": [
+      150,
+      -318
+    ],
+    "Sound": "20"
+  },
+  {
+    "Id": 26,
+    "Name": "点击确认按钮开启阵法",
+    "next": 27,
+    "type": 8,
+    "step": 3,
+    "taskContent": "点击确认按钮启动燃料系统",
+    "arrowPos": [
+      150,
+      -50
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      400,
+      200
+    ],
+    "FontPos": [
+      0,
+      150
+    ],
+    "Sound": "7"
+  },
+  {
+    "Id": 27,
+    "Name": "点击解锁燃料系统",
+    "next": 28,
+    "type": 9,
+    "step": 1,
+    "taskContent": "点击解锁燃料系统",
+    "arrowPos": [
+      160,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      45,
+      -200
+    ],
+    "Sound": "18"
+  },
+  {
+    "Id": 28,
+    "Name": "点击选择燃料系统按钮",
+    "next": 29,
+    "type": 10,
+    "step": 1,
+    "taskContent": "恭喜解锁三阶燃料系统，点击查看",
+    "arrowPos": [
+      90,
+      -80
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      140
+    ],
+    "FontWightAndHeight": [
+      460,
+      120
+    ],
+    "FontPos": [
+      -80,
+      -200
+    ],
+    "Sound": "21"
+  },
+  {
+    "Id": 29,
+    "Name": "选择三级燃料系统",
+    "next": 30,
+    "type": 10,
+    "step": 2,
+    "taskContent": "点击选择三阶燃料",
+    "arrowPos": [
+      125,
+      -180
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      420,
+      400
+    ],
+    "FontPos": [
+      -150,
+      -318
+    ],
+    "Sound": "22"
+  },
+  {
+    "Id": 30,
+    "Name": "点击确认按钮开启阵法",
+    "next": 0,
+    "type": 10,
+    "step": 3,
+    "taskContent": "点击确认按钮启动燃料系统",
+    "arrowPos": [
+      150,
+      -50
+    ],
+    "isarrow": 1,
+    "uiType": 1,
+    "arrowRota": 0,
+    "BgWightAndHeight": [
+      500,
+      150
+    ],
+    "FontWightAndHeight": [
+      400,
+      200
+    ],
+    "FontPos": [
+      0,
+      150
+    ],
+    "Sound": "7"
+  }
+]

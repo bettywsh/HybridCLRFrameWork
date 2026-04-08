@@ -1,0 +1,7276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0538a2dbae6f70349a8098e34be2a543, type: 3}
+  m_Name: DataSkill
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: EvoleConditionData
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[EEvoleSkill, Hotfix],[EvoleSkillCondition,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[EEvoleSkill, Hotfix]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Lightning_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Cooldown_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 3|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Machine_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Bullet_Speed_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 4|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Rocket_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Bullet_Damage_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 5|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Short_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Max_Hp_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 6|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Gravity_Tower_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Item_Absorb_Range_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 7|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Molotov_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Exp_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 8|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Cannon_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Hp_Recovery_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 7
+    - Name: $v
+      Entry: 7
+      Data: 9|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Lazer_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Effect_Duration_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 7
+      Data: 10|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Flame_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Coin_Value_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 7
+      Data: 11|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Shock_Zone_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Effect_Area_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 12|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: EVA_Shield
+    - Name: keyCondition2
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 11
+    - Name: $v
+      Entry: 7
+      Data: 13|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Saw_Blade_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Crit_Incease
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 12
+    - Name: $v
+      Entry: 7
+      Data: 14|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Zeus_Spear
+    - Name: keyCondition2
+      Entry: 1
+      Data: Projectile_Number_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 13
+    - Name: $v
+      Entry: 7
+      Data: 15|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Tesla_Coil_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Move_Speed_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 14
+    - Name: $v
+      Entry: 7
+      Data: 16|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Blade_Saw_Gun
+    - Name: keyCondition2
+      Entry: 1
+      Data: Luck_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 15
+    - Name: $v
+      Entry: 7
+      Data: 17|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Shock_Wave_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Push_Back_Force_Increase
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 16
+    - Name: $v
+      Entry: 7
+      Data: 18|EvoleSkillCondition, Hotfix
+    - Name: keyCondition1
+      Entry: 1
+      Data: Drone_Type_A_Support
+    - Name: keyCondition2
+      Entry: 1
+      Data: Drone_Type_B_Support
+    - Name: valueCondition1
+      Entry: 3
+      Data: 5
+    - Name: valueCondition2
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ActiveSkillConfigData
+      Entry: 7
+      Data: 19|System.Collections.Generic.Dictionary`2[[EActiveSkill, Hotfix],[ActiveSkillConfig,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 20|System.Collections.Generic.EnumEqualityComparer`1[[EActiveSkill, Hotfix]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 18
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 21|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 5
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 150
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 100
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 22|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 3
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 0.7
+    - Name: BaseDamage
+      Entry: 4
+      Data: 70
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 12
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.3
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 23|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 150
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 7
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 3.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 24|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 4
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 1
+    - Name: BaseDamage
+      Entry: 4
+      Data: 40
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 13
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 2
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0.4
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.6
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 25|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 30
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 3
+    - Name: BaseDuration
+      Entry: 4
+      Data: 5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 100
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 26|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 2
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 50
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 7
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 2.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 2
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 27|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 80
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 10
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 2.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 7
+    - Name: $v
+      Entry: 7
+      Data: 28|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 40
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0.25
+    - Name: BaseDuration
+      Entry: 4
+      Data: 1
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 7
+      Data: 29|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 40
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 1
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 3
+    - Name: BaseDuration
+      Entry: 4
+      Data: 2.5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 8
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 7
+      Data: 30|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 0
+    - Name: BaseDamage
+      Entry: 4
+      Data: 80
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 3.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 1
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 31|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 0
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0
+    - Name: BaseDuration
+      Entry: 4
+      Data: 2
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 70
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 11
+    - Name: $v
+      Entry: 7
+      Data: 32|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 2
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 12
+    - Name: BaseDamage
+      Entry: 4
+      Data: 85
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 120
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1
+    - Name: BaseDuration
+      Entry: 4
+      Data: 5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.3
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 12
+    - Name: $v
+      Entry: 7
+      Data: 33|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 3
+    - Name: BaseDamage
+      Entry: 4
+      Data: 50
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 10
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0
+    - Name: BaseDuration
+      Entry: 4
+      Data: 5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 4
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 2
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 100
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 13
+    - Name: $v
+      Entry: 7
+      Data: 34|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 3
+    - Name: BaseDamage
+      Entry: 4
+      Data: 90
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 15
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 3
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 90
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 14
+    - Name: $v
+      Entry: 7
+      Data: 35|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2
+    - Name: BaseDamage
+      Entry: 4
+      Data: 100
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 8
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0.7
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 15
+    - Name: $v
+      Entry: 7
+      Data: 36|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 90
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 7
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 1
+    - Name: PushBackForce
+      Entry: 4
+      Data: 2
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 1000
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 16
+    - Name: $v
+      Entry: 7
+      Data: 37|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 7.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 50
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 15
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 4
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 70
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 17
+    - Name: $v
+      Entry: 7
+      Data: 38|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 7.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 50
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 15
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 4
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 70
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: true
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: EvoleSkillConfigData
+      Entry: 7
+      Data: 39|System.Collections.Generic.Dictionary`2[[EEvoleSkill, Hotfix],[ActiveSkillConfig,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 40|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 3
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 3.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 200
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 4
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 41|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 7
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 0.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 130
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 12
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 2
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.3
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 42|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2
+    - Name: BaseDamage
+      Entry: 4
+      Data: 300
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 10
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 4
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 43|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 8
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 1.2
+    - Name: BaseDamage
+      Entry: 4
+      Data: 100
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 10
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0.5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.7
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 44|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 80
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 4
+    - Name: BaseDuration
+      Entry: 4
+      Data: 6
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 8
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 45|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 6
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 100
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 7
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 3.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 7
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 46|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 3
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 150
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 12
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 4
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 1.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 7
+    - Name: $v
+      Entry: 7
+      Data: 47|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 3
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 90
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 50
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0.4
+    - Name: BaseDuration
+      Entry: 4
+      Data: 1.5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 10
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 7
+      Data: 48|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 6
+    - Name: BaseDamage
+      Entry: 4
+      Data: 80
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 1
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 4.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 4
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 8
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 7
+      Data: 49|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 0
+    - Name: BaseDamage
+      Entry: 4
+      Data: 150
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 7
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 3
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 50|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 8
+    - Name: BaseDamage
+      Entry: 4
+      Data: 250
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 3.5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 11
+    - Name: $v
+      Entry: 7
+      Data: 51|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 6
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 120
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 180
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 7
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 12
+    - Name: $v
+      Entry: 7
+      Data: 52|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2.5
+    - Name: BaseDamage
+      Entry: 4
+      Data: 75
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 8
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 3
+    - Name: BaseDuration
+      Entry: 4
+      Data: 5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 3
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 13
+    - Name: $v
+      Entry: 7
+      Data: 53|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 3
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2
+    - Name: BaseDamage
+      Entry: 4
+      Data: 150
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 20
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 0
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 5
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.7
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 14
+    - Name: $v
+      Entry: 7
+      Data: 54|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 3
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 2
+    - Name: BaseDamage
+      Entry: 4
+      Data: 150
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 10
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 1.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 1.5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 5
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.7
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 15
+    - Name: $v
+      Entry: 7
+      Data: 55|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 145
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 0
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 14
+    - Name: BaseDuration
+      Entry: 4
+      Data: 0
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 0
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 3
+    - Name: PushBackForce
+      Entry: 4
+      Data: 2
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 16
+    - Name: $v
+      Entry: 7
+      Data: 56|ActiveSkillConfig, Hotfix
+    - Name: BaseBulletNumb
+      Entry: 3
+      Data: 1
+    - Name: BaseCooldown
+      Entry: 4
+      Data: 10
+    - Name: BaseDamage
+      Entry: 4
+      Data: 85
+    - Name: BaseBulletSpeed
+      Entry: 4
+      Data: 15
+    - Name: BaseAreaScale
+      Entry: 4
+      Data: 2.5
+    - Name: BaseDuration
+      Entry: 4
+      Data: 5
+    - Name: BaseHitPerSec
+      Entry: 4
+      Data: 12
+    - Name: BaseHitEffect
+      Entry: 3
+      Data: 0
+    - Name: PushBackForce
+      Entry: 4
+      Data: 0.5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 1
+    - Name: Priority
+      Entry: 3
+      Data: 1001
+    - Name: IsFreeToDrop
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: ActiveSkillLevelUpConfig
+      Entry: 7
+      Data: 57|System.Collections.Generic.Dictionary`2[[EActiveSkill, Hotfix],[System.Collections.Generic.Dictionary`2[[System.Int32,
+        mscorlib],[System.String, mscorlib]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 20
+    - Name: 
+      Entry: 12
+      Data: 18
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 58|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 59|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:20.0}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:30.0}{Increase_Effect_Radius:0.7}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 60|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:30}{Reduce_Cooldown:0.2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 61|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:30.0}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:30.0}{Increase_Projectile_Speed:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:30.0}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:60.0}{Reduce_Cooldown:0.7}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 62|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Duration:0.1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Duration:0.1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 63|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Duration:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Duration:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 64|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15.0}{Increase_Effect_Duration:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Duration:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 65|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Add_Projectile:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 7
+    - Name: $v
+      Entry: 7
+      Data: 66|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Hit_Per_Sec:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Radius:0.1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Effect_Duration:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:20}{Increase_Hit_Per_Sec:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 7
+      Data: 67|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Duration:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Duration:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 7
+      Data: 68|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Radius:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Hit_Per_Sec:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Radius:1.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Hit_Per_Sec:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 69|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.5}{Increase_Effect_Duration:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.5}{Increase_Effect_Duration:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.5}{Increase_Effect_Duration:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.5}{Increase_Effect_Duration:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 11
+    - Name: $v
+      Entry: 7
+      Data: 70|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Damage:10}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Projectile_Speed:60}{Increase_Effect_Radius:0.5}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Effect_Duration:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Damage:10}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 12
+    - Name: $v
+      Entry: 7
+      Data: 71|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 13
+    - Name: $v
+      Entry: 7
+      Data: 72|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15.0}{Increase_Projectile_Speed:2.0}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Reduce_Cooldown:0.5}{Increase_Number_Of_Effect:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Number_Of_Effect:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15.0}{Increase_Projectile_Speed:2.0}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 14
+    - Name: $v
+      Entry: 7
+      Data: 73|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Effect_Radius:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Add_Projectile:1}{Increase_Effect_Radius:0.3}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:20}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 15
+    - Name: $v
+      Entry: 7
+      Data: 74|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Radius:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:30}{Increase_Number_Of_Effect:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Push_Back_Force:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:15}{Increase_Effect_Radius:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 16
+    - Name: $v
+      Entry: 7
+      Data: 75|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Effect_Radius:0.3}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Effect_Radius:0.3}{Increase_Hit_Per_Sec:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 17
+    - Name: $v
+      Entry: 7
+      Data: 76|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 59
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Effect_Radius:0.3}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Effect_Radius:0.3}{Increase_Hit_Per_Sec:2}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 1
+      Data: '{Increase_Damage:10}{Increase_Hit_Per_Sec:1}'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PassiveSkillData
+      Entry: 7
+      Data: 77|System.Collections.Generic.Dictionary`2[[EPassiveSkill, Hotfix],[PassiveSkillConfig,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 78|System.Collections.Generic.EnumEqualityComparer`1[[EPassiveSkill,
+        Hotfix]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 79|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 8
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 80|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 10
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 81|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 10
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 82|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 10
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 83|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 8
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 84|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 30
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 85|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 6
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 7
+    - Name: $v
+      Entry: 7
+      Data: 86|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 8
+    - Name: $v
+      Entry: 7
+      Data: 87|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 9
+    - Name: $v
+      Entry: 7
+      Data: 88|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 89|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 10
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 11
+    - Name: $v
+      Entry: 7
+      Data: 90|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 10
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 12
+    - Name: $v
+      Entry: 7
+      Data: 91|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 1
+    - Name: MaxLevel
+      Entry: 3
+      Data: 2
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 13
+    - Name: $v
+      Entry: 7
+      Data: 92|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 10
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 14
+    - Name: $v
+      Entry: 7
+      Data: 93|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 6
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 15
+    - Name: $v
+      Entry: 7
+      Data: 94|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 12
+    - Name: MaxLevel
+      Entry: 3
+      Data: 5
+    - Name: Priority
+      Entry: 3
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 16
+    - Name: $v
+      Entry: 7
+      Data: 95|PassiveSkillConfig, Hotfix
+    - Name: ValuePerLevel
+      Entry: 4
+      Data: 5
+    - Name: MaxLevel
+      Entry: 3
+      Data: 2
+    - Name: Priority
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DicSkillRate
+      Entry: 7
+      Data: 96|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Single,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 97|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 28
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lightning_Support
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Gravity_Tower_Support
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Molotov_Support
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Zone_Support
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: EVA_Shield
+    - Name: $v
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Saw_Blade_Support
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Zeus_Spear
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Tesla_Coil_Support
+    - Name: $v
+      Entry: 4
+      Data: 90
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Wave_Support
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_A_Support
+    - Name: $v
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_B_Support
+    - Name: $v
+      Entry: 4
+      Data: 70
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cooldown_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Speed_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Damage_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Max_Hp_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Exp_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_Absorb_Range_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Area_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Duration_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Coin_Value_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Hp_Recovery_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Luck_Increase
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Projectile_Number_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move_Speed_Increase
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Crit_Incease
+    - Name: $v
+      Entry: 4
+      Data: 40
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Push_Back_Force_Increase
+    - Name: $v
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Revival
+    - Name: $v
+      Entry: 4
+      Data: 60
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DicEvole
+      Entry: 7
+      Data: 98|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Collections.Generic.List`1[[System.String,
+        mscorlib]], mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 97
+    - Name: 
+      Entry: 12
+      Data: 17
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cooldown_Increase
+    - Name: $v
+      Entry: 7
+      Data: 99|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Lightning_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Speed_Increase
+    - Name: $v
+      Entry: 7
+      Data: 100|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Machine_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Damage_Increase
+    - Name: $v
+      Entry: 7
+      Data: 101|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Rocket_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Max_Hp_Increase
+    - Name: $v
+      Entry: 7
+      Data: 102|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Short_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_Absorb_Range_Increase
+    - Name: $v
+      Entry: 7
+      Data: 103|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Gravity_Tower_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Exp_Increase
+    - Name: $v
+      Entry: 7
+      Data: 104|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Molotov_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Hp_Recovery_Increase
+    - Name: $v
+      Entry: 7
+      Data: 105|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Cannon_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Duration_Increase
+    - Name: $v
+      Entry: 7
+      Data: 106|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Lazer_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Coin_Value_Increase
+    - Name: $v
+      Entry: 7
+      Data: 107|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Flame_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Area_Increase
+    - Name: $v
+      Entry: 7
+      Data: 108|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Shock_Zone_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase
+    - Name: $v
+      Entry: 7
+      Data: 109|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: EVA_Shield
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Crit_Incease
+    - Name: $v
+      Entry: 7
+      Data: 110|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Saw_Blade_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Projectile_Number_Increase
+    - Name: $v
+      Entry: 7
+      Data: 111|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Zeus_Spear
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move_Speed_Increase
+    - Name: $v
+      Entry: 7
+      Data: 112|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Tesla_Coil_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Luck_Increase
+    - Name: $v
+      Entry: 7
+      Data: 113|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Blade_Saw_Gun
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Push_Back_Force_Increase
+    - Name: $v
+      Entry: 7
+      Data: 114|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Shock_Wave_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_B_Support
+    - Name: $v
+      Entry: 7
+      Data: 115|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 1
+      Data: Drone_Type_A_Support
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: DicSkillDesc
+      Entry: 7
+      Data: 116|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SkillDescConfig,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 117|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 113
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lightning_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 118|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lightning_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5929\u9645\u706B\u7BAD"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Machine_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 119|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Machine_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u673A\u67AA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Rocket_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 120|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Rocket_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u706B\u7BAD\u70AE"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Short_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 121|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Short_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u77ED\u67AA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Gravity_Tower_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 122|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Gravity_Tower_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u9ED1\u6D1E"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Molotov_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 123|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Molotov_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u71C3\u70E7\u74F6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cannon_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 124|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Cannon_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u52A0\u519C\u70AE"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lazer_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 125|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lazer_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u6FC0\u5149\u67AA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Flame_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 126|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Flame_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u706B\u7130\u67AA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Zone_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 127|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Zone_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u9AD8\u9891\u529B\u573A"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: EVA_Shield_name
+    - Name: $v
+      Entry: 7
+      Data: 128|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: EVA_Shield_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u9632\u62A4\u76FE"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Saw_Blade_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 129|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Saw_Blade_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5203\u821E\u98CE\u66B4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Zeus_Spear_name
+    - Name: $v
+      Entry: 7
+      Data: 130|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Zeus_Spear_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5B99\u65AF\u4E4B\u77DB"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Tesla_Coil_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 131|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Tesla_Coil_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u96F7\u9706\u6298\u8DC3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Blade_Saw_Gun_name
+    - Name: $v
+      Entry: 7
+      Data: 132|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Blade_Saw_Gun_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5200\u7247\u952F\u67AA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Wave_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 133|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Wave_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u51B2\u51FB\u6CE2"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_A_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 134|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Drone_Type_A_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u65E0\u4EBA\u673A A"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_B_Support_name
+    - Name: $v
+      Entry: 7
+      Data: 135|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Drone_Type_B_Support_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u65E0\u4EBA\u673A B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lightning_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 136|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lightning_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u4ECE\u7A7A\u4E2D\u53D1\u5C04\u4E00\u8FDE\u4E32\u5BFC\u5F39"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Machine_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 137|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Machine_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6301\u7EED\u5C04\u51FB\u5B50\u5F39"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Rocket_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 138|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Rocket_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u53D1\u5C04\u7206\u70B8\u8303\u56F4\u5E7F\u7684\u706B\u7BAD"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Short_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 139|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Short_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u6B21\u90FD\u4F1A\u53D1\u5C04\u4E00\u8FDE\u4E32\u5B50\u5F39"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Gravity_Tower_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 140|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Gravity_Tower_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5728\u5730\u9762\u4E0A\u5236\u9020\u9ED1\u6D1E"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Molotov_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 141|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Molotov_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6295\u63B7\u71C3\u70E7\u5F39\uFF0C\u4F7F\u5176\u5728\u5730\u9762\u4E0A\u5F62\u6210\u71C3\u70E7\u533A\u57DF"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cannon_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 142|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Cannon_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u53D1\u5C04\u4E00\u9897\u5B50\u5F39\uFF0C\u5F53\u5176\u4E0E\u654C\u4EBA\u78B0\u649E\u65F6\u4F1A\u5F15\u53D1\u51B2\u51FB\u6CE2"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lazer_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 143|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lazer_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u53D1\u5C04\u4E00\u9053\u6FC0\u5149\uFF0C\u7A7F\u900F\u6240\u6709\u654C\u4EBA\u5E76\u6301\u7EED\u9020\u6210\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Flame_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 144|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Flame_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5728\u4F60\u524D\u65B9\u7684\u5C0F\u533A\u57DF\u5185\u6301\u7EED\u9020\u6210\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Zone_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 145|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Zone_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6301\u7EED\u5BF9\u9644\u8FD1\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: EVA_Shield_desc
+    - Name: $v
+      Entry: 7
+      Data: 146|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: EVA_Shield_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u62A4\u76FE\u5B58\u5728\u65F6\u5BF9\u9644\u8FD1\u7684\u654C\u4EBA\u9020\u6210\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Saw_Blade_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 147|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Saw_Blade_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u4F7F\u7528\u56F4\u7ED5\u4F60\u65CB\u8F6C\u7684\u5200\u7247\u952F\u5B50"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Zeus_Spear_desc
+    - Name: $v
+      Entry: 7
+      Data: 148|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Zeus_Spear_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5C04\u51FA\u4E00\u6839\u5E26\u94FE\u7684\u957F\u77DB\uFF0C\u8FD9\u6839\u957F\u77DB\u4E0E\u53E6\u4E00\u6839\u957F\u77DB\u76F8\u8FDE\u3002\u957F\u77DB\u4F1A\u91CA\u653E\u95EA\u7535\uFF0C\u6301\u7EED\u9020\u6210\u4F24\u5BB3\u3002"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Tesla_Coil_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 149|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Tesla_Coil_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u53D1\u5C04\u4E00\u9053\u95EA\u7535\uFF0C\u4F7F\u5176\u6765\u56DE\u5F39\u8DF3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Blade_Saw_Gun_desc
+    - Name: $v
+      Entry: 7
+      Data: 150|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Blade_Saw_Gun_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u53D1\u5C04\u4E00\u628A\u4F1A\u5728\u8FBE\u5230\u6700\u5927\u8DDD\u79BB\u65F6\u81EA\u52A8\u6536\u56DE\u7684\u952F\u7247\u5200\u5177"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Wave_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 151|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Wave_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5236\u9020\u4E00\u80A1\u5DE8\u5927\u7684\u51B2\u51FB\u6CE2\uFF0C\u5C06\u654C\u4EBA\u51FB\u9000"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_A_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 152|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Drone_Type_A_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5411\u5468\u56F4\u533A\u57DF\u53D1\u5C04\u5927\u91CF\u706B\u7BAD\u5F39"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Type_B_Support_desc
+    - Name: $v
+      Entry: 7
+      Data: 153|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Drone_Type_B_Support_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5411\u5468\u56F4\u533A\u57DF\u53D1\u5C04\u5927\u91CF\u706B\u7BAD\u5F39"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cooldown_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 154|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Cooldown_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u51B7\u5374\u65F6\u95F4\u51CF\u5C11"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Speed_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 155|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Bullet_Speed_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5B50\u5F39\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Damage_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 156|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Bullet_Damage_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5B50\u5F39\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Max_Hp_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 157|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Max_Hp_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u6700\u5927\u751F\u547D\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Exp_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 158|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Exp_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u63D0\u5347\u7ECF\u9A8C\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_Absorb_Range_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 159|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Item_Absorb_Range_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5438\u6536\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Area_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 160|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Effect_Area_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u533A\u57DF\u6548\u679C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Duration_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 161|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Effect_Duration_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u6280\u80FD\u6301\u7EED\u65F6\u95F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Coin_Value_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 162|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Coin_Value_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5956\u52B1"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Hp_Recovery_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 163|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Hp_Recovery_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u56DE\u590D\u751F\u547D\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 164|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u76D4\u7532"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Luck_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 165|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Luck_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5E78\u8FD0"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Projectile_Number_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 166|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Projectile_Number_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5F39\u5E55\u6E10\u5347"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move_Speed_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 167|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Move_Speed_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u79FB\u52A8\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Crit_Incease_name
+    - Name: $v
+      Entry: 7
+      Data: 168|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Crit_Incease_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u66B4\u51FB\u7387"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Push_Back_Force_Increase_name
+    - Name: $v
+      Entry: 7
+      Data: 169|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Push_Back_Force_Increase_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u53CD\u63A8\u529B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Revival_name
+    - Name: $v
+      Entry: 7
+      Data: 170|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Revival_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u6062\u590D"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cooldown_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 171|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Cooldown_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u51CF\u5C11{0}%\u51B7\u5374\u65F6\u95F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Speed_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 172|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Bullet_Speed_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u7684\u5B50\u5F39\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Bullet_Damage_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 173|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Bullet_Damage_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Max_Hp_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 174|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Max_Hp_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u6700\u5927\u751F\u547D\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Exp_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 175|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Exp_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u83B7\u5F97\u7684\u7ECF\u9A8C\u503C\u589E\u52A0{0}%"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Item_Absorb_Range_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 176|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Item_Absorb_Range_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u7269\u54C1\u5438\u6536\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Area_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 177|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Effect_Area_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u6548\u679C\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Effect_Duration_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 178|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Effect_Duration_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u6280\u80FD\u6301\u7EED\u65F6\u95F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Coin_Value_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 179|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Coin_Value_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u7684\u6389\u843D\u6982\u7387"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Hp_Recovery_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 180|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Hp_Recovery_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u6BCF\u79D2\u589E\u52A0{0}%\u7684\u751F\u547D\u503C\u56DE\u590D"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 181|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Damage_Reviced_Reduction_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u51CF\u5C11{0}%\u53D7\u5230\u7684\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Luck_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 182|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Luck_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u7684\u5E78\u8FD0\u503C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Projectile_Number_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 183|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Projectile_Number_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}\u6B21\u5F39\u9053\u5C04\u51FB"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Move_Speed_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 184|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Move_Speed_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u79FB\u52A8\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Crit_Incease_desc
+    - Name: $v
+      Entry: 7
+      Data: 185|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Crit_Incease_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u66B4\u51FB\u7387"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Push_Back_Force_Increase_desc
+    - Name: $v
+      Entry: 7
+      Data: 186|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Push_Back_Force_Increase_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u7684\u63A8\u529B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Revival_desc
+    - Name: $v
+      Entry: 7
+      Data: 187|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Revival_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6BCF\u7EA7\u589E\u52A0{0}%\u751F\u547D\u503C\u6062\u590D\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lightning_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 188|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lightning_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5929\u9645\u706B\u7BAD\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Machine_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 189|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Machine_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u673A\u67AA\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Rocket_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 190|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Rocket_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u706B\u7BAD\u70AE\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Short_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 191|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Short_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u77ED\u67AA\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Gravity_Tower_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 192|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Gravity_Tower_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u9ED1\u6D1E\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Molotov_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 193|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Molotov_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u71C3\u70E7\u74F6\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cannon_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 194|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Cannon_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u52A0\u519C\u70AE\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lazer_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 195|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lazer_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u6FC0\u5149\u67AA\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Flame_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 196|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Flame_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u706B\u7130\u67AA\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Zone_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 197|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Zone_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u9AD8\u9891\u529B\u573A\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: EVA_Shield_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 198|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: EVA_Shield_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u62A4\u76FE\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Saw_Blade_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 199|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Saw_Blade_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5203\u821E\u98CE\u66B4\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Zeus_Spear_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 200|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Zeus_Spear_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5B99\u65AF\u4E4B\u77DB\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Tesla_Coil_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 201|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Tesla_Coil_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u96F7\u9706\u6298\u8DC3\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Blade_Saw_Gun_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 202|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Blade_Saw_Gun_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u5200\u7247\u952F\u67AA\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Wave_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 203|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Wave_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u51B2\u51FB\u6CE2\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Support_Evole_name
+    - Name: $v
+      Entry: 7
+      Data: 204|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Drone_Support_Evole_name
+    - Name: Desc
+      Entry: 1
+      Data: "\u65E0\u4EBA\u673A\u8FDB\u5316"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lightning_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 205|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lightning_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u63D0\u5347\u706B\u7BAD\u4F24\u5BB3\u548C\u7206\u70B8\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Machine_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 206|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Machine_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u673A\u67AA\u4EE5\u66F4\u9AD8\u7684\u5C04\u901F\u53D1\u5C04\u66F4\u591A\u5B50\u5F39"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Rocket_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 207|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Rocket_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u63D0\u5347\u706B\u7BAD\u5F39\u4F24\u5BB3\u548C\u7206\u70B8\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Short_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 208|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Short_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u77ED\u67AA\u5B50\u5F39\u7A7F\u900F\u654C\u4EBA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Gravity_Tower_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 209|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Gravity_Tower_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u9ED1\u6D1E\u5728\u7ED3\u675F\u65F6\u9020\u6210\u5DE8\u5927\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Molotov_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 210|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Molotov_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u4F24\u5BB3\u4E0E\u4F24\u5BB3\u9891\u7387"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Cannon_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 211|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Cannon_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u52A0\u519C\u70AE\u7A7F\u900F\u654C\u4EBA"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Lazer_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 212|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Lazer_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u6FC0\u5149\u70AE\u5854\u65CB\u8F6C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Flame_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 213|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Flame_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u706B\u7130\u67AA\u5728\u654C\u4EBA\u8EAB\u4E0A\u7559\u4E0B\u707C\u70E7\u6548\u679C"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Zone_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 214|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Zone_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u4F24\u5BB3\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: EVA_Shield_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 215|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: EVA_Shield_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u62A4\u76FE\u7206\u70B8\uFF0C\u5728\u7ED3\u675F\u65F6\u5BF9\u9644\u8FD1\u654C\u4EBA\u9020\u6210\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Saw_Blade_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 216|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Saw_Blade_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u952F\u7247\u6570\u91CF\u5E76\u63D0\u9AD8\u8F6C\u901F"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Zeus_Spear_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 217|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Zeus_Spear_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u5B99\u65AF\u4E4B\u77DB\u5BF9\u9644\u8FD1\u654C\u4EBA\u9020\u6210\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Tesla_Coil_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 218|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Tesla_Coil_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u95EA\u7535\u7BAD\u5F39\u8DF3\u6B21\u6570\u66F4\u591A"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Blade_Saw_Gun_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 219|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Blade_Saw_Gun_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u952F\u7247\u5728\u8FD4\u56DE\u524D\u4F1A\u5728\u7EC8\u70B9\u77ED\u6682\u505C\u7559"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Shock_Wave_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 220|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Shock_Wave_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u63D0\u5347\u4F24\u5BB3\u4E0E\u6548\u679C\u8303\u56F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Drone_Support_Evole_desc
+    - Name: $v
+      Entry: 7
+      Data: 221|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Drone_Support_Evole_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u65E0\u4EBA\u673A\u79FB\u52A8\u901F\u5EA6\u52A0\u5FEB"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Add_Projectile_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 222|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Add_Projectile_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u5F39\u836F\u6570\u91CF"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Reduce_Cooldown_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 223|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Reduce_Cooldown_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u51B7\u5374\u65F6\u95F4\u51CF\u5C11"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Damage_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 224|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Damage_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u4F24\u5BB3"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Projectile_Speed_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 225|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Projectile_Speed_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u5B50\u5F39\u901F\u5EA6"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Effect_Radius_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 226|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Effect_Radius_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u6548\u679C\u534A\u5F84"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Effect_Duration_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 227|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Effect_Duration_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u6548\u679C\u6301\u7EED\u65F6\u95F4"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Hit_Per_Sec_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 228|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Hit_Per_Sec_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u63D0\u9AD8\u4F24\u5BB3\u7387"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Number_Of_Effect_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 229|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Number_Of_Effect_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u52A0\u6548\u679C\u6570\u91CF"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: Increase_Push_Back_Force_Upgrade_desc
+    - Name: $v
+      Entry: 7
+      Data: 230|SkillDescConfig, Hotfix
+    - Name: Key
+      Entry: 1
+      Data: Increase_Push_Back_Force_Upgrade_desc
+    - Name: Desc
+      Entry: 1
+      Data: "\u589E\u5927\u63A8\u56DE\u529B"
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

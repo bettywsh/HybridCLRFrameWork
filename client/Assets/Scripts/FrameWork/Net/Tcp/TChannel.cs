@@ -23,7 +23,7 @@ public sealed class TChannel: AChannel
 
 	private readonly PacketParser parser;
 
-	private readonly byte[] sendCache = new byte[Packet.OpcodeLength + Packet.ActorIdLength];
+	private readonly byte[] sendCache = new byte[4];
 		
 	private void OnComplete(object sender, SocketAsyncEventArgs e)
 	{
@@ -96,9 +96,9 @@ public sealed class TChannel: AChannel
 			throw new Exception("TChannel已经被Dispose, 不能发送消息");
 		}
 
-        ushort messageSize = (ushort)(stream.Length - stream.Position);
-        this.sendCache.WriteTo(0, messageSize);
-        this.sendBuffer.Write(this.sendCache, 0, PacketParser.PacketSizeLength);
+        //ushort messageSize = (ushort)(stream.Length - stream.Position);
+        //this.sendCache.WriteTo(0, messageSize);
+        //this.sendBuffer.Write(this.sendCache, 0, PacketParser.PacketSizeLength);
 
         this.sendBuffer.Write(stream.GetBuffer(), (int)stream.Position, (int)(stream.Length - stream.Position));
 		if (!this.isSending)

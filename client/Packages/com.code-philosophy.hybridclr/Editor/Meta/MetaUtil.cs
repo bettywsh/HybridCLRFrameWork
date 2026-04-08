@@ -1,5 +1,6 @@
 ﻿using dnlib.DotNet;
 using HybridCLR.Editor.Meta;
+using HybridCLR.Editor.Settings;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,13 +60,8 @@ namespace HybridCLR.Editor.Meta
 			return ctx.Resolve(sig);
 		}
 
-		public static TypeSig ToShareTypeSig(TypeSig typeSig)
+		public static TypeSig ToShareTypeSig(ICorLibTypes corTypes, TypeSig typeSig)
         {
-			var corTypes = typeSig?.Module?.CorLibTypes;
-			if (corTypes == null)
-            {
-				return typeSig;
-            }
 			var a = typeSig.RemovePinnedAndModifiers();
 			switch (a.ElementType)
 			{
@@ -88,22 +84,43 @@ namespace HybridCLR.Editor.Meta
 				case ElementType.U: return corTypes.UIntPtr;
 				case ElementType.Object: return corTypes.Object;
 				case ElementType.Sentinel: return typeSig;
-				case ElementType.Ptr: return corTypes.IntPtr;
-				case ElementType.ByRef: return corTypes.IntPtr;
+				case ElementType.Ptr: return corTypes.UIntPtr;
+				case ElementType.ByRef: return corTypes.UIntPtr;
 				case ElementType.SZArray: return corTypes.Object;
 				case ElementType.Array: return corTypes.Object;
-				case ElementType.ValueType: return typeSig;
+				case ElementType.ValueType:
+				{
+                    TypeDef typeDef = a.ToTypeDefOrRef().ResolveTypeDef();
+					if (typeDef == null)
+					{
+						throw new Exception($"type:{a} definition could not be found");
+					}
+					if (typeDef.IsEnum)
+					{
+						return ToShareTypeSig(corTypes, typeDef.GetEnumUnderlyingType());
+					}
+                    return typeSig;
+				}
 				case ElementType.Var:
 				case ElementType.MVar:
 				case ElementType.Class: return corTypes.Object;
 				case ElementType.GenericInst:
                 {
 					var gia = (GenericInstSig)a;
-					if (gia.GenericType.IsClassSig)
-                    {
-						return corTypes.Object;
-                    }
-					return new GenericInstSig(gia.GenericType, gia.GenericArguments.Select(ga => ToShareTypeSig(ga)).ToList());
+                        TypeDef typeDef = gia.GenericType.ToTypeDefOrRef().ResolveTypeDef();
+                        if (typeDef == null)
+                        {
+                            throw new Exception($"type:{a} definition could not be found");
+                        }
+						if (typeDef.IsEnum)
+						{
+							return ToShareTypeSig(corTypes, typeDef.GetEnumUnderlyingType());
+						}
+						if (!typeDef.IsValueType)
+						{
+							return corTypes.Object;
+						}
+						return new GenericInstSig(gia.GenericType, gia.GenericArguments.Select(ga => ToShareTypeSig(corTypes, ga)).ToList());
 				}
 				case ElementType.FnPtr: return corTypes.IntPtr;
 				case ElementType.ValueArray: return typeSig;
@@ -113,13 +130,13 @@ namespace HybridCLR.Editor.Meta
 			}
 		}
 	
-		public static List<TypeSig> ToShareTypeSigs(IList<TypeSig> typeSigs)
+		public static List<TypeSig> ToShareTypeSigs(ICorLibTypes corTypes, IList<TypeSig> typeSigs)
         {
 			if (typeSigs == null)
             {
 				return null;
             }
-			return typeSigs.Select(s => ToShareTypeSig(s)).ToList();
+			return typeSigs.Select(s => ToShareTypeSig(corTypes, s)).ToList();
         }
 
 		public static IAssemblyResolver CreateHotUpdateAssemblyResolver(BuildTarget target, List<string> hotUpdateDlls)
@@ -155,6 +172,22 @@ namespace HybridCLR.Editor.Meta
 				CreateHotUpdateAssemblyResolver(target, hotUpdateDlls),
 				CreateAOTAssemblyResolver(target)
 				);
+        }
+
+		public static string ResolveNetStandardAssemblyPath(string assemblyName)
+		{
+			return $"{SettingsUtil.HybridCLRDataPathInPackage}/NetStandard/{assemblyName}.dll";
+		}
+
+
+        public static  List<TypeSig> CreateDefaultGenericParams(ModuleDef module, int genericParamCount)
+        {
+            var methodGenericParams = new List<TypeSig>();
+            for (int i = 0; i < genericParamCount; i++)
+            {
+                methodGenericParams.Add(module.CorLibTypes.Object);
+            }
+            return methodGenericParams;
         }
     }
 }

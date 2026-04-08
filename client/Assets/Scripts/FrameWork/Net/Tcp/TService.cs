@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -177,19 +178,17 @@ public sealed class TService : AService
 		
 	public override void Update()
 	{
-		while (true)
+		if (!this.Queue.TryDequeue(out var result))
 		{
-			if (!this.Queue.TryDequeue(out var result))
-			{
-				break;
-			}
+			return;
+		}
 				
-			SocketAsyncEventArgs e = result.SocketAsyncEventArgs;
-			if (e == null)
+		SocketAsyncEventArgs e = result.SocketAsyncEventArgs;
+		if (e == null)
+		{
+			switch (result.Op)
 			{
-				switch (result.Op)
-				{
-					case TcpOp.StartSend:
+				case TcpOp.StartSend:
 					{
 						TChannel tChannel = this.Get(result.ChannelId);
 						if (tChannel != null)
@@ -198,7 +197,7 @@ public sealed class TService : AService
 						}
 						break;
 					}
-					case TcpOp.StartRecv:
+				case TcpOp.StartRecv:
 					{
 						TChannel tChannel = this.Get(result.ChannelId);
 						if (tChannel != null)
@@ -207,7 +206,7 @@ public sealed class TService : AService
 						}
 						break;
 					}
-					case TcpOp.Connect:
+				case TcpOp.Connect:
 					{
 						TChannel tChannel = this.Get(result.ChannelId);
 						if (tChannel != null)
@@ -216,56 +215,55 @@ public sealed class TService : AService
 						}
 						break;
 					}
-				}
-				continue;
 			}
-
+		}
+		else
+		{
 			switch (e.LastOperation)
 			{
 				case SocketAsyncOperation.Accept:
-				{
-					SocketError socketError = e.SocketError;
-					Socket acceptSocket = e.AcceptSocket;
-					this.OnAcceptComplete(socketError, acceptSocket);
-					break;
-				}
+					{
+						SocketError socketError = e.SocketError;
+						Socket acceptSocket = e.AcceptSocket;
+						this.OnAcceptComplete(socketError, acceptSocket);
+						break;
+					}
 				case SocketAsyncOperation.Connect:
-				{
-					TChannel tChannel = this.Get(result.ChannelId);
-					if (tChannel != null)
 					{
-						tChannel.OnConnectComplete(e);
+						TChannel tChannel = this.Get(result.ChannelId);
+						if (tChannel != null)
+						{
+							tChannel.OnConnectComplete(e);
+						}
+						break;
 					}
-
-					break;
-				}
 				case SocketAsyncOperation.Disconnect:
-				{
-					TChannel tChannel = this.Get(result.ChannelId);
-					if (tChannel != null)
 					{
-						tChannel.OnDisconnectComplete(e);
+						TChannel tChannel = this.Get(result.ChannelId);
+						if (tChannel != null)
+						{
+							tChannel.OnDisconnectComplete(e);
+						}
+						break;
 					}
-					break;
-				}
 				case SocketAsyncOperation.Receive:
-				{
-					TChannel tChannel = this.Get(result.ChannelId);
-					if (tChannel != null)
 					{
-						tChannel.OnRecvComplete(e);
+						TChannel tChannel = this.Get(result.ChannelId);
+						if (tChannel != null)
+						{
+							tChannel.OnRecvComplete(e);
+						}
+						break;
 					}
-					break;
-				}
 				case SocketAsyncOperation.Send:
-				{
-					TChannel tChannel = this.Get(result.ChannelId);
-					if (tChannel != null)
 					{
-						tChannel.OnSendComplete(e);
+						TChannel tChannel = this.Get(result.ChannelId);
+						if (tChannel != null)
+						{
+							tChannel.OnSendComplete(e);
+						}
+						break;
 					}
-					break;
-				}
 				default:
 					throw new ArgumentOutOfRangeException($"{e.LastOperation}");
 			}

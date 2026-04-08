@@ -17,11 +17,10 @@ public class Launch : MonoBehaviour
         QualitySettings.vSyncCount = 2;
         Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;
 
-
         await AotResManager.Instance.Init();
         //await AotText.Instance.Init();
-        await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSansCN-NormalSDF.asset");
-        await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
+        //await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/PuHuiTi SDF.asset");
+        //await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
         await AotUIManager.Instance.Init();
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
         {
@@ -31,7 +30,7 @@ public class Launch : MonoBehaviour
         {
             AotUIManager.Instance.Open<SplashAdvicePanel>();
         }
-            
-     
+
+
     }
 }

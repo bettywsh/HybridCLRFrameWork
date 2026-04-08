@@ -6,9 +6,9 @@ using UnityEngine;
 
 public static class EventHelper
 {
-    public static Dictionary<string, List<int>> dirMessages = new Dictionary<string, List<int>>();
-    public static Dictionary<string, List<int>> dirNets = new Dictionary<string, List<int>>();
-    public static Dictionary<string, List<int>> dirTimers = new Dictionary<string, List<int>>();
+    public static Dictionary<string, List<int>> DirMessages = new Dictionary<string, List<int>>();
+    public static Dictionary<string, List<int>> DirNets = new Dictionary<string, List<int>>();
+    public static Dictionary<string, List<int>> DirTimers = new Dictionary<string, List<int>>();
     public static void RegisterAllEvent(object obj, ReferenceCollector referenceCollector)
     {
         RegisterMessageEvent(obj);
@@ -19,72 +19,73 @@ public static class EventHelper
 
     public static void RegisterMessageEvent(object obj)
     {
-        Type type = obj.GetType();
+        var type = obj.GetType();
         var methods = AssemblyManager.Instance.GetMethods(type);
         foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
-                if (att is OnMessageAttribute)
+                if (att is not OnMessageAttribute) continue;
+                EventManager.Instance.RegisterMessageHandler((att as OnMessageAttribute).Name,
+                    new EventHandler() { eventDelegate = (msgDatas) => { method.Invoke(obj, msgDatas);},
+                        type = type
+                    });
+                if (!DirMessages.TryGetValue(type.Name, out var messages))
                 {
-                    EventManager.Instance.RegisterMessageHandler((att as OnMessageAttribute).Name, (msgDatas) => { method.Invoke(obj, msgDatas); });
-                    List<int> messages;
-                    if (!dirMessages.TryGetValue(type.Name, out messages))
-                    {
-                        messages = new List<int>();
-                        dirMessages.Add(type.Name, messages);
-                    }
-                    messages.Add((att as OnMessageAttribute).Name);                    
+                    messages = new List<int>();
+                    DirMessages.Add(type.Name, messages);
                 }
+                messages.Add((att as OnMessageAttribute).Name);
             }
         }
     }
 
     public static void RegisterTimerEvent(object obj)
     {
-        Type type = obj.GetType();
+        var type = obj.GetType();
         var methods = AssemblyManager.Instance.GetMethods(type);
         foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
-                if (att is OnTimerAttribute)
+                if (att is not OnTimerAttribute) continue;
+                EventManager.Instance.RegisterTimerHandler((att as OnTimerAttribute).Name,
+                    new EventHandler() { eventDelegate = (msgDatas) => { method.Invoke(obj, msgDatas);
+                    }});
+                if (!DirTimers.TryGetValue(type.Name, out var timers))
                 {
-                    EventManager.Instance.RegisterTimerHandler((att as OnTimerAttribute).Name, (msgDatas) => { method.Invoke(obj, msgDatas); });
-                    List<int> timers;
-                    if (!dirTimers.TryGetValue(type.Name, out timers))
-                    {
-                        timers = new List<int>();
-                        dirTimers.Add(type.Name, timers);
-                    }
-                    timers.Add((att as OnTimerAttribute).Name);
+                    timers = new List<int>();
+                    DirTimers.Add(type.Name, timers);
                 }
+                timers.Add((att as OnTimerAttribute).Name);
             }
         }
     }
 
     public static void RegisterNetEvent(object obj)
     {
-        Type type = obj.GetType();
+        var type = obj.GetType();
         var methods = AssemblyManager.Instance.GetMethods(type);
         foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
-                if (att is OnNetAttribute)
-                {
-                    int id = (att as OnNetAttribute).Id;
-                    EventManager.Instance.RegisterNetMessageHandler(id, (object[] msgDatas) => {
-                        method.Invoke(obj, msgDatas);
-                    });
-                    List<int> nets;
-                    if (!dirNets.TryGetValue(type.Name, out nets))
+                if (att is not OnNetAttribute) continue;
+                var id = (att as OnNetAttribute).Id;
+                EventManager.Instance.RegisterNetMessageHandler(id,
+                    new EventHandler()
                     {
-                        nets = new List<int>();
-                        dirNets.Add(type.Name, nets);
-                    }
-                    nets.Add(id);                    
+                        eventDelegate = (object[] msgDatas) =>
+                        {
+                            method.Invoke(obj, msgDatas);
+                        }
+                    });
+                if (!DirNets.TryGetValue(type.Name, out var nets))
+                {
+                    nets = new List<int>();
+                    DirNets.Add(type.Name, nets);
                 }
+                nets.Add(id);
             }
         }
     }
@@ -98,20 +99,24 @@ public static class EventHelper
             {
                 if (att is OnClickAttribute)
                 {
-                    ReferenceData btn = referenceCollector.Get((att as OnClickAttribute).Name);
+                    var btn = referenceCollector.Get((att as OnClickAttribute).Name);
+                    if (btn == null)
+                    {
+                        Debug.LogError($"娌℃湁鎵惧埌{(att as OnClickAttribute).Name}灞炴�у畾涔夌殑缁勪欢");
+                    }
                     if (btn.btnValue == null)
                     {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                        Debug.LogError($"娌℃湁鎵惧埌{(att as OnClickAttribute).Name}灞炴�у畾涔夌殑缁勪欢");
                     }
                     btn.btnValue.onClick.RemoveAllListeners();
                     btn.btnValue.onClick.AddListener(() => { method.Invoke(obj, null); });
                 }
                 else if (att is OnToggleChangedAttribute)
                 {
-                    ReferenceData btn = referenceCollector.Get((att as OnToggleChangedAttribute).Name);
+                    var btn = referenceCollector.Get((att as OnToggleChangedAttribute).Name);
                     if (btn.toggleValue == null)
                     {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                        Debug.LogError($"娌℃湁鎵惧埌{(att as OnClickAttribute).Name}灞炴�у畾涔夌殑缁勪欢");
                     }
                     btn.toggleValue.onValueChanged.RemoveAllListeners();
                     btn.toggleValue.onValueChanged.AddListener((bool select) => { method.Invoke(obj, new object[1] { select }); });
@@ -121,7 +126,7 @@ public static class EventHelper
                     ReferenceData btn = referenceCollector.Get((att as OnSliderChangedAttribute).Name);
                     if (btn.sliderValue == null)
                     {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                        Debug.LogError($"娌℃湁鎵惧埌{(att as OnClickAttribute).Name}灞炴�у畾涔夌殑缁勪欢");
                     }
                     btn.sliderValue.onValueChanged.RemoveAllListeners();
                     btn.sliderValue.onValueChanged.AddListener((float value) => { method.Invoke(obj, new object[1] { value }); });
@@ -132,38 +137,35 @@ public static class EventHelper
 
     public static void UnRegisterAllEvent(object obj)
     {
-        Type type = obj.GetType();
-        List<int> messages;
-        dirMessages.TryGetValue(type.Name, out messages);
+        var type = obj.GetType();
+        DirMessages.TryGetValue(type.Name, out var messages);
         if (messages != null)
         {
-            foreach (int m in messages)
+            foreach (var m in messages)
             {
-                EventManager.Instance.RemoveMessage(m);
+                EventManager.Instance.RemoveMessage(m, obj.GetType());
             }
-            dirMessages.Remove(type.Name);
+            DirMessages.Remove(type.Name);
         }
 
-        List<int> timers;
-        dirTimers.TryGetValue(type.Name, out timers);
+        DirTimers.TryGetValue(type.Name, out var timers);
         if (timers != null)
         {
-            foreach (int m in timers)
+            foreach (var m in timers)
             {
-                EventManager.Instance.RemoveMessage(m);
+                EventManager.Instance.RemoveTimer(m, obj.GetType());
             }
-            dirTimers.Remove(type.Name);
+            DirTimers.Remove(type.Name);
         }
 
-        List<int> nets;
-        dirNets.TryGetValue(type.Name, out nets);
+        DirNets.TryGetValue(type.Name, out var nets);
         if (nets != null)
         {
-            foreach (int n in nets)
+            foreach (var n in nets)
             {
                 EventManager.Instance.RemoveNetMessage(n);
             }
-            dirNets.Remove(type.Name);
+            DirNets.Remove(type.Name);
         }
     }
 }

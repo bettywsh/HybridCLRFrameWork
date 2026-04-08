@@ -15,7 +15,7 @@ public class PacketParser
 	private ParserState state;
 	private readonly AService service;
 	private readonly byte[] cache = new byte[8];
-	public const int PacketSizeLength = 4;
+	public const int PacketSizeLength = 2;
 	public MemoryBuffer MemoryBuffer;
 
 	public PacketParser(CircularBuffer buffer, AService service)

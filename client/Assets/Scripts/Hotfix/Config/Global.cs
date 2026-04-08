@@ -8,27 +8,28 @@
 //------------------------------------------------------------------------------
 
 using Luban;
+using SimpleJSON;
 
 
 namespace cfg
 {
 public sealed partial class Global : Luban.BeanBase
 {
-    public Global(ByteBuf _buf) 
+    public Global(JSONNode _buf) 
     {
-        Id = _buf.ReadString();
-        Value = _buf.ReadString();
+        { if(!_buf["Key"].IsString) { throw new SerializationException(); }  Key = _buf["Key"]; }
+        { if(!_buf["Value"].IsString) { throw new SerializationException(); }  Value = _buf["Value"]; }
     }
 
-    public static Global DeserializeGlobal(ByteBuf _buf)
+    public static Global DeserializeGlobal(JSONNode _buf)
     {
         return new Global(_buf);
     }
 
     /// <summary>
-    /// 主键
+    /// 礼包id
     /// </summary>
-    public readonly string Id;
+    public readonly string Key;
     /// <summary>
     /// 值
     /// </summary>
@@ -46,8 +47,8 @@ public sealed partial class Global : Luban.BeanBase
     public override string ToString()
     {
         return "{ "
-        + "id:" + Id + ","
-        + "value:" + Value + ","
+        + "Key:" + Key + ","
+        + "Value:" + Value + ","
         + "}";
     }
 }

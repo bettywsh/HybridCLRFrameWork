@@ -1,0 +1,8 @@
+<linker>
+  <assembly fullname="UnityEngine" preserve="all"/>
+  <assembly fullname="System" preserve="all"/>
+  <assembly fullname="mscorlib" preserve="all" />
+  <assembly fullname="System.Runtime.CompilerServices.Unsafe" preserve="all"/>
+  <assembly fullname="System.Text.RegularExpressions" preserve="all"/>
+  <assembly fullname="UnityEngine.CoreModule" preserve="all" />
+</linker>

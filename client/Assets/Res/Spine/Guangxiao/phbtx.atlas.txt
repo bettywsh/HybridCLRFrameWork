@@ -1,0 +1,14 @@
+phbtx.png
+size:1024,512
+filter:Linear,Linear
+pma:true
+phbtu
+bounds:320,16,302,302
+offsets:1,1,304,304
+waiquan
+bounds:624,17,301,300
+offsets:1,2,303,304
+rotate:90
+waiquan1
+bounds:2,2,316,316
+offsets:1,1,318,318

@@ -67,6 +67,16 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
         return cellBase;
     }
 
+    public List<CellBase> GetCells()
+    {
+        return cells.Values.ToList();
+    }
+
+    public void RefreshCells()
+    {
+        GetComponent<LoopScrollRect>().RefreshCells();
+    }
+
 
     public void ProvideData(Transform transform, int idx)
     {

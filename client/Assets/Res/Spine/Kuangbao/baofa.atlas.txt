@@ -1,0 +1,16 @@
+baofa.png
+size:512,128
+filter:Linear,Linear
+pma:true
+baofa1
+bounds:2,2,114,117
+offsets:1,1,116,119
+rotate:90
+baofa2
+bounds:121,2,114,121
+offsets:1,1,116,123
+rotate:90
+baofa3
+bounds:244,2,114,117
+offsets:1,1,116,119
+rotate:90

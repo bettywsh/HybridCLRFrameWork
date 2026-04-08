@@ -1,10 +1,11 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
-    Dictionary<Type, object> configs = new Dictionary<Type, object>();
+    Dictionary<Type, DataBase> configs = new Dictionary<Type, DataBase>();
     public override async UniTask Init()
     {
         await base.Init();
@@ -21,18 +22,31 @@ public class DataManager : Singleton<DataManager>
             foreach (object o in objects)
             {
                 object obj = Activator.CreateInstance(type);
-                DataBase baseData = obj as DataBase;
-                baseData.Init();
+                DataBase baseData = obj as DataBase;      
                 configs.Add(type, baseData);
             }
+        }
+
+        foreach (var k in configs)
+        {
+            k.Value.Init();
         }
     }
 
     public T GetData<T>() where T : DataBase
     {
-        object obj;
+        DataBase obj;
         configs.TryGetValue(typeof(T), out obj);
         return obj as T;
     }
 
+
+    public void ResetAll()
+    {
+        foreach ((Type type, object obj) in configs)
+        {
+            ((DataBase)obj).Reset();
+        }
+        SDKManager.Instance.HideShop();
+    }
 }

@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "TimesList": 5880000,
+    "NumberList": 58880000
+  },
+  {
+    "Id": 2,
+    "TimesList": 4880000,
+    "NumberList": 38880000
+  },
+  {
+    "Id": 3,
+    "TimesList": 3880000,
+    "NumberList": 18880000
+  },
+  {
+    "Id": 4,
+    "TimesList": 3500000,
+    "NumberList": 8880000
+  },
+  {
+    "Id": 5,
+    "TimesList": 3000000,
+    "NumberList": 6880000
+  },
+  {
+    "Id": 6,
+    "TimesList": 2500000,
+    "NumberList": 5880000
+  },
+  {
+    "Id": 7,
+    "TimesList": 2000000,
+    "NumberList": 3880000
+  },
+  {
+    "Id": 8,
+    "TimesList": 1500000,
+    "NumberList": 2880000
+  },
+  {
+    "Id": 9,
+    "TimesList": 1000000,
+    "NumberList": 1880000
+  },
+  {
+    "Id": 10,
+    "TimesList": 500000,
+    "NumberList": 1380000
+  }
+]

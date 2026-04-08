@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class LoadSubPanel : MonoBehaviour
 {
-
     SubPanelBase subPanelBase;
+    
     public async UniTask<T> Open<T>(params object[] args)
     {
         if (subPanelBase != null)
@@ -17,14 +17,15 @@ public class LoadSubPanel : MonoBehaviour
         }
         string prefabName = typeof(T).Name;
         T t = Activator.CreateInstance<T>();
-        GameObject go = await ResManager.Instance.SceneLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/SubPanel/{prefabName}.prefab");
+        await UniTask.CompletedTask;
+        GameObject go = ResManager.Instance.SceneLoadAsset<GameObject>($"Assets/App/Prefab/UI/SubPanel/{prefabName}.prefab");
         go = GameObject.Instantiate(go);
         go.name = prefabName;
         go = GameObjectHelper.SetParent(transform, go.transform).gameObject;
-        Canvas cv = go.AddComponent<Canvas>();
-        cv.overrideSorting = true;
-        go.AddComponent<GraphicRaycaster>();
-        OrderCanvas();
+        //Canvas cv = go.AddComponent<Canvas>();
+        //cv.overrideSorting = true;
+        //go.AddComponent<GraphicRaycaster>();
+        //OrderCanvas();
         subPanelBase = t as SubPanelBase;
         subPanelBase.args = args;
         subPanelBase.transform = go.transform;
@@ -53,6 +54,7 @@ public class LoadSubPanel : MonoBehaviour
     {
         if (subPanelBase != null)
         {
+            subPanelBase.Close();
             GameObject.DestroyImmediate(subPanelBase.transform.gameObject);
         }
     }

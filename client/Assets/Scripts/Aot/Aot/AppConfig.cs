@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using YooAsset;
 
@@ -8,89 +9,178 @@ using YooAsset;
 public class AppConfig : ScriptableObject
 {
     /// <summary>
-    /// ÔËĞĞÄ£Ê½
+    /// è¿è¡Œæ¨¡å¼
     /// </summary>
     ///
     public EPlayMode EPlayMode = EPlayMode.EditorSimulateMode;
 
     /// <summary>
-    /// Ç¿¸ü°æ±¾
+    /// å¼ºæ›´ç‰ˆæœ¬
     /// </summary>
     public int AppVersion = 1;
     /// <summary>
-    /// ×ÊÔ´°æ±¾
+    /// èµ„æºç‰ˆæœ¬
     /// </summary>
     public int ResVersion = 10001;
 
     /// <summary>
-    /// ÇşµÀid
+    /// æ¸ é“
     /// </summary>
-    public int ChannelId = 8001;
+    public int ChannelId = 1;
 
     /// <summary>
-    /// ÈÈ¸üÏÂÔØµØÖ·
+    /// æ¸ é“
+    /// </summary>
+    public int ChannelVer = 1;
+
+    /// <summary>
+    /// çƒ­æ›´ä¸‹è½½åœ°å€
     /// </summary>
     public string SvrResIp = "http://192.168.14.149:8082/";
 
     /// <summary>
-    /// ´òÓ¡LogÄ£Ê½
+    /// æ‰“å°Logæ¨¡å¼
     /// </summary>
     public bool DebugLog = true;
 
     /// <summary>
-    /// ÓÎÏ·Ö¡Æµ
+    /// æ¸¸æˆå¸§é¢‘
     /// </summary>
     public int GameFrameRate = 30;
 
     /// <summary>
-    /// yooasset °üÃû
+    /// yooasset åŒ…å
     /// </summary>
     public string PackageName = "DefaultPackage";
 
     /// <summary>
-    /// Ç¿¸üÎÄ¼şÃû
+    /// å¼ºæ›´æ–‡ä»¶å
     /// </summary>
     public string DownloadApkName = "ff.apk";
 
     /// <summary>
-    /// ProtoBuff °üÃû
+    /// ProtoBuff åŒ…å
     /// </summary>
     public string ProtoBuffPackageName = "com.bochsler.protocol.";
 
     /// <summary>
-    /// ÓÎÏ·Æô¶¯ipµØÖ·
+    /// æ¸¸æˆå¯åŠ¨ipåœ°å€
     /// </summary>
     public string SvrGameIp = "shiku.grandlink.net";
 
     /// <summary>
-    /// ÓÎÏ·Æô¶¯¶Ë¿Ú
+    /// æ¸¸æˆå¯åŠ¨ç«¯å£
     /// </summary>
     public int SvrGamePort = 8443;
 
     /// <summary>
-    /// ²¹³äÔªÊı¾İ
+    /// æ˜¯å¦èµ°APPæ”¯ä»˜
+    /// </summary>
+    public bool hasAppPay = false;
+
+    /// <summary>
+    /// HttpApi
+    /// </summary>
+    public bool SdkDev = true;
+
+    /// <summary>
+    /// HttpApi
+    /// </summary>
+    public string HttpUrl = "";
+
+    /// <summary>
+    /// è¡¥å……å…ƒæ•°æ®
     /// </summary>
     public List<string> AotDll = new List<string>() { "mscorlib.dll", "System.Core.dll", "System.dll" };
 
     /// <summary>
-    /// ÈÈ¸üdllÊı¾İ
+    /// çƒ­æ›´dllæ•°æ®
     /// </summary>
     public List<string> HotfixDll = new List<string>() { "FrameWork.dll", "Hotfix.dll" };
 
-    public static string[] Modes = new string[] { "±à¼­Æ÷", "²âÊÔ·ş", "ÕıÊ½·ş"};
+#if UNITY_EDITOR
+    public static string[] Modes = new string[] { "æµ‹è¯•æœ", "ç›´æ’­", "TapTap", "å¿«æ‰‹æœ"};
     [OnValueChanged("SetMode")]
     [ValueDropdown("Modes")]
-    public string Mode = "±à¼­Æ÷";
+    public string Mode = "æµ‹è¯•æœ";
 
     public void SetMode()
     {
-        if (Mode == "±à¼­Æ÷")
+        if (Mode == "æµ‹è¯•æœ")
         {
             EPlayMode = EPlayMode.EditorSimulateMode;
+            DebugLog = true;
+            SvrResIp = "https://oss.dongfanglanyu.com/zhanche/develop/";
+            SvrGameIp = "121.196.227.83";
+            HttpUrl = "http://47.101.186.85:83/";
+            hasAppPay = false;
+            SdkDev = true;
+            ChannelId = 1;
+            ChannelVer = 1;
+            DownloadApkName = "ff.apk";
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.mtgame.xxm");
+            PlayerSettings.productName = "æ–°é¡¹ç›®";
+
+            Texture2D[] textures = new Texture2D[1];
+            textures[0] = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Res/Icon/{ChannelId}.png");
+            PlayerSettings.SetIcons(UnityEditor.Build.NamedBuildTarget.Unknown, textures, IconKind.Application);
         }
-        else if (Mode == "²âÊÔ·ş")
+        else if (Mode == "ç›´æ’­")
+        {
+            EPlayMode = EPlayMode.OfflinePlayMode;
+            DebugLog = false;
+            SvrResIp = "https://oss.dongfanglanyu.com/client/hsmxwtest/";
+            SvrGameIp = "47.102.112.62";
+            HttpUrl = "http://47.101.186.85/";
+            hasAppPay = false;
+            SdkDev = true;
+            ChannelId = 1;
+            ChannelVer = 1;
+            DownloadApkName = "ff.apk";
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.mtgame.com");
+            PlayerSettings.productName = "æ–—é¾™æˆ˜å£«3-å¤©é™å°æ€ªå…½";
+
+            Texture2D[] textures = new Texture2D[1];
+            textures[0] = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Res/Icon/{ChannelId}.png");
+            PlayerSettings.SetIcons(UnityEditor.Build.NamedBuildTarget.Unknown, textures, IconKind.Application);
+        }
+        else if (Mode == "TapTap")
+        {
+            EPlayMode = EPlayMode.OfflinePlayMode;
+            DebugLog = false;
+            SvrResIp = "https://oss.dongfanglanyu.com/client/hsmxwtest/";
+            SvrGameIp = "dlzs3tjxgs.gametestserver.shanghailanyu.com";
+            HttpUrl = "http://47.101.186.85/";
+            hasAppPay = false;
+            SdkDev = true;
+            ChannelId = 2;
+            ChannelVer = 2;
+            DownloadApkName = "ff.apk";
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.mtgame.com");
+            PlayerSettings.productName = "æ–—é¾™æˆ˜å£«3-å¤©é™å°æ€ªå…½";
+
+            Texture2D[] textures = new Texture2D[1];
+            textures[0] = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Res/Icon/{ChannelId}.png");
+            PlayerSettings.SetIcons(UnityEditor.Build.NamedBuildTarget.Unknown, textures, IconKind.Application);
+        }
+        else if (Mode == "å¿«æ‰‹æœ")
         {
             EPlayMode = EPlayMode.HostPlayMode;
+            DebugLog = false;
+            SvrResIp = "https://oss.dongfanglanyu.com/client/hsmxw/";
+            SvrGameIp = "dlzs3tjxgs.gameolineserver.shanghailanyu.com";
+            HttpUrl = "https://manage.shanghailanyu.com/";
+            hasAppPay = true;
+            SdkDev = false;
+            ChannelId = 3;
+            ChannelVer = 1;
+            DownloadApkName = "ff_3.apk";
+            PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, "com.mtgame.com");
+            PlayerSettings.productName = "æ–—é¾™æˆ˜å£«3-å¤©é™å°æ€ªå…½";
+            Texture2D[] textures = new Texture2D[1];
+            textures[0] = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Res/Icon/{ChannelId}.png");
+            PlayerSettings.SetIcons(UnityEditor.Build.NamedBuildTarget.Unknown, textures, IconKind.Application);
         }
     }
+#endif
 }

@@ -1,0 +1,73 @@
+[
+  {
+    "Id": 1,
+    "Rate": [
+      11500,
+      10500,
+      10000,
+      9500,
+      8500
+    ],
+    "FixProbability": [
+      2900,
+      -3000
+    ],
+    "FixRange": [
+      15000,
+      6000
+    ],
+    "FixHitCount": [
+      35,
+      50
+    ],
+    "FixMaybeProbability": 1000,
+    "FixCycle": 1,
+    "Codex": 0
+  },
+  {
+    "Id": 2,
+    "Rate": [
+      11000,
+      10500,
+      8000,
+      5500,
+      5000
+    ],
+    "FixProbability": [
+      2900,
+      -3000
+    ],
+    "FixRange": [
+      15000,
+      6000
+    ],
+    "FixHitCount": [
+      35,
+      50
+    ],
+    "FixMaybeProbability": 0,
+    "FixCycle": 7,
+    "Codex": 0
+  },
+  {
+    "Id": 3,
+    "Rate": [
+      0
+    ],
+    "FixProbability": [
+      2900,
+      -3000
+    ],
+    "FixRange": [
+      15000,
+      6000
+    ],
+    "FixHitCount": [
+      100,
+      120
+    ],
+    "FixMaybeProbability": 0,
+    "FixCycle": 1,
+    "Codex": 30
+  }
+]

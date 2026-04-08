@@ -1,0 +1,429 @@
+[
+  {
+    "Id": 1000,
+    "Description": "累计登录1天",
+    "Quantity": 1,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1001,
+    "Description": "累计登录2天",
+    "Quantity": 2,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1002,
+    "Description": "累计登录3天",
+    "Quantity": 3,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1003,
+    "Description": "累计登录4天",
+    "Quantity": 4,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1004,
+    "Description": "累计登录5天",
+    "Quantity": 5,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1005,
+    "Description": "累计登录6天",
+    "Quantity": 6,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1006,
+    "Description": "累计登录7天",
+    "Quantity": 7,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1007,
+    "Description": "累计登录8天",
+    "Quantity": 8,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1008,
+    "Description": "累计登录9天",
+    "Quantity": 9,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1009,
+    "Description": "累计登录10天",
+    "Quantity": 10,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1010,
+    "Description": "累计登录11天",
+    "Quantity": 11,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1011,
+    "Description": "累计登录12天",
+    "Quantity": 12,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1012,
+    "Description": "累计登录13天",
+    "Quantity": 13,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1013,
+    "Description": "累计登录14天",
+    "Quantity": 14,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1014,
+    "Description": "累计登录15天",
+    "Quantity": 15,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1015,
+    "Description": "累计登录16天",
+    "Quantity": 16,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1016,
+    "Description": "累计登录17天",
+    "Quantity": 17,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1017,
+    "Description": "累计登录18天",
+    "Quantity": 18,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1018,
+    "Description": "累计登录19天",
+    "Quantity": 19,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1019,
+    "Description": "累计登录20天",
+    "Quantity": 20,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1020,
+    "Description": "累计登录21天",
+    "Quantity": 21,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1021,
+    "Description": "累计登录22天",
+    "Quantity": 22,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1022,
+    "Description": "累计登录23天",
+    "Quantity": 23,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1023,
+    "Description": "累计登录24天",
+    "Quantity": 24,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1024,
+    "Description": "累计登录25天",
+    "Quantity": 25,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1025,
+    "Description": "累计登录26天",
+    "Quantity": 26,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1026,
+    "Description": "累计登录27天",
+    "Quantity": 27,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1027,
+    "Description": "累计登录28天",
+    "Quantity": 28,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1028,
+    "Description": "累计登录29天",
+    "Quantity": 29,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 1029,
+    "Description": "累计登录30天",
+    "Quantity": 30,
+    "Reward": 1,
+    "Type": 1
+  },
+  {
+    "Id": 2000,
+    "Description": "累计充值任意金额1天",
+    "Quantity": 1,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2001,
+    "Description": "累计充值任意金额2天",
+    "Quantity": 2,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2002,
+    "Description": "累计充值任意金额3天",
+    "Quantity": 3,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2003,
+    "Description": "累计充值任意金额4天",
+    "Quantity": 4,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2004,
+    "Description": "累计充值任意金额5天",
+    "Quantity": 5,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2005,
+    "Description": "累计充值任意金额6天",
+    "Quantity": 6,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2006,
+    "Description": "累计充值任意金额7天",
+    "Quantity": 7,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2007,
+    "Description": "累计充值任意金额8天",
+    "Quantity": 8,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2008,
+    "Description": "累计充值任意金额9天",
+    "Quantity": 9,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2009,
+    "Description": "累计充值任意金额10天",
+    "Quantity": 10,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2010,
+    "Description": "累计充值任意金额11天",
+    "Quantity": 11,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2011,
+    "Description": "累计充值任意金额12天",
+    "Quantity": 12,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2012,
+    "Description": "累计充值任意金额13天",
+    "Quantity": 13,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2013,
+    "Description": "累计充值任意金额14天",
+    "Quantity": 14,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2014,
+    "Description": "累计充值任意金额15天",
+    "Quantity": 15,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2015,
+    "Description": "累计充值任意金额16天",
+    "Quantity": 16,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2016,
+    "Description": "累计充值任意金额17天",
+    "Quantity": 17,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2017,
+    "Description": "累计充值任意金额18天",
+    "Quantity": 18,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2018,
+    "Description": "累计充值任意金额19天",
+    "Quantity": 19,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2019,
+    "Description": "累计充值任意金额20天",
+    "Quantity": 20,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2020,
+    "Description": "累计充值任意金额21天",
+    "Quantity": 21,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2021,
+    "Description": "累计充值任意金额22天",
+    "Quantity": 22,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2022,
+    "Description": "累计充值任意金额23天",
+    "Quantity": 23,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2023,
+    "Description": "累计充值任意金额24天",
+    "Quantity": 24,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2024,
+    "Description": "累计充值任意金额25天",
+    "Quantity": 25,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2025,
+    "Description": "累计充值任意金额26天",
+    "Quantity": 26,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2026,
+    "Description": "累计充值任意金额27天",
+    "Quantity": 27,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2027,
+    "Description": "累计充值任意金额28天",
+    "Quantity": 28,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2028,
+    "Description": "累计充值任意金额29天",
+    "Quantity": 29,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 2029,
+    "Description": "累计充值任意金额30天",
+    "Quantity": 30,
+    "Reward": 1,
+    "Type": 2
+  },
+  {
+    "Id": 3000,
+    "Description": "累计消耗1亿晶币",
+    "Quantity": 100000000,
+    "Reward": 1,
+    "Type": 3
+  }
+]

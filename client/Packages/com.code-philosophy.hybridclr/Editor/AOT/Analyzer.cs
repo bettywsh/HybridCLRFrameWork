@@ -17,11 +17,15 @@ namespace HybridCLR.Editor.AOT
             public AssemblyReferenceDeepCollector Collector { get; set; }
 
             public int MaxIterationCount { get; set; }
+
+            public bool ComputeAotAssembly { get; set; }
         }
 
         private readonly int _maxInterationCount;
 
         private readonly AssemblyReferenceDeepCollector _assemblyCollector;
+
+        private readonly bool _computeAotAssembly;
 
         private readonly HashSet<GenericClass> _genericTypes = new HashSet<GenericClass>();
         private readonly HashSet<GenericMethod> _genericMethods = new HashSet<GenericMethod>();
@@ -47,6 +51,7 @@ namespace HybridCLR.Editor.AOT
         {
             _assemblyCollector = options.Collector;
             _maxInterationCount = options.MaxIterationCount;
+            _computeAotAssembly = options.ComputeAotAssembly;
             _methodReferenceAnalyzer = new MethodReferenceAnalyzer(this.OnNewMethod);
             _hotUpdateAssemblyFiles = new HashSet<string>(options.Collector.GetRootAssemblyNames().Select(assName => assName + ".dll"));
         }
@@ -71,7 +76,7 @@ namespace HybridCLR.Editor.AOT
 
         private bool IsAotType(TypeDef type)
         {
-            return !_hotUpdateAssemblyFiles.Contains(type.Module.Name);
+            return _computeAotAssembly || !_hotUpdateAssemblyFiles.Contains(type.Module.Name);
         }
 
         private bool IsAotGenericMethod(MethodDef method)
@@ -191,11 +196,29 @@ namespace HybridCLR.Editor.AOT
             }
         }
 
+        private bool IsNotShareableAOTGenericType(TypeDef typeDef)
+        {
+            if (!IsAotType(typeDef))
+            {
+                return false;
+            }
+            return typeDef.GenericParameters.Any(c => !c.HasReferenceTypeConstraint);
+        }
+
+        private bool IsNotShareableAOTGenericMethod(MethodDef method)
+        {
+            if (!IsAotGenericMethod(method))
+            {
+                return false;
+            }
+            return method.GenericParameters.Concat(method.DeclaringType.GenericParameters).Any(c => !c.HasReferenceTypeConstraint);
+        }
+
         private void FilterAOTGenericTypeAndMethods()
         {
             ConstraintContext cc = this.ConstraintContext;
-            AotGenericTypes.AddRange(_genericTypes.Where(type => IsAotType(type.Type)).Select(gc => cc.ApplyConstraints(gc)));
-            AotGenericMethods.AddRange(_genericMethods.Where(method => IsAotGenericMethod(method.Method)).Select(gm => cc.ApplyConstraints(gm)));
+            AotGenericTypes.AddRange(_genericTypes.Where(type => IsNotShareableAOTGenericType(type.Type)).Select(gc => cc.ApplyConstraints(gc)));
+            AotGenericMethods.AddRange(_genericMethods.Where(method => IsNotShareableAOTGenericMethod(method.Method)).Select(gm => cc.ApplyConstraints(gm)));
         }
 
         public void Run()

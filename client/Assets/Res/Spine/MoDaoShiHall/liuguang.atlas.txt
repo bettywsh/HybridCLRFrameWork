@@ -1,0 +1,9 @@
+liuguang.png
+size:256,256
+filter:Linear,Linear
+pma:true
+10d
+bounds:2,2,221,122
+liug
+bounds:2,126,58,202
+rotate:90

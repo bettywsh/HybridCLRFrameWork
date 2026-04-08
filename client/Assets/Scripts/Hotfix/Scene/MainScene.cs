@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Msg;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 [Scene]
 public class MainScene : SceneBase
 {
-    public override void LoadScene()
+    public override async void LoadScene()
     {
-        UIManager.Instance.Open<MainPanel>();
+        base.LoadScene();
     }
 
     public override void UnLoadScene()

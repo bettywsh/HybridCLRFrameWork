@@ -8,7 +8,9 @@ using YooAsset;
 using TMPro;
 using UnityEngine.UI;
 using System.IO;
-using System.Runtime.ConstrainedExecution;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 
 public class UpdatePanel : AotPanelBase
 {
@@ -18,163 +20,99 @@ public class UpdatePanel : AotPanelBase
     ResourcePackage package;
     string packageVersion;
     ResourceDownloaderOperation downloader;
+    TweenerCore<float, float, FloatOptions> tween;
     CancellationTokenSource cancelToken = new CancellationTokenSource();
     public override async void OnOpen()
     {
-        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
+        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode || AppSettings.AppConfig.EPlayMode == EPlayMode.OfflinePlayMode)
         {
+            txtContent.text = "Ê£ÄÊü•Ê∏∏ÊàèËµÑÊ∫ê";
             StartGame();
         }
         else
         {
+            txtContent.text = "Ëé∑ÂèñÁâàÊú¨";
+            SetProgressTween(true);
             package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
-            //≈–∂œ «∑Ò ««ø∏¸
-            string bigVersion = await AotHttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/ver.txt", null);
+            // Check whether a force update is required
+            string bigVersion = await AotHttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/Hotfix/ver.txt", null);
             if (bigVersion == "")
             {
-                AotDialogManager.Instance.ShowDialogOne("æØ∏Ê", "ªÒ»°◊ ‘¥∞Ê±æ ß∞‹£¨«ÎºÏ≤ÈÕ¯¬Á", () => {
+                SetProgressTween(false);
+                AotDialogManager.Instance.ShowDialogOne("ÊèêÁ§∫", "Ëé∑ÂèñËµÑÊ∫êÁâàÊú¨Â§±Ë¥•ÔºåËØ∑ÈáçËØï", () => {
                     this.OnOpen();
                 });
                 return;
             }
             if (int.Parse(bigVersion) > AppSettings.AppConfig.AppVersion)
             {
-                AotDialogManager.Instance.ShowDialogOne("æØ∏Ê", "øÕªß∂À∞Ê±æπ˝µÕ£¨«Î÷ÿ–¬œ¬‘ÿ", () =>
+                SetProgressTween(false);
+                AotDialogManager.Instance.ShowDialogOne("ÊèêÁ§∫", "ÂÆ¢Êà∑Á´ØÁâàÊú¨Ëøá‰ΩéÔºåËØ∑‰∏ãËΩΩÂÆâË£ÖÊñ∞ÁâàÊú¨", () =>
                 {
-                    Application.OpenURL($"{AppSettings.AppConfig.SvrResIp}Android/{AppSettings.AppConfig.DownloadApkName}");
+                    Application.OpenURL($"{AppSettings.AppConfig.SvrResIp}Android/Apk/{AppSettings.AppConfig.DownloadApkName}");
+                    OnOpen();
                 });
                 return;
             }
 
-            //¥¶¿Ì∏≤∏«∞≤◊∞Œ Ã‚
-            string verdir = $"{package.GetPackageSandboxRootDirectory()}/{AppSettings.AppConfig.PackageName}";
-            string ver = $"{verdir}/ Finish.txt";
-            if (!File.Exists(ver))
-            {
-                CreateVerSionSandbox(verdir, ver);
-            }
-            else {
-                string[] vers = File.ReadAllText(ver).Split('|');
-                if (int.Parse(vers[0]) != AppSettings.AppConfig.AppVersion && int.Parse(vers[1]) != AppSettings.AppConfig.ResVersion && int.Parse(vers[2]) != AppSettings.AppConfig.ChannelId)
-                {
-                    File.Delete(ver);
-                    CreateVerSionSandbox(verdir, ver);
-                }
-            }
-
-            //¿≠»•◊ ‘¥∞Ê±æ≈–∂œ–°∞Ê±æ
-            await UpdatePackageVersion();
+            await CreateDownloader();
         }
     }
 
-    void CreateVerSionSandbox(string verdir, string ver) {
-        package.ClearPackageSandbox();
-        if (!Directory.Exists(verdir))
-        {
-            Directory.CreateDirectory(verdir);
-        }
-        File.WriteAllText(ver, $"{AppSettings.AppConfig.AppVersion}|{AppSettings.AppConfig.ResVersion}|{AppSettings.AppConfig.ChannelId}");
-    }
-
-    //ªÒ»°◊ ‘¥∞Ê±æ
-    async UniTask UpdatePackageVersion()
-    {
-        
-        var versionOperation = package.UpdatePackageVersionAsync();
-        await versionOperation.Task.AsUniTask();
-        if (versionOperation.Status == EOperationStatus.Succeed)
-        {
-            //∏¸–¬≥…π¶
-            packageVersion = versionOperation.PackageVersion;
-            Debug.Log($"Updated package Version : {packageVersion}");
-        }
-        else
-        {
-            AotDialogManager.Instance.ShowDialogOne("æØ∏Ê", "ªÒ»°◊ ‘¥∞Ê±æ ß∞‹£¨«ÎºÏ≤ÈÕ¯¬Á", async () => {
-                await UpdatePackageVersion();
-            });
-            //∏¸–¬ ß∞‹
-            Debug.LogError(versionOperation.Error);
-            return;
-        }
-        Debug.LogError("∞¸ÃÂ∞Ê±æ"+package.GetPackageVersion());
-        Debug.LogError("‘∂≥Ã∞Ê±æ" + versionOperation.PackageVersion);
-        if (int.Parse(package.GetPackageVersion()) < int.Parse(versionOperation.PackageVersion))
-        {
-            //–°∞Ê±æ∏¸–¬
-            await UpdatePackageManifest();
-        }
-        else
-        {
-            StartGame();
-        }        
-    }
-
-    //ªÒ»°◊ ‘¥¡–±Ì
-    async UniTask UpdatePackageManifest()
-    {
-        var manifestOperation = package.UpdatePackageManifestAsync(packageVersion, true);
-        await manifestOperation;
-
-        if (manifestOperation.Status != EOperationStatus.Succeed)
-        {
-            AotDialogManager.Instance.ShowDialogOne("æØ∏Ê", "∏¸–¬◊ ‘¥«Âµ• ß∞‹£¨«ÎºÏ≤ÈÕ¯¬Á", async () => {
-                await UpdatePackageManifest();
-            });
-            //∏¸–¬ ß∞‹
-            Debug.LogError(manifestOperation.Error);
-            return;
-        }
-        await CreateDownloader();
-    }
 
     public async UniTask CreateDownloader()
     {
         int downloadingMaxNum = 10;
         int failedTryAgain = 3;
         downloader = package.CreateResourceDownloader(downloadingMaxNum, failedTryAgain);
-        await downloader;
-        //√ª”––Ë“™œ¬‘ÿµƒ◊ ‘¥
+        //await downloader;
+        // No resource files need downloading
+        SetProgressTween(false);
         if (downloader.TotalDownloadCount == 0)
         {
             StartGame();
             return;
         }
 
-        //–Ë“™œ¬‘ÿµƒŒƒº˛◊‹ ˝∫Õ◊‹¥Û–°
+        // Total file count and byte size to download
         int totalDownloadCount = downloader.TotalDownloadCount;
         long totalDownloadBytes = downloader.TotalDownloadBytes;
 
-        //◊¢≤·ªÿµ˜∑Ω∑®
-        downloader.OnDownloadErrorCallback = OnDownloadErrorFunction;
-        downloader.OnDownloadProgressCallback = OnDownloadProgressUpdateFunction;
+        // Register callbacks
+        downloader.DownloadErrorCallback = OnDownloadErrorFunction;
+        downloader.DownloadUpdateCallback = OnDownloadProgressUpdateFunction;
         //downloader.OnDownloadOverCallback = OnDownloadOverFunction;
         //downloader.OnStartDownloadFileCallback = OnStartDownloadFileFunction;
 
-        AotDialogManager.Instance.ShowDialogOne("æØ∏Ê", $"”––¬µƒ◊ ‘¥–Ë“™œ¬‘ÿ,¥Û–°Œ™{FileSizeString(totalDownloadBytes)}", async () => {
-            await Download();
-        });
+        //AotDialogManager.Instance.ShowDialogOne("ÊèêÁ§∫", $"Ê£ÄÊµãÂà∞ËµÑÊ∫êÈúÄË¶Å‰∏ãËΩΩÔºåÂ§ßÂ∞è‰∏∫{FileSizeString(totalDownloadBytes)}", async () => {
+        //    await Download();
+        //});
+        await Download();
     }
 
     public async UniTask Download()
     {
-        //ø™∆Ùœ¬‘ÿ
+        // Start downloading
         downloader.BeginDownload();
         await downloader.Task.AsUniTask();
 
-        //ºÏ≤‚œ¬‘ÿΩ·π˚
+        // Check download result
         if (downloader.Status == EOperationStatus.Succeed)
         {
-            await package.ClearUnusedCacheFilesAsync();
-            //œ¬‘ÿ≥…π¶
-            StartGame();
+            var operation = package.ClearCacheFilesAsync(EFileClearMode.ClearUnusedBundleFiles);
+            await operation.Task.AsUniTask();
+            if (operation.Status == EOperationStatus.Succeed)
+            {
+                // Download succeeded
+                StartGame();
+            }                
         }
     }
 
     /// <summary>
-    /// ◊™ªª∑Ω∑®
+    /// Convert file size unit
     /// </summary>
-    /// <param name="size">◊÷Ω⁄÷µ</param>
+    /// <param name="size">Byte size</param>
     /// <returns></returns>
     private string FileSizeString(double size)
     {
@@ -190,33 +128,49 @@ public class UpdatePanel : AotPanelBase
     }
 
 
-    void OnDownloadErrorFunction(string fileName, string error)
+    void OnDownloadErrorFunction(DownloadErrorData downloadErrorData)
     {
-        AotDialogManager.Instance.ShowDialogOne("æØ∏Ê", "œ¬‘ÿŒƒº˛ ß∞‹£¨ «∑Ò÷ÿ–¬œ¬‘ÿ", async () => {
+        AotDialogManager.Instance.ShowDialogOne("ÊèêÁ§∫", "‰∏ãËΩΩÊñá‰ª∂Â§±Ë¥•ÔºåÊòØÂê¶ÈáçÊñ∞‰∏ãËΩΩ", async () => {
             downloader.CancelDownload();
             await Download();        
         });
     }
-
-    void OnDownloadProgressUpdateFunction(int totalDownloadCount, int currentDownloadCount, long totalDownloadBytes, long currentDownloadBytes)
+    
+    void OnDownloadProgressUpdateFunction(DownloadUpdateData downloadUpdateData)
     {
-        txtContent.text = $"œ¬‘ÿ◊Ó–¬◊ ‘¥({currentDownloadCount})/({totalDownloadCount})";
-        imgProgress.fillAmount = currentDownloadBytes / totalDownloadBytes;
-
+        txtContent.text = $"Ê≠£Âú®‰∏ãËΩΩËµÑÊ∫ê{downloadUpdateData.CurrentDownloadCount}/{downloadUpdateData.TotalDownloadCount}";
+        imgProgress.fillAmount = downloadUpdateData.CurrentDownloadBytes / (downloadUpdateData.TotalDownloadBytes * 1.0f);
     }
 
-    //void OnDownloadOverFunction(bool isSucceed)
-    //{
+    public void SetTitle(string tilte)
+    {
+        txtContent.text = tilte;
+    }
 
-    //}
-
-    //void OnStartDownloadFileFunction(string fileName, long sizeBytes)
-    //{ 
-
-    //}
+    public void SetProgressTween(bool isProgrss)
+    {
+        if (isProgrss)
+        {
+            if (tween != null)
+            {
+                tween.Kill(true);
+            }
+            imgProgress.fillAmount = 0;
+            tween = imgProgress.DOFillAmount(1, 6.0f);
+        }
+        else
+        {
+            if (tween != null)
+            {
+                tween.Kill(true);
+            }
+        }
+        
+    }
 
     async void StartGame() {
-        this.Close();
+        //this.Close();
+        imgProgress.fillAmount = 1.0f;
         await HybridCLRManager.Instance.LoadDll();
     }
 

@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1101,
+    "Type": 1,
+    "Times": 1,
+    "Deplete": 200000,
+    "Relevancy": 1010001,
+    "Class": 9,
+    "Give": 0
+  },
+  {
+    "Id": 1102,
+    "Type": 1,
+    "Times": 10,
+    "Deplete": 2000000,
+    "Relevancy": 1010001,
+    "Class": 9,
+    "Give": 0
+  },
+  {
+    "Id": 1201,
+    "Type": 1,
+    "Times": 1,
+    "Deplete": 500000,
+    "Relevancy": 2010001,
+    "Class": 9,
+    "Give": 0
+  },
+  {
+    "Id": 1202,
+    "Type": 1,
+    "Times": 10,
+    "Deplete": 5000000,
+    "Relevancy": 2010001,
+    "Class": 9,
+    "Give": 0
+  },
+  {
+    "Id": 1301,
+    "Type": 1,
+    "Times": 1,
+    "Deplete": 500000,
+    "Relevancy": 3010001,
+    "Class": 9,
+    "Give": 0
+  },
+  {
+    "Id": 1302,
+    "Type": 1,
+    "Times": 10,
+    "Deplete": 5000000,
+    "Relevancy": 3010001,
+    "Class": 9,
+    "Give": 0
+  },
+  {
+    "Id": 2101,
+    "Type": 2,
+    "Times": 1,
+    "Deplete": 200000,
+    "Relevancy": 4010001,
+    "Class": 9,
+    "Give": 1
+  },
+  {
+    "Id": 2102,
+    "Type": 2,
+    "Times": 10,
+    "Deplete": 1800000,
+    "Relevancy": 4010001,
+    "Class": 9,
+    "Give": 10
+  }
+]

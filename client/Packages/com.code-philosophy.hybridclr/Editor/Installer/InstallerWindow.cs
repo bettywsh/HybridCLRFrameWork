@@ -44,13 +44,21 @@ namespace HybridCLR.Editor.Installer
             EditorGUILayout.LabelField($"Installed: {hasInstall}", EditorStyles.boldLabel);
             GUILayout.Space(10f);
 
-            EditorGUILayout.LabelField($"Package Version:     v{_controller.PackageVersion}");
+            EditorGUILayout.LabelField($"Package Version:   v{_controller.PackageVersion}");
             GUILayout.Space(5f);
-            
+            EditorGUILayout.LabelField($"Installed Version:    v{_controller.InstalledLibil2cppVersion ?? " Unknown"}");
+            GUILayout.Space(5f);
+
             GUILayout.Space(10f);
 
-            if (_controller.IsCompatibleVersion())
+            InstallerController.CompatibleType compatibleType = _controller.GetCompatibleType();
+            if (compatibleType != InstallerController.CompatibleType.Incompatible)
             {
+                if (compatibleType == InstallerController.CompatibleType.MaybeIncompatible)
+                {
+                    EditorGUILayout.HelpBox($"Maybe incompatible with current version, recommend minimum compatible version:{_controller.GetCurrentUnityVersionMinCompatibleVersionStr()}", MessageType.Warning);
+                }
+
                 EditorGUILayout.BeginHorizontal();
                 _installFromDir = EditorGUILayout.Toggle("Copy libil2cpp from local", _installFromDir, GUILayout.MinWidth(100));
                 EditorGUI.BeginDisabledGroup(!_installFromDir);

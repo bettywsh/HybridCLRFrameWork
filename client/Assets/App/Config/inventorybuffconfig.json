@@ -1,0 +1,138 @@
+[
+  {
+    "Id": 1,
+    "UpPro": 4000,
+    "DownPro": 800,
+    "StartBuffUseCondition": [
+      2000000,
+      3000000
+    ],
+    "StartBuffCondition": 935,
+    "NormalStartBuffCondition": 1200,
+    "LowBuffCondition": 965,
+    "UpBuffCondition": 925,
+    "EndUseCondition": [
+      400000000,
+      600000000
+    ],
+    "EndProCondition": [
+      935,
+      955
+    ],
+    "BuffBullet": [
+      30,
+      60
+    ],
+    "FishPrice": [
+      15,
+      300
+    ],
+    "NextSavePro": 945,
+    "BossPrice": [
+      15,
+      300
+    ]
+  },
+  {
+    "Id": 2,
+    "UpPro": 5000,
+    "DownPro": 800,
+    "StartBuffUseCondition": [
+      20000000,
+      40000000
+    ],
+    "StartBuffCondition": 935,
+    "NormalStartBuffCondition": 1200,
+    "LowBuffCondition": 965,
+    "UpBuffCondition": 925,
+    "EndUseCondition": [
+      20000000000,
+      4000000000
+    ],
+    "EndProCondition": [
+      935,
+      955
+    ],
+    "BuffBullet": [
+      30,
+      60
+    ],
+    "FishPrice": [
+      15,
+      500
+    ],
+    "NextSavePro": 945,
+    "BossPrice": [
+      15,
+      500
+    ]
+  },
+  {
+    "Id": 3,
+    "UpPro": 6000,
+    "DownPro": 700,
+    "StartBuffUseCondition": [
+      100000000,
+      150000000
+    ],
+    "StartBuffCondition": 935,
+    "NormalStartBuffCondition": 1200,
+    "LowBuffCondition": 965,
+    "UpBuffCondition": 925,
+    "EndUseCondition": [
+      100000000000,
+      15000000000
+    ],
+    "EndProCondition": [
+      935,
+      955
+    ],
+    "BuffBullet": [
+      30,
+      60
+    ],
+    "FishPrice": [
+      15,
+      500
+    ],
+    "NextSavePro": 945,
+    "BossPrice": [
+      15,
+      500
+    ]
+  },
+  {
+    "Id": 4,
+    "UpPro": 6000,
+    "DownPro": 700,
+    "StartBuffUseCondition": [
+      100000000,
+      150000000
+    ],
+    "StartBuffCondition": 935,
+    "NormalStartBuffCondition": 1200,
+    "LowBuffCondition": 965,
+    "UpBuffCondition": 925,
+    "EndUseCondition": [
+      100000000000,
+      15000000000
+    ],
+    "EndProCondition": [
+      935,
+      955
+    ],
+    "BuffBullet": [
+      30,
+      60
+    ],
+    "FishPrice": [
+      15,
+      500
+    ],
+    "NextSavePro": 945,
+    "BossPrice": [
+      15,
+      500
+    ]
+  }
+]

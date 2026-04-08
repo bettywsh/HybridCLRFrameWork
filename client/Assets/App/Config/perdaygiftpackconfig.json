@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 71101,
+    "Price": 30,
+    "OriginalPrice": 50,
+    "Reward": 10002,
+    "OriginalNum": 1200000,
+    "GiveNum": 1340000
+  },
+  {
+    "Id": 71102,
+    "Price": 98,
+    "OriginalPrice": 176,
+    "Reward": 10002,
+    "OriginalNum": 3920000,
+    "GiveNum": 4600000
+  },
+  {
+    "Id": 71103,
+    "Price": 258,
+    "OriginalPrice": 478,
+    "Reward": 10002,
+    "OriginalNum": 10320000,
+    "GiveNum": 12380000
+  },
+  {
+    "Id": 71104,
+    "Price": 648,
+    "OriginalPrice": 1228,
+    "Reward": 10002,
+    "OriginalNum": 25920000,
+    "GiveNum": 33080000
+  },
+  {
+    "Id": 71105,
+    "Price": 1296,
+    "OriginalPrice": 2456,
+    "Reward": 10002,
+    "OriginalNum": 51840000,
+    "GiveNum": 68680000
+  }
+]

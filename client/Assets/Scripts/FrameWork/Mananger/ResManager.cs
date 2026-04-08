@@ -4,124 +4,41 @@ using YooAsset;
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using System.IO;
 using System.Threading;
 
 public class ResManager : Singleton<ResManager>
 {
 
-    UnOrderMultiMapSet<string, AssetHandle> ResLoaders = new UnOrderMultiMapSet<string, AssetHandle>();
+    Dictionary<string, Dictionary<string, AssetHandle>> ResLoaders = new Dictionary<string, Dictionary<string, AssetHandle>>();
 
     ResourcePackage package;
     public override async UniTask Init()
     {
-        // 初始化资源系统
-        YooAssets.Initialize();
-
-        // 创建默认的资源包
-        package = YooAssets.CreatePackage(AppSettings.AppConfig.PackageName);
-
-        // 设置该资源包为默认的资源包，可以使用YooAssets相关加载接口加载该资源包内容。
-        YooAssets.SetDefaultPackage(package);
-
-        EPlayMode ePlayMode = AppSettings.AppConfig.EPlayMode;
-
-        // 编辑器下的模拟模式
-        InitializationOperation initializationOperation = null;
-        // 编辑器下的模拟模式
-        switch (ePlayMode)
-        {
-            case EPlayMode.EditorSimulateMode:
-                {
-                    EditorSimulateModeParameters createParameters = new EditorSimulateModeParameters();
-                    createParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(EDefaultBuildPipeline.BuiltinBuildPipeline.ToString(), AppSettings.AppConfig.PackageName);
-                    initializationOperation = package.InitializeAsync(createParameters);
-                    await initializationOperation.Task.AsUniTask();
-                    break;
-                }
-            case EPlayMode.OfflinePlayMode:
-                {
-                    OfflinePlayModeParameters createParameters = new OfflinePlayModeParameters();
-                    initializationOperation = package.InitializeAsync(createParameters);
-                    await initializationOperation.Task.AsUniTask();
-                    break;
-                }
-            case EPlayMode.HostPlayMode:
-                {
-                    string defaultHostServer = GetHostServerURL();
-                    string fallbackHostServer = GetHostServerURL();
-                    HostPlayModeParameters createParameters = new HostPlayModeParameters();
-                    //createParameters.DecryptionServices = new FileStreamDecryption();
-                    createParameters.BuildinQueryServices = new GameQueryServices();
-                    createParameters.RemoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
-                    initializationOperation = package.InitializeAsync(createParameters);
-                    await initializationOperation.Task.AsUniTask();
-                    break;
-                }
-        }
-
-        // 如果初始化失败弹出提示界面
-        if (initializationOperation.Status != EOperationStatus.Succeed)
-        {
-            Debug.LogWarning($"{initializationOperation.Error}");
-        }
-        else
-        {
-            var version = package.GetPackageVersion();
-            Debug.Log($"Init resource package version : {version}");
-        }
+        package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);        
     }
 
-    /// <summary>
-    /// 远端资源地址查询服务类
-    /// </summary>
-    private class RemoteServices : IRemoteServices
+    public string GetVersion()
     {
-        private readonly string _defaultHostServer;
-        private readonly string _fallbackHostServer;
-
-        public RemoteServices(string defaultHostServer, string fallbackHostServer)
-        {
-            _defaultHostServer = defaultHostServer;
-            _fallbackHostServer = fallbackHostServer;
-        }
-        string IRemoteServices.GetRemoteMainURL(string fileName)
-        {
-            return $"{_defaultHostServer}/{fileName}";
-        }
-        string IRemoteServices.GetRemoteFallbackURL(string fileName)
-        {
-            return $"{_fallbackHostServer}/{fileName}";
-        }
+        return package.GetPackageVersion();
     }
 
-
-    string GetHostServerURL()
+    //同步加载
+    public T CommonLoadAsset<T>(string location) where T : UnityEngine.Object
     {
-        string hostServerIP = AppSettings.AppConfig.SvrResIp;
-        string appVersion = $"";
-
-#if UNITY_EDITOR
-        if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-            return $"{hostServerIP}/Android/{appVersion}";
-        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-            return $"{hostServerIP}/IPhone/{appVersion}";
-        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-            return $"{hostServerIP}/WebGL/{appVersion}";
-        else
-            return $"{hostServerIP}/PC/{appVersion}";
-#else
-		        if (Application.platform == RuntimePlatform.Android)
-		        	return $"{hostServerIP}/Android/{appVersion}";
-		        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-		        	return $"{hostServerIP}/IPhone/{appVersion}";
-		        else if (Application.platform == RuntimePlatform.WebGLPlayer)
-		        	return $"{hostServerIP}/WebGL/{appVersion}";
-		        else
-		        	return $"{hostServerIP}/PC/{appVersion}";
-#endif
+        var handle = package.LoadAssetSync(location);
+        T t = (T)handle.AssetObject;
+        return t;
     }
 
+    public T SceneLoadAsset<T>(string location, CancellationToken ct = default) where T : UnityEngine.Object
+    {
+        AssetHandle handle = package.LoadAssetSync<T>(location);
+        T t = (T)handle.AssetObject;
+        AddResloader(LoadSceneManager.Instance.CurScene(), handle);
+        return t;
+    }
+
+    //异步加载
     public async UniTask<T> CommonLoadAssetAsync<T>(string location) where T : UnityEngine.Object
     {
         return await LoadAssetAsync<T>("Common", location, default);
@@ -133,15 +50,21 @@ public class ResManager : Singleton<ResManager>
     }
 
     #region 框架专用
-    public async UniTask LoadSceneAsync(string location)
+
+    public SceneHandle LoadSceneAsync(string location)
     {
-        await package.LoadSceneAsync(location, LoadSceneMode.Single, false).Task.AsUniTask();
+        return package.LoadSceneAsync(location, LoadSceneMode.Single);
     }
     public TextAsset LoadAsset<T>(string location) where T : UnityEngine.Object
     {
         AssetHandle ah = package.LoadAssetSync<T>(location);
         package.TryUnloadUnusedAsset(location);
         return ah.AssetObject as TextAsset;
+    }
+
+    public async UniTask LoadAllAssetsAsync<T>(string location) where T : UnityEngine.Object
+    {
+        await package.LoadAllAssetsAsync<T>(location).Task.AsUniTask();
     }
     #endregion
 
@@ -150,7 +73,15 @@ public class ResManager : Singleton<ResManager>
     private void AddResloader(string resName, AssetHandle assetHandle)
     {
         if (resName == "Common") return;
-        ResLoaders.Add(resName, assetHandle);
+        ResLoaders.TryGetValue(resName, out var assetHandles);
+        if (assetHandles == null)
+        {
+            assetHandles = new Dictionary<string, AssetHandle>();
+        }
+        if (assetHandles.ContainsKey(assetHandle.GetAssetInfo().AssetPath))
+        {
+            assetHandles.Add(assetHandle.GetAssetInfo().AssetPath, assetHandle);
+        }
     }
 
     private async UniTask<T> LoadAssetAsync<T>(string resName, string location, CancellationToken ct) where T : UnityEngine.Object
@@ -170,7 +101,7 @@ public class ResManager : Singleton<ResManager>
         }
         foreach (var assetHandle in assetHandles)
         {
-            assetHandle.Release();
+            assetHandle.Value.Release();
         }
         ResLoaders.Remove(resLoaderName);
     }
@@ -179,7 +110,8 @@ public class ResManager : Singleton<ResManager>
     public void GC()
     {
         var package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
-        package.UnloadUnusedAssets();
+        var operation = package.UnloadUnusedAssetsAsync();
+        //operation.WaitForAsyncComplete(); //支持同步操作
     }
 
     public override void Dispose()

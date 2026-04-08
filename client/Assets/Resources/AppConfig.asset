@@ -13,17 +13,21 @@ MonoBehaviour:
   m_Name: AppConfig
   m_EditorClassIdentifier: 
   EPlayMode: 0
-  AppVersion: 1
-  ResVersion: 10001
-  ChannelId: 8002
-  SvrResIp: http://192.168.14.149:8082/
+  AppVersion: 6
+  ResVersion: 49
+  ChannelId: 1
+  ChannelVer: 1
+  SvrResIp: https://oss.dongfanglanyu.com/zhanche/develop/
   DebugLog: 1
   GameFrameRate: 30
   PackageName: DefaultPackage
   DownloadApkName: ff.apk
-  ProtoBuffPackageName: Proto.basepb.
-  SvrGameIp: 47.101.158.105
-  SvrGamePort: 30108
+  ProtoBuffPackageName: Msg.
+  SvrGameIp: 121.196.227.83
+  SvrGamePort: 5678
+  hasAppPay: 0
+  SdkDev: 1
+  HttpUrl: http://47.101.186.85:83/
   AotDll:
   - mscorlib.dll
   - System.Core.dll
@@ -35,7 +39,12 @@ MonoBehaviour:
   - DOTween.dll
   - ThirdParty.dll
   - Newtonsoft.Json.dll
+  - ZString.dll
+  - Luban.Runtime.dll
+  - System.Runtime.CompilerServices.Unsafe.dll
+  - ParadoxNotion.dll
+  - NodeCanvas.dll
   HotfixDll:
   - Hotfix.dll
   - FrameWork.dll
-  Mode: "\u7F16\u8F91\u5668"
+  Mode: "\u6D4B\u8BD5\u670D"

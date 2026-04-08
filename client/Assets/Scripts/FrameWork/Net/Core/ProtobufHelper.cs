@@ -30,6 +30,14 @@ public static class ProtobufHelper
 		return o;
 	}
 
+    public static T Deserialize<T>(byte[] bytes)
+    {
+		using (MemoryStream stream = new MemoryStream(bytes, 0, bytes.Length))
+		{
+			return ProtoBuf.Serializer.Deserialize<T>(stream);
+		}
+    }
+
     public static byte[] Serialize(object message)
 	{
 		using MemoryStream stream = new MemoryStream();

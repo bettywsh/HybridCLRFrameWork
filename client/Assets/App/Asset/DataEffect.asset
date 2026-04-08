@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0a0a53a1268574daf589a3ce33719a, type: 3}
+  m_Name: DataEffect
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  textDamagePrefabs: {fileID: -885751806235266382, guid: ee815e30548ccb744acd5b75cb255894, type: 3}
+  fadeTime: 0.2
+  normalHitColor: {r: 1, g: 1, b: 1, a: 1}
+  critHitColor: {r: 1, g: 0.41568628, b: 0, a: 1}
+  healTextColor: {r: 0, g: 1, b: 0, a: 1}
+  normalTextSize: 0.5
+  critTextSize: 0.7
+  healTextSize: 0.5
+  normalTextTime: 0.8
+  critTextTime: 1.1
+  textRandomOffset: 0.75
+  ingameItemPrefabs: {fileID: 3251445617322340785, guid: 58550461255ba314bbb8bd2270474775, type: 3}
+  bossBoxItemPrefabs: {fileID: 1173268495003826515, guid: f653278b245c26744a058aeddf234372, type: 3}
+  chestInGamePrefabs: {fileID: 4451635797081533320, guid: 501e70614efaf03488c3e0255e6f290c, type: 3}
+  bossChestDirection: {fileID: 8111321112839691580, guid: 03c0af8510ea2b541b6870d0ade15feb, type: 3}
+  fxReviceSkill: {fileID: 1792937678019372448, guid: 1f0440cb19ca4da48a7721047fe69a15, type: 3}
+  fxUiUpgare: {fileID: 3469091763459136770, guid: 8579bbef5fed26e44ac2b78e08efdd1e, type: 3}
+  ElectricShockSprite:
+  - {fileID: 21300000, guid: 7a70cac9e0fbd344580ca2973d5c27ad, type: 3}
+  - {fileID: 21300000, guid: d07227e54db44a145a207eb0f1beaebc, type: 3}
+  fxEnemyDie: {fileID: 5123128640277352424, guid: bf033cc2b2d5df04f964d1a47e7a185e, type: 3}

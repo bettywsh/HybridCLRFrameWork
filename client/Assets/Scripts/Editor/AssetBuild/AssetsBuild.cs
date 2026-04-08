@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using YooAsset;
 using YooAsset.Editor;
 
 public class AssetsBuild
@@ -37,13 +38,15 @@ public class AssetsBuild
 
         var buildoutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
         var streamingAssetsRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
+
+        #region BuiltinBuildPipeline
         // 构建参数
         BuiltinBuildParameters buildParameters = new BuiltinBuildParameters();
         buildParameters.BuildOutputRoot = buildoutputRoot;
         buildParameters.BuildinFileRoot = streamingAssetsRoot;
         buildParameters.BuildPipeline = EBuildPipeline.BuiltinBuildPipeline.ToString();
-        buildParameters.BuildTarget = BuildTarget.Android;
-        buildParameters.BuildMode = EBuildMode.ForceRebuild;
+        buildParameters.BuildTarget = BuildTarget.Android;        
+        //buildParameters.BuildMode = EBuildMode.ForceRebuild;
         buildParameters.PackageName = "DefaultPackage";
         buildParameters.PackageVersion = appConfig.ResVersion.ToString();
         buildParameters.VerifyBuildingResult = true;
@@ -55,6 +58,7 @@ public class AssetsBuild
 
         // 执行构建
         BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
+        //ScriptableBuildPipeline pipeline = new ScriptableBuildPipeline();
         var buildResult = pipeline.Run(buildParameters, true);
         if (buildResult.Success)
         {
@@ -64,6 +68,36 @@ public class AssetsBuild
         {
             Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
         }
+        #endregion
+
+        #region ScriptableBuildPipeline
+        //ScriptableBuildParameters buildParameters = new ScriptableBuildParameters();
+        //buildParameters.BuildOutputRoot = buildoutputRoot;
+        //buildParameters.BuildinFileRoot = streamingAssetsRoot;
+        //buildParameters.BuildPipeline = EBuildPipeline.ScriptableBuildPipeline.ToString();
+        //buildParameters.BuildTarget = BuildTarget.Android;
+        //buildParameters.BuildMode = EBuildMode.SimulateBuild;
+        //buildParameters.PackageName = "DefaultPackage";
+        //buildParameters.PackageVersion = appConfig.ResVersion.ToString();
+        //buildParameters.VerifyBuildingResult = true;
+        //buildParameters.FileNameStyle = EFileNameStyle.HashName;
+        //buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
+        //buildParameters.BuildinFileCopyParams = string.Empty;
+        ////buildParameters.EncryptionServices = CreateEncryptionInstance();
+        //buildParameters.CompressOption = ECompressOption.Uncompressed;
+
+        //// 执行构建
+        //ScriptableBuildPipeline pipeline = new ScriptableBuildPipeline();
+        //var buildResult = pipeline.Run(buildParameters, true);
+        //if (buildResult.Success)
+        //{
+        //    Debug.Log($"构建成功 : {buildResult.OutputPackageDirectory}");
+        //}
+        //else
+        //{
+        //    Debug.LogError($"构建失败 : {buildResult.ErrorInfo}");
+        //}
+        #endregion
 
         Debug.Log($"写入版本文件");
         string verPath = $"{buildoutputRoot}/{BuildTarget.Android.ToString()}/DefaultPackage/{appConfig.ResVersion}/ver.txt";
@@ -79,7 +113,7 @@ public class AssetsBuild
         var apkDir = string.Format("{0}/_APK/{1}", $"{Application.dataPath}/../", currentApkName);
         if (!Directory.Exists(apkDir))
             Directory.CreateDirectory(apkDir);
-        string toPath = string.Format("{0}/mjdmx_{1}.apk", apkDir, currentApkName);
+        string toPath = string.Format("{0}/hsmxw_{1}.apk", apkDir, currentApkName);
 
         string[] scenes = { "Assets/App/Scene/Start.unity",
                             "Assets/App/Scene/Main.unity",

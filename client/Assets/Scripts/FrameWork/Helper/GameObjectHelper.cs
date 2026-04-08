@@ -1,6 +1,7 @@
 ﻿using ICSharpCode.SharpZipLib.Core;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,14 +9,14 @@ public class GameObjectHelper
 {
     public static Transform Instantiate(Transform parent, GameObject children)
     {
-        Transform go = GameObject.Instantiate<GameObject>(children).transform;
+        var go = Object.Instantiate<GameObject>(children).transform;
         SetParent(parent, go);
         return go;
     }
 
     public static Transform SetParent(Transform parent, Transform go)
     {
-        go.SetParent(parent, false);
+        go.SetParent(parent, false);        
         go.localPosition = Vector3.zero;
         go.localScale = Vector3.one;
         go.localEulerAngles = Vector3.zero;
@@ -24,8 +25,8 @@ public class GameObjectHelper
 
     public static async void SetGrey(Transform transform, bool isGrey)
     {
-        Image[] images = transform.GetComponentsInChildren<Image>();
-        foreach(Image image in images)
+        var images = transform.GetComponentsInChildren<Image>();
+        foreach(var image in images)
         {
             if (isGrey)
                 image.material = await ResManager.Instance.SceneLoadAssetAsync<Material>("Assets/App/Material/ImageGrey.mat");
@@ -33,25 +34,28 @@ public class GameObjectHelper
                 image.material = null;
         }
 
-        Button[] buttons = transform.GetComponentsInChildren<Button>();
-        foreach (Button button in buttons)
+        var texts = transform.GetComponentsInChildren<TextMeshProUGUI>();
+        foreach (var text in texts)
         {
-            if (isGrey)
-                button.enabled = false;
-            else
-                button.enabled = true;
+            text.fontMaterial.SetFloat("_Grey", isGrey == true ? 1: 0);
+        }
+
+        var buttons = transform.GetComponentsInChildren<UButton>();
+        foreach (var button in buttons)
+        {
+            button.enabled = !isGrey;
         }
     }
 
 
     public static void SetMaterials(Renderer renderer, Material material1)
     {
-        Material[] materials = new Material[]{ new Material(material1) };
+        var materials = new Material[]{ new Material(material1) };
         renderer.materials = materials;
     }
     public static void SetMaterials(Renderer renderer, Material material1, Material material2)
     {
-        Material[] materials = new Material[] { new Material(material1), new Material(material2) };
+        var materials = new Material[] { new Material(material1), new Material(material2) };
         renderer.materials = materials;
     }
 }

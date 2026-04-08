@@ -7,6 +7,7 @@ using Cysharp.Threading.Tasks;
 
 public class UpdateDialogPanel : AotPanelBase
 {
+    public TextMeshProUGUI txtTitle;
     public TextMeshProUGUI txtMsg;
     public TextMeshProUGUI txtOk;
     public TextMeshProUGUI txtCancel;
@@ -18,25 +19,33 @@ public class UpdateDialogPanel : AotPanelBase
     {
         dialogInfo = args[0] as AotDialogInfo;
         txtMsg.text = dialogInfo.txtMsg;
-        txtOk.text = "确定";
-        txtCancel.text = "取消";
+        txtOk.text = "纭畾";
+        txtCancel.text = "鍙栨秷";
         if (dialogInfo.txtOk != null)
         {
-            //txt_Ok.text = TextMgr:GetText(dialogInfo.txtOk);
+            txtOk.text = dialogInfo.txtOk;
         }
 
         if (dialogInfo.txtCal != null)
         {
-            //txt_Cancel.text = TextMgr:GetText(dialogInfo.txtCal);
+            txtCancel.text = dialogInfo.txtCal;
         }
 
         if (dialogInfo.okFun != null)
         {
             btnOk.gameObject.SetActive(true);
         }
+        else 
+        {
+            btnOk.gameObject.SetActive(false);
+        }
         if (dialogInfo.calFun != null)
         {
             btnCancel.gameObject.SetActive(true);
+        }
+        else
+        {
+            btnCancel.gameObject.SetActive(false);
         }
         btnOk.onClick.AddListener(OnClick_btnOk);
         btnCancel.onClick.AddListener(OnClick_btnCancel);
@@ -44,14 +53,14 @@ public class UpdateDialogPanel : AotPanelBase
 
     void OnClick_btnOk()
     {
-        dialogInfo.okFun?.Invoke();
         this.Close();
+        dialogInfo.okFun?.Invoke();        
     }
 
     void OnClick_btnCancel()
     {
-        dialogInfo.calFun?.Invoke();
         this.Close();
+        dialogInfo.calFun?.Invoke();        
     }
 
 

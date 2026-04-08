@@ -2,13 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SoundManager : Singleton<SoundManager>
+public class SoundManager : MonoSingleton<SoundManager>
 {
 
     private AudioSource audio;
@@ -26,11 +25,10 @@ public class SoundManager : Singleton<SoundManager>
         if (audio == null)
         {
             //创建一个名称为Sound的空GameObject
-            GameObject go = new GameObject("Sound");
+            GameObject go = this.gameObject;
             //在其上添加AudioListener 和 AudioSource 组件
             go.AddComponent<AudioListener>();
             audio = go.AddComponent<AudioSource>();
-            //DontDestroyOnLoad(go);
             root = go.transform;
             isCanBackGround = CanPlayBackSound();
             background_volume = PlayerPrefs.GetFloat("BackGroundVolume", 1f);
@@ -43,9 +41,7 @@ public class SoundManager : Singleton<SoundManager>
             {
                 effect_audio[i].volume = effect_volume;
             }
-        }
-
-       
+        }       
     }
 
 
@@ -84,7 +80,7 @@ public class SoundManager : Singleton<SoundManager>
     public async UniTask<AudioClip> LoadAudioClipAsync(string name)
     {
         //不在缓存中 则异步加载资源
-        return await ResManager.Instance.SceneLoadAssetAsync<AudioClip>(name);
+        return await ResManager.Instance.CommonLoadAssetAsync<AudioClip>(name);
     }
 
     public bool CanPlayBackSound()
@@ -146,11 +142,27 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public async void PlayEffectSound(string moduleName, string name)
+    public void PlayEffectSound(AudioClip clip)
     {
-        GameObject go = new GameObject(name);        
-        AudioSource effect = go.AddComponent<AudioSource>();
-        go.transform.SetParent(root);
+        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Battle/SoundEffect"), root);
+        //GameObject go = new GameObject(clip.name);
+        go.name = clip.name;
+        AudioSource effect = go.GetComponent<AudioSource>();
+        effect.loop = false;
+        effect.playOnAwake = false;
+        effect.volume = effect_volume;
+        //改为异步加载
+        effect.clip = clip;
+        effect_audio.Add(effect);
+        effect.Play();
+
+    }
+
+    public async void PlayEffectSound(string name)
+    {
+        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Battle/SoundEffect"), root);
+        go.name = name;
+        AudioSource effect = go.GetComponent<AudioSource>();
         effect.loop = false;
         effect.playOnAwake = false;
         effect.volume = effect_volume;
@@ -167,7 +179,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             if (effect_audio[i].name == name)
             {
-                GameObject.DestroyImmediate(effect_audio[i].gameObject);
+                PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
                 effect_audio.RemoveAt(i);
             }
         }
@@ -177,8 +189,24 @@ public class SoundManager : Singleton<SoundManager>
     {
         for (int i = effect_audio.Count - 1; i >= 0; i--)
         {
-            GameObject.DestroyImmediate(effect_audio[i].gameObject);
+            PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
             effect_audio.RemoveAt(i);         
+        }
+    }
+
+    public void PauseAllEffectSound()
+    {
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            effect_audio[i].Pause();
+        }
+    }
+
+    public void UnPauseAllEffectSound()
+    {
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            effect_audio[i].UnPause();
         }
     }
 
@@ -202,7 +230,17 @@ public class SoundManager : Singleton<SoundManager>
     {
         audio.Stop();
     }
-    
+
+    public void PauseBacksound()
+    {
+        audio.Pause();
+    }
+
+    public void UnPauseBacksound()
+    {
+        audio.UnPause();
+    }
+
     public bool CanPlaySoundEffect()
     {
         string key = "SoundEffect";
@@ -235,7 +273,7 @@ public class SoundManager : Singleton<SoundManager>
             {
                 if (!effect_audio[i].isPlaying)
                 {
-                    GameObject.DestroyImmediate(effect_audio[i].gameObject);
+                    PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
                     effect_audio.RemoveAt(i);                    
                 }
             }
@@ -244,6 +282,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public override void Dispose() {
         base.Dispose();
+        PoolManager.Instance.DestoryPoolName("SoundEffects");
         GameObject.Destroy(root.gameObject); 
     }
 }

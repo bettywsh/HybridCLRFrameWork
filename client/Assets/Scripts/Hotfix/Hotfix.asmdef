@@ -13,7 +13,14 @@
         "Luban.Runtime",
         "Aot",
         "UniTask.DOTween",
-        "UniTask.TextMeshPro"
+        "UniTask.TextMeshPro",
+        "Cinemachine",
+        "ZString",
+        "spine-unity",
+        "spine-csharp",
+        "UniRx",
+        "ParadoxNotion",
+        "NodeCanvas"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

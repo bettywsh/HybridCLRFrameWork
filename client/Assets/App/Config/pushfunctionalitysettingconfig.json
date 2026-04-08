@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 0,
+    "FunactionalityName": "签到有礼",
+    "CurrentType": "__CLRScript.SignInGiftPanel",
+    "TimeCondition": 0,
+    "MillisecondValue": 0,
+    "NextType": 1
+  },
+  {
+    "Id": 1,
+    "FunactionalityName": "七日签到",
+    "CurrentType": "__CLRScript.SevenDayPanel",
+    "TimeCondition": 0,
+    "MillisecondValue": 0,
+    "NextType": -1
+  }
+]

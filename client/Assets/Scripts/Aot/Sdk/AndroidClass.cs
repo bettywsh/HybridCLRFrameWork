@@ -4,20 +4,6 @@ using UnityEngine;
 
 public class AndroidClass {
 
-
-    private static AndroidJavaClass m_javaClass;
-    public static AndroidJavaClass UnityJavaClass
-    {
-        get
-        {
-            if (m_javaClass == null)
-            {
-                m_javaClass = new AndroidJavaClass("com.djl28.fish3d.activity.MainActivity");
-            }
-            return m_javaClass;
-        }
-    }
-
     private static AndroidJavaObject m_unityActivity;
     public static AndroidJavaObject UnityJavaObject
     {

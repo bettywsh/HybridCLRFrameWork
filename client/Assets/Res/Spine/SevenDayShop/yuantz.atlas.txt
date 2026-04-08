@@ -1,0 +1,10 @@
+yuantz.png
+size:1024,1024
+filter:Linear,Linear
+pma:true
+gxa
+bounds:2,2,532,531
+offsets:10,1,543,533
+star
+bounds:536,448,75,85
+offsets:3,5,83,93

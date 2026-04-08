@@ -1,0 +1,258 @@
+[
+  {
+    "Id": 5000000,
+    "Description": "本周击败100只boss",
+    "Tapy": 5,
+    "Quantity": 100,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000001,
+    "Description": "本周击败200只boss",
+    "Tapy": 5,
+    "Quantity": 200,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000002,
+    "Description": "本周击败300只boss",
+    "Tapy": 5,
+    "Quantity": 300,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000003,
+    "Description": "本周击败400只boss",
+    "Tapy": 5,
+    "Quantity": 400,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000004,
+    "Description": "本周击败500只boss",
+    "Tapy": 5,
+    "Quantity": 500,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000005,
+    "Description": "本周击败600只boss",
+    "Tapy": 5,
+    "Quantity": 600,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000006,
+    "Description": "本周击败700只boss",
+    "Tapy": 5,
+    "Quantity": 700,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000007,
+    "Description": "本周击败800只boss",
+    "Tapy": 5,
+    "Quantity": 800,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000008,
+    "Description": "本周击败900只boss",
+    "Tapy": 5,
+    "Quantity": 900,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000009,
+    "Description": "本周击败1000只boss",
+    "Tapy": 5,
+    "Quantity": 1000,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000010,
+    "Description": "本周击败1200只boss",
+    "Tapy": 5,
+    "Quantity": 1200,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000011,
+    "Description": "本周击败1500只boss",
+    "Tapy": 5,
+    "Quantity": 1500,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 5000012,
+    "Description": "本周击败2000只boss",
+    "Tapy": 5,
+    "Quantity": 2000,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000000,
+    "Description": "在本赛季一共完成100个任务",
+    "Tapy": 6,
+    "Quantity": 100,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000001,
+    "Description": "在本赛季一共完成200个任务",
+    "Tapy": 6,
+    "Quantity": 200,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000002,
+    "Description": "在本赛季一共完成300个任务",
+    "Tapy": 6,
+    "Quantity": 300,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000003,
+    "Description": "在本赛季一共完成400个任务",
+    "Tapy": 6,
+    "Quantity": 400,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000004,
+    "Description": "在本赛季一共完成500个任务",
+    "Tapy": 6,
+    "Quantity": 500,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000005,
+    "Description": "在本赛季一共完成600个任务",
+    "Tapy": 6,
+    "Quantity": 600,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000006,
+    "Description": "在本赛季一共完成700个任务",
+    "Tapy": 6,
+    "Quantity": 700,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000007,
+    "Description": "在本赛季一共完成800个任务",
+    "Tapy": 6,
+    "Quantity": 800,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000008,
+    "Description": "在本赛季一共完成900个任务",
+    "Tapy": 6,
+    "Quantity": 900,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000009,
+    "Description": "在本赛季一共完成1000个任务",
+    "Tapy": 6,
+    "Quantity": 1000,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000010,
+    "Description": "在本赛季一共完成1100个任务",
+    "Tapy": 6,
+    "Quantity": 1100,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000011,
+    "Description": "在本赛季一共完成1200个任务",
+    "Tapy": 6,
+    "Quantity": 1200,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000012,
+    "Description": "在本赛季一共完成1300个任务",
+    "Tapy": 6,
+    "Quantity": 1300,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000013,
+    "Description": "在本赛季一共完成1400个任务",
+    "Tapy": 6,
+    "Quantity": 1400,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000014,
+    "Description": "在本赛季一共完成1500个任务",
+    "Tapy": 6,
+    "Quantity": 1500,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000015,
+    "Description": "在本赛季一共完成1600个任务",
+    "Tapy": 6,
+    "Quantity": 1600,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000016,
+    "Description": "在本赛季一共完成1700个任务",
+    "Tapy": 6,
+    "Quantity": 1700,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000017,
+    "Description": "在本赛季一共完成1800个任务",
+    "Tapy": 6,
+    "Quantity": 1800,
+    "Reward": 10002,
+    "Amount": 10000
+  },
+  {
+    "Id": 6000018,
+    "Description": "在本赛季一共完成2000个任务",
+    "Tapy": 6,
+    "Quantity": 2000,
+    "Reward": 10002,
+    "Amount": 10000
+  }
+]

@@ -22,6 +22,10 @@ namespace HybridCLR.Editor.Il2CppDef
             public string OutputFile2 { get; set; }
 
             public string UnityVersion { get; set; }
+
+            public bool EnableProfilerInReleaseBuild { get; set; }
+
+            public bool EnableStraceTraceInWebGLReleaseBuild { get; set; }
         }
 
         private readonly Options _options;
@@ -52,12 +56,39 @@ namespace HybridCLR.Editor.Il2CppDef
 
             lines.Add($"#define HYBRIDCLR_UNITY_VERSION {majorVer}{minorVer1.ToString("D2")}{minorVer2.ToString("D2")}");
             lines.Add($"#define HYBRIDCLR_UNITY_{majorVer} 1");
-            for (int ver = 2019; ver <= 2024; ver++)
+            for (int ver = 2019; ver <= 2023; ver++)
             {
                 if (majorVer >= ver)
                 {
                     lines.Add($"#define HYBRIDCLR_UNITY_{ver}_OR_NEW 1");
                 }
+            }
+            for (int ver = 6000; ver <= 6100; ver++)
+            {
+                if (majorVer >= ver)
+                {
+                    lines.Add($"#define HYBRIDCLR_UNITY_{ver}_OR_NEW 1");
+                }
+            }
+
+#if TUANJIE_1_1_OR_NEWER
+            var tuanjieMatch = Regex.Matches(Application.tuanjieVersion, @"(\d+)\.(\d+)\.(\d+)");
+            int tuanjieMajorVer = int.Parse(tuanjieMatch[0].Groups[1].Value);
+            int tuanjieMinorVer1 = int.Parse(tuanjieMatch[0].Groups[2].Value);
+            int tuanjieMinorVer2 = int.Parse(tuanjieMatch[0].Groups[3].Value);
+            lines.Add($"#define HYBRIDCLR_TUANJIE_VERSION {tuanjieMajorVer}{tuanjieMinorVer1.ToString("D2")}{tuanjieMinorVer2.ToString("D2")}");
+#elif TUANJIE_2022_3_OR_NEWER
+            lines.Add($"#define HYBRIDCLR_TUANJIE_VERSION 10000");
+#endif
+
+            if (_options.EnableProfilerInReleaseBuild)
+            {
+                lines.Add("#define HYBRIDCLR_ENABLE_PROFILER_IN_RELEASE_BUILD 1");
+            }
+
+            if (_options.EnableStraceTraceInWebGLReleaseBuild)
+            {
+                lines.Add("#define HYBRIDCLR_ENABLE_STRACE_TRACE_IN_WEBGL_RELEASE_BUILD 1");
             }
 
             frr.Replace("UNITY_VERSION", string.Join("\n", lines));

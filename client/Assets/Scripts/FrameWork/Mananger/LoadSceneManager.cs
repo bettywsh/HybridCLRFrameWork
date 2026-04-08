@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.U2D;
 using UnityEngine.SceneManagement;
 using YooAsset;
 using Cysharp.Threading.Tasks;
-using System.Runtime.Remoting.Messaging;
 
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
-    string name;
+    string name = SceneManager.GetActiveScene().name;
     SceneBase sceneScript;
     string oldName;
     SceneBase oldSceneScript;
     int msgProgress;
     int msgComplete;
+    SceneHandle curSceneHandle;
     public override async UniTask Init()
     {
         await base.Init();
-        name = SceneManager.GetActiveScene().name;
     }
 
     public async UniTask Init(int progress, int complete)
@@ -41,19 +39,25 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         ChangeScene(name);
     }
 
-    void UnLoadScene()
+    public async void UnLoadScene()
     {
+        //if (name == oldName)
+        //    return;
         Application.backgroundLoadingPriority = ThreadPriority.High;
-        if (oldSceneScript != null)
+        if (curSceneHandle != null)
         {
-            oldSceneScript.UnLoadScene();
+            var operation = curSceneHandle.UnloadAsync();
+            await operation;
         }
+        oldSceneScript?.UnLoadScene();
         GC();
     }
 
     public async void ChangeScene(string name)
     {
-        await ResManager.Instance.LoadSceneAsync("Assets/App/Scene/" + name);
+        curSceneHandle = ResManager.Instance.LoadSceneAsync("Assets/App/Scene/" + name);
+
+        //SceneManager.LoadScene(name);
         Type type = AssemblyManager.Instance.GetType(EAttribute.Scene, name + "Scene");
         if (type != null)
         {
@@ -89,8 +93,8 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         {
             ResManager.Instance.UnLoadAssetBundle(oldName);
         }
-        System.GC.Collect();
+        //System.GC.Collect();
         ResManager.Instance.GC();
-        Resources.UnloadUnusedAssets();
+        //Resources.UnloadUnusedAssets();
     }
 }

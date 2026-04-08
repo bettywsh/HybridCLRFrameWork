@@ -29,8 +29,4 @@ public abstract class AotSingleton<T> : IDisposable where T : class, new()
 		m_instance = null;
     }
 
-	~AotSingleton()
-	{
-		Debug.LogError("Ïú»Ù" + this.GetType());
-	}
 }

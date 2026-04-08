@@ -24,7 +24,7 @@ public abstract class Singleton<T> : IDisposable where T : class, new()
 
     public virtual async UniTask Init()
     {
-		await UniTask.Yield();
+		//await UniTask.Yield();
     }
 
 

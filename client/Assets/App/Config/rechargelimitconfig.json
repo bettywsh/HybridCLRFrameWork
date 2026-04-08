@@ -1,0 +1,200 @@
+[
+  {
+    "Id": 1,
+    "MinRecharge": 0,
+    "MaxRecharge": 6,
+    "IsNew": 0,
+    "DownLimitPerc": [
+      0
+    ],
+    "DownLimitBuff": [
+      50
+    ],
+    "UpLimitPerc": [
+      0
+    ],
+    "UpLimitBuff": [
+      0
+    ]
+  },
+  {
+    "Id": 2,
+    "MinRecharge": 6,
+    "MaxRecharge": 12,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      300
+    ],
+    "DownLimitBuff": [
+      80
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 3,
+    "MinRecharge": 12,
+    "MaxRecharge": 36,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      180
+    ],
+    "DownLimitBuff": [
+      80
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 4,
+    "MinRecharge": 36,
+    "MaxRecharge": 101,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      300
+    ],
+    "DownLimitBuff": [
+      80
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 5,
+    "MinRecharge": 101,
+    "MaxRecharge": 501,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      200
+    ],
+    "DownLimitBuff": [
+      80
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 6,
+    "MinRecharge": 501,
+    "MaxRecharge": 2001,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      180
+    ],
+    "DownLimitBuff": [
+      80
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 7,
+    "MinRecharge": 2001,
+    "MaxRecharge": 5001,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      150
+    ],
+    "DownLimitBuff": [
+      70
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 8,
+    "MinRecharge": 5001,
+    "MaxRecharge": 10001,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      150
+    ],
+    "DownLimitBuff": [
+      60
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 9,
+    "MinRecharge": 10001,
+    "MaxRecharge": 50001,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      150
+    ],
+    "DownLimitBuff": [
+      60
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 10,
+    "MinRecharge": 50001,
+    "MaxRecharge": 100001,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      110
+    ],
+    "DownLimitBuff": [
+      60
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  },
+  {
+    "Id": 11,
+    "MinRecharge": 100001,
+    "MaxRecharge": 10000000,
+    "IsNew": 1,
+    "DownLimitPerc": [
+      110
+    ],
+    "DownLimitBuff": [
+      60
+    ],
+    "UpLimitPerc": [
+      65
+    ],
+    "UpLimitBuff": [
+      150
+    ]
+  }
+]

@@ -1,13 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Experimental.GlobalIllumination;
 
 /// <summary>
 /// xuss
 /// 
 /// 20200514
 /// </summary>
-public delegate void EventHandler(object[] msgDatas);
+/// 
+
+public struct EventHandler
+{
+    public EventDelegate eventDelegate;
+    public Type type;
+}
+
+public delegate void EventDelegate(params object[] msgDatas);
 public class EventManager : Singleton<EventManager>
 {
     private Dictionary<int, List<EventHandler>> netHandlerDic = new Dictionary<int, List<EventHandler>>();
@@ -53,7 +64,7 @@ public class EventManager : Singleton<EventManager>
 
             foreach (EventHandler itemHand in handle)
             {
-                itemHand(msgData);
+                itemHand.eventDelegate(msgData);
             }
 
         }
@@ -75,11 +86,21 @@ public class EventManager : Singleton<EventManager>
     }
 
 
-    public void RemoveMessage(int eventName)
+    public void RemoveMessage(int eventName, Type type)
     {
         if (messageHandlerDic.ContainsKey(eventName))
         {
-            messageHandlerDic.Remove(eventName);
+            if (messageHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
+            {
+                if (list.Count > 1)
+                {
+                    list.RemoveAll(x => x.type == type);
+                }
+                else
+                {
+                    messageHandlerDic.Remove(eventName);
+                }
+            }
         }
     }
 
@@ -94,11 +115,10 @@ public class EventManager : Singleton<EventManager>
 
         if (messageHandlerDic.TryGetValue(eventName, out handle))
         {
-            foreach (EventHandler itemHand in handle)
+            for (int i = handle.Count - 1; i >= 0; i--)
             {
-                itemHand(msgData);
+                handle[i].eventDelegate(msgData);                
             }
-
         }
     }
     #endregion
@@ -118,11 +138,21 @@ public class EventManager : Singleton<EventManager>
     }
 
 
-    public void RemoveTimer(int eventName)
+    public void RemoveTimer(int eventName, Type type)
     {
         if (timerHandlerDic.ContainsKey(eventName))
         {
-            timerHandlerDic.Remove(eventName);
+            if (timerHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
+            {
+                if (list.Count > 1)
+                {
+                    list.RemoveAll(x => x.type == type);
+                }
+                else
+                {
+                    timerHandlerDic.Remove(eventName);
+                }
+            }
         }
     }
 
@@ -137,11 +167,10 @@ public class EventManager : Singleton<EventManager>
 
         if (timerHandlerDic.TryGetValue(eventName, out handle))
         {
-            foreach (EventHandler itemHand in handle)
+            for (int i = handle.Count - 1; i >= 0; i--)
             {
-                itemHand(msgData);
+                handle[i].eventDelegate(msgData);
             }
-
         }
     }
     #endregion

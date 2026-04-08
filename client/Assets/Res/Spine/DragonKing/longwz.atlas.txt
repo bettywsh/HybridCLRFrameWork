@@ -1,0 +1,11 @@
+longwz.png
+size:512,256
+filter:Linear,Linear
+pma:true
+liug
+bounds:2,2,70,243
+offsets:1,1,72,245
+rotate:90
+wed
+bounds:2,74,484,141
+offsets:1,2,486,144

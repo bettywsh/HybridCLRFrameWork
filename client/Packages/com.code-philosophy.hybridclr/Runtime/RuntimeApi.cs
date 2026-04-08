@@ -1,111 +1,97 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine.Scripting;
 
 namespace HybridCLR
 {
+    [Preserve]
     public static class RuntimeApi
     {
-#if UNITY_STANDALONE_WIN
-        private const string dllName = "GameAssembly";
-#elif UNITY_IOS || UNITY_STANDALONE_OSX || UNITY_WEBGL
-    private const string dllName = "__Internal";
-#else
-    private const string dllName = "il2cpp";
-#endif
-
         /// <summary>
         /// 加载补充元数据assembly
         /// </summary>
         /// <param name="dllBytes"></param>
         /// <returns></returns>
         /// <exception cref="NotSupportedException"></exception>
+#if UNITY_EDITOR
         public static unsafe LoadImageErrorCode LoadMetadataForAOTAssembly(byte[] dllBytes, HomologousImageMode mode)
         {
-#if UNITY_EDITOR
             return LoadImageErrorCode.OK;
-#else
-            fixed(byte* data = dllBytes)
-            {
-                return (LoadImageErrorCode)LoadMetadataForAOTAssembly(data, dllBytes.Length, (int)mode);
-            }
-#endif
-        }
-
-        /// <summary>
-        /// 加载补充元数据assembly
-        /// </summary>
-        /// <param name="dllBytes"></param>
-        /// <param name="dllSize"></param>
-        /// <returns></returns>
-#if UNITY_EDITOR
-        public static unsafe int LoadMetadataForAOTAssembly(byte* dllBytes, int dllSize, int mode)
-        {
-            return 0;
         }
 #else
-        [DllImport(dllName, EntryPoint = "RuntimeApi_LoadMetadataForAOTAssembly")]
-        public static extern unsafe int LoadMetadataForAOTAssembly(byte* dllBytes, int dllSize, int mode);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern LoadImageErrorCode LoadMetadataForAOTAssembly(byte[] dllBytes, HomologousImageMode mode);
 #endif
-
 
         /// <summary>
         /// 获取解释器线程栈的最大StackObject个数(size*8 为最终占用的内存大小)
         /// </summary>
         /// <returns></returns>
-#if UNITY_EDITOR
         public static int GetInterpreterThreadObjectStackSize()
         {
-            return 0;
+            return GetRuntimeOption(RuntimeOptionId.InterpreterThreadObjectStackSize);
         }
-#else
-        [DllImport(dllName, EntryPoint = "RuntimeApi_GetInterpreterThreadObjectStackSize")]
-        public static extern int GetInterpreterThreadObjectStackSize();
-#endif
-        
+
         /// <summary>
         /// 设置解释器线程栈的最大StackObject个数(size*8 为最终占用的内存大小)
         /// </summary>
         /// <param name="size"></param>
-#if UNITY_EDITOR
         public static void SetInterpreterThreadObjectStackSize(int size)
         {
-            
+            SetRuntimeOption(RuntimeOptionId.InterpreterThreadObjectStackSize, size);
         }
-#else
-        [DllImport(dllName, EntryPoint = "RuntimeApi_SetInterpreterThreadObjectStackSize")]
-        public static extern void SetInterpreterThreadObjectStackSize(int size);
-#endif
+        
+
         /// <summary>
         /// 获取解释器线程函数帧数量(sizeof(InterpreterFrame)*size 为最终占用的内存大小)
         /// </summary>
         /// <returns></returns>
-#if UNITY_EDITOR
         public static int GetInterpreterThreadFrameStackSize()
         {
-            return 0;
+            return GetRuntimeOption(RuntimeOptionId.InterpreterThreadFrameStackSize);
         }
-#else
-        [DllImport(dllName, EntryPoint = "RuntimeApi_GetInterpreterThreadFrameStackSize")]
-        public static extern int GetInterpreterThreadFrameStackSize();
-#endif
-        
+
         /// <summary>
         /// 设置解释器线程函数帧数量(sizeof(InterpreterFrame)*size 为最终占用的内存大小)
         /// </summary>
         /// <param name="size"></param>
-#if UNITY_EDITOR
         public static void SetInterpreterThreadFrameStackSize(int size)
         {
-                
+            SetRuntimeOption(RuntimeOptionId.InterpreterThreadFrameStackSize, size);
+        }
+
+
+#if UNITY_EDITOR
+
+        private static readonly Dictionary<RuntimeOptionId, int> s_runtimeOptions = new Dictionary<RuntimeOptionId, int>();
+
+        public static void SetRuntimeOption(RuntimeOptionId optionId, int value)
+        {
+            s_runtimeOptions[optionId] = value;
         }
 #else
-        [DllImport(dllName, EntryPoint = "RuntimeApi_SetInterpreterThreadFrameStackSize")]
-        public static extern void SetInterpreterThreadFrameStackSize(int size);
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern void SetRuntimeOption(RuntimeOptionId optionId, int value);
+#endif
+
+#if UNITY_EDITOR
+        public static int GetRuntimeOption(RuntimeOptionId optionId)
+        {
+            if (s_runtimeOptions.TryGetValue(optionId, out var value))
+            {
+                return value;
+            }
+            return 0;
+        }
+#else
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        public static extern int GetRuntimeOption(RuntimeOptionId optionId);
 #endif
     }
 }

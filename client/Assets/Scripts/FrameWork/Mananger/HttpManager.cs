@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -34,7 +35,7 @@ public class HttpManager : Singleton<HttpManager>
 
     #region Get请求
 
-    public async UniTask<string> GetRequest(string url, string token)
+    public async UniTask<string> GetRequest(string url, string token = null)
     {
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "GET"))
         {
@@ -71,23 +72,46 @@ public class HttpManager : Singleton<HttpManager>
 
     #region Post请求
 
-    public async UniTask<string> PostRequest(string url, string jsonString, string token)
+    public async UniTask<string> PostRequest(string url, string jsonString, bool isHoutai = false, string userid = "")
     {
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
         {
             webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(Encoding.UTF8.GetBytes(jsonString));
             webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-            webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf8");
-            webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
-            webRequest.SetRequestHeader("Token", token);
-            webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+            webRequest.timeout = 10;
+            if (isHoutai)
+            {
+                var time = TimerManager.Instance.ClientTimer.ToString();
+                var id = PlayerPrefs.GetString("Guid", "");
+                if (id == "")
+                {
+                    id = Guid.NewGuid().ToString();
+                    PlayerPrefs.SetString("Guid", id);
+                }
+                var Authorization = "";
+                if (userid == "")
+                {
+                    Authorization = id;
+                }
+                else
+                {
+                    Authorization = userid;
+                }
+                webRequest.SetRequestHeader("auth-clientid", "2");
+                webRequest.SetRequestHeader("auth-ticks", time);
+                webRequest.SetRequestHeader("auth-sign", MD5Helper.Md5x2(jsonString + time + "3dd298ff63f343419141ef43b00edb51"));
+                webRequest.SetRequestHeader("Authorization", $"Bearer {Authorization}");
+            }
 
             try
             {
                 await webRequest.SendWebRequest().ToUniTask();
+       
             }
             catch
             {
+                Debug.LogError(webRequest.error);
                 return "";
             }
 

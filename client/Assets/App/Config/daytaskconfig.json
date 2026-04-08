@@ -1,0 +1,562 @@
+[
+  {
+    "Id": 1000000,
+    "Description": "战斗中获得100晶核",
+    "Tapy": 1,
+    "Quantity": 100,
+    "Reward": 10002,
+    "Amount": 200
+  },
+  {
+    "Id": 1000001,
+    "Description": "战斗中获得300晶核",
+    "Tapy": 1,
+    "Quantity": 300,
+    "Reward": 10002,
+    "Amount": 400
+  },
+  {
+    "Id": 1000002,
+    "Description": "战斗中获得800晶核",
+    "Tapy": 1,
+    "Quantity": 800,
+    "Reward": 10002,
+    "Amount": 600
+  },
+  {
+    "Id": 1000003,
+    "Description": "战斗中获得1800晶核",
+    "Tapy": 1,
+    "Quantity": 1800,
+    "Reward": 10002,
+    "Amount": 800
+  },
+  {
+    "Id": 1000004,
+    "Description": "战斗中获得4800晶核",
+    "Tapy": 1,
+    "Quantity": 4800,
+    "Reward": 10002,
+    "Amount": 1000
+  },
+  {
+    "Id": 1000005,
+    "Description": "战斗中获得9800晶核",
+    "Tapy": 1,
+    "Quantity": 9800,
+    "Reward": 10002,
+    "Amount": 1200
+  },
+  {
+    "Id": 1000006,
+    "Description": "战斗中获得15800晶核",
+    "Tapy": 1,
+    "Quantity": 15800,
+    "Reward": 10002,
+    "Amount": 1400
+  },
+  {
+    "Id": 1000007,
+    "Description": "战斗中获得58800晶核",
+    "Tapy": 1,
+    "Quantity": 58800,
+    "Reward": 10002,
+    "Amount": 1600
+  },
+  {
+    "Id": 1000008,
+    "Description": "战斗中获得128800晶核",
+    "Tapy": 1,
+    "Quantity": 128800,
+    "Reward": 10002,
+    "Amount": 1800
+  },
+  {
+    "Id": 1000009,
+    "Description": "战斗中获得288000晶核",
+    "Tapy": 1,
+    "Quantity": 288000,
+    "Reward": 10002,
+    "Amount": 2000
+  },
+  {
+    "Id": 1000010,
+    "Description": "战斗中获得488800晶核",
+    "Tapy": 1,
+    "Quantity": 488800,
+    "Reward": 10002,
+    "Amount": 2200
+  },
+  {
+    "Id": 1000011,
+    "Description": "战斗中获得888888晶核",
+    "Tapy": 1,
+    "Quantity": 888888,
+    "Reward": 10002,
+    "Amount": 2400
+  },
+  {
+    "Id": 1000012,
+    "Description": "战斗中获得1388888晶核",
+    "Tapy": 1,
+    "Quantity": 1388888,
+    "Reward": 10002,
+    "Amount": 2600
+  },
+  {
+    "Id": 1000013,
+    "Description": "战斗中获得1988888晶核",
+    "Tapy": 1,
+    "Quantity": 1988888,
+    "Reward": 10002,
+    "Amount": 2800
+  },
+  {
+    "Id": 1000014,
+    "Description": "战斗中获得2688888晶核",
+    "Tapy": 1,
+    "Quantity": 2688888,
+    "Reward": 10002,
+    "Amount": 3000
+  },
+  {
+    "Id": 1000015,
+    "Description": "战斗中获得3488888晶核",
+    "Tapy": 1,
+    "Quantity": 3488888,
+    "Reward": 10002,
+    "Amount": 3200
+  },
+  {
+    "Id": 1000016,
+    "Description": "战斗中获得4388888晶核",
+    "Tapy": 1,
+    "Quantity": 4388888,
+    "Reward": 10002,
+    "Amount": 3400
+  },
+  {
+    "Id": 1000017,
+    "Description": "战斗中获得5388888晶核",
+    "Tapy": 1,
+    "Quantity": 5388888,
+    "Reward": 10002,
+    "Amount": 3600
+  },
+  {
+    "Id": 1000018,
+    "Description": "战斗中获得6488888晶核",
+    "Tapy": 1,
+    "Quantity": 6488888,
+    "Reward": 10002,
+    "Amount": 3800
+  },
+  {
+    "Id": 1000019,
+    "Description": "战斗中获得7688888晶核",
+    "Tapy": 1,
+    "Quantity": 7688888,
+    "Reward": 10002,
+    "Amount": 4000
+  },
+  {
+    "Id": 1000020,
+    "Description": "战斗中获得8988888晶核",
+    "Tapy": 1,
+    "Quantity": 8988888,
+    "Reward": 10002,
+    "Amount": 4200
+  },
+  {
+    "Id": 1000021,
+    "Description": "战斗中获得10388888晶核",
+    "Tapy": 1,
+    "Quantity": 10388888,
+    "Reward": 10002,
+    "Amount": 4500
+  },
+  {
+    "Id": 1000022,
+    "Description": "战斗中获得11888888晶核",
+    "Tapy": 1,
+    "Quantity": 11888888,
+    "Reward": 10002,
+    "Amount": 5000
+  },
+  {
+    "Id": 2000000,
+    "Description": "无尽模式使用2000万晶币",
+    "Tapy": 2,
+    "Quantity": 20000000,
+    "Reward": 10006,
+    "Amount": 1
+  },
+  {
+    "Id": 2000001,
+    "Description": "无尽模式使用4000万晶币",
+    "Tapy": 2,
+    "Quantity": 40000000,
+    "Reward": 10006,
+    "Amount": 1
+  },
+  {
+    "Id": 2000002,
+    "Description": "无尽模式使用6000万晶币",
+    "Tapy": 2,
+    "Quantity": 60000000,
+    "Reward": 10006,
+    "Amount": 1
+  },
+  {
+    "Id": 2000003,
+    "Description": "无尽模式使用1亿晶币",
+    "Tapy": 2,
+    "Quantity": 100000000,
+    "Reward": 10006,
+    "Amount": 2
+  },
+  {
+    "Id": 2000004,
+    "Description": "无尽模式使用1.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 140000000,
+    "Reward": 10006,
+    "Amount": 2
+  },
+  {
+    "Id": 2000005,
+    "Description": "无尽模式使用1.8亿晶币",
+    "Tapy": 2,
+    "Quantity": 180000000,
+    "Reward": 10006,
+    "Amount": 2
+  },
+  {
+    "Id": 2000006,
+    "Description": "无尽模式使用2.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 240000000,
+    "Reward": 10006,
+    "Amount": 3
+  },
+  {
+    "Id": 2000007,
+    "Description": "无尽模式使用3亿晶币",
+    "Tapy": 2,
+    "Quantity": 300000000,
+    "Reward": 10006,
+    "Amount": 3
+  },
+  {
+    "Id": 2000008,
+    "Description": "无尽模式使用3.6亿晶币",
+    "Tapy": 2,
+    "Quantity": 360000000,
+    "Reward": 10006,
+    "Amount": 3
+  },
+  {
+    "Id": 2000009,
+    "Description": "无尽模式使用4.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 440000000,
+    "Reward": 10006,
+    "Amount": 4
+  },
+  {
+    "Id": 2000010,
+    "Description": "无尽模式使用5.2亿晶币",
+    "Tapy": 2,
+    "Quantity": 520000000,
+    "Reward": 10006,
+    "Amount": 4
+  },
+  {
+    "Id": 2000011,
+    "Description": "无尽模式使用6亿晶币",
+    "Tapy": 2,
+    "Quantity": 600000000,
+    "Reward": 10006,
+    "Amount": 4
+  },
+  {
+    "Id": 2000012,
+    "Description": "无尽模式使用7亿晶币",
+    "Tapy": 2,
+    "Quantity": 700000000,
+    "Reward": 10006,
+    "Amount": 5
+  },
+  {
+    "Id": 2000013,
+    "Description": "无尽模式使用8亿晶币",
+    "Tapy": 2,
+    "Quantity": 800000000,
+    "Reward": 10006,
+    "Amount": 5
+  },
+  {
+    "Id": 2000014,
+    "Description": "无尽模式使用9亿晶币",
+    "Tapy": 2,
+    "Quantity": 900000000,
+    "Reward": 10006,
+    "Amount": 5
+  },
+  {
+    "Id": 2000015,
+    "Description": "无尽模式使用10.2亿晶币",
+    "Tapy": 2,
+    "Quantity": 1020000000,
+    "Reward": 10006,
+    "Amount": 6
+  },
+  {
+    "Id": 2000016,
+    "Description": "无尽模式使用11.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 1140000000,
+    "Reward": 10006,
+    "Amount": 6
+  },
+  {
+    "Id": 2000017,
+    "Description": "无尽模式使用12.6亿晶币",
+    "Tapy": 2,
+    "Quantity": 1260000000,
+    "Reward": 10006,
+    "Amount": 6
+  },
+  {
+    "Id": 2000018,
+    "Description": "无尽模式使用13.8亿晶币",
+    "Tapy": 2,
+    "Quantity": 1380000000,
+    "Reward": 10006,
+    "Amount": 6
+  },
+  {
+    "Id": 2000019,
+    "Description": "无尽模式使用15亿晶币",
+    "Tapy": 2,
+    "Quantity": 1500000000,
+    "Reward": 10006,
+    "Amount": 6
+  },
+  {
+    "Id": 2000020,
+    "Description": "无尽模式使用16.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 1640000000,
+    "Reward": 10006,
+    "Amount": 7
+  },
+  {
+    "Id": 2000021,
+    "Description": "无尽模式使用17.8亿晶币",
+    "Tapy": 2,
+    "Quantity": 1780000000,
+    "Reward": 10006,
+    "Amount": 7
+  },
+  {
+    "Id": 2000022,
+    "Description": "无尽模式使用19.2亿晶币",
+    "Tapy": 2,
+    "Quantity": 1920000000,
+    "Reward": 10006,
+    "Amount": 7
+  },
+  {
+    "Id": 2000023,
+    "Description": "无尽模式使用20.6亿晶币",
+    "Tapy": 2,
+    "Quantity": 2060000000,
+    "Reward": 10006,
+    "Amount": 7
+  },
+  {
+    "Id": 2000024,
+    "Description": "无尽模式使用22亿晶币",
+    "Tapy": 2,
+    "Quantity": 2200000000,
+    "Reward": 10006,
+    "Amount": 7
+  },
+  {
+    "Id": 2000025,
+    "Description": "无尽模式使用23.6亿晶币",
+    "Tapy": 2,
+    "Quantity": 2360000000,
+    "Reward": 10006,
+    "Amount": 8
+  },
+  {
+    "Id": 2000026,
+    "Description": "无尽模式使用25.2亿晶币",
+    "Tapy": 2,
+    "Quantity": 2520000000,
+    "Reward": 10006,
+    "Amount": 8
+  },
+  {
+    "Id": 2000027,
+    "Description": "无尽模式使用26.8亿晶币",
+    "Tapy": 2,
+    "Quantity": 2680000000,
+    "Reward": 10006,
+    "Amount": 8
+  },
+  {
+    "Id": 2000028,
+    "Description": "无尽模式使用28.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 2840000000,
+    "Reward": 10006,
+    "Amount": 8
+  },
+  {
+    "Id": 2000029,
+    "Description": "无尽模式使用30亿晶币",
+    "Tapy": 2,
+    "Quantity": 3000000000,
+    "Reward": 10006,
+    "Amount": 8
+  },
+  {
+    "Id": 2000030,
+    "Description": "无尽模式使用31.8亿晶币",
+    "Tapy": 2,
+    "Quantity": 3180000000,
+    "Reward": 10006,
+    "Amount": 9
+  },
+  {
+    "Id": 2000031,
+    "Description": "无尽模式使用33.6亿晶币",
+    "Tapy": 2,
+    "Quantity": 3360000000,
+    "Reward": 10006,
+    "Amount": 9
+  },
+  {
+    "Id": 2000032,
+    "Description": "无尽模式使用35.4亿晶币",
+    "Tapy": 2,
+    "Quantity": 3540000000,
+    "Reward": 10006,
+    "Amount": 9
+  },
+  {
+    "Id": 2000033,
+    "Description": "无尽模式使用37.2亿晶币",
+    "Tapy": 2,
+    "Quantity": 3720000000,
+    "Reward": 10006,
+    "Amount": 9
+  },
+  {
+    "Id": 2000034,
+    "Description": "无尽模式使用39亿晶币",
+    "Tapy": 2,
+    "Quantity": 3900000000,
+    "Reward": 10006,
+    "Amount": 9
+  },
+  {
+    "Id": 2000035,
+    "Description": "无尽模式使用41亿晶币",
+    "Tapy": 2,
+    "Quantity": 4100000000,
+    "Reward": 10006,
+    "Amount": 10
+  },
+  {
+    "Id": 2000036,
+    "Description": "无尽模式使用43亿晶币",
+    "Tapy": 2,
+    "Quantity": 4300000000,
+    "Reward": 10006,
+    "Amount": 10
+  },
+  {
+    "Id": 2000037,
+    "Description": "无尽模式使用45亿晶币",
+    "Tapy": 2,
+    "Quantity": 4500000000,
+    "Reward": 10006,
+    "Amount": 10
+  },
+  {
+    "Id": 2000038,
+    "Description": "无尽模式使用47亿晶币",
+    "Tapy": 2,
+    "Quantity": 4700000000,
+    "Reward": 10006,
+    "Amount": 10
+  },
+  {
+    "Id": 2000039,
+    "Description": "无尽模式使用49亿晶币",
+    "Tapy": 2,
+    "Quantity": 4900000000,
+    "Reward": 10006,
+    "Amount": 10
+  },
+  {
+    "Id": 4000000,
+    "Description": "今日充值6元",
+    "Tapy": 4,
+    "Quantity": 6,
+    "Reward": 2001,
+    "Amount": 3
+  },
+  {
+    "Id": 4000001,
+    "Description": "今日充值28元",
+    "Tapy": 4,
+    "Quantity": 28,
+    "Reward": 2001,
+    "Amount": 5
+  },
+  {
+    "Id": 4000002,
+    "Description": "今日充值68元",
+    "Tapy": 4,
+    "Quantity": 68,
+    "Reward": 2001,
+    "Amount": 10
+  },
+  {
+    "Id": 4000003,
+    "Description": "今日充值128元",
+    "Tapy": 4,
+    "Quantity": 128,
+    "Reward": 2001,
+    "Amount": 15
+  },
+  {
+    "Id": 4000004,
+    "Description": "今日充值188元",
+    "Tapy": 4,
+    "Quantity": 188,
+    "Reward": 2001,
+    "Amount": 20
+  },
+  {
+    "Id": 4000005,
+    "Description": "今日充值288元",
+    "Tapy": 4,
+    "Quantity": 288,
+    "Reward": 2001,
+    "Amount": 30
+  },
+  {
+    "Id": 4000006,
+    "Description": "今日充值588元",
+    "Tapy": 4,
+    "Quantity": 588,
+    "Reward": 2001,
+    "Amount": 50
+  }
+]

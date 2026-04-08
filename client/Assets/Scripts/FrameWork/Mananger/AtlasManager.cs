@@ -6,7 +6,7 @@ using UnityEngine.U2D;
 
 public class AtlasManager : MonoSingleton<AtlasManager>
 {
-    Dictionary<string, SpriteAtlas> spriteAtlasList = new Dictionary<string, SpriteAtlas>();
+    //Dictionary<string, SpriteAtlas> spriteAtlasList = new Dictionary<string, SpriteAtlas>();
     public override async UniTask Init()
     {
         await base.Init();
@@ -19,9 +19,18 @@ public class AtlasManager : MonoSingleton<AtlasManager>
     }
 
 
-    async void RequestAtlas(string atlasName, System.Action<SpriteAtlas> callback)
+    void RequestAtlas(string atlasName, System.Action<SpriteAtlas> callback)
     {
-        SpriteAtlas sa = await ResManager.Instance.SceneLoadAssetAsync<SpriteAtlas>( $"Assets/App/Atlas/{atlasName}.spriteatlas");
-        callback(new SpriteAtlas());
+        if (atlasName == "Common")
+            return;
+        Debug.LogError(atlasName);
+        SpriteAtlas sa = ResManager.Instance.SceneLoadAsset<SpriteAtlas>($"Assets/App/Atlas/{atlasName}.spriteatlasv2");
+        callback?.Invoke(sa);
+    }
+
+    public async UniTask<Sprite> GetSprite(string atlasName, string sprite) {
+        SpriteAtlas sa = await ResManager.Instance.SceneLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/{atlasName}.spriteatlasv2");
+        Sprite sprites = sa.GetSprite(sprite);
+        return sa.GetSprite(sprite);
     }
 }

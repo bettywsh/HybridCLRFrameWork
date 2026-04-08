@@ -1,0 +1,450 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c444bcaa00c87449dc02e72ec0a0d0, type: 3}
+  m_Name: DataVehicle
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 214288098773103991, guid: 72c9a74e8a380fd4cb7aa65bbd7eda94, type: 3}
+    - {fileID: 3217609159760859288, guid: eb17727cc32bfed4e9a6c14763be7295, type: 3}
+    - {fileID: 1570502640641231236, guid: 1b5a8e30ffac6674b91e944e8484c46a, type: 3}
+    - {fileID: 8259794901325020803, guid: c5316a481eea175478664073643f599a, type: 3}
+    - {fileID: 2491166843305886885, guid: 6e46c7e6bf9e0f34db68a36a7440286a, type: 3}
+    - {fileID: 5675885155642039209, guid: 7b304e14a387a3f449805160f62c69bd, type: 3}
+    - {fileID: 8772326944792356759, guid: f27a47c07ecc92d4aab63be711da1f4c, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: VehicleDict
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[EVehicleType, Hotfix],[VehicleConfig,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[EVehicleType, Hotfix]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 0
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 1
+    - Name: UnlockType
+      Entry: 3
+      Data: 0
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 5
+    - Name: BaseHp
+      Entry: 4
+      Data: 1200
+    - Name: BaseAttack
+      Entry: 4
+      Data: 120
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 3.5
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Agrimotor
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 3|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 2
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 2
+    - Name: UnlockType
+      Entry: 3
+      Data: 0
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 150000
+    - Name: BaseHp
+      Entry: 4
+      Data: 900
+    - Name: BaseAttack
+      Entry: 4
+      Data: 130
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 3
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Humvee
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 4|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 3
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 6
+    - Name: UnlockType
+      Entry: 3
+      Data: 2
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 500000
+    - Name: BaseHp
+      Entry: 4
+      Data: 1500
+    - Name: BaseAttack
+      Entry: 4
+      Data: 150
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 3
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Tank 4-13
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 7
+      Data: 5|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 4
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 3
+    - Name: UnlockType
+      Entry: 3
+      Data: 1
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 50000
+    - Name: BaseHp
+      Entry: 4
+      Data: 1500
+    - Name: BaseAttack
+      Entry: 4
+      Data: 120
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 3.5
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Truck
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 6|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 5
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 14
+    - Name: UnlockType
+      Entry: 3
+      Data: 1
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 150000
+    - Name: BaseHp
+      Entry: 4
+      Data: 1200
+    - Name: BaseAttack
+      Entry: 4
+      Data: 130
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 2.5
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Basher
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 7
+      Data: 7|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 6
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 7
+    - Name: UnlockType
+      Entry: 3
+      Data: 3
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 15
+    - Name: BaseHp
+      Entry: 4
+      Data: 900
+    - Name: BaseAttack
+      Entry: 4
+      Data: 150
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 3
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Batmobie
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 8|VehicleConfig, Hotfix
+    - Name: VehicleType
+      Entry: 3
+      Data: 1
+    - Name: LinkedSkill
+      Entry: 3
+      Data: 8
+    - Name: UnlockType
+      Entry: 3
+      Data: 4
+    - Name: ValueUnlock
+      Entry: 3
+      Data: 5
+    - Name: BaseHp
+      Entry: 4
+      Data: 1200
+    - Name: BaseAttack
+      Entry: 4
+      Data: 120
+    - Name: BaseMoveSpeed
+      Entry: 4
+      Data: 3.5
+    - Name: iconVisual
+      Entry: 6
+      Data: 
+    - Name: nameCar
+      Entry: 1
+      Data: Agrimotor
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: CarVisualizeDict
+      Entry: 7
+      Data: 9|System.Collections.Generic.Dictionary`2[[EVehicleType, Hotfix],[CarVisualize,
+        Hotfix]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 10
+      Data: 4
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 6
+    - Name: $v
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

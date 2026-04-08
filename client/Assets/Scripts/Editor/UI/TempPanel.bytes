@@ -4,24 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class #CLASSNAME# : BasePanel
+public class #CLASSNAME# : PanelBase
 {
-    public override void OnBindEvent()
-    {
-        base.OnBindEvent();
-    }
     public override async UniTask OnOpen()
     { 
         await base.OnOpen();
     }
 
-    public override void OnUnBindEvent()
-    { 
-        base.OnUnBindEvent();
-    }
-
     public override void OnClose()
     {
-        cancellationTokenSource.Cancel();
+        base.OnClose();
     }
 }

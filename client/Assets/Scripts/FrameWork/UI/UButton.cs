@@ -171,13 +171,13 @@ public class UButton : Button
 
     private void Update()
     {
-        //Ë«»÷
+        //åŒå‡»
         if (m_firstClickTime > 0)
         {
             float interval = Time.unscaledTime - m_firstClickTime;
             if (interval > m_DoubleTime)
             {
-                //Ë«»÷Ê§°Ü  µã»÷»ò³¤µã»÷
+                //åŒå‡»å¤±è´¥  ç‚¹å‡»æˆ–é•¿ç‚¹å‡»
                 if (m_isLongClick)
                 {
                     OnLongClick();
@@ -186,7 +186,7 @@ public class UButton : Button
                 m_firstClickTime = 0;
             }
         }
-        //³¤µã»÷
+        //é•¿ç‚¹å‡»
         //if (m_firstPressTimeForClick > 0)
         //{
         //    float interval = Time.unscaledTime - m_firstPressTimeForClick;
@@ -196,7 +196,7 @@ public class UButton : Button
         //        m_firstPressTimeForClick = 0;
         //    }
         //}
-        //³¤°´
+        //é•¿æŒ‰
         if (m_firstPressTimeForPress > 0)
         {
             float interval = Time.unscaledTime - m_firstPressTimeForPress;
@@ -213,7 +213,7 @@ public class UButton : Button
                 if (interval >= m_LongPressTime + m_LongIntervalTime * m_pressCount)
                 {
                     Debug.Log(m_pressCount);
-                    //³¤°´ Á¬Ğø´¥·¢
+                    //é•¿æŒ‰ è¿ç»­è§¦å‘
                     if (m_isFouces)
                     {
                         OnLongPress();

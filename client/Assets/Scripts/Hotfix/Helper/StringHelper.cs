@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class StringHelper
 {
-    public static bool CodeValidate(string value)
+    /// <summary>
+    /// 数字转化成带“万”“亿”的字符串
+    /// </summary>
+    /// <param name="num">要转化的数字</param>
+    /// <param name="keepDecimal">是否保留两位小数</param>
+    /// <returns>如：12345678 -> "1234.57万"或"1234万"</returns>
+    public static string FormatNumberToWanYi(long num, bool keepDecimal = false)
     {
-        if (string.IsNullOrEmpty(value)) return false;
-        if (string.IsNullOrWhiteSpace(value) || value.Length is < 6 )
+        if (num >= 100000000)
         {
-            //OnEnableMessageDisplay(true, "手机号输入有误");
-            return false;
+            double value = num / 100000000.0;
+            if (keepDecimal)
+                return value.ToString("0.00") + "亿";
+            else
+                return ((long)value).ToString() + "亿";
         }
-
-        return true;
+        else if (num >= 10000)
+        {
+            double value = num / 10000.0;
+            if (keepDecimal)
+                return value.ToString("0.00") + "万";
+            else
+                return ((long)value).ToString() + "万";
+        }
+        else
+        {
+            return num.ToString();
+        }
     }
 }

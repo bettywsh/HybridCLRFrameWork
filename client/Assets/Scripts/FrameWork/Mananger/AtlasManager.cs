@@ -13,7 +13,7 @@ public class AtlasManager : MonoSingleton<AtlasManager>
         SpriteAtlasManager.atlasRequested += RequestAtlas;
     }
 
-    private void OnDestroy()
+    public override void OnDestroy()
     {
         SpriteAtlasManager.atlasRequested -= RequestAtlas;
     }

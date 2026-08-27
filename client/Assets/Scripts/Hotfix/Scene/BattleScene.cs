@@ -7,13 +7,13 @@ using UnityEngine;
 public class BattleScene : SceneBase
 {
 
-    public override async void LoadScene()
+    public override void LoadScene()
     {
         base.LoadScene();
         EventManager.Instance.MessageNotify(MessageConst.Msg_BattleLoadingPanelComplete);
     }
 
-    public override async void UnLoadScene()
+    public override void UnLoadScene()
     {
 
     }

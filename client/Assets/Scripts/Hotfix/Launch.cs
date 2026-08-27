@@ -50,7 +50,7 @@ public class Launch
 
         updatePanel?.SetProgressTween(false);
         await UniTask.Yield();
-        UIManager.Instance.Open<LoginPanel>();
+        UIManager.Instance.Open<LoginPanel>().Forget();
     }
 
 }

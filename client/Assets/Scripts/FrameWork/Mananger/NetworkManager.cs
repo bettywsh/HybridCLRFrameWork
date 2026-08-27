@@ -82,7 +82,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
         isShowNetLoading = false;
     }
 
-    private void OnDestroy()
+    public override void OnDestroy()
     {
         Close();
     }

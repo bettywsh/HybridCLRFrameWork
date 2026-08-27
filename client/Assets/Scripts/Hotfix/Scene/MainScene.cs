@@ -6,7 +6,7 @@ using UnityEngine;
 [Scene]
 public class MainScene : SceneBase
 {
-    public override async void LoadScene()
+    public override void LoadScene()
     {
         base.LoadScene();
     }

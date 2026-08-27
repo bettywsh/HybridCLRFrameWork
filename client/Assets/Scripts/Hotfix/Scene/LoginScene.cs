@@ -7,7 +7,7 @@ using UnityEngine.U2D;
 [Scene]
 public class LoginScene : SceneBase
 {
-    public override async void LoadScene()
+    public override void LoadScene()
     {
         //销毁aot管理器
         AotDialogManager.Instance.Dispose();

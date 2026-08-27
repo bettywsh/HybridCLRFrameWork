@@ -224,7 +224,7 @@ public class UButton : Button
         }
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         transform.DOKill();
     }

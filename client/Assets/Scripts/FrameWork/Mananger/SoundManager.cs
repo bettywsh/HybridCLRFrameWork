@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class SoundManager : MonoSingleton<SoundManager>
 {
 
-    private AudioSource audio;
+    private AudioSource audioSource;
     private Transform root;
     private List<AudioSource> effect_audio = new List<AudioSource>();
     private string curModuleName;
@@ -22,18 +22,18 @@ public class SoundManager : MonoSingleton<SoundManager>
     public override async UniTask Init()
     {
         await base.Init();
-        if (audio == null)
+        if (audioSource == null)
         {
             //创建一个名称为Sound的空GameObject
             GameObject go = this.gameObject;
             //在其上添加AudioListener 和 AudioSource 组件
             go.AddComponent<AudioListener>();
-            audio = go.AddComponent<AudioSource>();
+            audioSource = go.AddComponent<AudioSource>();
             root = go.transform;
             isCanBackGround = CanPlayBackSound();
             background_volume = PlayerPrefs.GetFloat("BackGroundVolume", 1f);
             SetBackGroundVolume(background_volume);
-            audio.volume = background_volume;
+            audioSource.volume = background_volume;
             isCanEffect = CanPlaySoundEffect();
             effect_volume = PlayerPrefs.GetFloat("SoundEffectVolume", 1f);
             SetEffectVolume(effect_volume);
@@ -50,7 +50,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         background_volume = volume;
         PlayerPrefs.SetFloat("BackGroundVolume", background_volume);
-        audio.volume = background_volume;
+        audioSource.volume = background_volume;
     }
 
     //存音效音量
@@ -104,9 +104,9 @@ public class SoundManager : MonoSingleton<SoundManager>
             else
             {
                 PlayerPrefs.SetInt(key, 1);
-                if (audio.clip != null)
+                if (audioSource.clip != null)
                 {
-                    PlayBackSound(audio.clip);
+                    PlayBackSound(audioSource.clip);
                 }
             }
         }
@@ -114,12 +114,12 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public async void PlayBackSound(string name)
     {
-        audio.loop = true;
+        audioSource.loop = true;
         //改为异步加载
-        audio.clip = await LoadAudioClipAsync(name);
+        audioSource.clip = await LoadAudioClipAsync(name);
         if (CanPlayBackSound())
         {
-            audio.Play();
+            audioSource.Play();
         }
         else
         {
@@ -130,11 +130,11 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlayBackSound(AudioClip clip)
     {
-        audio.loop = true;
-        audio.clip = clip;
+        audioSource.loop = true;
+        audioSource.clip = clip;
         if (CanPlayBackSound())
         {
-            audio.Play();
+            audioSource.Play();
         }
         else
         {
@@ -228,17 +228,17 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void StopBacksound()
     {
-        audio.Stop();
+        audioSource.Stop();
     }
 
     public void PauseBacksound()
     {
-        audio.Pause();
+        audioSource.Pause();
     }
 
     public void UnPauseBacksound()
     {
-        audio.UnPause();
+        audioSource.UnPause();
     }
 
     public bool CanPlaySoundEffect()

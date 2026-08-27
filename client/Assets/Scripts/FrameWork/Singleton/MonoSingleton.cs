@@ -45,7 +45,7 @@ public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
 
     public virtual async UniTask Init()
     {
-        //await UniTask.CompletedTask;
+        await UniTask.CompletedTask;
     }
 
     public virtual void Dispose()

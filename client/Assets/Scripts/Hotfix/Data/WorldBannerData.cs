@@ -35,7 +35,7 @@ public class WorldBannerData : DataBase
     }
 
     [OnTimer(TimerConst.WorldBannerTimer)]
-    public async void AddMsg()
+    public void AddMsg()
     {
         TimerManager.Instance.OnceTimer(TimerConst.WorldBannerTimer, 1);
 

@@ -73,41 +73,6 @@ public class RedPointConst
     public const string Task_Task4 = "Root|Task|Task4";
     public const string Task_Task5 = "Root|Task|Task5";
 
-    public static List<string> redPointList = new List<string>
-    {
-        Vip,
-        Equipment, Equipment_Head, Equipment_Hand, Equipment_Clothes, Equipment_Shoes, Equipment_Belt, Equipment_Weapon,
-        Battle, Battle_Email, Battle_FirstGift, Battle_SevenDay, Battle_SuperGift,Battle_DragonKing,Battle_Charge,
-        Battle_Charge_AccumulatedCharge, Battle_Charge_Continuous,
-        Battle_FreeActivty,
-        Battle_FreeActivty_Turntable,
-        Battle_FreeActivty_SignIn,
-        Battle_MonthCard,        
-        Battle_SuperGift_PerGiftPack,
-        Battle_SuperGift_HighlyProfitable, Battle_SuperGift_HighlyProfitable_One, Battle_SuperGift_HighlyProfitable_Two, Battle_SuperGift_HighlyProfitable_Three,
-        Battle_SuperGift_HighlyProfitable_Four, Battle_SuperGift_HighlyProfitable_Five, Battle_SuperGift_HighlyProfitable_Six, Battle_SuperGift_HighlyProfitable_Seven,
-        Battle_Activty,
-        Battle_Activty_VipGift, Battle_Activty_BossReward,
-        Battle_LuckyDaySign, Battle_FreeHero,
-        Battle_FreeHero_Hero, Battle_FreeHero_Task,
-        Battle_SuperGift_Juhuasuan, Battle_Taks1, Battle_Taks2, Battle_Taks3, Battle_Taks4, Battle_Taks5,
-        Battle_Level, Battle_Level_Task, Battle_Level_Task_TiaoZhan,
-        Battle_Egg,
-        Battle_BountyRank,
-        Battle_ZeroPay,
-        Battle_LuckyBox,
-        Battle_DragonFight,
-        Battle_GreatValueGifts, Battle_GreatValueGifts_Task, Battle_GreatValueGifts_Recharge,
-        Battle_DragonVault,
-        Battle_Egg_GongXian,
-        Task,
-        Task_Task1,
-        Task_Task2,
-        Task_Task3,
-        Task_Task4,
-        Task_Task5
-        //Hero,
-    };
 }
 
 public class RedManager : Singleton<RedManager>
@@ -119,9 +84,17 @@ public class RedManager : Singleton<RedManager>
     {
         await base.Init();
         root = new RedNode(RedPointConst.Root);
-        foreach (string s in RedPointConst.redPointList)
+
+        // 通过反射获取 RedPointConst 类中的所有 public static 字符串常量
+        var type = typeof(RedPointConst);
+        foreach (var field in type.GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static))
         {
-            InsterNode(s);
+            if (field.FieldType == typeof(string))
+            {
+                var value = field.GetValue(null) as string;
+                if (!string.IsNullOrEmpty(value))
+                    InsterNode(value);
+            }
         }
     }
 

@@ -4,45 +4,19 @@ using UnityEngine;
 using System;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using UnityEngine.SocialPlatforms;
 
 public class TimerManager : MonoSingleton<TimerManager>
 {
-
-    public long mServerTimer = 0;
-    public float validStartGameTime = 0;
-    public long ServerTimer
-    {
-        get
-        {
-            return mServerTimer + (long)(Time.realtimeSinceStartup - validStartGameTime) * 1000;
-        }
-        set
-        {
-            validStartGameTime = Time.realtimeSinceStartup;
-            mServerTimer = value;
-        }
-    }
-
-    private DateTime dt1970;
-    // 线程安全
-    public long ClientTimer
-    {
-        get
-        {
-            return (DateTime.UtcNow.Ticks - this.dt1970.Ticks) / 10000;
-        }
-    }
-
     public override async UniTask Init()
     {
         await base.Init();
-        this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
     }
 
 
     #region 延时定时器
 
-    public void OnceTimer(int timerId, double time)
+    public void OnceTimer(int timerId, double time, bool timeScale = true)
     {
         if (time < 0.1f)
         {
@@ -55,13 +29,13 @@ public class TimerManager : MonoSingleton<TimerManager>
             return;
         }
         long t = (long)(time * 1000);
-        TimerInfo timer = new(GetNow(), GetNow() + t, t, TimerType.OnceTimer);
+        TimerInfo timer = new(GetNow(timeScale), GetNow(timeScale) + t, t, TimerType.OnceTimer, timeScale);
         AddTimer(timerId, ref timer);
     }
     #endregion
 
     #region 倒计时定时器
-    public void RepeatedTimer(int timerId, double time, float interval)
+    public void RepeatedTimer(int timerId, double time, float interval, bool timeScale = true)
     {
         if (time < 0.1f)
         {
@@ -75,18 +49,20 @@ public class TimerManager : MonoSingleton<TimerManager>
         }
         int i = (int)(interval * 1000);
         long t = (long)(time * 1000);
-        TimerInfo timer = new(GetNow(), GetNow() + t, i, TimerType.RepeatedTimer);
+        TimerInfo timer = new(GetNow(timeScale), GetNow(timeScale) + t, i, TimerType.RepeatedTimer, timeScale);
         AddTimer(timerId, ref timer);
     }
     #endregion
 
     #region 定时器逻辑
     public NativeCollection.MultiMap<long, int> timeId = new(1000);
+    public NativeCollection.MultiMap<long, int> timeIdUnscaled = new(1000);
     public Dictionary<long, TimerInfo> timerInfos = new();
     public Queue<long> timeOutTime = new();
     public Queue<long> timeOutTimes = new();
 
     public long minTime = long.MaxValue;
+    public long minTimeUnscaled = long.MaxValue;
 
     public void Clear(long id)
     {
@@ -103,7 +79,7 @@ public class TimerManager : MonoSingleton<TimerManager>
                 foreach (var kv in timeId)
                 {
                     long k = kv.Key;
-                    if (k > GetNow())
+                    if (k > GetNow(timer.TimeScale))
                     {
                         minTime = k;
                         break;
@@ -132,20 +108,40 @@ public class TimerManager : MonoSingleton<TimerManager>
         return true;
     }
 
-    private long GetNow()
+    private long GetNow(bool timeScale)
     {
-        return ClientTimer;
+        if (timeScale)
+        {
+            return TimeManager.Instance.TimerDeltaTime;
+        }
+        else 
+        {
+            return TimeManager.Instance.TimerUnscaledDeltaTime;
+        }
     }
 
     private void AddTimer(int timerId, ref TimerInfo timer)
     {
         long tillTime = timer.StartTime + timer.Interval;
-        timeId.Add(tillTime, timerId);
+
         timerInfos.Add(timerId, timer);
-        if (tillTime < minTime)
+        if (timer.TimeScale)
         {
-            minTime = tillTime;
+            timeIdUnscaled.Add(tillTime, timerId);
+            if (tillTime < minTime)
+            {
+                minTime = tillTime;
+            }
         }
+        else
+        {
+            timeId.Add(tillTime, timerId);
+            if (tillTime < minTimeUnscaled)
+            {
+                minTimeUnscaled = tillTime;
+            }
+        }
+    
     }
 
     public void Update()
@@ -154,13 +150,22 @@ public class TimerManager : MonoSingleton<TimerManager>
         {
             return;
         }
-        long timeNow = GetNow();
+        long timeNow = GetNow(true);
 
-        if (timeNow < minTime)
+        if (timeNow >= minTime)
         {
-            return;
+            TimeOut(timeNow);
         }
 
+        timeNow = GetNow(false);
+        if (timeNow >= minTimeUnscaled)
+        {
+            TimeOut(timeNow);
+        }
+    }
+
+    private void TimeOut(long timeNow)
+    {
         //去除最小时间
         foreach (var kv in timeId)
         {
@@ -200,7 +205,6 @@ public class TimerManager : MonoSingleton<TimerManager>
             }
             Run((int)timerId, timerInfo);
         }
-
     }
 
     private void Run(int timerId, TimerInfo timerInfo)
@@ -215,7 +219,7 @@ public class TimerManager : MonoSingleton<TimerManager>
                 }
             case TimerType.RepeatedTimer:
                 {
-                    long timeNow = GetNow();
+                    long timeNow = GetNow(timerInfo.TimeScale);
                     if (timerInfo.EndTime > timeNow)
                     {
                         timerInfo.StartTime = timerInfo.StartTime + timerInfo.Interval;
@@ -230,22 +234,18 @@ public class TimerManager : MonoSingleton<TimerManager>
     }
     #endregion
 
-    public async UniTask<bool> WaitAsync(float time, CancellationToken cancellationToken = default(CancellationToken))
-    {
-        var cannel = await UniTask.Delay(TimeSpan.FromSeconds(time), false, PlayerLoopTiming.Update, cancellationToken).SuppressCancellationThrow();
-        return cannel;
-    }
 
 }
 
 public struct TimerInfo
 {
-    public TimerInfo(long startTime, long endTime, long interval, TimerType timerType)
+    public TimerInfo(long startTime, long endTime, long interval, TimerType timerType, bool timeScale)
     {
         this.StartTime = startTime;
         this.EndTime = endTime;
         this.Interval = interval;
         this.TimerType = timerType;
+        this.TimeScale = timeScale;
     }
 
     public long Interval;
@@ -255,6 +255,8 @@ public struct TimerInfo
     public long EndTime;
 
     public TimerType TimerType;
+
+    public bool TimeScale;
 }
 
 public enum TimerType

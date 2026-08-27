@@ -1,0 +1,14 @@
+
+Alias
+mt
+
+dongfang
+
+dongfang
+
+password
+ps12369
+
+
+游戏包名：com.mtgame.com
+支付宝应用签名：90a901c693c915a439de378228139e41

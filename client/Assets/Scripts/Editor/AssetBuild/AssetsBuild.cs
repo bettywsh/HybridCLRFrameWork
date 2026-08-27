@@ -11,10 +11,70 @@ using YooAsset.Editor;
 public class AssetsBuild
 {
 
+    [MenuItem("Build/BuildWebGLAsset", false, 2)]
+    public static void BuildWebGLAsset()
+    {
+        Debug.Log($"å¼€å§‹æ„å»º : çƒ­æ›´dll(WebGL)");
+        PrebuildCommand.GenerateAll();
+        AssetDatabase.Refresh();
+        AppConfig appConfig = AssetDatabase.LoadAssetAtPath<AppConfig>("Assets/Resources/AppConfig.asset");
+        string SourceDir = $"{Application.dataPath}/../HybridCLRData/HotUpdateDlls/{BuildTarget.WebGL.ToString()}/";
+        string TargetDir = $"{Application.dataPath}/App/Dll/";
+        List<string> HotUpdateDlls = appConfig.HotfixDll;
+        foreach (string file in HotUpdateDlls)
+        {
+            File.Copy(SourceDir + file, TargetDir + file + ".bytes", true);
+        }
+
+        SourceDir = $"{Application.dataPath}/../HybridCLRData/AssembliesPostIl2CppStrip/{BuildTarget.WebGL.ToString()}/";
+        List<string> AssembliesPostIl2CppStrip = appConfig.AotDll;
+        foreach (string file in AssembliesPostIl2CppStrip)
+        {
+            File.Copy(SourceDir + file, TargetDir + file + ".bytes", true);
+        }
+        AssetDatabase.Refresh();
+
+        Debug.Log($"å¼€å§‹æ„å»º : {BuildTarget.WebGL}");
+
+        var buildoutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
+        var streamingAssetsRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
+
+        #region BuiltinBuildPipeline
+        // æ„å»ºå‚æ•°
+        BuiltinBuildParameters buildParameters = new BuiltinBuildParameters();
+        buildParameters.BuildOutputRoot = buildoutputRoot;
+        buildParameters.BuildinFileRoot = streamingAssetsRoot;
+        buildParameters.BuildPipeline = EBuildPipeline.BuiltinBuildPipeline.ToString();
+        buildParameters.BuildTarget = BuildTarget.WebGL;        
+        //buildParameters.BuildMode = EBuildMode.ForceRebuild;
+        buildParameters.PackageName = "DefaultPackage";
+        buildParameters.PackageVersion = appConfig.ResVersion.ToString();
+        buildParameters.VerifyBuildingResult = true;
+        buildParameters.FileNameStyle = EFileNameStyle.HashName;
+        buildParameters.BuildinFileCopyOption = EBuildinFileCopyOption.ClearAndCopyAll;
+        buildParameters.BuildinFileCopyParams = string.Empty;
+        //buildParameters.EncryptionServices = CreateEncryptionInstance();
+        buildParameters.CompressOption = ECompressOption.Uncompressed;
+
+        // æ‰§è¡Œæ„å»º
+        BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
+        //ScriptableBuildPipeline pipeline = new ScriptableBuildPipeline();
+        var buildResult = pipeline.Run(buildParameters, true);
+        if (buildResult.Success)
+        {
+            Debug.Log("WebGLèµ„æºæ„å»ºæˆåŠŸ");
+        }
+        else
+        {
+            Debug.LogError("WebGLèµ„æºæ„å»ºå¤±è´¥: " + buildResult.ErrorInfo);
+        }
+        #endregion
+    }
+
     [MenuItem("Build/BuildAndroidAsset", false, 1)]
     public static void BuildAndroidAsset()
     {
-        Debug.Log($"¿ªÊ¼¹¹½¨ : »ªÙ¢dll");
+        Debug.Log($"å¼€å§‹æ„å»º : çƒ­æ›´dll(Android)");
         PrebuildCommand.GenerateAll();
         AssetDatabase.Refresh();
         AppConfig appConfig = AssetDatabase.LoadAssetAtPath<AppConfig>("Assets/Resources/AppConfig.asset");
@@ -34,13 +94,13 @@ public class AssetsBuild
         }
         AssetDatabase.Refresh();
 
-        Debug.Log($"¿ªÊ¼¹¹½¨ : {BuildTarget.Android}");
+        Debug.Log($"å¼€å§‹æ„å»º : {BuildTarget.Android}");
 
         var buildoutputRoot = AssetBundleBuilderHelper.GetDefaultBuildOutputRoot();
         var streamingAssetsRoot = AssetBundleBuilderHelper.GetStreamingAssetsRoot();
 
         #region BuiltinBuildPipeline
-        // ¹¹½¨²ÎÊı
+        // æ„å»ºå‚æ•°
         BuiltinBuildParameters buildParameters = new BuiltinBuildParameters();
         buildParameters.BuildOutputRoot = buildoutputRoot;
         buildParameters.BuildinFileRoot = streamingAssetsRoot;
@@ -56,17 +116,17 @@ public class AssetsBuild
         //buildParameters.EncryptionServices = CreateEncryptionInstance();
         buildParameters.CompressOption = ECompressOption.Uncompressed;
 
-        // Ö´ĞĞ¹¹½¨
+        // æ‰§è¡Œæ„å»º
         BuiltinBuildPipeline pipeline = new BuiltinBuildPipeline();
         //ScriptableBuildPipeline pipeline = new ScriptableBuildPipeline();
         var buildResult = pipeline.Run(buildParameters, true);
         if (buildResult.Success)
         {
-            Debug.Log($"¹¹½¨³É¹¦ : {buildResult.OutputPackageDirectory}");
+            Debug.Log($"èµ„æºæ„å»ºæˆåŠŸ : {buildResult.OutputPackageDirectory}");
         }
         else
         {
-            Debug.LogError($"¹¹½¨Ê§°Ü : {buildResult.ErrorInfo}");
+            Debug.LogError($"èµ„æºæ„å»ºå¤±è´¥ : {buildResult.ErrorInfo}");
         }
         #endregion
 
@@ -86,20 +146,20 @@ public class AssetsBuild
         ////buildParameters.EncryptionServices = CreateEncryptionInstance();
         //buildParameters.CompressOption = ECompressOption.Uncompressed;
 
-        //// Ö´ĞĞ¹¹½¨
+        //// Ö´ï¿½Ğ¹ï¿½ï¿½ï¿½
         //ScriptableBuildPipeline pipeline = new ScriptableBuildPipeline();
         //var buildResult = pipeline.Run(buildParameters, true);
         //if (buildResult.Success)
         //{
-        //    Debug.Log($"¹¹½¨³É¹¦ : {buildResult.OutputPackageDirectory}");
+        //    Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ : {buildResult.OutputPackageDirectory}");
         //}
         //else
         //{
-        //    Debug.LogError($"¹¹½¨Ê§°Ü : {buildResult.ErrorInfo}");
+        //    Debug.LogError($"ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½ : {buildResult.ErrorInfo}");
         //}
         #endregion
 
-        Debug.Log($"Ğ´Èë°æ±¾ÎÄ¼ş");
+        Debug.Log($"å†™å…¥ç‰ˆæœ¬æ–‡ä»¶");
         string verPath = $"{buildoutputRoot}/{BuildTarget.Android.ToString()}/DefaultPackage/{appConfig.ResVersion}/ver.txt";
         File.WriteAllText(verPath, appConfig.AppVersion.ToString());
 
@@ -123,7 +183,7 @@ public class AssetsBuild
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
         BuildPipeline.BuildPlayer(scenes, toPath, BuildTarget.Android, BuildOptions.CompressWithLz4HC);
 
-        Debug.Log("APK Íê³É");
+        Debug.Log("APK å¯¼å‡ºå®Œæˆ");
     }
 
     [MenuItem("Build/BuildAndroidAssetAndApk", false, 2)]

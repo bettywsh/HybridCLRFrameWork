@@ -47,6 +47,5 @@ public class DataManager : Singleton<DataManager>
         {
             ((DataBase)obj).Reset();
         }
-        SDKManager.Instance.HideShop();
     }
 }

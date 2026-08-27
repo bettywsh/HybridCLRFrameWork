@@ -24,7 +24,9 @@ public class UpdatePanel : AotPanelBase
     CancellationTokenSource cancelToken = new CancellationTokenSource();
     public override async void OnOpen()
     {
-        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode || AppSettings.AppConfig.EPlayMode == EPlayMode.OfflinePlayMode)
+        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode ||
+         AppSettings.AppConfig.EPlayMode == EPlayMode.OfflinePlayMode ||
+         AppSettings.AppConfig.EPlayMode == EPlayMode.WebPlayMode)
         {
             txtContent.text = "检查游戏资源";
             StartGame();

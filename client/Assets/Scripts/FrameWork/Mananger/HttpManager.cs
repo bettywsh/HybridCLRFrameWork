@@ -82,7 +82,7 @@ public class HttpManager : Singleton<HttpManager>
             webRequest.timeout = 10;
             if (isHoutai)
             {
-                var time = TimerManager.Instance.ClientTimer.ToString();
+                var time = TimeManager.Instance.ClientTimer.ToString();
                 var id = PlayerPrefs.GetString("Guid", "");
                 if (id == "")
                 {

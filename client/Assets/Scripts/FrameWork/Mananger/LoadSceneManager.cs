@@ -56,7 +56,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     public async void ChangeScene(string name)
     {
         curSceneHandle = ResManager.Instance.LoadSceneAsync("Assets/App/Scene/" + name);
-
+        await curSceneHandle.ToUniTask();
         //SceneManager.LoadScene(name);
         Type type = AssemblyManager.Instance.GetType(EAttribute.Scene, name + "Scene");
         if (type != null)

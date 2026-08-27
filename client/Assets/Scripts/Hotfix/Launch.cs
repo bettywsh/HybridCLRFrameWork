@@ -30,6 +30,7 @@ public class Launch
         await UIManager.Instance.Init();
         await AtlasManager.Instance.Init();
         await ConfigManager.Instance.Init();
+        await TimeManager.Instance.Init();
         await TimerManager.Instance.Init();
         await DialogManager.Instance.Init();
         await DataManager.Instance.Init();
@@ -41,26 +42,6 @@ public class Launch
         await RedManager.Instance.Init();
 
         //通用界面预加载
-        //await ResManager.Instance.CommonLoadAssetAsync<TMP_FontAsset>("Assets/App/Font/PuHuiTi SDF.asset");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>("Assets/App/Atlas/Common.spriteatlasv2");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>("Assets/App/Atlas/Common1.spriteatlasv2");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/LoadingPanel.spriteatlasv2");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/TextPanel.spriteatlasv2");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/NetLoadingPanel.spriteatlasv2");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/DialogPanel.spriteatlasv2");
-        await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/GuidePanel.spriteatlasv2");
-        //await ResManager.Instance.CommonLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/EntrancePanel.spriteatlasv2");
-
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/ReConnectLoadingPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/LoadingPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/BattleLoadingPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/TextPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/NetLoadingPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/DialogPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>("Assets/App/Prefab/UI/Panel/DialogSystemPanel.prefab");
-        await ResManager.Instance.CommonLoadAssetAsync<GameObject>($"Assets/App/Prefab/UI/Panel/GuidePanel.prefab");
-        //await ResManager.Instance.CommonLoadAssetAsync<GameObject>("Assets/App/Prefab/UI/Panel/EntrancePanel.prefab");
-        //await ResManager.Instance.CommonLoadAssetAsync<GameObject>("Assets/App/Prefab/UI/SubPanel/HallSubPanel.prefab");
 
         //战斗资源
 
@@ -69,27 +50,7 @@ public class Launch
 
         updatePanel?.SetProgressTween(false);
         await UniTask.Yield();
-
+        UIManager.Instance.Open<LoginPanel>();
     }
 
-    
-
-    //模拟器判断
-    private static bool IsRunningOnEmulator()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-	if(SystemInfo.graphicsDeviceID == 0 || SystemInfo.graphicsDeviceVendorID == 0)
-	{	
-        AndroidJavaClass buildClass = new AndroidJavaClass("android.os.Build");
-		string radioVersion = buildClass.CallStatic<string>("getRadioVersion");
-		if (radioVersion.Length > 0)
-			return true;
-	}
-   
-	return false;
-
-#else
-        return false; // 在其他平台或编辑器中默认不在模拟器中运行
-#endif
-    }
 }

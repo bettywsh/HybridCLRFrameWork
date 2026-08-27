@@ -7,22 +7,12 @@ using UnityEngine.UI;
 
 public class NetLoadingPanel : PanelBase
 {
-    public override void OnBindEvent()
-    {
-        base.OnBindEvent();
-    }
     public override async UniTask OnOpen()
     { 
         await base.OnOpen();
         transform.GetComponent<Canvas>().sortingOrder = (int) EUILayer.NetLoding;
-
-
     }
 
-    public override void OnUnBindEvent()
-    { 
-        base.OnUnBindEvent();
-    }
     public async void Show()
     {
         cancellationTokenSource = new CancellationTokenSource();

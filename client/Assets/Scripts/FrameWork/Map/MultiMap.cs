@@ -1,136 +1,133 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ET
+public class MultiMap<T, K> : SortedDictionary<T, List<K>>
 {
-    public class MultiMap<T, K>: SortedDictionary<T, List<K>>
+    private readonly List<K> Empty = new();
+    private readonly int maxPoolCount;
+    private readonly Queue<List<K>> pool;
+
+    public MultiMap(int maxPoolCount = 0)
     {
-        private readonly List<K> Empty = new();
-        private readonly int maxPoolCount;
-        private readonly Queue<List<K>> pool;
+        this.maxPoolCount = maxPoolCount;
+        this.pool = new Queue<List<K>>(maxPoolCount);
+    }
 
-        public MultiMap(int maxPoolCount = 0)
+    private List<K> FetchList()
+    {
+        if (this.pool.Count > 0)
         {
-            this.maxPoolCount = maxPoolCount;
-            this.pool = new Queue<List<K>>(maxPoolCount);
+            return this.pool.Dequeue();
         }
+        return new List<K>(10);
+    }
 
-        private List<K> FetchList()
+    private void Recycle(List<K> list)
+    {
+        if (list == null)
         {
-            if (this.pool.Count > 0)
-            {
-                return this.pool.Dequeue();
-            }
-            return new List<K>(10);
+            return;
         }
+        if (this.pool.Count == this.maxPoolCount)
+        {
+            return;
+        }
+        list.Clear();
+        this.pool.Enqueue(list);
+    }
 
-        private void Recycle(List<K> list)
+    public void Add(T t, K k)
+    {
+        List<K> list;
+        this.TryGetValue(t, out list);
+        if (list == null)
         {
-            if (list == null)
-            {
-                return;
-            }
-            if (this.pool.Count == this.maxPoolCount)
-            {
-                return;
-            }
-            list.Clear();
-            this.pool.Enqueue(list);
+            list = this.FetchList();
+            this.Add(t, list);
         }
+        list.Add(k);
+    }
 
-        public void Add(T t, K k)
+    public bool Remove(T t, K k)
+    {
+        List<K> list;
+        this.TryGetValue(t, out list);
+        if (list == null)
         {
-            List<K> list;
-            this.TryGetValue(t, out list);
-            if (list == null)
-            {
-                list = this.FetchList();
-                this.Add(t, list);
-            }
-            list.Add(k);
+            return false;
         }
+        if (!list.Remove(k))
+        {
+            return false;
+        }
+        if (list.Count == 0)
+        {
+            this.Remove(t);
+        }
+        return true;
+    }
 
-        public bool Remove(T t, K k)
+    public new bool Remove(T t)
+    {
+        List<K> list;
+        this.TryGetValue(t, out list);
+        if (list == null)
         {
-            List<K> list;
-            this.TryGetValue(t, out list);
-            if (list == null)
-            {
-                return false;
-            }
-            if (!list.Remove(k))
-            {
-                return false;
-            }
-            if (list.Count == 0)
-            {
-                this.Remove(t);
-            }
-            return true;
+            return false;
         }
+        this.Recycle(list);
+        return base.Remove(t);
+    }
 
-        public new bool Remove(T t)
+    /// <summary>
+    /// 不返回内部的list,copy一份出来
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public K[] GetAll(T t)
+    {
+        List<K> list;
+        this.TryGetValue(t, out list);
+        if (list == null)
         {
-            List<K> list;
-            this.TryGetValue(t, out list);
-            if (list == null)
-            {
-                return false;
-            }
-            this.Recycle(list);
-            return base.Remove(t);
+            return Array.Empty<K>();
         }
+        return list.ToArray();
+    }
 
-        /// <summary>
-        /// 不返回内部的list,copy一份出来
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public K[] GetAll(T t)
+    /// <summary>
+    /// 返回内部的list
+    /// </summary>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    public new List<K> this[T t]
+    {
+        get
         {
-            List<K> list;
-            this.TryGetValue(t, out list);
-            if (list == null)
-            {
-                return Array.Empty<K>();
-            }
-            return list.ToArray();
+            this.TryGetValue(t, out List<K> list);
+            return list ?? Empty;
         }
+    }
 
-        /// <summary>
-        /// 返回内部的list
-        /// </summary>
-        /// <param name="t"></param>
-        /// <returns></returns>
-        public new List<K> this[T t]
+    public K GetOne(T t)
+    {
+        List<K> list;
+        this.TryGetValue(t, out list);
+        if (list != null && list.Count > 0)
         {
-            get
-            {
-                this.TryGetValue(t, out List<K> list);
-                return list ?? Empty;
-            }
+            return list[0];
         }
+        return default;
+    }
 
-        public K GetOne(T t)
+    public bool Contains(T t, K k)
+    {
+        List<K> list;
+        this.TryGetValue(t, out list);
+        if (list == null)
         {
-            List<K> list;
-            this.TryGetValue(t, out list);
-            if (list != null && list.Count > 0)
-            {
-                return list[0];
-            }
-            return default;
+            return false;
         }
-
-        public bool Contains(T t, K k)
-        {
-            List<K> list;
-            this.TryGetValue(t, out list);
-            if (list == null)
-            {
-                return false;
-            }
-            return list.Contains(k);
-        }
+        return list.Contains(k);
     }
 }

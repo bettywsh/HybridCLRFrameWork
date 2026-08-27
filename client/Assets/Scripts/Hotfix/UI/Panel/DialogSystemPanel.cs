@@ -60,14 +60,14 @@ public class DialogSystemPanel : PanelBase
     }
 
     [OnClick("btnOk")]
-    public void OnClick_btnOk()
+    public void OnClickBtnOk()
     {
         this.Close();
         dialogInfo.okFun?.Invoke();
     }
 
     [OnClick("btnCancel")]
-    public void OnClick_btnCancel()
+    public void OnClickBtnCancel()
     {
         this.Close();
         dialogInfo.calFun?.Invoke();        

@@ -8,9 +8,9 @@ using UnityEngine.SocialPlatforms;
 
 public class TimerManager : MonoSingleton<TimerManager>
 {
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
+
     }
 
 

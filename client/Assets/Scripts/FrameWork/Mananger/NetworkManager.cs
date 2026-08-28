@@ -11,29 +11,26 @@ public enum EServer {
 public class NetworkManager : MonoSingleton<NetworkManager>
 {
 	public Dictionary<NetworkProtocol, Session> Sessions = new Dictionary<NetworkProtocol, Session>();
-	public Action showNetLoading;
-	public Action hideNetLoading;
-    public bool isShowNetLoading = false;
+	public Action ShowNetLoading;
+	public Action HideNetLoading;
     IPEndPoint ipEndPoint;
-    public void Init(Action showNetLoading, Action hideNetLoading)
+	public override void Init()
 	{
-		this.showNetLoading = showNetLoading;
-		this.hideNetLoading = hideNetLoading;
         try
         {
             var ipaddress = Dns.GetHostAddresses(AppSettings.AppConfig.SvrGameIp)[0];
             ipEndPoint = new IPEndPoint(ipaddress, AppSettings.AppConfig.SvrGamePort);
         }
         catch { }
-
-    }
-	public override async UniTask Init()
-	{
-        await base.Init();
         Session Session = Create(NetworkProtocol.TCP);
         Session.Create(NetworkProtocol.TCP, EServer.Login, ipEndPoint);
     }
 
+    public void SetNetLoading(Action showNetLoading, Action hideNetLoading)
+    {
+        ShowNetLoading = showNetLoading;
+        HideNetLoading = hideNetLoading;
+    }
 
     public Session Create(NetworkProtocol networkProtocol)
 	{
@@ -79,7 +76,6 @@ public class NetworkManager : MonoSingleton<NetworkManager>
             session.Dispose();
         }
         Sessions.Remove(NetworkProtocol.TCP);
-        isShowNetLoading = false;
     }
 
     public override void OnDestroy()

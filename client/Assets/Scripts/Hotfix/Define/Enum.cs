@@ -23,14 +23,6 @@ public enum EScene : int
     Battle,
 }
 
-public enum EAttribute : int
-{
-    Scene = 1,
-    Panel,
-    SubPanel,
-    Cell
-}
-
 public enum EntranceType : int
 {
     None,

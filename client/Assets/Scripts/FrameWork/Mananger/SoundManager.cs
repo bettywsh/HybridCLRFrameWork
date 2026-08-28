@@ -19,9 +19,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     public float background_volume = 1f;
     public float effect_volume = 1f;
 
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
         if (audioSource == null)
         {
             //创建一个名称为Sound的空GameObject

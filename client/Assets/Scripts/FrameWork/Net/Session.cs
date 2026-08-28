@@ -52,7 +52,7 @@ public sealed class Session : IDisposable
         var (id, data)  = protobufPacker.DeserializeFrom(memoryBuffer);
         //8战斗攻击消息 1心跳包 81广播消息 6进入战斗回调手动关闭  16装备升级 23boss宝箱 116龙王秘宝 121累充 127巅峰榜 140砸蛋
         if (id != 8 && id != 1 && id != 81 && id != 6 && id != 16 && id != 23 && id != 116 && id != 121 && id != 127 && id != 141 && id != 139)
-            NetworkManager.Instance.hideNetLoading?.Invoke();
+            NetworkManager.Instance.HideNetLoading?.Invoke();
         if (AppSettings.AppConfig.DebugLog)
         {
             Type enumType = HybridCLRManager.Instance._hotUpdateAss.GetType(AppSettings.AppConfig.ProtoBuffPackageName + "MsgID");
@@ -75,7 +75,7 @@ public sealed class Session : IDisposable
     private void OnError(long channelId, int error)
     {
         EventManager.Instance.MessageNotify(109, error);
-        NetworkManager.Instance.hideNetLoading?.Invoke();
+        NetworkManager.Instance.HideNetLoading?.Invoke();
     }
 
     public void Send(EServer eserver, long messageEnum, object data)
@@ -89,9 +89,8 @@ public sealed class Session : IDisposable
         if (messageEnum != 7 && messageEnum != 1 && messageEnum != 27 && 
             messageEnum != 78 && messageEnum != 15 && messageEnum != 22 && 
             messageEnum != 115 && messageEnum != 120 && messageEnum != 126 &&
-            messageEnum != 140 && messageEnum != 138 &&
-            NetworkManager.Instance.isShowNetLoading == false)
-            NetworkManager.Instance.showNetLoading?.Invoke();
+            messageEnum != 140 && messageEnum != 138 )
+            NetworkManager.Instance.ShowNetLoading?.Invoke();
         Send(eserver, (long)messageEnum, ProtobufHelper.Serialize(data));
     }
 

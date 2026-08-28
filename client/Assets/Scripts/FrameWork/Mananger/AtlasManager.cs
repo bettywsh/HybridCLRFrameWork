@@ -7,9 +7,8 @@ using UnityEngine.U2D;
 public class AtlasManager : MonoSingleton<AtlasManager>
 {
     //Dictionary<string, SpriteAtlas> spriteAtlasList = new Dictionary<string, SpriteAtlas>();
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
         SpriteAtlasManager.atlasRequested += RequestAtlas;
     }
 

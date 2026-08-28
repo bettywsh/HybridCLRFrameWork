@@ -20,10 +20,8 @@ public class UIManager : MonoSingleton<UIManager>
     
     private Transform inputCanvas;
     private Transform inputEffect;
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
-
         canvasRoot = GameObject.Find("Canvas");
         uiCamera = canvasRoot.transform.Find("UICamera").GetComponent<Camera>();
         baseCanvas = canvasRoot.transform.Find("UICanvas/BaseCanvas").transform;

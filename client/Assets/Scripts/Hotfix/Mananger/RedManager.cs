@@ -80,9 +80,8 @@ public class RedManager : Singleton<RedManager>
     RedNode root;
 
 
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
         root = new RedNode(RedPointConst.Root);
 
         // 通过反射获取 RedPointConst 类中的所有 public static 字符串常量
@@ -106,7 +105,6 @@ public class RedManager : Singleton<RedManager>
         }
         if (SearchNode(name) != null)
         {
-            Debug.Log("你已经插入了该节点" + name);
             return;
         }
 

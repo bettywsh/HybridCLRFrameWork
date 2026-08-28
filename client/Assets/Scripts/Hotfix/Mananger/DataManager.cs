@@ -6,9 +6,8 @@ using UnityEngine;
 public class DataManager : Singleton<DataManager>
 {
     Dictionary<Type, DataBase> configs = new Dictionary<Type, DataBase>();
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
         //Assembly Hotfix = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");
         var types = AssemblyManager.Instance.GetTypes(typeof(DataAttribute));
         foreach (Type type in types)

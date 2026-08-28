@@ -12,19 +12,10 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
     SceneBase sceneScript;
     string oldName;
     SceneBase oldSceneScript;
-    int msgProgress;
-    int msgComplete;
     SceneHandle curSceneHandle;
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
-    }
 
-    public async UniTask Init(int progress, int complete)
-    {
-        msgProgress = progress;
-        msgComplete = complete;
-        await Init();
     }
 
     public void LoadScene(string scene, bool isSendComplete = false)
@@ -78,12 +69,12 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
 
     public void SetProgress(float progress)
     {
-        EventManager.Instance.MessageNotify(msgProgress, progress);
+        EventManager.Instance.MessageNotify(MessageConst.Msg_LoadingPanelProgress, progress);
     }
 
     public void SetComplete()
     {
-        EventManager.Instance.MessageNotify(msgComplete);
+        EventManager.Instance.MessageNotify(MessageConst.Msg_LoadingPanelComplete);
     }
 
 

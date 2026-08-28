@@ -23,33 +23,43 @@ public class Launch
         await UniTask.Yield();
        
         //初始化hotfix管理器
-        AssemblyManager.Instance.Init(new Assembly[1]{ HybridCLRManager.Instance._hotUpdateAss });
+        AssemblyManager.Instance.Init();
 
-        await ResManager.Instance.Init();
-        await SoundManager.Instance.Init();
-        await UIManager.Instance.Init();
-        await AtlasManager.Instance.Init();
-        await ConfigManager.Instance.Init();
-        await TimeManager.Instance.Init();
-        await TimerManager.Instance.Init();
-        await DialogManager.Instance.Init();
-        await DataManager.Instance.Init();
-        NetworkManager.Instance.Init(() => {
-            DialogManager.Instance.ShowNetLoading();
-        }, () => {
-            DialogManager.Instance.HideNetLoading();
-        });
-        await RedManager.Instance.Init();
+        ResManager.Instance.Init();
+        SoundManager.Instance.Init();
+        UIManager.Instance.Init();
+        AtlasManager.Instance.Init();
+        ConfigManager.Instance.Init();
+        TimeManager.Instance.Init();
+        TimerManager.Instance.Init();
+        DialogManager.Instance.Init();
+        DataManager.Instance.Init();
+        NetworkManager.Instance.Init();
+        RedManager.Instance.Init();
 
         //通用界面预加载
 
         //战斗资源
 
         //await CardBuffSetting.The.Init();
-        await LoadSceneManager.Instance.Init(MessageConst.Msg_LoadingPanelProgress, MessageConst.Msg_LoadingPanelComplete);
+        LoadSceneManager.Instance.Init();
 
         updatePanel?.SetProgressTween(false);
         await UniTask.Yield();
+
+        NetworkManager.Instance.SetNetLoading(() =>
+        {
+            DialogManager.Instance.ShowNetLoading();
+        }, () =>
+        {
+            DialogManager.Instance.HideNetLoading();
+        });
+;
+        
+
+
+
+
         UIManager.Instance.Open<LoginPanel>().Forget();
     }
 

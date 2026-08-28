@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-public static class MessageConst
+﻿public static class MessageConst
 {
     // 框架层100-200，逻辑层的从200起
     //连接到服务器

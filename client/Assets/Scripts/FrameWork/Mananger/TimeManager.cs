@@ -9,9 +9,8 @@ public class TimeManager : MonoSingleton<TimeManager>
     public long mServerTimer = 0;
     public float validStartGameTime = 0;
 
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
         this.dt1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         timerDeltaTime = 0;
         timerUnscaledDeltaTime = 0;

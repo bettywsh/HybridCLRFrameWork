@@ -7,9 +7,8 @@ using UnityEngine;
 public class DialogManager : Singleton<DialogManager>
 {    
 
-    public override async UniTask Init()
+    public override void Init()
     {
-        await base.Init();
         EventHelper.RegisterTimerEvent(this);
     }
 

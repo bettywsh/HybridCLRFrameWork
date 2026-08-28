@@ -12,7 +12,7 @@ public class ResManager : Singleton<ResManager>
     Dictionary<string, Dictionary<string, AssetHandle>> ResLoaders = new Dictionary<string, Dictionary<string, AssetHandle>>();
 
     ResourcePackage package;
-    public override async UniTask Init()
+    public override void Init()
     {
         package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);        
     }
@@ -34,7 +34,7 @@ public class ResManager : Singleton<ResManager>
     {
         AssetHandle handle = package.LoadAssetSync<T>(location);
         T t = (T)handle.AssetObject;
-        AddResloader(LoadSceneManager.Instance.CurScene(), handle);
+        AddResloader(SceneManager.GetActiveScene().name, handle);
         return t;
     }
 
@@ -46,7 +46,7 @@ public class ResManager : Singleton<ResManager>
 
     public async UniTask<T> SceneLoadAssetAsync<T>(string location, CancellationToken ct = default) where T : UnityEngine.Object
     {
-        return await LoadAssetAsync<T>(LoadSceneManager.Instance.CurScene(), location, ct);
+        return await LoadAssetAsync<T>(SceneManager.GetActiveScene().name, location, ct);
     }
 
     #region 框架专用

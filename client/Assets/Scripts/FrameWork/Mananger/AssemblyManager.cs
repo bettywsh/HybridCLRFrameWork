@@ -11,21 +11,16 @@ public class AssemblyManager : Singleton<AssemblyManager>
     private readonly Dictionary<string, Type> allTypes = new();
     private readonly UnOrderMultiMapSet<Type, Type> types = new();
     private readonly UnOrderMultiMapSet<Type, MethodInfo> methods = new();
-    private Assembly[] assemblies;
+    private Assembly[] hotUpdateAss;
     private Dictionary<string, Type> allPanel = new Dictionary<string, Type>();
     private Dictionary<string, Type> allSubPanel = new Dictionary<string, Type>();
     private Dictionary<string, Type> allCell = new Dictionary<string, Type>();
     private Dictionary<string, Type> allScene = new Dictionary<string, Type>();
-
-    public async void Init(Assembly[] assemblies)
-    { 
-        this.assemblies = assemblies;
-        await Init();
-    }
-    public override async UniTask Init()
+    private Dictionary<string, Type> allData = new Dictionary<string, Type>();
+    public override void Init()
     {
-        await base.Init(); 
-        Dictionary<string, Type> addTypes = GetAssemblyTypes(assemblies);
+        hotUpdateAss = new Assembly[1] { HybridCLRManager.Instance._hotUpdateAss };
+        Dictionary<string, Type> addTypes = GetAssemblyTypes(hotUpdateAss);
         foreach ((string fullName, Type type) in addTypes)
         {
             this.allTypes[fullName] = type;
@@ -71,6 +66,11 @@ public class AssemblyManager : Singleton<AssemblyManager>
         {
             allScene.Add(type.FullName, type);
         }
+        types = GetTypes(typeof(DataAttribute));
+        foreach (Type type in types)
+        {
+            allData.Add(type.FullName, type);
+        }
     }
 
     Dictionary<string, Type> GetAssemblyTypes(params Assembly[] args)
@@ -114,6 +114,9 @@ public class AssemblyManager : Singleton<AssemblyManager>
                 break;
             case EAttribute.Scene:
                 this.allScene.TryGetValue(name, out t);
+                break;
+            case EAttribute.Data:
+                this.allData.TryGetValue(name, out t);
                 break;
         }
 

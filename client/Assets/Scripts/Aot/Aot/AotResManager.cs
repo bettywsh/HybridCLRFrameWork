@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using YooAsset;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using dnlib.PE;
 
 public class AotResManager : AotSingleton<AotResManager>
 {

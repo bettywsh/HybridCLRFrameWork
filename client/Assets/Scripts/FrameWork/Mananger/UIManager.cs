@@ -150,12 +150,14 @@ public class UIManager : MonoSingleton<UIManager>
         {
             if (cs[i].name != go.transform.name)
                 cs[i].sortingOrder = order + cs[i].sortingOrder;
-        }
-        Renderer[] r = go.GetComponentsInChildren<Renderer>(true);
-        for (int i = 0; i < r.Length; i++)
-        {
-            if (cs[i].name != go.transform.name)
-                r[i].sortingOrder = order + r[i].sortingOrder;
+            Renderer[] r = cs[i].GetComponentsInChildren<Renderer>(true);
+            for (int j = 0; j < r.Length; j++)
+            {
+                Canvas owner = r[j].GetComponentInParent<Canvas>();
+                if (owner != cs[i])
+                    continue;
+                r[j].sortingOrder = cs[i].sortingOrder + r[j].sortingOrder;
+            }
         }
 
         //for (int x = 0; x < baseCanvas.childCount; x++)
@@ -232,7 +234,7 @@ public class UIManager : MonoSingleton<UIManager>
             // TimerMgr.Instance.ClearTimer("btnClick");
 
             inputEffect.gameObject.SetActive(true);
-            SoundManager.Instance.PlayEffectSound("Assets/App/Sound/UI/click1.mp3");
+            SoundManager.Instance.PlayEffectSound("Assets/App/Sound/UI/click1.mp3").Forget();
             // TimerMgr.Instance.SetTimer("btnClick", 1f, () => {
             //     effectClick.SetActive(false);
             // });
@@ -240,7 +242,7 @@ public class UIManager : MonoSingleton<UIManager>
         
         foreach ((string name, PanelBase bp) in uiList)
         {
-            if (bp.transform == null) { return; }
+            if (bp.transform == null) { continue; }
             PanelBase basePanel = bp;
             basePanel?.OnUpdate();
         }

@@ -14,7 +14,7 @@ using SimpleJSON;
 
 public class Launch
 {
-    public static async void Start()
+    public static async UniTask Start()
     {
         SDKManager.Instance.KuaiShouChannel();
         var updatePanel = AotUIManager.Instance.GetUI<UpdatePanel>();

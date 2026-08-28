@@ -22,7 +22,7 @@ public class UpdatePanel : AotPanelBase
     ResourceDownloaderOperation downloader;
     TweenerCore<float, float, FloatOptions> tween;
     CancellationTokenSource cancelToken = new CancellationTokenSource();
-    public override async void OnOpen()
+    public override async UniTask OnOpen()
     {
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode ||
          AppSettings.AppConfig.EPlayMode == EPlayMode.OfflinePlayMode ||
@@ -170,7 +170,7 @@ public class UpdatePanel : AotPanelBase
         
     }
 
-    async void StartGame() {
+    async UniTask StartGame() {
         //this.Close();
         imgProgress.fillAmount = 1.0f;
         await HybridCLRManager.Instance.LoadDll();

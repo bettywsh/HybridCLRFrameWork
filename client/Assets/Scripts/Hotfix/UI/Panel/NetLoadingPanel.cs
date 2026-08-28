@@ -13,7 +13,7 @@ public class NetLoadingPanel : PanelBase
         transform.GetComponent<Canvas>().sortingOrder = (int) EUILayer.NetLoding;
     }
 
-    public async void Show()
+    public async UniTask Show()
     {
         cancellationTokenSource = new CancellationTokenSource();
         transform.gameObject.SetActive(true);

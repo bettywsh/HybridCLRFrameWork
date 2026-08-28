@@ -14,9 +14,9 @@ public class AotPanelBase: MonoBehaviour
     public object[] args;
     public CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
-    public virtual void OnOpen()
+    public virtual async UniTask OnOpen()
     { 
-    
+         await UniTask.CompletedTask;
     }
 
     public virtual void Close()

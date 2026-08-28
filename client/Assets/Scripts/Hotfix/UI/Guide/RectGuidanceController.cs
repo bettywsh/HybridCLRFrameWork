@@ -93,7 +93,7 @@ public class RectGuidanceController : MonoBehaviour, IPointerClickHandler
 
    
 
-    public async void SetTarget(Transform target)
+    public async UniTask SetTarget(Transform target)
     {
         this.target = target as RectTransform;
         _material = GetComponent<Image>().material;
@@ -102,10 +102,10 @@ public class RectGuidanceController : MonoBehaviour, IPointerClickHandler
         bool isCanel = await UniTask.WaitForSeconds(0.5f, true, cancellationToken: cancellationTokenSource.Token).SuppressCancellationThrow();
         if (isCanel)
             return;
-        RefreshMask();
+        await RefreshMask();
     }
 
-    private async void RefreshMask()
+    private async UniTask RefreshMask()
     {
         canvas = UIManager.Instance.uiCanvas;
         //获取高亮区域四个顶点的世界坐标

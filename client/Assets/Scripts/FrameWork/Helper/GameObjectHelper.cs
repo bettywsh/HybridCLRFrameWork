@@ -1,4 +1,5 @@
-﻿using ICSharpCode.SharpZipLib.Core;
+﻿using Cysharp.Threading.Tasks;
+using ICSharpCode.SharpZipLib.Core;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -23,7 +24,7 @@ public class GameObjectHelper
         return go;
     }
 
-    public static async void SetGrey(Transform transform, bool isGrey)
+    public static async UniTask SetGrey(Transform transform, bool isGrey)
     {
         var images = transform.GetComponentsInChildren<Image>();
         foreach(var image in images)

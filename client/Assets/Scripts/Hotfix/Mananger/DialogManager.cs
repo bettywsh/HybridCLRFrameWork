@@ -13,7 +13,7 @@ public class DialogManager : Singleton<DialogManager>
     }
 
     #region 飘字
-    public async void ShowTextFlying(string value)
+    public async UniTask ShowTextFlying(string value)
     {
         TextPanel msgPanel = UIManager.Instance.GetUI<TextPanel>();
         if (msgPanel == null)
@@ -23,14 +23,14 @@ public class DialogManager : Singleton<DialogManager>
         msgPanel.Fly(value);
     }
 
-    public async void ShowDialog(DialogInfo dialogInfo)
+    public async UniTask ShowDialog(DialogInfo dialogInfo)
     {
         await UIManager.Instance.Open<DialogPanel>(dialogInfo);
     }
     #endregion
 
     #region 网络菊花
-    public async void ShowNetLoading(float timeout)
+    public async UniTask ShowNetLoading(float timeout)
     {
         NetLoadingPanel netLoadingPanel = UIManager.Instance.GetUI<NetLoadingPanel>();
         if (netLoadingPanel == null)
@@ -41,7 +41,7 @@ public class DialogManager : Singleton<DialogManager>
         TimerManager.Instance.OnceTimer(TimerConst.NetLoading, timeout);
     }
 
-    public async void ShowNetLoading()
+    public async UniTask ShowNetLoading()
     {
         NetLoadingPanel netLoadingPanel = UIManager.Instance.GetUI<NetLoadingPanel>();
         if (netLoadingPanel == null)

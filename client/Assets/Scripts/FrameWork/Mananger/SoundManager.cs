@@ -111,7 +111,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
     }
 
-    public async void PlayBackSound(string name)
+    public async UniTask PlayBackSound(string name)
     {
         audioSource.loop = true;
         //改为异步加载
@@ -157,7 +157,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     }
 
-    public async void PlayEffectSound(string name)
+    public async UniTask PlayEffectSound(string name)
     {
         GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Battle/SoundEffect"), root);
         go.name = name;

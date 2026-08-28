@@ -15,7 +15,7 @@ public class UpdateDialogPanel : AotPanelBase
     public Button btnCancel;
 
     AotDialogInfo dialogInfo;
-    public override void OnOpen()
+    public override async UniTask OnOpen()
     {
         dialogInfo = args[0] as AotDialogInfo;
         txtMsg.text = dialogInfo.txtMsg;

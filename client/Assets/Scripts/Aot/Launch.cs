@@ -4,11 +4,16 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using YooAsset;
+using Cysharp.Threading.Tasks;
 
 public class Launch : MonoBehaviour
 {
+    void Awake()
+    {
+        AwakeAsync().Forget();
+    }
 
-    async void Awake()
+    async UniTask AwakeAsync()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         AppSettings.AppConfig = Resources.Load<AppConfig>("AppConfig");
@@ -30,7 +35,5 @@ public class Launch : MonoBehaviour
         {
             AotUIManager.Instance.Open<SplashAdvicePanel>();
         }
-
-
     }
 }

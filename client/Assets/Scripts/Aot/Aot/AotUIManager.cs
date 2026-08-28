@@ -71,7 +71,7 @@ public class AotUIManager : AotSingleton<AotUIManager>
     }
         
 
-    public async void LoadPanel(string name, params object[] args)
+    public async UniTask LoadPanel(string name, params object[] args)
     {
         GameObject go = Resources.Load<GameObject>($"AotUI/{name}");
         go = GameObject.Instantiate(go);

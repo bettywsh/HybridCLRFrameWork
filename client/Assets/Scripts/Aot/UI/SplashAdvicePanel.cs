@@ -8,7 +8,7 @@ public class SplashAdvicePanel : AotPanelBase
 {
     public CanvasGroup cngContent;
 
-    public override async void OnOpen()
+    public override async UniTask OnOpen()
     {
         cngContent.alpha = 0;
         Sequence seq = DOTween.Sequence();

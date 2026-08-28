@@ -72,14 +72,8 @@ public static class EventHelper
             {
                 if (att is not OnNetAttribute) continue;
                 var id = (att as OnNetAttribute).Id;
-                EventManager.Instance.RegisterNetMessageHandler(id,
-                    new EventHandler()
-                    {
-                        eventDelegate = (object[] msgDatas) =>
-                        {
-                            method.Invoke(obj, msgDatas);
-                        }
-                    });
+                MessageDelegate messageDelegate = (MessageDelegate)Delegate.CreateDelegate(typeof(MessageDelegate), obj, method);
+                EventManager.Instance.RegisterNetMessageHandler(id, messageDelegate);
                 if (!DirNets.TryGetValue(type.Name, out var nets))
                 {
                     nets = new List<int>();

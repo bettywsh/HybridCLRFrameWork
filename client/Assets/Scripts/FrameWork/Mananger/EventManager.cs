@@ -2,71 +2,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Experimental.GlobalIllumination;
-
-/// <summary>
-/// xuss
-/// 
-/// 20200514
-/// </summary>
-/// 
 
 public struct EventHandler
 {
     public EventDelegate eventDelegate;
     public Type type;
 }
-
+public delegate void MessageDelegate(byte[] msgDatas);
 public delegate void EventDelegate(params object[] msgDatas);
 public class EventManager : Singleton<EventManager>
 {
-    private Dictionary<int, List<EventHandler>> netHandlerDic = new Dictionary<int, List<EventHandler>>();
+    private Dictionary<int, MessageDelegate> messageHandlerDic = new Dictionary<int, MessageDelegate>();
 
-    private Dictionary<int, List<EventHandler>> messageHandlerDic = new Dictionary<int, List<EventHandler>>();
+    private Dictionary<int, List<EventHandler>> eventHandlerDic = new Dictionary<int, List<EventHandler>>();
 
-    private Dictionary<int, List<EventHandler>> timerHandlerDic = new Dictionary<int, List<EventHandler>>();
+    private Dictionary<int, List<EventHandler>> timerEventHandlerDic = new Dictionary<int, List<EventHandler>>();
 
     #region 网络消息
-    public void RegisterNetMessageHandler(int cmdID, EventHandler message)
+    public void RegisterNetMessageHandler(int cmdID, MessageDelegate message)
     {
         List<EventHandler> list;
-        if (!netHandlerDic.TryGetValue(cmdID, out list))
+        if (!messageHandlerDic.TryGetValue(cmdID, out MessageDelegate msg))
         {
             list = new List<EventHandler>();
-            netHandlerDic.Add(cmdID, list);
+            messageHandlerDic.Add(cmdID, message);
         }
-        else {
+        else 
+        {
             Debug.LogError($"{cmdID}事件已经被注册，不建议注册多个网络事件");
         }
-        if (!list.Contains(message))
-            list.Add(message);
     }
 
     public void RemoveNetMessage(int cmdID)
     {
-        if (netHandlerDic.ContainsKey(cmdID))
+        if (messageHandlerDic.ContainsKey(cmdID))
         {
-            netHandlerDic.Remove(cmdID);
+            messageHandlerDic.Remove(cmdID);
         }
     }
 
     public void RemoveAllRegisterNet()
     {
-        netHandlerDic.Clear();
+        messageHandlerDic.Clear();
     }
 
-    public void NetNotify(int id, params object[] msgData)
+    public void NetNotify(int id, byte[] msgData)
     {
-        List<EventHandler> handle;
-        if (netHandlerDic.TryGetValue(id, out handle))
+        if (messageHandlerDic.TryGetValue(id, out MessageDelegate message))
         {
-
-            foreach (EventHandler itemHand in handle)
-            {
-                itemHand.eventDelegate(msgData);
-            }
-
+            message(msgData);
         }
     }
     #endregion
@@ -75,10 +59,10 @@ public class EventManager : Singleton<EventManager>
     public void RegisterMessageHandler(int eventName, EventHandler message)
     {
         List<EventHandler> list;
-        if (!messageHandlerDic.TryGetValue(eventName, out list))
+        if (!eventHandlerDic.TryGetValue(eventName, out list))
         {
             list = new List<EventHandler>();
-            messageHandlerDic.Add(eventName, list);
+            eventHandlerDic.Add(eventName, list);
         }
 
         if (!list.Contains(message))
@@ -88,9 +72,9 @@ public class EventManager : Singleton<EventManager>
 
     public void RemoveMessage(int eventName, Type type)
     {
-        if (messageHandlerDic.ContainsKey(eventName))
+        if (eventHandlerDic.ContainsKey(eventName))
         {
-            if (messageHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
+            if (eventHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
             {
                 if (list.Count > 1)
                 {
@@ -98,7 +82,7 @@ public class EventManager : Singleton<EventManager>
                 }
                 else
                 {
-                    messageHandlerDic.Remove(eventName);
+                    eventHandlerDic.Remove(eventName);
                 }
             }
         }
@@ -106,14 +90,14 @@ public class EventManager : Singleton<EventManager>
 
     public void RemoveAllRegisterMessage()
     {
-        messageHandlerDic.Clear();
+        eventHandlerDic.Clear();
     }
 
     public void MessageNotify(int eventName,params object[] msgData)
     {
         List<EventHandler> handle;
 
-        if (messageHandlerDic.TryGetValue(eventName, out handle))
+        if (eventHandlerDic.TryGetValue(eventName, out handle))
         {
             for (int i = handle.Count - 1; i >= 0; i--)
             {
@@ -127,10 +111,10 @@ public class EventManager : Singleton<EventManager>
     public void RegisterTimerHandler(int eventName, EventHandler message)
     {
         List<EventHandler> list;
-        if (!timerHandlerDic.TryGetValue(eventName, out list))
+        if (!timerEventHandlerDic.TryGetValue(eventName, out list))
         {
             list = new List<EventHandler>();
-            timerHandlerDic.Add(eventName, list);
+            timerEventHandlerDic.Add(eventName, list);
         }
 
         if (!list.Contains(message))
@@ -140,9 +124,9 @@ public class EventManager : Singleton<EventManager>
 
     public void RemoveTimer(int eventName, Type type)
     {
-        if (timerHandlerDic.ContainsKey(eventName))
+        if (timerEventHandlerDic.ContainsKey(eventName))
         {
-            if (timerHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
+            if (timerEventHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
             {
                 if (list.Count > 1)
                 {
@@ -150,7 +134,7 @@ public class EventManager : Singleton<EventManager>
                 }
                 else
                 {
-                    timerHandlerDic.Remove(eventName);
+                    timerEventHandlerDic.Remove(eventName);
                 }
             }
         }
@@ -158,14 +142,14 @@ public class EventManager : Singleton<EventManager>
 
     public void RemoveAllRegisterTimer()
     {
-        timerHandlerDic.Clear();
+        timerEventHandlerDic.Clear();
     }
 
     public void TimerNotify(int eventName, params object[] msgData)
     {
         List<EventHandler> handle;
 
-        if (timerHandlerDic.TryGetValue(eventName, out handle))
+        if (timerEventHandlerDic.TryGetValue(eventName, out handle))
         {
             for (int i = handle.Count - 1; i >= 0; i--)
             {

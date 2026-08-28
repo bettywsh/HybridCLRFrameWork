@@ -11,13 +11,11 @@ public class WorldBannerData : DataBase
     public override void Init()
     {
         base.Init();
-        EventHelper.RegisterNetEvent(this);
-        EventHelper.RegisterTimerEvent(this);
         TimerManager.Instance.OnceTimer(TimerConst.WorldBannerTimer, 1);
     }
 
     [OnNet((int)MsgID.MSGShowPaomadengMsg)]
-    void OnNetNewServerDay(byte[] msgDatas)
+    public void OnNetNewServerDay(byte[] msgDatas)
     {
         ShowPaomadengMsg showPaomadengMsg = ProtobufHelper.Deserialize<ShowPaomadengMsg>(msgDatas);
         string content = "";

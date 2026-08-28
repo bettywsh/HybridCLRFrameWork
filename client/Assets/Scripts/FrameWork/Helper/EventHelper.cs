@@ -50,8 +50,10 @@ public static class EventHelper
             {
                 if (att is not OnTimerAttribute) continue;
                 EventManager.Instance.RegisterTimerHandler((att as OnTimerAttribute).Name,
-                    new EventHandler() { eventDelegate = (msgDatas) => { method.Invoke(obj, msgDatas);
-                    }});
+                    new EventHandler() {
+                        eventDelegate = (msgDatas) => { method.Invoke(obj, msgDatas); },
+                        type = type
+                    });
                 if (!DirTimers.TryGetValue(type.Name, out var timers))
                 {
                     timers = new List<int>();

@@ -18,7 +18,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
 
     }
 
-    public void LoadScene(string scene, bool isSendComplete = false)
+    public async UniTask LoadScene(string scene, bool isSendComplete = false)
     {
         oldName = name;
         name = scene;
@@ -26,11 +26,11 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         {
             oldSceneScript = sceneScript;
         }
-        UnLoadScene();
-        ChangeScene(name);
+        await UnLoadScene();
+        await ChangeScene(name);
     }
 
-    public async void UnLoadScene()
+    public async UniTask UnLoadScene()
     {
         //if (name == oldName)
         //    return;
@@ -38,13 +38,13 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         if (curSceneHandle != null)
         {
             var operation = curSceneHandle.UnloadAsync();
-            await operation;
+            await operation.ToUniTask();
         }
         oldSceneScript?.UnLoadScene();
         GC();
     }
 
-    public async void ChangeScene(string name)
+    public async UniTask ChangeScene(string name)
     {
         curSceneHandle = ResManager.Instance.LoadSceneAsync("Assets/App/Scene/" + name);
         await curSceneHandle.ToUniTask();

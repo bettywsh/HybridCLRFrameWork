@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Panel]
 public class #CLASSNAME# : PanelBase
 {
     public override async UniTask OnOpen()

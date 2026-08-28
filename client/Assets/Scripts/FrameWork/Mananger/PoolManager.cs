@@ -92,21 +92,32 @@ public class PoolManager : Singleton<PoolManager>
 
     public void DestoryPoolName(string poolName)
     {
-        if (poolList.TryGetValue(poolName, out var availableObjStack))
+        if (poolList.TryGetValue(poolName, out var goList))
         {
-            foreach (var item in availableObjStack)
+            foreach (var item in goList)
             {
-                GameObject.Destroy(item.gameObject);
+                if (item != null)
+                    GameObject.Destroy(item);
             }
+            goList.Clear();
+            poolList.Remove(poolName);
+        }
+
+        if (pools.TryGetValue(poolName, out var availableObjStack))
+        {
             availableObjStack.Clear();
+            pools.Remove(poolName);
         }
     }
 
     public void DestoryPoolAll()
     {
-        foreach (var pool in poolList)
+        var names = new List<string>(poolList.Keys);
+        foreach (var name in names)
         {
-            DestoryPoolName(pool.Key);
+            DestoryPoolName(name);
         }
+        poolList.Clear();
+        pools.Clear();
     }
 }

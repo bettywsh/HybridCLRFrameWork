@@ -81,21 +81,16 @@ public class UIManager : MonoSingleton<UIManager>
     //    }
     //}
 
-    public async UniTask<Type> Open(Type type, params object[] args)
+    public async UniTask<PanelBase> Open(Type type, params object[] args)
     {
         string prefabName = type.Name;
-        object t;
         if (!uiList.TryGetValue(prefabName, out PanelBase bp))
         {
-            t = Activator.CreateInstance(type);
-            uiList.Add(prefabName, t as PanelBase);
-            await LoadPanel(prefabName, t as PanelBase, args);
+            bp = Activator.CreateInstance(type) as PanelBase;
+            uiList.Add(prefabName, bp);
+            await LoadPanel(prefabName, bp, args);
         }
-        else
-        {
-            t = bp;
-        }
-        return t as Type;
+        return bp;
     }
 
     public  async UniTask<T> Open<T>(params object[] args) where T : PanelBase

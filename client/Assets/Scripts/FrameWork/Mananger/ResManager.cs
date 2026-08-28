@@ -72,16 +72,22 @@ public class ResManager : Singleton<ResManager>
     #region 资源加载标识
     private void AddResloader(string resName, AssetHandle assetHandle)
     {
-        if (resName == "Common") return;
-        ResLoaders.TryGetValue(resName, out var assetHandles);
-        if (assetHandles == null)
+        if (resName == "Common" || assetHandle == null)
+            return;
+
+        if (!ResLoaders.TryGetValue(resName, out var assetHandles) || assetHandles == null)
         {
             assetHandles = new Dictionary<string, AssetHandle>();
+            ResLoaders[resName] = assetHandles;
         }
-        if (assetHandles.ContainsKey(assetHandle.GetAssetInfo().AssetPath))
+
+        string assetPath = assetHandle.GetAssetInfo().AssetPath;
+        if (assetHandles.ContainsKey(assetPath))
         {
-            assetHandles.Add(assetHandle.GetAssetInfo().AssetPath, assetHandle);
+            assetHandle.Release();
+            return;
         }
+        assetHandles.Add(assetPath, assetHandle);
     }
 
     private async UniTask<T> LoadAssetAsync<T>(string resName, string location, CancellationToken ct) where T : UnityEngine.Object

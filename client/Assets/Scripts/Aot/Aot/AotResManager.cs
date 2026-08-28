@@ -22,12 +22,18 @@ public class AotResManager : AotSingleton<AotResManager>
         YooAssets.SetDefaultPackage(package);
 
         EPlayMode ePlayMode = AppSettings.AppConfig.EPlayMode;
+#if !UNITY_EDITOR
+        if (ePlayMode == EPlayMode.EditorSimulateMode)
+        {
+            Debug.LogError("EditorSimulateMode is editor-only, fallback to OfflinePlayMode");
+            ePlayMode = EPlayMode.OfflinePlayMode;
+        }
+#endif
 
-        // 编辑器下的模拟模式
         InitializationOperation initializationOperation = null;
-        // 编辑器下的模拟模式
         switch (ePlayMode)
         {
+#if UNITY_EDITOR
             case EPlayMode.EditorSimulateMode:
                 {
                     var buildResult = EditorSimulateModeHelper.SimulateBuild(AppSettings.AppConfig.PackageName);
@@ -38,6 +44,7 @@ public class AotResManager : AotSingleton<AotResManager>
                     await initializationOperation.Task.AsUniTask();
                     break;
                 }
+#endif
             case EPlayMode.OfflinePlayMode:
                 {
                     var createParameters = new OfflinePlayModeParameters();

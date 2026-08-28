@@ -8,6 +8,7 @@ public struct EventHandler
     public EventDelegate eventDelegate;
     public Type type;
 }
+
 public delegate void MessageDelegate(byte[] msgDatas);
 public delegate void EventDelegate(params object[] msgDatas);
 public class EventManager : Singleton<EventManager>
@@ -21,13 +22,11 @@ public class EventManager : Singleton<EventManager>
     #region 网络消息
     public void RegisterNetMessageHandler(int cmdID, MessageDelegate message)
     {
-        List<EventHandler> list;
-        if (!messageHandlerDic.TryGetValue(cmdID, out MessageDelegate msg))
+        if (!messageHandlerDic.ContainsKey(cmdID))
         {
-            list = new List<EventHandler>();
             messageHandlerDic.Add(cmdID, message);
         }
-        else 
+        else
         {
             Debug.LogError($"{cmdID}事件已经被注册，不建议注册多个网络事件");
         }
@@ -72,20 +71,11 @@ public class EventManager : Singleton<EventManager>
 
     public void RemoveMessage(int eventName, Type type)
     {
-        if (eventHandlerDic.ContainsKey(eventName))
-        {
-            if (eventHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
-            {
-                if (list.Count > 1)
-                {
-                    list.RemoveAll(x => x.type == type);
-                }
-                else
-                {
-                    eventHandlerDic.Remove(eventName);
-                }
-            }
-        }
+        if (!eventHandlerDic.TryGetValue(eventName, out var list))
+            return;
+        list.RemoveAll(x => x.type == type);
+        if (list.Count == 0)
+            eventHandlerDic.Remove(eventName);
     }
 
     public void RemoveAllRegisterMessage()
@@ -124,20 +114,11 @@ public class EventManager : Singleton<EventManager>
 
     public void RemoveTimer(int eventName, Type type)
     {
-        if (timerEventHandlerDic.ContainsKey(eventName))
-        {
-            if (timerEventHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
-            {
-                if (list.Count > 1)
-                {
-                    list.RemoveAll(x => x.type == type);
-                }
-                else
-                {
-                    timerEventHandlerDic.Remove(eventName);
-                }
-            }
-        }
+        if (!timerEventHandlerDic.TryGetValue(eventName, out var list))
+            return;
+        list.RemoveAll(x => x.type == type);
+        if (list.Count == 0)
+            timerEventHandlerDic.Remove(eventName);
     }
 
     public void RemoveAllRegisterTimer()

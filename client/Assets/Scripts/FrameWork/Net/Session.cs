@@ -18,6 +18,11 @@ public sealed class Session : IDisposable
 
     public void Create(NetworkProtocol networkProtocol, EServer eServer, IPEndPoint ipEndPoint)
     {
+        if (ipEndPoint == null)
+        {
+            OnError((int)eServer, ErrorCore.ERR_ConnectError);
+            return;
+        }
         //IPAddress[] addresses = Dns.GetHostAddresses(host);
         switch (networkProtocol)
         {
@@ -63,7 +68,7 @@ public sealed class Session : IDisposable
         }
         EventManager.Instance.NetNotify(id, data);
         //重置心跳包时间
-        //EventManager.Instance.MessageNotify(107);
+        //EventManager.Instance.MessageNotify(MessageConstBase.Msg_HeartBeat);
     }
 
     public void Update()
@@ -73,7 +78,7 @@ public sealed class Session : IDisposable
 
     private void OnError(long channelId, int error)
     {
-        EventManager.Instance.MessageNotify(109, error);
+        EventManager.Instance.MessageNotify(MessageConstBase.Msg_NetError, error);
         NetworkManager.Instance.HideNetLoading?.Invoke();
     }
 

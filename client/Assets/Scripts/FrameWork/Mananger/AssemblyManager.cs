@@ -46,7 +46,7 @@ public class AssemblyManager : Singleton<AssemblyManager>
         var types = GetTypes(typeof(CellAttribute));
         foreach (Type type in types)
         {
-            allCell.Add(type.FullName, type);
+            allCell.Add(type.Name, type);
         }
 
         types = GetTypes(typeof(PanelAttribute));
@@ -64,7 +64,7 @@ public class AssemblyManager : Singleton<AssemblyManager>
         types = GetTypes(typeof(SceneAttribute));
         foreach (Type type in types)
         {
-            allScene.Add(type.FullName, type);
+            allScene.Add(type.Name, type);
         }
         types = GetTypes(typeof(DataAttribute));
         foreach (Type type in types)

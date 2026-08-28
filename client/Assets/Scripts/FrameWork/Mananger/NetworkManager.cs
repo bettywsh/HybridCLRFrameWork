@@ -18,10 +18,21 @@ public class NetworkManager : MonoSingleton<NetworkManager>
 	{
         try
         {
-            var ipaddress = Dns.GetHostAddresses(AppSettings.AppConfig.SvrGameIp)[0];
-            ipEndPoint = new IPEndPoint(ipaddress, AppSettings.AppConfig.SvrGamePort);
+            var addresses = Dns.GetHostAddresses(AppSettings.AppConfig.SvrGameIp);
+            if (addresses == null || addresses.Length == 0)
+            {
+                Debug.LogError($"DNS resolve failed: no address for {AppSettings.AppConfig.SvrGameIp}");
+                EventManager.Instance.MessageNotify(MessageConstBase.Msg_NetError, ErrorCore.ERR_ConnectError);
+                return;
+            }
+            ipEndPoint = new IPEndPoint(addresses[0], AppSettings.AppConfig.SvrGamePort);
         }
-        catch { }
+        catch (Exception e)
+        {
+            Debug.LogError($"DNS resolve failed: {AppSettings.AppConfig.SvrGameIp}, {e.Message}");
+            EventManager.Instance.MessageNotify(MessageConstBase.Msg_NetError, ErrorCore.ERR_ConnectError);
+            return;
+        }
         Session Session = Create(NetworkProtocol.TCP);
         Session.Create(NetworkProtocol.TCP, EServer.Login, ipEndPoint);
     }

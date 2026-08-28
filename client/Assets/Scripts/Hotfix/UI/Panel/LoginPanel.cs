@@ -15,7 +15,7 @@ public class LoginPanel : PanelBase
     [OnClick("btnLogin")]
     void OnLogin()
     { 
-    
+        Debug.LogError("111");
     }
 
     public override void OnClose()

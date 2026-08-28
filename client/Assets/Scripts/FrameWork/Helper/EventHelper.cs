@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Events;
 
 public static class EventHelper
 {
@@ -105,7 +106,7 @@ public static class EventHelper
                         Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
                     }
                     btn.btnValue.onClick.RemoveAllListeners();
-                    btn.btnValue.onClick.AddListener(() => { method.Invoke(obj, null); });
+                    btn.btnValue.onClick.AddListener((UnityAction)Delegate.CreateDelegate(typeof(UnityAction), obj, method));
                 }
                 else if (att is OnToggleChangedAttribute)
                 {
@@ -115,7 +116,7 @@ public static class EventHelper
                         Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
                     }
                     btn.toggleValue.onValueChanged.RemoveAllListeners();
-                    btn.toggleValue.onValueChanged.AddListener((bool select) => { method.Invoke(obj, new object[1] { select }); });
+                    btn.toggleValue.onValueChanged.AddListener((UnityAction<bool>)Delegate.CreateDelegate(typeof(UnityAction<bool>), obj, method));
                 }
                 else if (att is OnSliderChangedAttribute)
                 {
@@ -125,7 +126,7 @@ public static class EventHelper
                         Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
                     }
                     btn.sliderValue.onValueChanged.RemoveAllListeners();
-                    btn.sliderValue.onValueChanged.AddListener((float value) => { method.Invoke(obj, new object[1] { value }); });
+                    btn.sliderValue.onValueChanged.AddListener((UnityAction<float>)Delegate.CreateDelegate(typeof(UnityAction<float>), obj, method));
                 }
             }
         }

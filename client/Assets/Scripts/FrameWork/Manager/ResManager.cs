@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using YooAsset;
 using Cysharp.Threading.Tasks;
@@ -27,6 +28,7 @@ public class ResManager : Singleton<ResManager>
     {
         var handle = package.LoadAssetSync(location);
         T t = (T)handle.AssetObject;
+        AddResloader("Common", handle);
         return t;
     }
 
@@ -72,7 +74,7 @@ public class ResManager : Singleton<ResManager>
     #region 资源加载标识
     private void AddResloader(string resName, AssetHandle assetHandle)
     {
-        if (resName == "Common" || assetHandle == null)
+        if (assetHandle == null)
             return;
 
         if (!ResLoaders.TryGetValue(resName, out var assetHandles) || assetHandles == null)
@@ -93,7 +95,12 @@ public class ResManager : Singleton<ResManager>
     private async UniTask<T> LoadAssetAsync<T>(string resName, string location, CancellationToken ct) where T : UnityEngine.Object
     {
         AssetHandle handle = package.LoadAssetAsync<T>(location);
-        await handle.WithCancellation(ct).SuppressCancellationThrow();
+        bool canceled = await handle.WithCancellation(ct).SuppressCancellationThrow();
+        if (canceled)
+        {
+            handle.Release();
+            throw new OperationCanceledException(ct);
+        }
         T t = (T)handle.AssetObject;
         AddResloader(resName, handle);
         return t;
@@ -101,6 +108,8 @@ public class ResManager : Singleton<ResManager>
 
     public void UnLoadAssetBundle(string resLoaderName)
     {
+        if (resLoaderName == "Common")
+            return;
         if (!ResLoaders.TryGetValue(resLoaderName, out var assetHandles))
         {
             return;

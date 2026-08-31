@@ -126,6 +126,8 @@ public class AssemblyManager : Singleton<AssemblyManager>
     public object[] GetMethods(Type typeClass)
     {
         this.methods.TryGetValue(typeClass, out var methods);
+        if (methods == null)
+            return Array.Empty<MethodInfo>();
         return methods.ToArray<MethodInfo>();
     }
 }

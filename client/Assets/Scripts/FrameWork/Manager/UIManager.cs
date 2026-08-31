@@ -234,7 +234,7 @@ public class UIManager : MonoSingleton<UIManager>
             // TimerMgr.Instance.ClearTimer("btnClick");
 
             inputEffect.gameObject.SetActive(true);
-            SoundManager.Instance.PlayEffectSound("Assets/App/Sound/UI/click1.mp3").Forget();
+            //SoundManager.Instance.PlayEffectSound("Assets/App/Sound/UI/click1.mp3").Forget();
             // TimerMgr.Instance.SetTimer("btnClick", 1f, () => {
             //     effectClick.SetActive(false);
             // });

@@ -127,40 +127,41 @@ public class TimerManager : MonoSingleton<TimerManager>
         timerInfos.Add(timerId, timer);
         if (timer.TimeScale)
         {
-            timeIdUnscaled.Add(tillTime, timerId);
-            if (tillTime < minTime)
-            {
-                minTime = tillTime;
-            }
-        }
-        else
-        {
             timeId.Add(tillTime, timerId);
             if (tillTime < minTimeUnscaled)
             {
                 minTimeUnscaled = tillTime;
             }
         }
+        else
+        {
+            timeIdUnscaled.Add(tillTime, timerId);
+            if (tillTime < minTime)
+            {
+                minTime = tillTime;
+            }            
+        }
     
     }
 
     public void Update()
     {
-        if (timeId.Count == 0)
+        if (timeId.Count > 0)
         {
-            return;
-        }
-        long timeNow = GetNow(true);
+            long timeNow = GetNow(true);
 
-        if (timeNow >= minTime)
-        {
-            TimeOut(timeNow);
+            if (timeNow >= minTime)
+            {
+                TimeOut(timeNow);
+            }
         }
-
-        timeNow = GetNow(false);
-        if (timeNow >= minTimeUnscaled)
+        if (timeIdUnscaled.Count > 0)
         {
-            TimeOut(timeNow);
+            long timeNow = GetNow(false);
+            if (timeNow >= minTimeUnscaled)
+            {
+                TimeOut(timeNow);
+            }
         }
     }
 

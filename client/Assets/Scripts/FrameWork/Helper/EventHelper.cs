@@ -89,44 +89,50 @@ public static class EventHelper
 
     public static void RegisterUIEvent(object obj, ReferenceCollector referenceCollector)
     {
+        if (referenceCollector == null)
+        {
+            Debug.LogError($"{obj.GetType().Name} 没有 ReferenceCollector");
+            return;
+        }
         var methods = AssemblyManager.Instance.GetMethods(obj.GetType());
+        if (methods == null)
+            return;
         foreach (MethodInfo method in methods)
         {
             foreach (var att in method.GetCustomAttributes(true))
             {
-                if (att is OnClickAttribute)
+                if (att is OnClickAttribute clickAtt)
                 {
-                    var btn = referenceCollector.Get((att as OnClickAttribute).Name);
-                    if (btn == null)
+                    var data = referenceCollector.Get(clickAtt.Name);
+                    if (data == null || data.btnValue == null)
                     {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                        Debug.LogError($"没有找到{clickAtt.Name}属性定义的组件");
+                        continue;
                     }
-                    if (btn.btnValue == null)
-                    {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
-                    }
-                    btn.btnValue.onClick.RemoveAllListeners();
-                    btn.btnValue.onClick.AddListener((UnityAction)Delegate.CreateDelegate(typeof(UnityAction), obj, method));
+                    data.btnValue.onClick.RemoveAllListeners();
+                    data.btnValue.onClick.AddListener((UnityAction)Delegate.CreateDelegate(typeof(UnityAction), obj, method));
                 }
-                else if (att is OnToggleChangedAttribute)
+                else if (att is OnToggleChangedAttribute toggleAtt)
                 {
-                    var btn = referenceCollector.Get((att as OnToggleChangedAttribute).Name);
-                    if (btn.toggleValue == null)
+                    var data = referenceCollector.Get(toggleAtt.Name);
+                    if (data == null || data.toggleValue == null)
                     {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                        Debug.LogError($"没有找到{toggleAtt.Name}属性定义的组件");
+                        continue;
                     }
-                    btn.toggleValue.onValueChanged.RemoveAllListeners();
-                    btn.toggleValue.onValueChanged.AddListener((UnityAction<bool>)Delegate.CreateDelegate(typeof(UnityAction<bool>), obj, method));
+                    data.toggleValue.onValueChanged.RemoveAllListeners();
+                    data.toggleValue.onValueChanged.AddListener((UnityAction<bool>)Delegate.CreateDelegate(typeof(UnityAction<bool>), obj, method));
                 }
-                else if (att is OnSliderChangedAttribute)
+                else if (att is OnSliderChangedAttribute sliderAtt)
                 {
-                    ReferenceData btn = referenceCollector.Get((att as OnSliderChangedAttribute).Name);
-                    if (btn.sliderValue == null)
+                    var data = referenceCollector.Get(sliderAtt.Name);
+                    if (data == null || data.sliderValue == null)
                     {
-                        Debug.LogError($"没有找到{(att as OnClickAttribute).Name}属性定义的组件");
+                        Debug.LogError($"没有找到{sliderAtt.Name}属性定义的组件");
+                        continue;
                     }
-                    btn.sliderValue.onValueChanged.RemoveAllListeners();
-                    btn.sliderValue.onValueChanged.AddListener((UnityAction<float>)Delegate.CreateDelegate(typeof(UnityAction<float>), obj, method));
+                    data.sliderValue.onValueChanged.RemoveAllListeners();
+                    data.sliderValue.onValueChanged.AddListener((UnityAction<float>)Delegate.CreateDelegate(typeof(UnityAction<float>), obj, method));
                 }
             }
         }

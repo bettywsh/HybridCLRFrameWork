@@ -143,7 +143,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlayEffectSound(AudioClip clip)
     {
-        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Battle/SoundEffect"), root);
+        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Effect/SoundEffect"), root);
         //GameObject go = new GameObject(clip.name);
         go.name = clip.name;
         AudioSource effect = go.GetComponent<AudioSource>();
@@ -154,12 +154,11 @@ public class SoundManager : MonoSingleton<SoundManager>
         effect.clip = clip;
         effect_audio.Add(effect);
         effect.Play();
-
     }
 
     public async UniTask PlayEffectSound(string name)
     {
-        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Battle/SoundEffect"), root);
+        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Effect/SoundEffect"), root);
         go.name = name;
         AudioSource effect = go.GetComponent<AudioSource>();
         effect.loop = false;
@@ -263,8 +262,7 @@ public class SoundManager : MonoSingleton<SoundManager>
             }
         }
     }
-
-
+    
     void Update()
     {
         if (effect_audio.Count > 0) {

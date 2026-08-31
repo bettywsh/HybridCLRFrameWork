@@ -81,6 +81,7 @@ public class AotResManager : AotSingleton<AotResManager>
                 createParameters.WebServerFileSystemParameters = FileSystemParameters.CreateDefaultWebServerFileSystemParameters();
                 initializationOperation = package.InitializeAsync(createParameters);
                 #endif
+                await initializationOperation.Task.AsUniTask();
                 break;
             }
         }
@@ -152,7 +153,15 @@ public class AotResManager : AotSingleton<AotResManager>
 
     private void AddResloader(string resName, AssetHandle assetHandle)
     {
-        if (resName == "Common") return;
+        if (assetHandle == null)
+            return;
+        if (resName == "Common")
+            return;
+        if (ResLoaders.ContainsKey(resName))
+        {
+            assetHandle.Release();
+            return;
+        }
         ResLoaders.Add(resName, assetHandle);
     }
 

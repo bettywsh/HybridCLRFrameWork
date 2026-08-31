@@ -66,32 +66,39 @@ public class TimerManager : MonoSingleton<TimerManager>
 
     public void Clear(long id)
     {
-        if (timerInfos.TryGetValue(id, out TimerInfo timer))
+        if (!timerInfos.TryGetValue(id, out TimerInfo timer))
+            return;
+
+        long allTime = timer.StartTime + timer.Interval;
+        if (timer.TimeScale)
         {
-            long allTime = timer.StartTime + timer.Interval;
-            if (timeId[allTime] != null)
-            {
-                timeId.Remove(allTime, (int)id);
-            }
-            if (timeId.Count > 0)
-            {
-                //去除最小时间
-                foreach (var kv in timeId)
-                {
-                    long k = kv.Key;
-                    if (k > GetNow(timer.TimeScale))
-                    {
-                        minTime = k;
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                minTime = int.MaxValue;
-            }
-            Remove(id);
+            timeId.Remove(allTime, (int)id);
+            minTime = NextMinTime(timeId, true);
         }
+        else
+        {
+            timeIdUnscaled.Remove(allTime, (int)id);
+            minTimeUnscaled = NextMinTime(timeIdUnscaled, false);
+        }
+        Remove(id);
+    }
+
+    private long NextMinTime(NativeCollection.MultiMap<long, int> map, bool timeScale)
+    {
+        if (map.Count == 0)
+            return long.MaxValue;
+
+        long now = GetNow(timeScale);
+        long first = long.MaxValue;
+        foreach (var kv in map)
+        {
+            long k = kv.Key;
+            if (first == long.MaxValue)
+                first = k;
+            if (k > now)
+                return k;
+        }
+        return first;
     }
 
     public bool Remove(long id)
@@ -128,18 +135,18 @@ public class TimerManager : MonoSingleton<TimerManager>
         if (timer.TimeScale)
         {
             timeId.Add(tillTime, timerId);
-            if (tillTime < minTimeUnscaled)
+            if (tillTime < minTime)
             {
-                minTimeUnscaled = tillTime;
+                minTime = tillTime;
             }
         }
         else
         {
             timeIdUnscaled.Add(tillTime, timerId);
-            if (tillTime < minTime)
+            if (tillTime < minTimeUnscaled)
             {
-                minTime = tillTime;
-            }            
+                minTimeUnscaled = tillTime;
+            }
         }
     
     }
@@ -149,10 +156,9 @@ public class TimerManager : MonoSingleton<TimerManager>
         if (timeId.Count > 0)
         {
             long timeNow = GetNow(true);
-
             if (timeNow >= minTime)
             {
-                TimeOut(timeNow);
+                TimeOut(timeId, ref minTime, timeNow);
             }
         }
         if (timeIdUnscaled.Count > 0)
@@ -160,20 +166,19 @@ public class TimerManager : MonoSingleton<TimerManager>
             long timeNow = GetNow(false);
             if (timeNow >= minTimeUnscaled)
             {
-                TimeOut(timeNow);
+                TimeOut(timeIdUnscaled, ref minTimeUnscaled, timeNow);
             }
         }
     }
 
-    private void TimeOut(long timeNow)
+    private void TimeOut(NativeCollection.MultiMap<long, int> map, ref long minTimeRef, long timeNow)
     {
-        //去除最小时间
-        foreach (var kv in timeId)
+        foreach (var kv in map)
         {
             long k = kv.Key;
             if (k > timeNow)
             {
-                minTime = k;
+                minTimeRef = k;
                 break;
             }
 
@@ -183,18 +188,17 @@ public class TimerManager : MonoSingleton<TimerManager>
         while (timeOutTime.Count > 0)
         {
             long time = timeOutTime.Dequeue();
-            var list = timeId[time];
+            var list = map[time];
             for (int i = 0; i < list.Length; ++i)
             {
-                long timerId = list[i];
-                timeOutTimes.Enqueue(timerId);
+                timeOutTimes.Enqueue(list[i]);
             }
-            timeId.Remove(time);
+            map.Remove(time);
         }
 
-        if (timeId.Count == 0)
+        if (map.Count == 0)
         {
-            minTime = long.MaxValue;
+            minTimeRef = long.MaxValue;
         }
 
         while (timeOutTimes.Count > 0)

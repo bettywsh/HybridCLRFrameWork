@@ -92,5 +92,6 @@ public class NetworkManager : MonoSingleton<NetworkManager>
     public override void OnDestroy()
     {
         Close();
+        base.OnDestroy();
     }
 }

@@ -26,7 +26,9 @@ public class CellBase: IDisposable
     }
 
     public virtual void Dispose() {
-        cancellationTokenSource.Cancel();
+        cancellationTokenSource?.Cancel();
+        cancellationTokenSource?.Dispose();
+        cancellationTokenSource = null;
     }
 
 }

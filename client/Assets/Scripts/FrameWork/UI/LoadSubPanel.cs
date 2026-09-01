@@ -55,7 +55,7 @@ public class LoadSubPanel : MonoBehaviour
         if (subPanelBase != null)
         {
             subPanelBase.Close();
-            GameObject.DestroyImmediate(subPanelBase.transform.gameObject);
+            GameObject.Destroy(subPanelBase.transform.gameObject);
         }
     }
 

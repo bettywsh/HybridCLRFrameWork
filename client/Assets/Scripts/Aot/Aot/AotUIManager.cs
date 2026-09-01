@@ -32,7 +32,7 @@ public class AotUIManager : AotSingleton<AotUIManager>
 
     public void CanvasScale()
     {
-        float ScreenRatio = Screen.width / Screen.height;
+        float ScreenRatio = Screen.height > 0 ? (float)Screen.width / Screen.height : 1.78f;
         bool CanvasMatchWidth = ScreenRatio < 1.78f;
         if (CanvasMatchWidth)
         {
@@ -146,7 +146,7 @@ public class AotUIManager : AotSingleton<AotUIManager>
         if (uiList.TryGetValue(prefabName, out obj))
         {
             AotPanelBase basePanel = obj;
-            GameObject.DestroyImmediate(basePanel.transform.gameObject);
+            GameObject.Destroy(basePanel.transform.gameObject);
             uiList.Remove(prefabName);
         }
     }

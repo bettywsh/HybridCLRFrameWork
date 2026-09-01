@@ -47,7 +47,9 @@ public class SubPanelBase : IDisposable
 
     public virtual void OnClose()
     {
-        cancellationTokenSource.Cancel();        
+        cancellationTokenSource?.Cancel();
+        cancellationTokenSource?.Dispose();
+        cancellationTokenSource = null;
     }
 
     public virtual void Dispose()

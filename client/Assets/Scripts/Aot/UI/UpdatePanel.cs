@@ -37,7 +37,7 @@ public class UpdatePanel : AotPanelBase
             SetProgressTween(true);
             package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
             // Check whether a force update is required
-            string bigVersion = await AotHttpManager.Instance.GetRequest($"{AppSettings.AppConfig.SvrResIp}Android/Hotfix/ver.txt", null);
+            string bigVersion = await AotHttpManager.Instance.GetRequest($"{AotResManager.Instance.GetHostServerURL()}/ver.txt", null);
             if (bigVersion == "")
             {
                 SetProgressTween(false);
@@ -51,7 +51,7 @@ public class UpdatePanel : AotPanelBase
                 SetProgressTween(false);
                 AotDialogManager.Instance.ShowDialogOne("提示", "客户端版本过低，请下载安装新版本", () =>
                 {
-                    Application.OpenURL($"{AppSettings.AppConfig.SvrResIp}Android/Apk/{AppSettings.AppConfig.DownloadApkName}");
+                    Application.OpenURL(AotResManager.Instance.GetForceUpdateUrl());
                     OnOpen();
                 });
                 return;
@@ -94,21 +94,36 @@ public class UpdatePanel : AotPanelBase
 
     public async UniTask Download()
     {
-        // Start downloading
         downloader.BeginDownload();
         await downloader.Task.AsUniTask();
 
-        // Check download result
-        if (downloader.Status == EOperationStatus.Succeed)
+        if (downloader.Status != EOperationStatus.Succeed)
         {
-            var operation = package.ClearCacheFilesAsync(EFileClearMode.ClearUnusedBundleFiles);
-            await operation.Task.AsUniTask();
-            if (operation.Status == EOperationStatus.Succeed)
+            SetProgressTween(false);
+            AotDialogManager.Instance.ShowDialogOne("提示", "下载文件失败，请重试", () =>
             {
-                // Download succeeded
-                StartGame();
-            }                
+                CreateDownloader().Forget();
+            });
+            return;
         }
+
+        await ClearCacheAndStart();
+    }
+
+    async UniTask ClearCacheAndStart()
+    {
+        var operation = package.ClearCacheFilesAsync(EFileClearMode.ClearUnusedBundleFiles);
+        await operation.Task.AsUniTask();
+        if (operation.Status != EOperationStatus.Succeed)
+        {
+            SetProgressTween(false);
+            AotDialogManager.Instance.ShowDialogOne("提示", "清理缓存失败，请重试", () =>
+            {
+                ClearCacheAndStart().Forget();
+            });
+            return;
+        }
+        StartGame().Forget();
     }
 
     /// <summary>
@@ -132,10 +147,7 @@ public class UpdatePanel : AotPanelBase
 
     void OnDownloadErrorFunction(DownloadErrorData downloadErrorData)
     {
-        AotDialogManager.Instance.ShowDialogOne("提示", "下载文件失败，是否重新下载", async () => {
-            downloader.CancelDownload();
-            await Download();        
-        });
+        Debug.LogError($"download error: {downloadErrorData}");
     }
     
     void OnDownloadProgressUpdateFunction(DownloadUpdateData downloadUpdateData)

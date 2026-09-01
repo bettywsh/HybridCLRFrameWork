@@ -37,8 +37,13 @@ public class ListView : MonoBehaviour, LoopScrollPrefabSource, LoopScrollDataSou
     {
         if (pool.Count == 0)
         {
-            GameObject go = Instantiate(Item);            
+            GameObject go = Instantiate(Item);
             Type type = AssemblyManager.Instance.GetType(EAttribute.Cell, Item.name);
+            if (type == null)
+            {
+                Debug.LogError($"ListView 找不到 Cell 类型，Item.name={Item.name}");
+                return go;
+            }
             CellBase baseCell = Activator.CreateInstance(type) as CellBase;
             baseCell.Init(go.transform);
             cells.Add(go.transform.GetHashCode(), baseCell);

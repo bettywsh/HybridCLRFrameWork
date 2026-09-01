@@ -209,19 +209,12 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
 
     public bool EffectSoundIsOn(string name) {
-        bool isON = false;
         for (int i = effect_audio.Count - 1; i >= 0; i--)
         {
             if (effect_audio[i].name == name)
-            {
-                isON = true;
-            }
-            else
-            {
-               isON = false ;
-            }
+                return true;
         }
-        return isON;
+        return false;
     }
 
     public void StopBacksound()

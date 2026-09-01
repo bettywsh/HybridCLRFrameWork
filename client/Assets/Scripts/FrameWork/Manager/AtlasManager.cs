@@ -15,6 +15,7 @@ public class AtlasManager : MonoSingleton<AtlasManager>
     public override void OnDestroy()
     {
         SpriteAtlasManager.atlasRequested -= RequestAtlas;
+        base.OnDestroy();
     }
 
 

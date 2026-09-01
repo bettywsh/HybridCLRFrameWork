@@ -16,8 +16,8 @@ public class Launch : MonoBehaviour
     async UniTask AwakeAsync()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        AppSettings.AppConfig = Resources.Load<AppConfig>("AppConfig");
-        GameObject.Find("Reporter").SetActive(AppSettings.AppConfig.DebugLog);
+        AppSettings.AppConfig = Resources.Load<AppConfig>("AppConfig");        
+        GameObject.Find("Reporter")?.SetActive(AppSettings.AppConfig.DebugLog);
         Debug.unityLogger.logEnabled = AppSettings.AppConfig.DebugLog;
         QualitySettings.vSyncCount = 2;
         Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;

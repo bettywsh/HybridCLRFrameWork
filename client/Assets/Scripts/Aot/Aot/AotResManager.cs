@@ -109,30 +109,35 @@ public class AotResManager : AotSingleton<AotResManager>
     }
 
 
-    string GetHostServerURL()
+    public static string GetPlatformFolder()
     {
-        string hostServerIP = AppSettings.AppConfig.SvrResIp;
-        string appVersion = $"Hotfix";
-
 #if UNITY_EDITOR
         if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
-            return $"{hostServerIP}Android/{appVersion}";
-        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
-            return $"{hostServerIP}IPhone/{appVersion}";
-        else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
-            return $"{hostServerIP}WebGL/{appVersion}";
-        else
-            return $"{hostServerIP}PC/{appVersion}";
+            return "Android";
+        if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+            return "IPhone";
+        if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+            return "WebGL";
+        return "PC";
 #else
-		        if (Application.platform == RuntimePlatform.Android)
-		        	return $"{hostServerIP}Android/{appVersion}";
-		        else if (Application.platform == RuntimePlatform.IPhonePlayer)
-		        	return $"{hostServerIP}IPhone/{appVersion}";
-		        else if (Application.platform == RuntimePlatform.WebGLPlayer)
-		        	return $"{hostServerIP}WebGL/{appVersion}";
-		        else
-		        	return $"{hostServerIP}PC/{appVersion}";
+        if (Application.platform == RuntimePlatform.Android)
+            return "Android";
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+            return "IPhone";
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+            return "WebGL";
+        return "PC";
 #endif
+    }
+
+    public string GetHostServerURL()
+    {
+        return $"{AppSettings.AppConfig.SvrResIp}{GetPlatformFolder()}/Hotfix";
+    }
+
+    public string GetForceUpdateUrl()
+    {
+        return $"{AppSettings.AppConfig.SvrResIp}{GetPlatformFolder()}/Apk/{AppSettings.AppConfig.DownloadApkName}";
     }
 
 

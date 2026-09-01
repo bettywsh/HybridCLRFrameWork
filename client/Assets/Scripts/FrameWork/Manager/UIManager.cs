@@ -35,25 +35,6 @@ public class UIManager : MonoSingleton<UIManager>
         inputEffect.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
-    public void CanvasScale()
-    {
-        float ScreenRatio = Screen.width / Screen.height;
-        bool CanvasMatchWidth = ScreenRatio < 1.78f;
-        //if (CanvasMatchWidth)
-        //{
-        //    float CanvasRealWidth = 1280;
-        //    float CanvasRealHeight = 1280 / ScreenRatio;
-        //    CanvasScaleToScreen = CanvasRealWidth / Screen.width;
-        //}
-        //else
-        //{
-        //    float CanvasRealHeight = 720;
-        //    float CanvasRealWidth = 720 * ScreenRatio;
-        //    CanvasScaleToScreen = CanvasRealHeight / Screen.height;
-        //}
-        GameObject.Find("Canvas/UICanvas").GetComponent<CanvasScaler>().matchWidthOrHeight = CanvasMatchWidth ? 0 : 1;
-    }
-
     public void PreLoad()
     {
 
@@ -205,22 +186,16 @@ public class UIManager : MonoSingleton<UIManager>
             basePanel?.OnUnBindEvent();
             basePanel?.OnClose();
             basePanel?.Dispose();
-            GameObject.DestroyImmediate(basePanel.transform.gameObject);
+            GameObject.Destroy(basePanel.transform.gameObject);
             uiList.Remove(prefabName);
         }
     }
 
     public void CloseAll()
     {
-        foreach ((string name, PanelBase basePanel) in uiList)
-        {
-            basePanel?.OnClose();
-            basePanel?.OnUnBindEvent();
-            basePanel?.Dispose();
-            Debug.LogError(basePanel.transform.name);
-            GameObject.DestroyImmediate(basePanel.transform.gameObject);
-        }
-        uiList.Clear();
+        var names = new List<string>(uiList.Keys);
+        for (int i = 0; i < names.Count; i++)
+            Close(names[i]);
     }
 
     private void Update()
@@ -240,11 +215,14 @@ public class UIManager : MonoSingleton<UIManager>
             // });
         }
         
-        foreach ((string name, PanelBase bp) in uiList)
+        var names = new List<string>(uiList.Keys);
+        for (int i = 0; i < names.Count; i++)
         {
-            if (bp.transform == null) { continue; }
-            PanelBase basePanel = bp;
-            basePanel?.OnUpdate();
+            if (!uiList.TryGetValue(names[i], out PanelBase bp))
+                continue;
+            if (bp == null || bp.transform == null)
+                continue;
+            bp.OnUpdate();
         }
     }
 
@@ -268,19 +246,15 @@ public class UIManager : MonoSingleton<UIManager>
 
     public bool GetClickUI()
     {
-
-#if UNITY_EDITOR
-        if (EventSystem.current.IsPointerOverGameObject())
-#else
-        if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-#endif
-        {
-            return true;
-        }
-        else
-        {
+        if (EventSystem.current == null)
             return false;
-        }
+#if UNITY_EDITOR
+        return EventSystem.current.IsPointerOverGameObject();
+#else
+        if (Input.touchCount <= 0)
+            return false;
+        return EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId);
+#endif
     }
 
     public override void Dispose()

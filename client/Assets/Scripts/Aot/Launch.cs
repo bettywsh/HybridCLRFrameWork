@@ -23,6 +23,8 @@ public class Launch : MonoBehaviour
         Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;
 
         await AotResManager.Instance.Init();
+        if (!AotResManager.Instance.InitSucceed)
+            return;
         //await AotText.Instance.Init();
         //await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/PuHuiTi SDF.asset");
         //await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
@@ -33,7 +35,7 @@ public class Launch : MonoBehaviour
         }
         else
         {
-            AotUIManager.Instance.Open<SplashAdvicePanel>();
+            await AotUIManager.Instance.Open<SplashAdvicePanel>();
         }
     }
 }

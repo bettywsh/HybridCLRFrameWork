@@ -41,7 +41,7 @@ public class UpdatePanel : AotPanelBase
             if (bigVersion == "")
             {
                 SetProgressTween(false);
-                AotDialogManager.Instance.ShowDialogOne("提示", "获取资源版本失败，请重试", () => {
+                await AotDialogManager.Instance.ShowDialogOne("提示", "获取资源版本失败，请重试", () => {
                     this.OnOpen();
                 });
                 return;
@@ -49,7 +49,7 @@ public class UpdatePanel : AotPanelBase
             if (int.Parse(bigVersion) > AppSettings.AppConfig.AppVersion)
             {
                 SetProgressTween(false);
-                AotDialogManager.Instance.ShowDialogOne("提示", "客户端版本过低，请下载安装新版本", () =>
+                await AotDialogManager.Instance.ShowDialogOne("提示", "客户端版本过低，请下载安装新版本", () =>
                 {
                     Application.OpenURL(AotResManager.Instance.GetForceUpdateUrl());
                     OnOpen();
@@ -100,7 +100,7 @@ public class UpdatePanel : AotPanelBase
         if (downloader.Status != EOperationStatus.Succeed)
         {
             SetProgressTween(false);
-            AotDialogManager.Instance.ShowDialogOne("提示", "下载文件失败，请重试", () =>
+            await AotDialogManager.Instance.ShowDialogOne("提示", "下载文件失败，请重试", () =>
             {
                 CreateDownloader().Forget();
             });
@@ -117,7 +117,7 @@ public class UpdatePanel : AotPanelBase
         if (operation.Status != EOperationStatus.Succeed)
         {
             SetProgressTween(false);
-            AotDialogManager.Instance.ShowDialogOne("提示", "清理缓存失败，请重试", () =>
+            await AotDialogManager.Instance.ShowDialogOne("提示", "清理缓存失败，请重试", () =>
             {
                 ClearCacheAndStart().Forget();
             });

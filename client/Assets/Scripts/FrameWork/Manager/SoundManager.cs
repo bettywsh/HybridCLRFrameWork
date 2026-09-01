@@ -18,6 +18,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     public bool isCanEffect = true;
     public float background_volume = 1f;
     public float effect_volume = 1f;
+    private bool isEffectPaused;
 
     public override void Init()
     {
@@ -143,6 +144,8 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlayEffectSound(AudioClip clip)
     {
+        if (!isCanEffect)
+            return;
         GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Effect/SoundEffect"), root);
         //GameObject go = new GameObject(clip.name);
         go.name = clip.name;
@@ -158,6 +161,8 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public async UniTask PlayEffectSound(string name)
     {
+        if (!isCanEffect)
+            return;
         GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Effect/SoundEffect"), root);
         go.name = name;
         AudioSource effect = go.GetComponent<AudioSource>();
@@ -166,6 +171,11 @@ public class SoundManager : MonoSingleton<SoundManager>
         effect.volume = effect_volume;
         //改为异步加载
         effect.clip = await LoadAudioClipAsync(name);
+        if (!isCanEffect)
+        {
+            PoolManager.Instance.ReturnObjectToPool("SoundEffects", go);
+            return;
+        }
         effect_audio.Add(effect);
         effect.Play();
 
@@ -185,6 +195,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void StopAllEffectSound()
     {
+        isEffectPaused = false;
         for (int i = effect_audio.Count - 1; i >= 0; i--)
         {
             PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
@@ -194,6 +205,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PauseAllEffectSound()
     {
+        isEffectPaused = true;
         for (int i = effect_audio.Count - 1; i >= 0; i--)
         {
             effect_audio[i].Pause();
@@ -202,6 +214,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void UnPauseAllEffectSound()
     {
+        isEffectPaused = false;
         for (int i = effect_audio.Count - 1; i >= 0; i--)
         {
             effect_audio[i].UnPause();
@@ -254,6 +267,7 @@ public class SoundManager : MonoSingleton<SoundManager>
                 PlayerPrefs.SetInt(key, 1);
             }
         }
+        isCanEffect = flag;
     }
     
     void Update()
@@ -263,6 +277,8 @@ public class SoundManager : MonoSingleton<SoundManager>
             {
                 if (!effect_audio[i].isPlaying)
                 {
+                    if (isEffectPaused)
+                        continue;
                     PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
                     effect_audio.RemoveAt(i);                    
                 }

@@ -55,26 +55,23 @@ public class AotUIManager : AotSingleton<AotUIManager>
     }
 
 
-    public T Open<T>(params object[] args) where T : AotPanelBase
+    public async UniTask<T> Open<T>(params object[] args) where T : AotPanelBase
     {
-        AotPanelBase bp = null;
-        T t = default;
-        if (!uiList.TryGetValue(typeof(T).Name, out bp))
-        {
-            LoadPanel(typeof(T).Name, args);
-        }
-        else
-        {
-            t = bp as T;
-        }      
-        return t as T;
+        if (uiList.TryGetValue(typeof(T).Name, out AotPanelBase bp))
+            return bp as T;
+        return await LoadPanel<T>(typeof(T).Name, args);
     }
         
 
-    public async UniTask LoadPanel(string name, params object[] args)
+    public async UniTask<T> LoadPanel<T>(string name, params object[] args) where T : AotPanelBase
     {
-        GameObject go = Resources.Load<GameObject>($"AotUI/{name}");
-        go = GameObject.Instantiate(go);
+        GameObject prefab = Resources.Load<GameObject>($"AotUI/{name}");
+        if (prefab == null)
+        {
+            Debug.LogError($"LoadPanel failed: AotUI/{name}");
+            return null;
+        }
+        GameObject go = GameObject.Instantiate(prefab);
         go.name = name;
         go.transform.SetParent(baseCanvas, false);
         go.transform.localPosition = Vector3.zero;
@@ -88,8 +85,8 @@ public class AotUIManager : AotSingleton<AotUIManager>
         AotPanelBase basePanel = go.GetComponent<AotPanelBase>();        
         basePanel.args = args;
         uiList.Add(name, basePanel);
-        basePanel.OnOpen();
-     
+        await basePanel.OnOpen();
+        return basePanel as T;
     }
 
     void OrderCanvas(GameObject go)

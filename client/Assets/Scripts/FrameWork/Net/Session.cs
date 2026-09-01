@@ -54,21 +54,28 @@ public sealed class Session : IDisposable
 
     private void OnRead(long channelId, MemoryBuffer memoryBuffer)
     {
-        var (id, data)  = protobufPacker.DeserializeFrom(memoryBuffer);
-        if (!NoNetLoadingMsgIds.Contains(id))
-            NetworkManager.Instance.HideNetLoading?.Invoke();
-        if (AppSettings.AppConfig.DebugLog)
+        try
         {
-            Type enumType = HybridCLRManager.Instance._hotUpdateAss.GetType(AppSettings.AppConfig.ProtoBuffPackageName + "MsgID");
-            Debug.Log(AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id));
-            string className = AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id);
-            Type dataType = HybridCLRManager.Instance._hotUpdateAss.GetType(className.Replace("MSG",""));
-            object obj = ProtobufHelper.Deserialize(dataType, data, 0, data.Length);
-            Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{JsonConvert.SerializeObject(obj)}");            
+            var (id, data)  = protobufPacker.DeserializeFrom(memoryBuffer);
+            if (!NoNetLoadingMsgIds.Contains(id))
+                NetworkManager.Instance.HideNetLoading?.Invoke();
+            if (AppSettings.AppConfig.DebugLog)
+            {
+                Type enumType = HybridCLRManager.Instance._hotUpdateAss.GetType(AppSettings.AppConfig.ProtoBuffPackageName + "MsgID");
+                Debug.Log(AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id));
+                string className = AppSettings.AppConfig.ProtoBuffPackageName + Enum.GetName(enumType, id);
+                Type dataType = HybridCLRManager.Instance._hotUpdateAss.GetType(className.Replace("MSG",""));
+                object obj = ProtobufHelper.Deserialize(dataType, data, 0, data.Length);
+                Debug.Log($"收到网络消息：{Enum.GetName(enumType, id)},{JsonConvert.SerializeObject(obj)}");            
+            }
+            EventManager.Instance.NetNotify(id, data);
+            //重置心跳包时间
+            //EventManager.Instance.MessageNotify(MessageConstBase.Msg_HeartBeat);
         }
-        EventManager.Instance.NetNotify(id, data);
-        //重置心跳包时间
-        //EventManager.Instance.MessageNotify(MessageConstBase.Msg_HeartBeat);
+        finally
+        {
+            AService?.Recycle(memoryBuffer);
+        }
     }
 
     public void Update()

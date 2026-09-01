@@ -21,8 +21,7 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
     /// <returns>10位时间戳（单位：秒）</returns>
     public static long DateTimeToTimeStamp()
     {
-        DateTime DateStart = new DateTime(1970, 1, 1, 8, 0, 0);
-        return Convert.ToInt32((DateTime.UtcNow - DateStart).TotalSeconds);
+        return (long)(DateTime.UtcNow - timeStampStartTime).TotalSeconds;
     }
 
     //判断网络的状态

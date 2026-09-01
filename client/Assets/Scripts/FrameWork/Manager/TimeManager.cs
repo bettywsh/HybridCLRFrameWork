@@ -19,7 +19,7 @@ public class TimeManager : MonoSingleton<TimeManager>
     {
         get
         {
-            return mServerTimer + (long)(Time.realtimeSinceStartup - validStartGameTime) * 1000;
+            return mServerTimer + (long)((Time.realtimeSinceStartup - validStartGameTime) * 1000);
         }
         set
         {

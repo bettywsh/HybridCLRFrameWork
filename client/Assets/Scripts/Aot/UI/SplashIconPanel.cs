@@ -22,7 +22,7 @@ public class SplashIconPanel : AotPanelBase
         //});
         await seq;
         await UniTask.SwitchToMainThread();
-        AotUIManager.Instance.Open<UpdatePanel>();
+        AotUIManager.Instance.Open<UpdatePanel>().Forget();
         this.Close();
     }
 }

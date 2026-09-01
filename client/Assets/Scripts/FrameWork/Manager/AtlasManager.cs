@@ -30,7 +30,11 @@ public class AtlasManager : MonoSingleton<AtlasManager>
 
     public async UniTask<Sprite> GetSprite(string atlasName, string sprite) {
         SpriteAtlas sa = await ResManager.Instance.SceneLoadAssetAsync<SpriteAtlas>($"Assets/App/Atlas/{atlasName}.spriteatlasv2");
-        Sprite sprites = sa.GetSprite(sprite);
+        if (sa == null)
+        {
+            Debug.LogError($"GetSprite atlas is null: {atlasName}/{sprite}");
+            return null;
+        }
         return sa.GetSprite(sprite);
     }
 }

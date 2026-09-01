@@ -34,7 +34,7 @@ public class ProtobufPacker
 
 	public (int id, byte[] data) DeserializeFrom(MemoryBuffer memStream)
 	{
-        int total = memStream.GetBuffer().Length;
+        int total = (int)memStream.Length;
         BinaryReader reader = new BinaryReader(memStream);
         //byte[] totalLengthBytes = reader.ReadBytes(2);
         //int totalLength = BitConverter.ToInt16(totalLengthBytes, 0);

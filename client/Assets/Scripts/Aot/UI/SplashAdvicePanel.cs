@@ -23,7 +23,7 @@ public class SplashAdvicePanel : AotPanelBase
         //});
         await seq;
         await UniTask.SwitchToMainThread();
-        AotUIManager.Instance.Open<UpdatePanel>();
+        AotUIManager.Instance.Open<UpdatePanel>().Forget();
         this.Close();
         //await transform.DOMoveX(2, 10);
         //await DOTween.To(() => timeCount, a => timeCount = a, 1, 3);

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,28 +6,28 @@ using UnityEngine;
 
 public class AotDialogManager : AotSingleton<AotDialogManager>
 {
-    public void ShowDialog(AotDialogInfo dialogInfo)
+    public async UniTask ShowDialog(AotDialogInfo dialogInfo)
     {
-        AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
+        await AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
     }
 
-    public void ShowDialogOne(string txtTitle, string txtMsg, Action okCb)
+    public async UniTask ShowDialogOne(string txtTitle, string txtMsg, Action okCb)
     {
         AotDialogInfo dialogInfo = new AotDialogInfo();
         dialogInfo.txtTitle = txtTitle;
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okCb;
-        AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
+        await AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
     }
 
-    public void ShowDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
+    public async UniTask ShowDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
     {
         AotDialogInfo dialogInfo = new AotDialogInfo();
         dialogInfo.txtTitle = txtTitle;
         dialogInfo.txtMsg = txtMsg;
         dialogInfo.okFun = okFun;
         dialogInfo.calFun = calFun;
-        AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
+        await AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
     }
 }
 

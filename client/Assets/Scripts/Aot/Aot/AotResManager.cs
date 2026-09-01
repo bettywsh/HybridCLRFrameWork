@@ -8,6 +8,7 @@ public class AotResManager : AotSingleton<AotResManager>
 {
     ResourcePackage package;
     Dictionary<string, AssetHandle> ResLoaders = new Dictionary<string, AssetHandle>();
+    public bool InitSucceed { get; private set; } = true;
     public override async UniTask Init()
     {
         // 初始化资源系统
@@ -87,25 +88,42 @@ public class AotResManager : AotSingleton<AotResManager>
         }
 
         // 如果初始化失败弹出提示界面
-        if (initializationOperation.Status != EOperationStatus.Succeed)
+        if (initializationOperation == null || initializationOperation.Status != EOperationStatus.Succeed)
         {
-            Debug.LogWarning($"{initializationOperation.Error}");
+            await FailAndQuit("资源初始化失败，请退出后重试", initializationOperation == null ? "YooAsset initialize failed" : initializationOperation.Error);
+            return;
         }
 
         var operationPackageVersion = package.RequestPackageVersionAsync();
         await operationPackageVersion.Task.AsUniTask();
         if (operationPackageVersion.Status != EOperationStatus.Succeed)
         {
-            //更新失败
-            Debug.LogError(operationPackageVersion.Error);
+            await FailAndQuit("获取资源版本失败，请退出后重试", operationPackageVersion.Error);
+            return;
         }
 
         var operationPackageManifest = package.UpdatePackageManifestAsync(operationPackageVersion.PackageVersion);
         await operationPackageManifest.Task.AsUniTask();
         if (operationPackageManifest.Status != EOperationStatus.Succeed)
         {
-            Debug.LogError(operationPackageManifest.Error);
+            await FailAndQuit("更新资源清单失败，请退出后重试", operationPackageManifest.Error);
+            return;
         }
+    }
+
+    private async UniTask FailAndQuit(string userMsg, string error)
+    {
+        InitSucceed = false;
+        Debug.LogError(error);
+        await AotUIManager.Instance.Init();
+        var tcs = new UniTaskCompletionSource();
+        await AotDialogManager.Instance.ShowDialogOne("提示", userMsg, () => tcs.TrySetResult());
+        await tcs.Task;
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
 

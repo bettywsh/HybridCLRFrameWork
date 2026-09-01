@@ -133,6 +133,11 @@ public class ResManager : Singleton<ResManager>
     {
         //YooAssets.DestroyPackage(AppSettings.AppConfig.PackageName);
         //YooAssets.Destroy();
+        var names = new List<string>(ResLoaders.Keys);
+        foreach (var name in names)
+        {
+            UnLoadAssetBundle(name);
+        }
         ResLoaders.Clear();
     }
 }

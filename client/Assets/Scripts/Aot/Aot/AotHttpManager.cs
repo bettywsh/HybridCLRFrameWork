@@ -24,18 +24,6 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
         return (long)(DateTime.UtcNow - timeStampStartTime).TotalSeconds;
     }
 
-    //判断网络的状态
-    public bool NetState()
-    {
-        //当网络不可用时                
-        if (Application.internetReachability == NetworkReachability.NotReachable)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
     #region Get请求
 
     public async UniTask<string> GetRequest(string url, string token)

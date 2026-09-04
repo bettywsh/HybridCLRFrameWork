@@ -10,9 +10,6 @@ using UnityEditorInternal;
 
 public class BaseEditor : Editor
 {
-    private static bool isInitialize = false;
-
-
 
     /// <summary>
     /// 数据目录

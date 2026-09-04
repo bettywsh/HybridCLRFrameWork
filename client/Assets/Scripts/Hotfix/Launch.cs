@@ -1,16 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
-using YooAsset;
-using System.Reflection;
-using Game;
-using UnityEngine.U2D;
 using Cysharp.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using SimpleJSON;
 
 public class Launch
 {
@@ -49,7 +37,7 @@ public class Launch
 
         NetworkManager.Instance.SetNetLoading(() =>
         {
-            DialogManager.Instance.ShowNetLoading();
+            DialogManager.Instance.ShowNetLoading().Forget();
         }, () =>
         {
             DialogManager.Instance.HideNetLoading();

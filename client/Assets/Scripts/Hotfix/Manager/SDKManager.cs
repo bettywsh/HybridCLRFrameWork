@@ -57,47 +57,6 @@ public class SDKManager : MonoSingleton<SDKManager>
     }
     #endregion
 
-    #region 商场
-
-    public void InitShop(string dev, string appId, string token)
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("InitShop", dev, appId, token);
-#endif
-    }
-
-    public void ShowShop()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("ShowShop");
-#endif
-    }
-
-    public void HideShop()
-    {
-#if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("HideShop");
-#endif
-    }
-
-    //1打开2关闭3初始化失败
-    public void ShowShopOpen(string status)
-    {
-        Debug.Log("ShowShopOpen:" + status);
-        EventManager.Instance.MessageNotify(MessageConst.Msg_ShopOpen);
-    }
-    public void ShowShopClose(string status)
-    {
-        Debug.Log("ShowShopClose:" + status);
-        EventManager.Instance.MessageNotify(MessageConst.Msg_ShopClose);
-    }
-    public void ShowShopError(string status)
-    {
-        Debug.Log("ShowShopError:" + status);
-        EventManager.Instance.MessageNotify(MessageConst.Msg_ShopError);
-    }
-    #endregion
-
     #region TapTap
 
     public void TapTapInit()

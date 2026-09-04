@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class LoadingPanel : PanelBase
 {
+    Tweener fillTween;
 
     public override async UniTask OnOpen()
     {
 		await base.OnOpen();
         transform.GetComponent<Canvas>().sortingOrder = (int)EUILayer.Loading;
         GetUI("Fill").imgValue.fillAmount = 0;
-        GetUI("Fill").imgValue.DOFillAmount(1f, 3f).SetUpdate(true).SetEase(Ease.Linear).OnComplete(() => { 
+        fillTween = GetUI("Fill").imgValue.DOFillAmount(1f, 3f).SetUpdate(true)
+        .SetEase(Ease.Linear).OnComplete(() => { 
             this.Close();
         });
         //Random.Range
@@ -34,6 +36,8 @@ public class LoadingPanel : PanelBase
 
     public override void OnClose()
     {
+        fillTween?.Kill();
+        fillTween = null;
         base.OnClose();
     }
 }

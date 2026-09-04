@@ -123,16 +123,16 @@ public class ModelPostImporter : BaseEditor
     /// </summary>
     static void OptmizeAnimationFloat(ref AnimationClip srcClip, ref AnimationClip newClip)
     {
-        var curves = AnimationUtility.GetAllCurves(srcClip);
-        for (int i = 0; i < curves.Length; ++i)
+        var curveBindings = AnimationUtility.GetCurveBindings(srcClip);
+        for (int i = 0; i < curveBindings.Length; ++i)
         {
-            AnimationClipCurveData curveDate = curves[i];
-            if (curveDate.curve == null || curveDate.curve.keys == null)
+            var binding = curveBindings[i];
+            var curve = AnimationUtility.GetEditorCurve(srcClip, binding);
+            if (curve == null || curve.keys == null)
             {
-                //Debug.LogWarning(string.Format("AnimationClipCurveData {0} don't have curve; Animation name {1} ", curveDate, animationPath));
                 continue;
             }
-            var keyFrames = curveDate.curve.keys;
+            var keyFrames = curve.keys;
             for (int j = 0; j < keyFrames.Length; j++)
             {
                 var key = keyFrames[j];
@@ -141,8 +141,8 @@ public class ModelPostImporter : BaseEditor
                 key.outTangent = float.Parse(key.outTangent.ToString("f3"));
                 keyFrames[j] = key;
             }
-            curveDate.curve.keys = keyFrames;
-            newClip.SetCurve(curveDate.path, curveDate.type, curveDate.propertyName, curveDate.curve);
+            curve.keys = keyFrames;
+            AnimationUtility.SetEditorCurve(newClip, binding, curve);
         }
     }
 

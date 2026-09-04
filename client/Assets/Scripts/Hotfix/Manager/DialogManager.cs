@@ -48,7 +48,7 @@ public class DialogManager : Singleton<DialogManager>
         {
             netLoadingPanel = await UIManager.Instance.Open<NetLoadingPanel>();
         }
-        netLoadingPanel.Show();
+        netLoadingPanel.Show().Forget();
     }
 
     [OnTimer(TimerConst.NetLoading)]

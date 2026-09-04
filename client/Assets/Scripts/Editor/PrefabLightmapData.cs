@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using System.IO;
 #endif
 using UnityEngine;
@@ -143,10 +144,10 @@ public class PrefabLightmapData : MonoBehaviour
 
         sceneLightmaps = new List<Texture2D_Remap>();
 
-        //var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-        var sceneName = Path.GetFileNameWithoutExtension(EditorApplication.currentScene);
+        var scenePathStr = EditorSceneManager.GetActiveScene().path;
+        var sceneName = Path.GetFileNameWithoutExtension(scenePathStr);
         var resourcePath = LIGHTMAP_RESOURCE_PATH + sceneName;
-        var scenePath = System.IO.Path.GetDirectoryName(EditorApplication.currentScene) + "/" + sceneName + "/";
+        var scenePath = System.IO.Path.GetDirectoryName(scenePathStr) + "/" + sceneName + "/";
 
         PrefabLightmapData[] prefabs = FindObjectsOfType<PrefabLightmapData>();
 
@@ -165,11 +166,11 @@ public class PrefabLightmapData : MonoBehaviour
             instance.m_Lightmaps2 = lightmaps2.ToArray();
             instance.m_Lightmaps3 = lightmaps3.ToArray();
 
-            var targetPrefab = PrefabUtility.GetPrefabParent(gameObject) as GameObject;
+            var targetPrefab = PrefabUtility.GetCorrespondingObjectFromSource(gameObject);
             if (targetPrefab != null)
             {
-                //Prefab
-                PrefabUtility.ReplacePrefab(gameObject, targetPrefab);
+                string prefabPath = AssetDatabase.GetAssetPath(targetPrefab);
+                PrefabUtility.SaveAsPrefabAsset(gameObject, prefabPath);
             }
 
             ApplyLightmaps(instance.m_RendererInfo, instance.m_Lightmaps, instance.m_Lightmaps2, instance.m_Lightmaps3);

@@ -11,6 +11,28 @@ using YooAsset;
 [CreateAssetMenu(fileName = "AppConfig", menuName = "AppConfig")]
 public class AppConfig : ScriptableObject
 {
+    [Title("常量")]
+    /// <summary>
+    /// 游戏帧频
+    /// </summary>
+    public int GameFrameRate = 30;
+
+    /// <summary>
+    /// yooasset 包名
+    /// </summary>
+    public string PackageName = "DefaultPackage";
+
+    /// <summary>
+    /// 补充元数据
+    /// </summary>
+    public List<string> AotDll = new List<string>() { "mscorlib.dll", "System.Core.dll", "System.dll" };
+
+    /// <summary>
+    /// 热更dll数据
+    /// </summary>
+    public List<string> HotfixDll = new List<string>() { "FrameWork.dll", "Hotfix.dll" };
+
+    [Title("打包配置")]
     /// <summary>
     /// 运行模式
     /// </summary>
@@ -47,16 +69,6 @@ public class AppConfig : ScriptableObject
     public bool DebugLog = true;
 
     /// <summary>
-    /// 游戏帧频
-    /// </summary>
-    public int GameFrameRate = 30;
-
-    /// <summary>
-    /// yooasset 包名
-    /// </summary>
-    public string PackageName = "DefaultPackage";
-
-    /// <summary>
     /// 强更文件名
     /// </summary>
     public string DownloadApkName = "ff.apk";
@@ -91,15 +103,7 @@ public class AppConfig : ScriptableObject
     /// </summary>
     public string HttpUrl = "";
 
-    /// <summary>
-    /// 补充元数据
-    /// </summary>
-    public List<string> AotDll = new List<string>() { "mscorlib.dll", "System.Core.dll", "System.dll" };
 
-    /// <summary>
-    /// 热更dll数据
-    /// </summary>
-    public List<string> HotfixDll = new List<string>() { "FrameWork.dll", "Hotfix.dll" };
 
 #if UNITY_EDITOR
     public static string[] Modes = new string[] { "测试服", "直播", "TapTap", "快手服"};

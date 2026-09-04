@@ -2,15 +2,44 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
+
+public enum UIEventKind
+{
+    Click,
+    Toggle,
+    Slider
+}
+
+public struct MethodEventBind
+{
+    public int Id;
+    public MethodInfo Method;
+}
+
+public struct UIEventBind
+{
+    public UIEventKind Kind;
+    public string Name;
+    public MethodInfo Method;
+}
+
+public class TypeEventCache
+{
+    public readonly List<MethodEventBind> Messages = new();
+    public readonly List<MethodEventBind> Timers = new();
+    public readonly List<MethodEventBind> Nets = new();
+    public readonly List<UIEventBind> UIs = new();
+
+    public static readonly TypeEventCache Empty = new();
+}
 
 public class AssemblyManager : Singleton<AssemblyManager>
 {
     private readonly Dictionary<string, Type> allTypes = new();
     private readonly UnOrderMultiMapSet<Type, Type> types = new();
-    private readonly UnOrderMultiMapSet<Type, MethodInfo> methods = new();
+    private readonly Dictionary<Type, TypeEventCache> eventCaches = new();
     private Assembly[] hotUpdateAss;
     private Dictionary<string, Type> allPanel = new Dictionary<string, Type>();
     private Dictionary<string, Type> allSubPanel = new Dictionary<string, Type>();
@@ -35,13 +64,7 @@ public class AssemblyManager : Singleton<AssemblyManager>
             {
                 this.types.Add(o.GetType(), type);
             }
-            foreach (MethodInfo methodInfo in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
-            {
-                if (methodInfo.GetCustomAttributes(true).Length > 0)
-                {
-                    this.methods.Add(type, methodInfo);
-                }
-            }
+            CacheTypeEvents(type);
         }
         var types = GetTypes(typeof(CellAttribute));
         foreach (Type type in types)
@@ -123,11 +146,60 @@ public class AssemblyManager : Singleton<AssemblyManager>
         return t;
     }
 
-    public object[] GetMethods(Type typeClass)
+    public TypeEventCache GetEventCache(Type typeClass)
     {
-        this.methods.TryGetValue(typeClass, out var methods);
-        if (methods == null)
-            return Array.Empty<MethodInfo>();
-        return methods.ToArray<MethodInfo>();
+        if (typeClass == null)
+            return TypeEventCache.Empty;
+        if (eventCaches.TryGetValue(typeClass, out var cache))
+            return cache;
+        return TypeEventCache.Empty;
+    }
+
+    void CacheTypeEvents(Type type)
+    {
+        TypeEventCache cache = null;
+        foreach (MethodInfo methodInfo in type.GetMethods(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance))
+        {
+            var attrs = methodInfo.GetCustomAttributes(true);
+            if (attrs.Length == 0)
+                continue;
+
+            foreach (var attr in attrs)
+            {
+                if (attr is OnMessageAttribute messageAtt)
+                {
+                    cache ??= new TypeEventCache();
+                    cache.Messages.Add(new MethodEventBind { Id = messageAtt.Name, Method = methodInfo });
+                }
+                else if (attr is OnTimerAttribute timerAtt)
+                {
+                    cache ??= new TypeEventCache();
+                    cache.Timers.Add(new MethodEventBind { Id = timerAtt.Name, Method = methodInfo });
+                }
+                else if (attr is OnNetAttribute netAtt)
+                {
+                    cache ??= new TypeEventCache();
+                    cache.Nets.Add(new MethodEventBind { Id = netAtt.Id, Method = methodInfo });
+                }
+                else if (attr is OnClickAttribute clickAtt)
+                {
+                    cache ??= new TypeEventCache();
+                    cache.UIs.Add(new UIEventBind { Kind = UIEventKind.Click, Name = clickAtt.Name, Method = methodInfo });
+                }
+                else if (attr is OnToggleChangedAttribute toggleAtt)
+                {
+                    cache ??= new TypeEventCache();
+                    cache.UIs.Add(new UIEventBind { Kind = UIEventKind.Toggle, Name = toggleAtt.Name, Method = methodInfo });
+                }
+                else if (attr is OnSliderChangedAttribute sliderAtt)
+                {
+                    cache ??= new TypeEventCache();
+                    cache.UIs.Add(new UIEventBind { Kind = UIEventKind.Slider, Name = sliderAtt.Name, Method = methodInfo });
+                }
+            }
+        }
+
+        if (cache != null)
+            eventCaches.Add(type, cache);
     }
 }

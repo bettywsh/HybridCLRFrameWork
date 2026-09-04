@@ -17,6 +17,7 @@ public class UpdateDialogPanel : AotPanelBase
     AotDialogInfo dialogInfo;
     public override async UniTask OnOpen()
     {
+        await base.OnOpen();
         dialogInfo = args[0] as AotDialogInfo;
         txtMsg.text = dialogInfo.txtMsg;
         txtOk.text = "确定";

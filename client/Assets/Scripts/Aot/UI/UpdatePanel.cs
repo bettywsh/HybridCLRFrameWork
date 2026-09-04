@@ -28,7 +28,7 @@ public class UpdatePanel : AotPanelBase
          AppSettings.AppConfig.EPlayMode == EPlayMode.WebPlayMode)
         {
             txtContent.text = "检查游戏资源";
-            StartGame();
+            StartGame().Forget();
         }
         else
         {
@@ -41,7 +41,7 @@ public class UpdatePanel : AotPanelBase
             {
                 SetProgressTween(false);
                 await AotDialogManager.Instance.ShowDialogOne("提示", "获取资源版本失败，请重试", () => {
-                    OnOpen();
+                    OnOpen().Forget();
                 });
                 return;
             }
@@ -51,7 +51,7 @@ public class UpdatePanel : AotPanelBase
                 await AotDialogManager.Instance.ShowDialogOne("提示", "客户端版本过低，请下载安装新版本", () =>
                 {
                     Application.OpenURL(AotResManager.Instance.GetForceUpdateUrl());
-                    OnOpen();
+                    OnOpen().Forget();
                 });
                 return;
             }
@@ -71,7 +71,7 @@ public class UpdatePanel : AotPanelBase
         SetProgressTween(false);
         if (downloader.TotalDownloadCount == 0)
         {
-            StartGame();
+            StartGame().Forget();
             return;
         }
 

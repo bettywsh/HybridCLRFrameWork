@@ -11,18 +11,13 @@ public class SplashIconPanel : AotPanelBase
     {
         cngBG.alpha = 0;
         Sequence seq = DOTween.Sequence();
-        seq.Append(cngBG.DOFade(1, 1));
-        seq.AppendInterval(1);
-        seq.Append(cngBG.DOFade(0, 1));
-        //动画完成回调
-        //seq.AppendCallback(() =>
-        //{
-        //    this.Close();
-        //    AotUIManager.Instance.Open<UpdatePanel>();
-        //});
-        await seq;
+        await seq.Append(cngBG.DOFade(1, 1))
+            .AppendInterval(1)
+            .Append(cngBG.DOFade(0, 1));
         await UniTask.SwitchToMainThread();
         AotUIManager.Instance.Open<UpdatePanel>().Forget();
         this.Close();
     }
+
+    
 }

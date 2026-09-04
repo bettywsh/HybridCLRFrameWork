@@ -6,7 +6,7 @@ using UnityEngine;
 public struct EventHandler
 {
     public EventDelegate eventDelegate;
-    public Type type;
+    public object target;
 }
 
 public delegate void MessageDelegate(byte[] msgDatas);
@@ -69,11 +69,11 @@ public class EventManager : Singleton<EventManager>
     }
 
 
-    public void RemoveMessage(int eventName, Type type)
+    public void RemoveMessage(int eventName, object target)
     {
         if (!eventHandlerDic.TryGetValue(eventName, out var list))
             return;
-        list.RemoveAll(x => x.type == type);
+        list.RemoveAll(x => ReferenceEquals(x.target, target));
         if (list.Count == 0)
             eventHandlerDic.Remove(eventName);
     }
@@ -112,11 +112,11 @@ public class EventManager : Singleton<EventManager>
     }
 
 
-    public void RemoveTimer(int eventName, Type type)
+    public void RemoveTimer(int eventName, object target)
     {
         if (!timerEventHandlerDic.TryGetValue(eventName, out var list))
             return;
-        list.RemoveAll(x => x.type == type);
+        list.RemoveAll(x => ReferenceEquals(x.target, target));
         if (list.Count == 0)
             timerEventHandlerDic.Remove(eventName);
     }

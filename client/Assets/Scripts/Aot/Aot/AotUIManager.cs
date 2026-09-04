@@ -36,14 +36,14 @@ public class AotUIManager : AotSingleton<AotUIManager>
         bool CanvasMatchWidth = ScreenRatio < 1.78f;
         if (CanvasMatchWidth)
         {
-            float CanvasRealWidth = 1280;
-            float CanvasRealHeight = 1280 / ScreenRatio;
+            // float CanvasRealWidth = 1280;
+            // float CanvasRealHeight = 1280 / ScreenRatio;
             //CanvasScaleToScreen = CanvasRealWidth / Screen.width;
         }
         else
         {
-            float CanvasRealHeight = 720;
-            float CanvasRealWidth = 720 * ScreenRatio;
+            // float CanvasRealHeight = 720;
+            // float CanvasRealWidth = 720 * ScreenRatio;
             //CanvasScaleToScreen = CanvasRealHeight / Screen.height;
         }
         GameObject.Find("Canvas/UICanvas").GetComponent<CanvasScaler>().matchWidthOrHeight = CanvasMatchWidth ? 0 : 1;

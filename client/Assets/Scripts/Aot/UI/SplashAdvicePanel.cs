@@ -12,16 +12,9 @@ public class SplashAdvicePanel : AotPanelBase
     {
         cngContent.alpha = 0;
         Sequence seq = DOTween.Sequence();
-        seq.Append(cngContent.DOFade(1, 1));
-        seq.AppendInterval(1);
-        seq.Append(cngContent.DOFade(0, 1));
-        //动画完成回调
-        //seq.AppendCallback(() =>
-        //{
-        //    this.Close();
-        //    AotUIManager.Instance.Open<SplashIconPanel>();
-        //});
-        await seq;
+        await seq.Append(cngContent.DOFade(1, 1))
+            .AppendInterval(1)
+            .Append(cngContent.DOFade(0, 1));
         await UniTask.SwitchToMainThread();
         AotUIManager.Instance.Open<UpdatePanel>().Forget();
         this.Close();

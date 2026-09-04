@@ -14,7 +14,7 @@ public class SDKManager : MonoSingleton<SDKManager>
     {
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("AliAuth", url);
+        AndroidClassHelper.UnityJavaObject.Call("AliAuth", url);
 #endif
 
     }
@@ -38,7 +38,7 @@ public class SDKManager : MonoSingleton<SDKManager>
     {
 
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("AliPay", orderinfo);
+        AndroidClassHelper.UnityJavaObject.Call("AliPay", orderinfo);
 #endif
 
     }
@@ -62,14 +62,14 @@ public class SDKManager : MonoSingleton<SDKManager>
     public void TapTapInit()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("TapTapInit");
+        AndroidClassHelper.UnityJavaObject.Call("TapTapInit");
 #endif
     }
 
     public void TapTapLogin()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("TapTapLogin");
+        AndroidClassHelper.UnityJavaObject.Call("TapTapLogin");
 #endif
     }
 
@@ -94,7 +94,7 @@ public class SDKManager : MonoSingleton<SDKManager>
     public void TapTapLoginOut()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("TapTapLoginOut");
+        AndroidClassHelper.UnityJavaObject.Call("TapTapLoginOut");
 #endif
     }
 
@@ -106,7 +106,7 @@ public class SDKManager : MonoSingleton<SDKManager>
         if (AppSettings.AppConfig.SdkDev)
             return;
 #if UNITY_ANDROID && !UNITY_EDITOR
-            AndroidClass.UnityJavaObject.Call("KuaiShou", key, value);
+            AndroidClassHelper.UnityJavaObject.Call("KuaiShou", key, value);
 #endif
     }
     #endregion
@@ -119,7 +119,7 @@ public class SDKManager : MonoSingleton<SDKManager>
         if (AppSettings.AppConfig.ChannelId == 3)
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            AndroidClass.UnityJavaObject.Call("GetKuaiShouChannel");
+            AndroidClassHelper.UnityJavaObject.Call("GetKuaiShouChannel");
 #endif
         }
     }
@@ -138,7 +138,7 @@ public class SDKManager : MonoSingleton<SDKManager>
         #if UNITY_ANDROID && !UNITY_EDITOR
         try
         {
-            AndroidClass.UnityJavaObject.Call("InitAndroidOAID");
+            AndroidClassHelper.UnityJavaObject.Call("InitAndroidOAID");
         }
         catch
         {
@@ -156,7 +156,7 @@ public class SDKManager : MonoSingleton<SDKManager>
     public void InitImei()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("InitImei");
+        AndroidClassHelper.UnityJavaObject.Call("InitImei");
 #endif
     }
 
@@ -183,14 +183,14 @@ public class SDKManager : MonoSingleton<SDKManager>
     public void InitBugly()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("InitBugly");
+        AndroidClassHelper.UnityJavaObject.Call("InitBugly");
 #endif
     }
 
     public void TestJavaCrash()
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-        AndroidClass.UnityJavaObject.Call("TestJavaCrash");
+        AndroidClassHelper.UnityJavaObject.Call("TestJavaCrash");
 #endif
     }
     #endregion

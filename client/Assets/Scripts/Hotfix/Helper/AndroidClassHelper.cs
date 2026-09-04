@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AndroidClass {
+public class AndroidClassHelper {
 
     private static AndroidJavaObject m_unityActivity;
     public static AndroidJavaObject UnityJavaObject

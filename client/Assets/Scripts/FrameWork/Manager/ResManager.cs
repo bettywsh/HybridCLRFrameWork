@@ -125,7 +125,7 @@ public class ResManager : Singleton<ResManager>
     public void GC()
     {
         var package = YooAssets.GetPackage(AppSettings.AppConfig.PackageName);
-        var operation = package.UnloadUnusedAssetsAsync();
+        package.UnloadUnusedAssetsAsync();
         //operation.WaitForAsyncComplete(); //支持同步操作
     }
 

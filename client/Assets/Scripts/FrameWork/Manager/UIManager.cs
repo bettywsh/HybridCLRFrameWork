@@ -257,8 +257,4 @@ public class UIManager : MonoSingleton<UIManager>
 #endif
     }
 
-    public override void Dispose()
-    {
-        base.Dispose();
-    }
 }

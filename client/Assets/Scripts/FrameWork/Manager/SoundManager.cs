@@ -13,7 +13,6 @@ public class SoundManager : MonoSingleton<SoundManager>
     private AudioSource audioSource;
     private Transform root;
     private List<AudioSource> effect_audio = new List<AudioSource>();
-    private string curModuleName;
     public bool isCanBackGround = true;
     public bool isCanEffect = true;
     public float background_volume = 1f;
@@ -286,9 +285,4 @@ public class SoundManager : MonoSingleton<SoundManager>
         }
     }
 
-    public override void Dispose() {
-        base.Dispose();
-        // PoolManager.Instance.DestoryPoolName("SoundEffects");
-        // GameObject.Destroy(root.gameObject); 
-    }
 }

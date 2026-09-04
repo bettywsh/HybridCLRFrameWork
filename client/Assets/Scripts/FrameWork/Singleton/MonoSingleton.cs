@@ -5,18 +5,23 @@ using UnityEngine;
 
 public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
 {
-    protected static bool isInit = false;
     protected static T m_instance = null;
+    private static int s_playSession;
 
     public static T Instance
     {
         get
         {
+            if (s_playSession != SingletonData.PlaySession)
+            {
+                m_instance = null;
+                s_playSession = SingletonData.PlaySession;
+            }
+
             if (m_instance == null)
             {
                 if (SingletonData.IsQuitting || !Application.isPlaying)
                     return null;
-                isInit = true;
 
                 GameObject go = GameObject.Find("Singleton");
                 if (go != null && go.scene.name != "DontDestroyOnLoad")
@@ -47,21 +52,8 @@ public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
 
     }
 
-    public virtual void Dispose()
-    {
-        m_instance = null;
-        isInit = false;
-    }
-
     public virtual void OnDestroy()
     {
-        Dispose();
-    }
-
-    void OnApplicationQuit()
-    {
-        SingletonData.IsQuitting = true;
-        m_instance = null;
-        isInit = true;
+         m_instance = null;
     }
 }

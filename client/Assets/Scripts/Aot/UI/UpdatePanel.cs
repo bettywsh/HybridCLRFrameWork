@@ -21,7 +21,6 @@ public class UpdatePanel : AotPanelBase
     string packageVersion;
     ResourceDownloaderOperation downloader;
     TweenerCore<float, float, FloatOptions> tween;
-    CancellationTokenSource cancelToken = new CancellationTokenSource();
     public override async UniTask OnOpen()
     {
         if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode ||
@@ -42,7 +41,7 @@ public class UpdatePanel : AotPanelBase
             {
                 SetProgressTween(false);
                 await AotDialogManager.Instance.ShowDialogOne("提示", "获取资源版本失败，请重试", () => {
-                    this.OnOpen();
+                    OnOpen();
                 });
                 return;
             }

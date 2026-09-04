@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using Cysharp.Threading.Tasks;
-using System.Threading;
-using UnityEngine.SocialPlatforms;
 
 public class TimerManager : MonoSingleton<TimerManager>
 {

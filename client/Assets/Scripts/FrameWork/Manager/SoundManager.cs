@@ -288,7 +288,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public override void Dispose() {
         base.Dispose();
-        PoolManager.Instance.DestoryPoolName("SoundEffects");
-        GameObject.Destroy(root.gameObject); 
+        // PoolManager.Instance.DestoryPoolName("SoundEffects");
+        // GameObject.Destroy(root.gameObject); 
     }
 }

@@ -1,45 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine;
-
-internal static class MonoSingletonRoot
-{
-    public static bool IsQuitting;
-    public static GameObject Go;
-
-    public static GameObject GetOrCreate()
-    {
-        if (Go == null)
-        {
-            Go = new GameObject("Singleton");
-            Object.DontDestroyOnLoad(Go);
-        }
-        return Go;
-    }
-
-    public static void DestroyRoot()
-    {
-        if (Go != null)
-        {
-            if (Application.isPlaying)
-                Object.Destroy(Go);
-            else
-                Object.DestroyImmediate(Go);
-        }
-        Go = null;
-    }
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-    static void ResetStatics()
-    {
-        Go = null;
-        IsQuitting = false;
-    }
-}
 
 public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
 {
@@ -52,11 +14,18 @@ public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
         {
             if (m_instance == null)
             {
-                if (MonoSingletonRoot.IsQuitting || !Application.isPlaying)
+                if (SingletonData.IsQuitting || !Application.isPlaying)
                     return null;
                 isInit = true;
 
-                GameObject go = MonoSingletonRoot.GetOrCreate();
+                GameObject go = GameObject.Find("Singleton");
+                if (go != null && go.scene.name != "DontDestroyOnLoad")
+                    go = null;
+                if (go == null)
+                {
+                    go = new GameObject("Singleton");
+                    DontDestroyOnLoad(go);
+                }
                 Transform trans = go.transform.Find(typeof(T).Name);
                 if (trans == null)
                 {
@@ -91,43 +60,8 @@ public abstract class MonoSingleton<T>: MonoBehaviour where T : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        MonoSingletonRoot.IsQuitting = true;
+        SingletonData.IsQuitting = true;
         m_instance = null;
         isInit = true;
     }
 }
-
-#if UNITY_EDITOR
-[InitializeOnLoad]
-static class MonoSingletonEditorCleanup
-{
-    static MonoSingletonEditorCleanup()
-    {
-        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-    }
-
-    static void OnPlayModeStateChanged(PlayModeStateChange state)
-    {
-        if (state == PlayModeStateChange.ExitingEditMode)
-        {
-            MonoSingletonRoot.IsQuitting = false;
-            MonoSingletonRoot.Go = null;
-            return;
-        }
-
-        if (state == PlayModeStateChange.ExitingPlayMode)
-        {
-            MonoSingletonRoot.IsQuitting = true;
-            return;
-        }
-
-        if (state != PlayModeStateChange.EnteredEditMode)
-            return;
-
-        MonoSingletonRoot.DestroyRoot();
-        var leftover = GameObject.Find("Singleton");
-        if (leftover != null)
-            Object.DestroyImmediate(leftover);
-    }
-}
-#endif

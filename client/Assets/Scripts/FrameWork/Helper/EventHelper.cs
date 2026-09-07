@@ -18,6 +18,13 @@ public static class EventHelper
         RegisterUIEvent(obj, referenceCollector);
     }
 
+    public static void RegisterAllEvent(object obj)
+    {
+        RegisterMessageEvent(obj);
+        RegisterTimerEvent(obj);
+        RegisterNetEvent(obj);
+    }
+
     public static void RegisterMessageEvent(object obj)
     {
         var cache = AssemblyManager.Instance.GetEventCache(obj.GetType());

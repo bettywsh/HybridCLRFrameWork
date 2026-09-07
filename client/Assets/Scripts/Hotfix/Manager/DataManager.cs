@@ -12,18 +12,9 @@ public class DataManager : Singleton<DataManager>
         var types = AssemblyManager.Instance.GetTypes(typeof(DataAttribute));
         foreach (Type type in types)
         {
-            if (type.IsAbstract)
-            {
-                continue;
-            }
-            object[] objects = type.GetCustomAttributes(typeof(DataAttribute), true);
-
-            foreach (object o in objects)
-            {
-                object obj = Activator.CreateInstance(type);
-                DataBase baseData = obj as DataBase;      
-                configs.Add(type, baseData);
-            }
+            object obj = Activator.CreateInstance(type);
+            DataBase baseData = obj as DataBase;
+            configs.Add(type, baseData);
         }
 
         foreach (var k in configs)
@@ -34,17 +25,27 @@ public class DataManager : Singleton<DataManager>
 
     public T GetData<T>() where T : DataBase
     {
-        DataBase obj;
-        configs.TryGetValue(typeof(T), out obj);
+        configs.TryGetValue(typeof(T), out DataBase obj);
         return obj as T;
     }
 
 
-    public void ResetAll()
+    // public void Reset()
+    // {
+    //     foreach (var k in configs)
+    //     {
+    //         k.Value.Reset();
+    //     }
+    // }
+
+    public override void Dispose()
     {
-        foreach ((Type type, object obj) in configs)
+        foreach (var k in configs)
         {
-            ((DataBase)obj).Reset();
+            k.Value.Dispose();
         }
+        configs.Clear();
+   
+        base.Dispose();
     }
 }

@@ -6,13 +6,16 @@ public class DataBase
 {
     public virtual void Init()
     {
-        EventHelper.RegisterNetEvent(this);
-        EventHelper.RegisterTimerEvent(this);
-        EventHelper.RegisterMessageEvent(this);
+        EventHelper.RegisterAllEvent(this);
     }
 
     public virtual void Reset()
     {
 
+    }
+
+    public virtual void Dispose()
+    {
+        // EventHelper.UnRegisterAllEvent(this);
     }
 }

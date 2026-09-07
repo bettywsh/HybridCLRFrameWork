@@ -48,8 +48,17 @@ public class WorldBannerData : DataBase
     }
 
 
-    public override void Reset()
+    // public override void Reset()
+    // {
+    //     MsgQueue.Clear();
+    //     TimerManager.Instance.Clear(TimerConst.WorldBannerTimer);
+    //     base.Reset();
+    // }
+
+    public override void Dispose()
     {
+        MsgQueue.Clear();
+        TimerManager.Instance.Clear(TimerConst.WorldBannerTimer);
         base.Reset();
     }
 }

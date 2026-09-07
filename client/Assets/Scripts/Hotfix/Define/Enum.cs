@@ -22,23 +22,3 @@ public enum EScene : int
     Main,
     Battle,
 }
-
-public enum EntranceType : int
-{
-    None,
-    Hall,
-    Shop,
-    Heroes,
-    Exchange,
-    Equipment
-}
-
-public enum BuyItemType: int
-{
-    None,
-    Diamond,
-    Hero,
-    HeroStone,
-    Modaoshi,
-    ExchangeMoBi
-}

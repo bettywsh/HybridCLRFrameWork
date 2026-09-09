@@ -13,20 +13,24 @@ public class AotDialogManager : AotSingleton<AotDialogManager>
 
     public async UniTask ShowDialogOne(string txtTitle, string txtMsg, Action okCb)
     {
-        AotDialogInfo dialogInfo = new AotDialogInfo();
-        dialogInfo.txtTitle = txtTitle;
-        dialogInfo.txtMsg = txtMsg;
-        dialogInfo.okFun = okCb;
+        AotDialogInfo dialogInfo = new()
+        {
+            txtTitle = txtTitle,
+            txtMsg = txtMsg,
+            okFun = okCb
+        };
         await AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
     }
 
     public async UniTask ShowDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
     {
-        AotDialogInfo dialogInfo = new AotDialogInfo();
-        dialogInfo.txtTitle = txtTitle;
-        dialogInfo.txtMsg = txtMsg;
-        dialogInfo.okFun = okFun;
-        dialogInfo.calFun = calFun;
+        AotDialogInfo dialogInfo = new()
+        {
+            txtTitle = txtTitle,
+            txtMsg = txtMsg,
+            okFun = okFun,
+            calFun = calFun
+        };
         await AotUIManager.Instance.Open<UpdateDialogPanel>(dialogInfo);
     }
 }

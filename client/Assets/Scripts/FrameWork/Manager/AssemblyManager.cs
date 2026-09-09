@@ -41,11 +41,11 @@ public class AssemblyManager : Singleton<AssemblyManager>
     private readonly UnOrderMultiMapSet<Type, Type> types = new();
     private readonly Dictionary<Type, TypeEventCache> eventCaches = new();
     private Assembly[] hotUpdateAss;
-    private Dictionary<string, Type> allPanel = new Dictionary<string, Type>();
-    private Dictionary<string, Type> allSubPanel = new Dictionary<string, Type>();
-    private Dictionary<string, Type> allCell = new Dictionary<string, Type>();
-    private Dictionary<string, Type> allScene = new Dictionary<string, Type>();
-    private Dictionary<string, Type> allData = new Dictionary<string, Type>();
+    private Dictionary<string, Type> allPanel = new();
+    private Dictionary<string, Type> allSubPanel = new();
+    private Dictionary<string, Type> allCell = new();
+    private Dictionary<string, Type> allScene = new();
+    private Dictionary<string, Type> allData = new();
     public override void Init()
     {
         hotUpdateAss = new Assembly[1] { HybridCLRManager.Instance._hotUpdateAss };
@@ -98,7 +98,7 @@ public class AssemblyManager : Singleton<AssemblyManager>
 
     Dictionary<string, Type> GetAssemblyTypes(params Assembly[] args)
     {
-        Dictionary<string, Type> mTypes = new Dictionary<string, Type>();
+        Dictionary<string, Type> mTypes = new();
 
         foreach (Assembly ass in args)
         {

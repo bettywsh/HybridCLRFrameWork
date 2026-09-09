@@ -53,7 +53,7 @@ public class BaseEditor : Editor
     {
         Debug.Log(proc + " " + args);
 
-        ProcessStartInfo info = new ProcessStartInfo();
+        ProcessStartInfo info = new();
         info.FileName = proc;
         info.Arguments = args;
         info.WindowStyle = ProcessWindowStyle.Hidden;

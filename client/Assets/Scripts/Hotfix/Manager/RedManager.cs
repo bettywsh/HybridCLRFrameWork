@@ -120,13 +120,13 @@ public class RedNode
     /// <summary>
     /// 是否有红点
     /// </summary>
-    public bool isPoint => num == 0 ? false : true;
+    public bool isPoint => num != 0;
 
     public RedNode parent;
 
     public Action updateCb;
 
-    public Dictionary<string, RedNode> childs = new Dictionary<string, RedNode>();
+    public Dictionary<string, RedNode> childs = new();
 
     public RedNode(string name)
     {

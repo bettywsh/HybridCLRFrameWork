@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager>
 {
-    Dictionary<Type, DataBase> configs = new Dictionary<Type, DataBase>();
+    Dictionary<Type, DataBase> configs = new();
     public override void Init()
     {
         //Assembly Hotfix = System.AppDomain.CurrentDomain.GetAssemblies().First(a => a.GetName().Name == "Hotfix");

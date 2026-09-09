@@ -179,8 +179,7 @@ public class UIManager : MonoSingleton<UIManager>
 
     void Close(string prefabName)
     {
-        PanelBase obj;
-        if (uiList.TryGetValue(prefabName, out obj))
+        if (uiList.TryGetValue(prefabName, out PanelBase obj))
         {
             PanelBase basePanel = obj;
             basePanel?.OnUnBindEvent();

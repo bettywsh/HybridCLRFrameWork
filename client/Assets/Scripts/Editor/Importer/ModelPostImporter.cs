@@ -50,7 +50,7 @@ public class ModelPostImporter : BaseEditor
                 for (int i = 0; i < meshes.Length; i++)
                 {
                     Mesh oldmesh = meshes[i].sharedMesh;
-                    Mesh newmesh = new Mesh();
+                    Mesh newmesh = new();
                     newmesh.vertices = oldmesh.vertices;
                     newmesh.normals = oldmesh.normals;
                     newmesh.triangles = oldmesh.triangles;
@@ -94,7 +94,7 @@ public class ModelPostImporter : BaseEditor
                 {
                     srcClip.legacy = true;
 
-                    AnimationClip newClip = new AnimationClip();
+                    AnimationClip newClip = new();
                     EditorUtility.CopySerialized(srcClip, newClip);
 
                     newClip.frameRate = srcClip.frameRate;

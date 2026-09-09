@@ -10,7 +10,7 @@ public enum EServer {
 
 public class NetworkManager : MonoSingleton<NetworkManager>
 {
-	public Dictionary<NetworkProtocol, Session> Sessions = new Dictionary<NetworkProtocol, Session>();
+	public Dictionary<NetworkProtocol, Session> Sessions = new();
 	public Action ShowNetLoading;
 	public Action HideNetLoading;
     IPEndPoint ipEndPoint;
@@ -82,10 +82,7 @@ public class NetworkManager : MonoSingleton<NetworkManager>
     public void Close()
     {
         Session session = GetSession(NetworkProtocol.TCP);
-        if (session != null)
-        {
-            session.Dispose();
-        }
+        session?.Dispose();
         Sessions.Remove(NetworkProtocol.TCP);
     }
 

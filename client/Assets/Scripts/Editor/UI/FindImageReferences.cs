@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 public class FindImageReferences
 {
-    [MenuItem("Assets/×ÊÔ´ÒýÓÃ²éÕÒ", false, 11)]
+    [MenuItem("Assets/ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½", false, 11)]
     static private void Find()
     {
         EditorSettings.serializationMode = SerializationMode.ForceText;
@@ -26,7 +26,7 @@ public class FindImageReferences
             {
                 string file = files[startIndex];
 
-                bool isCancel = EditorUtility.DisplayCancelableProgressBar("Æ¥Åä×ÊÔ´ÖÐ.....", file, (float)startIndex / (float)files.Length);
+                bool isCancel = EditorUtility.DisplayCancelableProgressBar("Æ¥ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½.....", file, (float)startIndex / (float)files.Length);
 
                 if (Regex.IsMatch(File.ReadAllText(file), guid))
                 {
@@ -39,7 +39,7 @@ public class FindImageReferences
                     EditorUtility.ClearProgressBar();
                     EditorApplication.update = null;
                     startIndex = 0;
-                    Debug.Log("Æ¥Åä½áÊø");
+                    Debug.Log("Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½");
                 }
 
             };

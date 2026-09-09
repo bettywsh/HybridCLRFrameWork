@@ -13,11 +13,11 @@ public delegate void MessageDelegate(byte[] msgDatas);
 public delegate void EventDelegate(params object[] msgDatas);
 public class EventManager : Singleton<EventManager>
 {
-    private Dictionary<int, MessageDelegate> messageHandlerDic = new Dictionary<int, MessageDelegate>();
+    private Dictionary<int, MessageDelegate> messageHandlerDic = new();
 
-    private Dictionary<int, List<EventHandler>> eventHandlerDic = new Dictionary<int, List<EventHandler>>();
+    private Dictionary<int, List<EventHandler>> eventHandlerDic = new();
 
-    private Dictionary<int, List<EventHandler>> timerEventHandlerDic = new Dictionary<int, List<EventHandler>>();
+    private Dictionary<int, List<EventHandler>> timerEventHandlerDic = new();
 
     #region 网络消息
     public void RegisterNetMessageHandler(int cmdID, MessageDelegate message)
@@ -57,8 +57,7 @@ public class EventManager : Singleton<EventManager>
     #region 逻辑消息
     public void RegisterMessageHandler(int eventName, EventHandler message)
     {
-        List<EventHandler> list;
-        if (!eventHandlerDic.TryGetValue(eventName, out list))
+        if (!eventHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
         {
             list = new List<EventHandler>();
             eventHandlerDic.Add(eventName, list);
@@ -85,13 +84,12 @@ public class EventManager : Singleton<EventManager>
 
     public void MessageNotify(int eventName,params object[] msgData)
     {
-        List<EventHandler> handle;
 
-        if (eventHandlerDic.TryGetValue(eventName, out handle))
+        if (eventHandlerDic.TryGetValue(eventName, out List<EventHandler> handle))
         {
             for (int i = handle.Count - 1; i >= 0; i--)
             {
-                handle[i].eventDelegate(msgData);                
+                handle[i].eventDelegate(msgData);
             }
         }
     }
@@ -100,8 +98,7 @@ public class EventManager : Singleton<EventManager>
     #region 定时器消息
     public void RegisterTimerHandler(int eventName, EventHandler message)
     {
-        List<EventHandler> list;
-        if (!timerEventHandlerDic.TryGetValue(eventName, out list))
+        if (!timerEventHandlerDic.TryGetValue(eventName, out List<EventHandler> list))
         {
             list = new List<EventHandler>();
             timerEventHandlerDic.Add(eventName, list);
@@ -128,9 +125,8 @@ public class EventManager : Singleton<EventManager>
 
     public void TimerNotify(int eventName, params object[] msgData)
     {
-        List<EventHandler> handle;
 
-        if (timerEventHandlerDic.TryGetValue(eventName, out handle))
+        if (timerEventHandlerDic.TryGetValue(eventName, out List<EventHandler> handle))
         {
             for (int i = handle.Count - 1; i >= 0; i--)
             {

@@ -12,7 +12,7 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
     /// <summary>
     /// 时间戳计时开始时间
     /// </summary>
-    private static DateTime timeStampStartTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+    private static DateTime timeStampStartTime = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
     /// <summary>
     /// DateTime转换为10位时间戳（单位：秒）
@@ -28,34 +28,32 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
 
     public async UniTask<string> GetRequest(string url, string token)
     {
-        using (UnityWebRequest webRequest = new UnityWebRequest(url, "GET"))
+        using UnityWebRequest webRequest = new(url, "GET");
+        webRequest.timeout = 30;
+        webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gb2312");
+        webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
+        if (token != null)
+            webRequest.SetRequestHeader("Token", token);
+        webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
+        try
         {
-            webRequest.timeout = 30;
-            webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-            webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gb2312");
-            webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
-            if (token != null)
-                webRequest.SetRequestHeader("Token", token);
-            webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
-            try
-            {
-                await webRequest.SendWebRequest();
-            }
-            catch
-            {
-                return "";
-            }
-            if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text + "   " + url);
-                return "";
-            }
-            else
-            {
-                string data = webRequest.downloadHandler.text;
-                webRequest.Dispose();
-                return data;
-            }
+            await webRequest.SendWebRequest();
+        }
+        catch
+        {
+            return "";
+        }
+        if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text + "   " + url);
+            return "";
+        }
+        else
+        {
+            string data = webRequest.downloadHandler.text;
+            webRequest.Dispose();
+            return data;
         }
     }
     #endregion
@@ -64,35 +62,33 @@ public class AotHttpManager : AotSingleton<AotHttpManager>
 
     public async UniTask<string> PostRequest(string url, string jsonString, string token)
     {
-        using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
+        using UnityWebRequest webRequest = new(url, "POST");
+        webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(Encoding.UTF8.GetBytes(jsonString));
+        webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf8");
+        webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
+        webRequest.SetRequestHeader("Token", token);
+        webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
+
+        try
         {
-            webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(Encoding.UTF8.GetBytes(jsonString));
-            webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-            webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf8");
-            webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
-            webRequest.SetRequestHeader("Token", token);
-            webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
+            await webRequest.SendWebRequest().ToUniTask();
+        }
+        catch
+        {
+            return "";
+        }
 
-            try
-            {
-                await webRequest.SendWebRequest().ToUniTask();
-            }
-            catch
-            {
-                return "";
-            }
-
-            if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
-            {
-                Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text);
-                return "";
-            }
-            else
-            {
-                string data = webRequest.downloadHandler.text;
-                webRequest.Dispose();
-                return data;
-            }
+        if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text);
+            return "";
+        }
+        else
+        {
+            string data = webRequest.downloadHandler.text;
+            webRequest.Dispose();
+            return data;
         }
     }
     #endregion

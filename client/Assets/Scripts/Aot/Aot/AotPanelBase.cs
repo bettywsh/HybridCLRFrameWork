@@ -12,7 +12,7 @@ using System.Threading;
 public class AotPanelBase: MonoBehaviour
 {
     public object[] args;
-    public CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    public CancellationTokenSource cancellationTokenSource = new();
 
     public virtual async UniTask OnOpen()
     { 

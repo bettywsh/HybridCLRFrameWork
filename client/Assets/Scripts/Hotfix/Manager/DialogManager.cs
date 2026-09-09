@@ -31,6 +31,7 @@ public class DialogManager : Singleton<DialogManager>
     {
         NetLoadingPanel netLoadingPanel = UIManager.Instance.GetUI<NetLoadingPanel>();
         netLoadingPanel ??= await UIManager.Instance.Open<NetLoadingPanel>();
+        netLoadingPanel.Show().Forget();
         TimerManager.Instance.Clear(TimerConst.NetLoading);
         TimerManager.Instance.OnceTimer(TimerConst.NetLoading, timeout);
     }
@@ -63,7 +64,7 @@ public class DialogManager : Singleton<DialogManager>
             txtMsg = txtMsg,
             okFun = okCb
         };
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo).Forget();
     }
 
     public void ShowDialogOne(string txtTitle, string txtMsg, string txtOk, Action okCb)
@@ -76,7 +77,7 @@ public class DialogManager : Singleton<DialogManager>
             okFun = okCb,
             txtOk = txtOk
         };
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo).Forget();
     }
 
     public void ShowDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
@@ -89,7 +90,7 @@ public class DialogManager : Singleton<DialogManager>
             okFun = okFun,
             calFun = calFun
         };
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo).Forget();
     }
 
     public void ShowDialogTwo(string txtTitle, string txtMsg, string txtOk, string txtCal, Action okFun, Action calFun)
@@ -104,7 +105,7 @@ public class DialogManager : Singleton<DialogManager>
             okFun = okFun,
             calFun = calFun
         };
-        UIManager.Instance.Open<DialogPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogPanel>(dialogInfo).Forget();
     }
     #endregion
 
@@ -119,7 +120,7 @@ public class DialogManager : Singleton<DialogManager>
             txtMsg = txtMsg,
             okFun = okCb
         };
-        UIManager.Instance.Open<DialogSystemPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogSystemPanel>(dialogInfo).Forget();
     }
 
     public void ShowSystemDialogTwo(string txtTitle, string txtMsg, Action okFun, Action calFun)
@@ -132,7 +133,7 @@ public class DialogManager : Singleton<DialogManager>
             okFun = okFun,
             calFun = calFun
         };
-        UIManager.Instance.Open<DialogSystemPanel>(dialogInfo);
+        UIManager.Instance.Open<DialogSystemPanel>(dialogInfo).Forget();
     }
     #endregion
 }

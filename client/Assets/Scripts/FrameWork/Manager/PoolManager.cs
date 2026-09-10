@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class PoolManager : Singleton<PoolManager>
 {
-    private Dictionary<string, List<GameObject>> poolList = new Dictionary<string, List<GameObject>>();
-    private Dictionary<string, Stack<GameObject>> pools = new Dictionary<string, Stack<GameObject>>();
+    private Dictionary<string, List<GameObject>> poolList = new();
+    private Dictionary<string, Stack<GameObject>> pools = new();
 
     public void InitPool(string poolName, GameObject poolObjectPrefab, int initCount, Transform poolRoot)
     {        

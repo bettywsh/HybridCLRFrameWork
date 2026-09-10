@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using YooAsset;
@@ -10,7 +10,7 @@ using System.Threading;
 public class ResManager : Singleton<ResManager>
 {
 
-    Dictionary<string, Dictionary<string, AssetHandle>> ResLoaders = new Dictionary<string, Dictionary<string, AssetHandle>>();
+    Dictionary<string, Dictionary<string, AssetHandle>> ResLoaders = new();
 
     ResourcePackage package;
     public override void Init()

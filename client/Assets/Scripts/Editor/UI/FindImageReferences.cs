@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 public class FindImageReferences
 {
-    [MenuItem("Assets/��Դ���ò���", false, 11)]
+    [MenuItem("Assets/资源引用查找", false, 11)]
     static private void Find()
     {
         EditorSettings.serializationMode = SerializationMode.ForceText;
@@ -26,7 +26,7 @@ public class FindImageReferences
             {
                 string file = files[startIndex];
 
-                bool isCancel = EditorUtility.DisplayCancelableProgressBar("ƥ����Դ��.....", file, (float)startIndex / (float)files.Length);
+                bool isCancel = EditorUtility.DisplayCancelableProgressBar("匹配资源中.....", file, (float)startIndex / (float)files.Length);
 
                 if (Regex.IsMatch(File.ReadAllText(file), guid))
                 {
@@ -39,7 +39,7 @@ public class FindImageReferences
                     EditorUtility.ClearProgressBar();
                     EditorApplication.update = null;
                     startIndex = 0;
-                    Debug.Log("ƥ�����");
+                    Debug.Log("匹配结束");
                 }
 
             };

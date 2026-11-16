@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//挑战活动相关
+
+//挑战详情
+//message Challenge{
+//	int ChallengeId = 1;
+//	int ChallengeStatus = 2;
+//}
+
+//挑战信息
+message DayChallengeInfo{
+    //每日通关数
+    int32 DayPassLv = 1;
+    //奖励领取状态 0未领取 1领取了
+	int32 DayPassLvGif = 2;
+}
+
+//每日挑战 必须完成50关且领取了50关福利奖励才能解锁该每日挑战
+//通关三次关卡 奖励1万魔导石
+message GetDayChallengeReward{
+}
+
+message GetDayChallengeRewardRes{
+    //领取结果
+    enum ChallengeResultCode{
+        //成功
+        CRC_Success = 0;
+        //未完成
+        CRC_DisComplete = 1;
+        //已经领取过奖励了
+        CRC_AlreadyGet = 2;
+        //未解锁
+        CRC_Locked = 3;
+        //其他错误
+        CRC_OtherError = 4;
+    }
+    ChallengeResultCode result = 1;
+}

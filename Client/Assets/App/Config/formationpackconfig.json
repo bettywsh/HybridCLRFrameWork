@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 100,
+    "Name": "冒险礼包",
+    "Rewards": [
+      {
+        "id": 10002,
+        "num": 5220000
+      }
+    ],
+    "FormationLevel": 11,
+    "Price": 58
+  },
+  {
+    "Id": 101,
+    "Name": "冲刺礼包",
+    "Rewards": [
+      {
+        "id": 10002,
+        "num": 34920000
+      }
+    ],
+    "FormationLevel": 20,
+    "Price": 388
+  },
+  {
+    "Id": 102,
+    "Name": "登顶礼包",
+    "Rewards": [
+      {
+        "id": 10002,
+        "num": 52920000
+      }
+    ],
+    "FormationLevel": 28,
+    "Price": 588
+  }
+]

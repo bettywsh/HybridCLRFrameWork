@@ -1,0 +1,290 @@
+[
+  {
+    "Id": 1010001,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 888,
+    "Probability": 356,
+    "Rarity": 1
+  },
+  {
+    "Id": 1010002,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 1888,
+    "Probability": 258,
+    "Rarity": 1
+  },
+  {
+    "Id": 1010003,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 6888,
+    "Probability": 188,
+    "Rarity": 1
+  },
+  {
+    "Id": 1010004,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 12888,
+    "Probability": 138,
+    "Rarity": 1
+  },
+  {
+    "Id": 1010005,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 18888,
+    "Probability": 30,
+    "Rarity": 2
+  },
+  {
+    "Id": 1010006,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 180000,
+    "Probability": 14,
+    "Rarity": 2
+  },
+  {
+    "Id": 1010007,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 380000,
+    "Probability": 8,
+    "Rarity": 2
+  },
+  {
+    "Id": 1010008,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 880000,
+    "Probability": 5,
+    "Rarity": 3
+  },
+  {
+    "Id": 1010009,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 1880000,
+    "Probability": 3,
+    "Rarity": 3
+  },
+  {
+    "Id": 2010001,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 444,
+    "Probability": 376,
+    "Rarity": 1
+  },
+  {
+    "Id": 2010002,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 1944,
+    "Probability": 258,
+    "Rarity": 1
+  },
+  {
+    "Id": 2010003,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 3444,
+    "Probability": 188,
+    "Rarity": 1
+  },
+  {
+    "Id": 2010004,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 4444,
+    "Probability": 128,
+    "Rarity": 1
+  },
+  {
+    "Id": 2010005,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 6444,
+    "Probability": 32,
+    "Rarity": 2
+  },
+  {
+    "Id": 2010006,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 90000,
+    "Probability": 10,
+    "Rarity": 2
+  },
+  {
+    "Id": 2010007,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 190000,
+    "Probability": 5,
+    "Rarity": 2
+  },
+  {
+    "Id": 2010008,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 290000,
+    "Probability": 2,
+    "Rarity": 3
+  },
+  {
+    "Id": 2010009,
+    "Type": 1,
+    "Reward": 10003,
+    "Number": 440000,
+    "Probability": 1,
+    "Rarity": 3
+  },
+  {
+    "Id": 3010001,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 2,
+    "Probability": 330,
+    "Rarity": 1
+  },
+  {
+    "Id": 3010002,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 4,
+    "Probability": 230,
+    "Rarity": 1
+  },
+  {
+    "Id": 3010003,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 8,
+    "Probability": 160,
+    "Rarity": 1
+  },
+  {
+    "Id": 3010004,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 18,
+    "Probability": 110,
+    "Rarity": 1
+  },
+  {
+    "Id": 3010005,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 38,
+    "Probability": 80,
+    "Rarity": 2
+  },
+  {
+    "Id": 3010006,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 58,
+    "Probability": 40,
+    "Rarity": 2
+  },
+  {
+    "Id": 3010007,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 88,
+    "Probability": 20,
+    "Rarity": 2
+  },
+  {
+    "Id": 3010008,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 138,
+    "Probability": 20,
+    "Rarity": 2
+  },
+  {
+    "Id": 3010009,
+    "Type": 1,
+    "Reward": 2001,
+    "Number": 188,
+    "Probability": 10,
+    "Rarity": 3
+  },
+  {
+    "Id": 4010001,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 800000,
+    "Probability": 330,
+    "Rarity": 1
+  },
+  {
+    "Id": 4010002,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 960000,
+    "Probability": 230,
+    "Rarity": 1
+  },
+  {
+    "Id": 4010003,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 1160000,
+    "Probability": 160,
+    "Rarity": 1
+  },
+  {
+    "Id": 4010004,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 1360000,
+    "Probability": 110,
+    "Rarity": 1
+  },
+  {
+    "Id": 4010005,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 1700000,
+    "Probability": 80,
+    "Rarity": 1
+  },
+  {
+    "Id": 4010006,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 2360000,
+    "Probability": 40,
+    "Rarity": 2
+  },
+  {
+    "Id": 4010007,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 7760000,
+    "Probability": 20,
+    "Rarity": 2
+  },
+  {
+    "Id": 4010008,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 11760000,
+    "Probability": 20,
+    "Rarity": 2
+  },
+  {
+    "Id": 4010009,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 25760000,
+    "Probability": 10,
+    "Rarity": 3
+  }
+]

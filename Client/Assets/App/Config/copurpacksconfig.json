@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 50001,
+    "Reward": 4000000,
+    "Give": 4000000,
+    "Price": 100,
+    "Preferential": "200%",
+    "Unlock": 1000
+  },
+  {
+    "Id": 50002,
+    "Reward": 3200000,
+    "Give": 3600000,
+    "Price": 80,
+    "Preferential": "213%",
+    "Unlock": 1000
+  },
+  {
+    "Id": 50003,
+    "Reward": 2720000,
+    "Give": 3400000,
+    "Price": 68,
+    "Preferential": "225%",
+    "Unlock": 1000
+  },
+  {
+    "Id": 50004,
+    "Reward": 2320000,
+    "Give": 3190000,
+    "Price": 58,
+    "Preferential": "238%",
+    "Unlock": 1000
+  },
+  {
+    "Id": 50005,
+    "Reward": 1520000,
+    "Give": 2280000,
+    "Price": 38,
+    "Preferential": "250%",
+    "Unlock": 1000
+  },
+  {
+    "Id": 50006,
+    "Reward": 2460000,
+    "Give": 0,
+    "Price": 0,
+    "Preferential": "0",
+    "Unlock": 1000
+  }
+]

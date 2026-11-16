@@ -1,0 +1,288 @@
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+public class SoundManager : MonoSingleton<SoundManager>
+{
+
+    private AudioSource audioSource;
+    private Transform root;
+    private List<AudioSource> effect_audio = new List<AudioSource>();
+    public bool isCanBackGround = true;
+    public bool isCanEffect = true;
+    public float background_volume = 1f;
+    public float effect_volume = 1f;
+    private bool isEffectPaused;
+
+    public override void Init()
+    {
+        if (audioSource == null)
+        {
+            //创建一个名称为Sound的空GameObject
+            GameObject go = this.gameObject;
+            //在其上添加AudioListener 和 AudioSource 组件
+            go.AddComponent<AudioListener>();
+            audioSource = go.AddComponent<AudioSource>();
+            root = go.transform;
+            isCanBackGround = CanPlayBackSound();
+            background_volume = PlayerPrefs.GetFloat("BackGroundVolume", 1f);
+            SetBackGroundVolume(background_volume);
+            audioSource.volume = background_volume;
+            isCanEffect = CanPlaySoundEffect();
+            effect_volume = PlayerPrefs.GetFloat("SoundEffectVolume", 1f);
+            SetEffectVolume(effect_volume);
+            for (int i = 0; i < effect_audio.Count; i++)
+            {
+                effect_audio[i].volume = effect_volume;
+            }
+        }       
+    }
+
+
+    //存背景音乐音量
+    public void SetBackGroundVolume(float volume)
+    {
+        background_volume = volume;
+        PlayerPrefs.SetFloat("BackGroundVolume", background_volume);
+        audioSource.volume = background_volume;
+    }
+
+    //存音效音量
+    public void SetEffectVolume(float volume)
+    {
+        effect_volume = volume;
+        for (int i = 0;i< effect_audio.Count; i++)
+        {
+            effect_audio[i].volume = volume;
+        }
+        PlayerPrefs.SetFloat("SoundEffectVolume", effect_volume);
+    }
+
+    //获取背景音乐音量
+    public float GetBackGroundVolume()
+    {
+        return PlayerPrefs.GetFloat("BackGroundVolume");
+    }
+
+    //获取音效音量
+    public float GetEffectVolume()
+    {
+        return PlayerPrefs.GetFloat("SoundEffectVolume");
+    }
+
+
+    public async UniTask<AudioClip> LoadAudioClipAsync(string name)
+    {
+        //不在缓存中 则异步加载资源
+        return await ResManager.Instance.CommonLoadAssetAsync<AudioClip>(name);
+    }
+
+    public bool CanPlayBackSound()
+    {
+        string key = "BackSound";
+        int i = PlayerPrefs.GetInt(key, 1);
+        return i == 1;
+    }
+
+    public void SetCanPlayBackSound(bool flag)
+    {
+        if (CanPlayBackSound() != flag)
+        {
+            string key = "BackSound";
+            int i = PlayerPrefs.GetInt(key, 1);
+            if (i == 1)
+            {
+                PlayerPrefs.SetInt(key, 0);
+                StopBacksound();
+            }
+            else
+            {
+                PlayerPrefs.SetInt(key, 1);
+                if (audioSource.clip != null)
+                {
+                    PlayBackSound(audioSource.clip);
+                }
+            }
+        }
+    }
+
+    public async UniTask PlayBackSound(string name)
+    {
+        audioSource.loop = true;
+        //改为异步加载
+        audioSource.clip = await LoadAudioClipAsync(name);
+        if (CanPlayBackSound())
+        {
+            audioSource.Play();
+        }
+        else
+        {
+            StopBacksound();
+        }
+
+    }
+
+    public void PlayBackSound(AudioClip clip)
+    {
+        audioSource.loop = true;
+        audioSource.clip = clip;
+        if (CanPlayBackSound())
+        {
+            audioSource.Play();
+        }
+        else
+        {
+            StopBacksound();
+        }
+    }
+
+    public void PlayEffectSound(AudioClip clip)
+    {
+        if (!isCanEffect)
+            return;
+        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Effect/SoundEffect"), root);
+        //GameObject go = new GameObject(clip.name);
+        go.name = clip.name;
+        AudioSource effect = go.GetComponent<AudioSource>();
+        effect.loop = false;
+        effect.playOnAwake = false;
+        effect.volume = effect_volume;
+        //改为异步加载
+        effect.clip = clip;
+        effect_audio.Add(effect);
+        effect.Play();
+    }
+
+    public async UniTask PlayEffectSound(string name)
+    {
+        if (!isCanEffect)
+            return;
+        GameObject go = PoolManager.Instance.CreatePool("SoundEffects", ResManager.Instance.CommonLoadAsset<GameObject>("Assets/App/Prefab/Effect/SoundEffect"), root);
+        go.name = name;
+        AudioSource effect = go.GetComponent<AudioSource>();
+        effect.loop = false;
+        effect.playOnAwake = false;
+        effect.volume = effect_volume;
+        //改为异步加载
+        effect.clip = await LoadAudioClipAsync(name);
+        if (!isCanEffect)
+        {
+            PoolManager.Instance.ReturnObjectToPool("SoundEffects", go);
+            return;
+        }
+        effect_audio.Add(effect);
+        effect.Play();
+
+    }
+
+    public void StopEffectSound(string name) 
+    {
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            if (effect_audio[i].name == name)
+            {
+                PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
+                effect_audio.RemoveAt(i);
+            }
+        }
+    }
+
+    public void StopAllEffectSound()
+    {
+        isEffectPaused = false;
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
+            effect_audio.RemoveAt(i);         
+        }
+    }
+
+    public void PauseAllEffectSound()
+    {
+        isEffectPaused = true;
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            effect_audio[i].Pause();
+        }
+    }
+
+    public void UnPauseAllEffectSound()
+    {
+        isEffectPaused = false;
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            effect_audio[i].UnPause();
+        }
+    }
+
+    public bool EffectSoundIsOn(string name) {
+        for (int i = effect_audio.Count - 1; i >= 0; i--)
+        {
+            if (effect_audio[i].name == name)
+                return true;
+        }
+        return false;
+    }
+
+    public void StopBacksound()
+    {
+        audioSource.Stop();
+    }
+
+    public void PauseBacksound()
+    {
+        audioSource.Pause();
+    }
+
+    public void UnPauseBacksound()
+    {
+        audioSource.UnPause();
+    }
+
+    public bool CanPlaySoundEffect()
+    {
+        string key = "SoundEffect";
+        int i = PlayerPrefs.GetInt(key, 1);
+        return i == 1;
+    }
+        
+    public void SetCanPlaySoundEffect(bool flag)
+    {
+        if (CanPlaySoundEffect() != flag)
+        {
+            string key = "SoundEffect";
+            int i = PlayerPrefs.GetInt(key, 1);
+            if (i == 1)
+            {
+                PlayerPrefs.SetInt(key, 0);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(key, 1);
+            }
+        }
+        isCanEffect = flag;
+    }
+    
+    void Update()
+    {
+        if (effect_audio.Count > 0) {
+            for (int i = effect_audio.Count - 1; i >= 0; i--)
+            {
+                if (!effect_audio[i].isPlaying)
+                {
+                    if (isEffectPaused)
+                        continue;
+                    PoolManager.Instance.ReturnObjectToPool("SoundEffects", effect_audio[i].gameObject);
+                    effect_audio.RemoveAt(i);                    
+                }
+            }
+        }
+    }
+
+}

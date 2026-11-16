@@ -1,0 +1,142 @@
+[
+  {
+    "Id": 100,
+    "Type": 1,
+    "Name": "炙风沙漠",
+    "MagicCircle": [
+      1000,
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007,
+      1008,
+      1009
+    ],
+    "MagicCoins": 50000,
+    "Inventory": 50000000,
+    "Condition": 100,
+    "Tax1": 7,
+    "Tax2": 40,
+    "Float": 1,
+    "Extramax": 1020,
+    "Extramin": 980,
+    "Coefficientmax": 1020,
+    "Coefficientmin": 980,
+    "Condition1": 1,
+    "Condition2": 0,
+    "BossTime": [
+      90,
+      150
+    ],
+    "Condition3": 11,
+    "Condition4": 3000000
+  },
+  {
+    "Id": 101,
+    "Type": 2,
+    "Name": "复苏苔原",
+    "MagicCircle": [
+      1010,
+      1011,
+      1012,
+      1013,
+      1014,
+      1015,
+      1016,
+      1017,
+      1018,
+      1019
+    ],
+    "MagicCoins": 50000,
+    "Inventory": 60000000,
+    "Condition": 100,
+    "Tax1": 7,
+    "Tax2": 40,
+    "Float": 1,
+    "Extramax": 1020,
+    "Extramin": 980,
+    "Coefficientmax": 1020,
+    "Coefficientmin": 980,
+    "Condition1": 11,
+    "Condition2": 2000,
+    "BossTime": [
+      90,
+      150
+    ],
+    "Condition3": 0,
+    "Condition4": 0
+  },
+  {
+    "Id": 102,
+    "Type": 3,
+    "Name": "风蚀峡谷",
+    "MagicCircle": [
+      1018,
+      1019,
+      1020,
+      1021,
+      1022,
+      1023,
+      1024,
+      1025,
+      1026,
+      1027
+    ],
+    "MagicCoins": 50000,
+    "Inventory": 200000000,
+    "Condition": 100,
+    "Tax1": 6,
+    "Tax2": 40,
+    "Float": 1,
+    "Extramax": 1020,
+    "Extramin": 980,
+    "Coefficientmax": 1020,
+    "Coefficientmin": 980,
+    "Condition1": 19,
+    "Condition2": 500000,
+    "BossTime": [
+      90,
+      150
+    ],
+    "Condition3": 0,
+    "Condition4": 0
+  },
+  {
+    "Id": 103,
+    "Type": 4,
+    "Name": "永冻壁垒",
+    "MagicCircle": [
+      1009,
+      1010,
+      1011,
+      1012,
+      1013,
+      1014,
+      1015,
+      1016,
+      1017,
+      1018
+    ],
+    "MagicCoins": 50000,
+    "Inventory": 60000000,
+    "Condition": 100,
+    "Tax1": 6,
+    "Tax2": 40,
+    "Float": 1,
+    "Extramax": 1020,
+    "Extramin": 980,
+    "Coefficientmax": 1020,
+    "Coefficientmin": 980,
+    "Condition1": 10,
+    "Condition2": 10000,
+    "BossTime": [
+      90,
+      90
+    ],
+    "Condition3": 0,
+    "Condition4": 0
+  }
+]

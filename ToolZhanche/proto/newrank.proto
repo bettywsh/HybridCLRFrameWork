@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package msg;
+
+option go_package=".";
+
+//获取榜单数据
+message GetPlayerRankInfo{}
+
+message GetPlayerRankInfoRes{
+    //榜单数据
+    //日榜
+    repeated PlayerRankInfo DayRank1 = 1;
+    repeated PlayerRankInfo DayRank2 = 2;
+
+    //周榜
+    repeated PlayerRankInfo WeekRank1 = 3;
+    repeated PlayerRankInfo WeekRank2 = 4;
+
+    //其他数据
+    RankPoolInfo OtherInfo = 5;
+}
+
+message RankPoolInfo{
+    //榜单奖池
+    int64 DayDrop1Pool = 1;
+    int64 DayDrop2Pool = 2;
+    int64 WeekDrop1Pool = 3;
+    int64 WeekDrop2Pool = 4;
+
+    //自己数据
+    int64 PlayerDayDrop1 = 5;
+    int64 PlayerDayDrop2 = 6;
+    int64 PlayerWeekDrop1 = 7;
+    int64 PlayerWeekDrop2 = 8;
+}
+
+message PlayerRankInfo{
+    //玩家id
+    int32 PlayerID = 1;
+    //玩家昵称
+    string PlayeName = 2;
+    //玩家头像
+    int32 PlayerHead = 3;
+    //玩家vip
+    int32 PlayerVip = 4;
+    //榜单类型 300/301：日榜1/2 310/311：周榜1/2  400/401:赏金赛次数榜/瓜分魔币榜 500:开盲盒次数 600:讨伐恶龙
+    int32 RankType = 5;
+    //榜当排名
+    int32 PlayerRank = 6;
+    //榜单数据
+    int64 PlayerRankNumber = 7;
+}
+
+//刷新通知
+message PlayerRankRefresh{}
+
+//赏金排位赛 每周3 0点结算重置
+//每次打开榜单自己获取信息
+message GetRankMatchInfo{}
+//回复
+message GetRankMatchInfoRes {
+    //次数榜单
+    repeated PlayerRankInfo CountsRank = 1;
+    //瓜分魔导石榜
+    repeated PlayerRankInfo ModaoshiRank = 2;
+    //自己的数据
+    //次数
+    int32 GetCounts = 3;
+    //魔导石
+    int64 GetModaoshi = 4;
+
+}

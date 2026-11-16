@@ -1,0 +1,119 @@
+[
+  {
+    "Id": 301,
+    "Name": "雷霆念师",
+    "Type": 3,
+    "Attribute": 1,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 302,
+    "Name": "暗部忍者",
+    "Type": 3,
+    "Attribute": 2,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 303,
+    "Name": "冰雪精灵",
+    "Type": 3,
+    "Attribute": 3,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 304,
+    "Name": "荒人护法",
+    "Type": 3,
+    "Attribute": 4,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 305,
+    "Name": "光电剑客",
+    "Type": 3,
+    "Attribute": 1,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 306,
+    "Name": "火焰女侠",
+    "Type": 3,
+    "Attribute": 2,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 307,
+    "Name": "海神供奉",
+    "Type": 3,
+    "Attribute": 3,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 308,
+    "Name": "生化博士",
+    "Type": 3,
+    "Attribute": 4,
+    "Attack": 15,
+    "Unlock": 1,
+    "Price": 2000
+  },
+  {
+    "Id": 401,
+    "Name": "雷暴钢铁侠",
+    "Type": 4,
+    "Attribute": 1,
+    "Attack": 20,
+    "Unlock": 3,
+    "Price": 4000
+  },
+  {
+    "Id": 402,
+    "Name": "火元素之力",
+    "Type": 4,
+    "Attribute": 2,
+    "Attack": 20,
+    "Unlock": 3,
+    "Price": 4000
+  },
+  {
+    "Id": 403,
+    "Name": "无名大宗师",
+    "Type": 4,
+    "Attribute": 3,
+    "Attack": 20,
+    "Unlock": 3,
+    "Price": 4000
+  },
+  {
+    "Id": 404,
+    "Name": "美杜莎女王",
+    "Type": 4,
+    "Attribute": 4,
+    "Attack": 20,
+    "Unlock": 3,
+    "Price": 4000
+  },
+  {
+    "Id": 501,
+    "Name": "雷电法王",
+    "Type": 5,
+    "Attribute": 1,
+    "Attack": 40,
+    "Unlock": 4,
+    "Price": 4000
+  }
+]

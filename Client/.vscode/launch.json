@@ -1,0 +1,13 @@
+{
+    "name": "Attach to Unity",
+    "type": "vstuc",
+    "request": "attach",
+    "endPoint": "127.0.0.1:56321",
+    "configurations": [
+        {
+            "name": "Attach to Unity",
+            "type": "vstuc",
+            "request": "attach"
+        }
+    ]
+}

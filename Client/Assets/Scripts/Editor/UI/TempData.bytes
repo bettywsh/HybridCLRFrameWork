@@ -1,0 +1,17 @@
+using UnityEngine;
+using Msg;
+
+[Cell]
+public class #CLASSNAME# : DataBase
+{
+	public override void Init()
+    {
+        base.Init();
+        EventHelper.RegisterNetEvent(this);
+    }
+	
+	public override void Reset()
+    {
+        base.Reset();
+    }
+}

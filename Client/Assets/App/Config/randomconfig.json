@@ -1,0 +1,394 @@
+[
+  {
+    "Id": 1001,
+    "Buff": 700,
+    "Probability": 10,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      81
+    ],
+    "Bullet": [
+      20,
+      51
+    ]
+  },
+  {
+    "Id": 1002,
+    "Buff": 800,
+    "Probability": 80,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "Bullet": [
+      20,
+      50
+    ]
+  },
+  {
+    "Id": 1003,
+    "Buff": 900,
+    "Probability": 90,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "Bullet": [
+      20,
+      50
+    ]
+  },
+  {
+    "Id": 1004,
+    "Buff": 1000,
+    "Probability": 640,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "Bullet": [
+      20,
+      50
+    ]
+  },
+  {
+    "Id": 1005,
+    "Buff": 1100,
+    "Probability": 90,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "Bullet": [
+      20,
+      50
+    ]
+  },
+  {
+    "Id": 1006,
+    "Buff": 1200,
+    "Probability": 80,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "Bullet": [
+      20,
+      50
+    ]
+  },
+  {
+    "Id": 1007,
+    "Buff": 1300,
+    "Probability": 10,
+    "Ground": 1,
+    "FishPrice": [
+      15,
+      82
+    ],
+    "Bullet": [
+      20,
+      52
+    ]
+  },
+  {
+    "Id": 2001,
+    "Buff": 700,
+    "Probability": 10,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      88
+    ],
+    "Bullet": [
+      20,
+      58
+    ]
+  },
+  {
+    "Id": 2002,
+    "Buff": 800,
+    "Probability": 80,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      83
+    ],
+    "Bullet": [
+      20,
+      53
+    ]
+  },
+  {
+    "Id": 2003,
+    "Buff": 900,
+    "Probability": 90,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      84
+    ],
+    "Bullet": [
+      20,
+      54
+    ]
+  },
+  {
+    "Id": 2004,
+    "Buff": 1000,
+    "Probability": 640,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      85
+    ],
+    "Bullet": [
+      20,
+      55
+    ]
+  },
+  {
+    "Id": 2005,
+    "Buff": 1100,
+    "Probability": 90,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      86
+    ],
+    "Bullet": [
+      20,
+      56
+    ]
+  },
+  {
+    "Id": 2006,
+    "Buff": 1200,
+    "Probability": 80,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      87
+    ],
+    "Bullet": [
+      20,
+      57
+    ]
+  },
+  {
+    "Id": 2007,
+    "Buff": 1300,
+    "Probability": 10,
+    "Ground": 2,
+    "FishPrice": [
+      15,
+      89
+    ],
+    "Bullet": [
+      20,
+      59
+    ]
+  },
+  {
+    "Id": 3001,
+    "Buff": 700,
+    "Probability": 10,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      95
+    ],
+    "Bullet": [
+      20,
+      65
+    ]
+  },
+  {
+    "Id": 3002,
+    "Buff": 800,
+    "Probability": 80,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      90
+    ],
+    "Bullet": [
+      20,
+      60
+    ]
+  },
+  {
+    "Id": 3003,
+    "Buff": 900,
+    "Probability": 90,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      91
+    ],
+    "Bullet": [
+      20,
+      61
+    ]
+  },
+  {
+    "Id": 3004,
+    "Buff": 1000,
+    "Probability": 640,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      92
+    ],
+    "Bullet": [
+      20,
+      62
+    ]
+  },
+  {
+    "Id": 3005,
+    "Buff": 1100,
+    "Probability": 90,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      93
+    ],
+    "Bullet": [
+      20,
+      63
+    ]
+  },
+  {
+    "Id": 3006,
+    "Buff": 1200,
+    "Probability": 80,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      94
+    ],
+    "Bullet": [
+      20,
+      64
+    ]
+  },
+  {
+    "Id": 3007,
+    "Buff": 1300,
+    "Probability": 10,
+    "Ground": 3,
+    "FishPrice": [
+      15,
+      96
+    ],
+    "Bullet": [
+      20,
+      66
+    ]
+  },
+  {
+    "Id": 4001,
+    "Buff": 700,
+    "Probability": 10,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      95
+    ],
+    "Bullet": [
+      20,
+      65
+    ]
+  },
+  {
+    "Id": 4002,
+    "Buff": 800,
+    "Probability": 80,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      90
+    ],
+    "Bullet": [
+      20,
+      60
+    ]
+  },
+  {
+    "Id": 4003,
+    "Buff": 900,
+    "Probability": 90,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      91
+    ],
+    "Bullet": [
+      20,
+      61
+    ]
+  },
+  {
+    "Id": 4004,
+    "Buff": 1000,
+    "Probability": 640,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      92
+    ],
+    "Bullet": [
+      20,
+      62
+    ]
+  },
+  {
+    "Id": 4005,
+    "Buff": 1100,
+    "Probability": 90,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      93
+    ],
+    "Bullet": [
+      20,
+      63
+    ]
+  },
+  {
+    "Id": 4006,
+    "Buff": 1200,
+    "Probability": 80,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      94
+    ],
+    "Bullet": [
+      20,
+      64
+    ]
+  },
+  {
+    "Id": 4007,
+    "Buff": 1300,
+    "Probability": 10,
+    "Ground": 4,
+    "FishPrice": [
+      15,
+      96
+    ],
+    "Bullet": [
+      20,
+      66
+    ]
+  }
+]

@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//获取信息
+message GetActivityEggInfo{}
+
+//回复
+message GetActivityEggInfoRes{
+    //活动状态 0关闭 1开启
+    int32 ActivityStatus = 1;
+    //活动结束时间
+    int64 EndTime = 2;
+    //砸蛋积分
+    int64 EggPoints = 3;
+    //展示信息
+    repeated EggbroadcastMsg MsgList = 4;
+    //魔导石砸蛋次数信息
+    int64 ModaoshiEggHitCounts = 5;
+}
+
+//砸蛋
+message HitEggReq{
+    //蛋类型id
+    int32 EggTypeId = 1;
+}
+
+//回复
+message HitEggRes{
+   //结果 0成功 大于0失败 1活动没开 2配置错误 3钱不够 4抽奖报错 5砸蛋类型异常 6其他
+   int32 Result = 1;
+   //蛋类型id
+    int32 EggTypeId = 2;
+   //奖励
+   repeated int32 Rewards = 3;
+}
+
+//刷新通知
+message ActivityEggFresh{
+    //活动状态 0关闭 1开启
+    int32 ActivityStatus = 1;
+}
+
+//展示信息数据
+message EggbroadcastMsg{
+    //玩家id
+    int32 PlayerId = 1;
+    //玩家名
+    string PlayerName = 2;
+    //vip
+    int32 PlayerVip = 3;
+    //砸蛋中奖商品id
+    int32 HitEggID = 4;
+}

@@ -1,0 +1,159 @@
+[
+  {
+    "Id": 1100000,
+    "Viplevel": 0,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 200
+      }
+    ],
+    "GiftNumber": 99999
+  },
+  {
+    "Id": 1100001,
+    "Viplevel": 1,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 5000
+      }
+    ],
+    "GiftNumber": 20000
+  },
+  {
+    "Id": 1100002,
+    "Viplevel": 2,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 10000
+      },
+      {
+        "id": 2001,
+        "num": 20
+      }
+    ],
+    "GiftNumber": 10000
+  },
+  {
+    "Id": 1100003,
+    "Viplevel": 3,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 50000
+      },
+      {
+        "id": 2001,
+        "num": 50
+      }
+    ],
+    "GiftNumber": 5000
+  },
+  {
+    "Id": 1100004,
+    "Viplevel": 4,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 100000
+      },
+      {
+        "id": 2001,
+        "num": 100
+      }
+    ],
+    "GiftNumber": 3000
+  },
+  {
+    "Id": 1100005,
+    "Viplevel": 5,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 200000
+      },
+      {
+        "id": 2001,
+        "num": 150
+      }
+    ],
+    "GiftNumber": 500
+  },
+  {
+    "Id": 1100006,
+    "Viplevel": 6,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 500000
+      },
+      {
+        "id": 2001,
+        "num": 200
+      }
+    ],
+    "GiftNumber": 199
+  },
+  {
+    "Id": 1100007,
+    "Viplevel": 7,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 1000000
+      },
+      {
+        "id": 2001,
+        "num": 300
+      }
+    ],
+    "GiftNumber": 99
+  },
+  {
+    "Id": 1100008,
+    "Viplevel": 8,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 2000000
+      },
+      {
+        "id": 2001,
+        "num": 400
+      }
+    ],
+    "GiftNumber": 50
+  },
+  {
+    "Id": 1100009,
+    "Viplevel": 9,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 3000000
+      },
+      {
+        "id": 2001,
+        "num": 500
+      }
+    ],
+    "GiftNumber": 20
+  },
+  {
+    "Id": 1100010,
+    "Viplevel": 10,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 5000000
+      },
+      {
+        "id": 2001,
+        "num": 600
+      }
+    ],
+    "GiftNumber": 10
+  }
+]

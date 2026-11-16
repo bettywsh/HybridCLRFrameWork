@@ -1,0 +1,226 @@
+[
+  {
+    "Id": 1000,
+    "Description": "在战斗中使用1亿魔币",
+    "Quantity": 100000000,
+    "Reward": 10,
+    "CalculatedValue": 100000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1001,
+    "Description": "在战斗中使用3亿魔币",
+    "Quantity": 300000000,
+    "Reward": 10,
+    "CalculatedValue": 200000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1002,
+    "Description": "在战斗中使用8亿魔币",
+    "Quantity": 800000000,
+    "Reward": 10,
+    "CalculatedValue": 500000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1003,
+    "Description": "在战斗中使用15亿魔币",
+    "Quantity": 1500000000,
+    "Reward": 10,
+    "CalculatedValue": 700000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1004,
+    "Description": "在战斗中使用30亿魔币",
+    "Quantity": 3000000000,
+    "Reward": 10,
+    "CalculatedValue": 1500000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1005,
+    "Description": "在战斗中使用50亿魔币",
+    "Quantity": 5000000000,
+    "Reward": 10,
+    "CalculatedValue": 2000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1006,
+    "Description": "在战斗中使用80亿魔币",
+    "Quantity": 8000000000,
+    "Reward": 10,
+    "CalculatedValue": 3000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1007,
+    "Description": "在战斗中使用120亿魔币",
+    "Quantity": 12000000000,
+    "Reward": 10,
+    "CalculatedValue": 4000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1008,
+    "Description": "在战斗中使用180亿魔币",
+    "Quantity": 18000000000,
+    "Reward": 10,
+    "CalculatedValue": 6000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1009,
+    "Description": "在战斗中使用250亿魔币",
+    "Quantity": 25000000000,
+    "Reward": 10,
+    "CalculatedValue": 7000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1010,
+    "Description": "在战斗中使用320亿魔币",
+    "Quantity": 32000000000,
+    "Reward": 10,
+    "CalculatedValue": 7000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1011,
+    "Description": "在战斗中使用400亿魔币",
+    "Quantity": 40000000000,
+    "Reward": 10,
+    "CalculatedValue": 8000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1012,
+    "Description": "在战斗中使用500亿魔币",
+    "Quantity": 50000000000,
+    "Reward": 10,
+    "CalculatedValue": 10000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1013,
+    "Description": "在战斗中使用600亿魔币",
+    "Quantity": 60000000000,
+    "Reward": 10,
+    "CalculatedValue": 10000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1014,
+    "Description": "在战斗中使用700亿魔币",
+    "Quantity": 70000000000,
+    "Reward": 10,
+    "CalculatedValue": 10000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1015,
+    "Description": "在战斗中使用800亿魔币",
+    "Quantity": 80000000000,
+    "Reward": 10,
+    "CalculatedValue": 10000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1016,
+    "Description": "在战斗中使用900亿魔币",
+    "Quantity": 90000000000,
+    "Reward": 10,
+    "CalculatedValue": 10000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 1017,
+    "Description": "在战斗中使用1000亿魔币",
+    "Quantity": 100000000000,
+    "Reward": 10,
+    "CalculatedValue": 10000000000,
+    "TaskType": 1
+  },
+  {
+    "Id": 2000,
+    "Description": "累计充值168元",
+    "Quantity": 168,
+    "Reward": 10,
+    "CalculatedValue": 168,
+    "TaskType": 2
+  },
+  {
+    "Id": 2001,
+    "Description": "累计充值528元",
+    "Quantity": 528,
+    "Reward": 10,
+    "CalculatedValue": 360,
+    "TaskType": 2
+  },
+  {
+    "Id": 2002,
+    "Description": "累计充值888元",
+    "Quantity": 888,
+    "Reward": 10,
+    "CalculatedValue": 360,
+    "TaskType": 2
+  },
+  {
+    "Id": 2003,
+    "Description": "累计充值1888元",
+    "Quantity": 1888,
+    "Reward": 10,
+    "CalculatedValue": 1000,
+    "TaskType": 2
+  },
+  {
+    "Id": 2004,
+    "Description": "累计充值2888元",
+    "Quantity": 2888,
+    "Reward": 10,
+    "CalculatedValue": 1000,
+    "TaskType": 2
+  },
+  {
+    "Id": 2005,
+    "Description": "累计充值3888元",
+    "Quantity": 3888,
+    "Reward": 10,
+    "CalculatedValue": 1000,
+    "TaskType": 2
+  },
+  {
+    "Id": 2006,
+    "Description": "累计充值6888元",
+    "Quantity": 6888,
+    "Reward": 10,
+    "CalculatedValue": 3000,
+    "TaskType": 2
+  },
+  {
+    "Id": 2007,
+    "Description": "累计充值9888元",
+    "Quantity": 9888,
+    "Reward": 10,
+    "CalculatedValue": 3000,
+    "TaskType": 2
+  },
+  {
+    "Id": 2008,
+    "Description": "累计充值12888元",
+    "Quantity": 12888,
+    "Reward": 10,
+    "CalculatedValue": 3000,
+    "TaskType": 2
+  },
+  {
+    "Id": 2009,
+    "Description": "累计充值15888元",
+    "Quantity": 15888,
+    "Reward": 10,
+    "CalculatedValue": 3000,
+    "TaskType": 2
+  }
+]

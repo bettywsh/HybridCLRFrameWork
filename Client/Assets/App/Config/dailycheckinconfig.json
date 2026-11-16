@@ -1,0 +1,86 @@
+[
+  {
+    "Id": 100000,
+    "Type": 1,
+    "Days": 1,
+    "Reward": 10002,
+    "Number": 5000
+  },
+  {
+    "Id": 100001,
+    "Type": 1,
+    "Days": 2,
+    "Reward": 10002,
+    "Number": 6000
+  },
+  {
+    "Id": 100002,
+    "Type": 1,
+    "Days": 3,
+    "Reward": 10002,
+    "Number": 7000
+  },
+  {
+    "Id": 100003,
+    "Type": 1,
+    "Days": 4,
+    "Reward": 10002,
+    "Number": 8000
+  },
+  {
+    "Id": 100004,
+    "Type": 1,
+    "Days": 5,
+    "Reward": 10002,
+    "Number": 9000
+  },
+  {
+    "Id": 100005,
+    "Type": 1,
+    "Days": 6,
+    "Reward": 10002,
+    "Number": 10000
+  },
+  {
+    "Id": 100006,
+    "Type": 1,
+    "Days": 7,
+    "Reward": 10002,
+    "Number": 12000
+  },
+  {
+    "Id": 200000,
+    "Type": 0,
+    "Days": 3,
+    "Reward": 2001,
+    "Number": 5
+  },
+  {
+    "Id": 200001,
+    "Type": 0,
+    "Days": 7,
+    "Reward": 2001,
+    "Number": 5
+  },
+  {
+    "Id": 200002,
+    "Type": 0,
+    "Days": 14,
+    "Reward": 2001,
+    "Number": 5
+  },
+  {
+    "Id": 200003,
+    "Type": 0,
+    "Days": 21,
+    "Reward": 2001,
+    "Number": 5
+  },
+  {
+    "Id": 200004,
+    "Type": 0,
+    "Days": 28,
+    "Reward": 2001,
+    "Number": 10
+  }
+]

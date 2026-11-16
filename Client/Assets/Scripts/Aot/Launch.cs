@@ -1,0 +1,37 @@
+using UnityEngine;
+using YooAsset;
+using Cysharp.Threading.Tasks;
+
+public class Launch : MonoBehaviour
+{
+    void Awake()
+    {
+        AwakeAsync().Forget();
+    }
+
+    async UniTask AwakeAsync()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        AppSettings.AppConfig = Resources.Load<AppConfig>("AppConfig");        
+        GameObject.Find("Reporter")?.SetActive(AppSettings.AppConfig.DebugLog);
+        Debug.unityLogger.logEnabled = AppSettings.AppConfig.DebugLog;
+        QualitySettings.vSyncCount = 2;
+        Application.targetFrameRate = AppSettings.AppConfig.GameFrameRate;
+
+        await AotResManager.Instance.Init();
+        if (!AotResManager.Instance.InitSucceed)
+            return;
+        //await AotText.Instance.Init();
+        //await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/PuHuiTi SDF.asset");
+        //await AotResManager.Instance.LoadAsset<TMP_FontAsset>("Assets/App/Font/SourceHanSerifCN-BoldSDF.asset");
+        await AotUIManager.Instance.Init();
+        if (AppSettings.AppConfig.EPlayMode == EPlayMode.EditorSimulateMode)
+        {
+            await HybridCLRManager.Instance.LoadDll();
+        }
+        else
+        {
+            await AotUIManager.Instance.Open<SplashAdvicePanel>();
+        }
+    }
+}

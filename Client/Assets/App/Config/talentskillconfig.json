@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 0,
+    "Lvl": 0,
+    "NeedGolds": 4000,
+    "BindSkill": 4001
+  },
+  {
+    "Id": 1,
+    "Lvl": 1,
+    "NeedGolds": 12000,
+    "BindSkill": 4002
+  },
+  {
+    "Id": 2,
+    "Lvl": 2,
+    "NeedGolds": 24000,
+    "BindSkill": 4003
+  },
+  {
+    "Id": 3,
+    "Lvl": 3,
+    "NeedGolds": 40000,
+    "BindSkill": 4004
+  },
+  {
+    "Id": 4,
+    "Lvl": 4,
+    "NeedGolds": 60000,
+    "BindSkill": 4001
+  },
+  {
+    "Id": 5,
+    "Lvl": 5,
+    "NeedGolds": 80000,
+    "BindSkill": 4002
+  },
+  {
+    "Id": 6,
+    "Lvl": 6,
+    "NeedGolds": 100000,
+    "BindSkill": 4003
+  },
+  {
+    "Id": 7,
+    "Lvl": 7,
+    "NeedGolds": 120000,
+    "BindSkill": 4008
+  },
+  {
+    "Id": 8,
+    "Lvl": 8,
+    "NeedGolds": 140000,
+    "BindSkill": 4001
+  },
+  {
+    "Id": 9,
+    "Lvl": 9,
+    "NeedGolds": 160000,
+    "BindSkill": 4002
+  },
+  {
+    "Id": 10,
+    "Lvl": 10,
+    "NeedGolds": 180000,
+    "BindSkill": 4003
+  },
+  {
+    "Id": 11,
+    "Lvl": 11,
+    "NeedGolds": 200000,
+    "BindSkill": 40012
+  },
+  {
+    "Id": 12,
+    "Lvl": 12,
+    "NeedGolds": 220000,
+    "BindSkill": 4001
+  },
+  {
+    "Id": 13,
+    "Lvl": 13,
+    "NeedGolds": 240000,
+    "BindSkill": 4002
+  },
+  {
+    "Id": 14,
+    "Lvl": 14,
+    "NeedGolds": 260000,
+    "BindSkill": 4003
+  },
+  {
+    "Id": 15,
+    "Lvl": 15,
+    "NeedGolds": 280000,
+    "BindSkill": 40012
+  },
+  {
+    "Id": 16,
+    "Lvl": 16,
+    "NeedGolds": 300000,
+    "BindSkill": 4001
+  },
+  {
+    "Id": 17,
+    "Lvl": 17,
+    "NeedGolds": 320000,
+    "BindSkill": 4002
+  },
+  {
+    "Id": 18,
+    "Lvl": 18,
+    "NeedGolds": 340000,
+    "BindSkill": 4003
+  },
+  {
+    "Id": 19,
+    "Lvl": 19,
+    "NeedGolds": 360000,
+    "BindSkill": 40012
+  }
+]

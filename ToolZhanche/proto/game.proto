@@ -1,0 +1,274 @@
+syntax = "proto3";
+
+package msg;
+
+option go_package=".";
+
+//游戏消息相关
+
+
+//游戏模式 关卡类型等
+enum PlayGameType{
+	//关卡模式
+	PGT_Levels = 0;
+
+	//无尽模式 无限制
+	PGT_Endless = 1;
+
+	//无尽模式 限制场 每个场进入有限制 门票加炮口
+	//初级场 
+	PGT_Endless_Beginner = 2;
+	//中级场
+	PGT_Endless_Intermediate = 3;
+	//奖金场 双池
+	PGT_Endless_Bonus = 4;
+	//M值场 单池
+	PGT_Endless_MPool = 5;
+}
+
+//进入游戏
+message EnterGameReq{
+	//进入的模式
+	PlayGameType enterType = 1;
+	//如果是关卡，进入的关卡章节 1开始 ps:当前案子可以不传这个值了
+	uint32 ChapterLevel = 2;
+}
+
+//游戏特殊数据
+message GameSceneData{
+}
+
+//进入回复
+message EnterGameRes{
+	//进去结果 是否能进去 进去的数据等
+	enum EnterGameRulsut{
+		//成功
+		EGR_Success = 0;
+		//关卡未解锁
+		EGR_LockChapter = 1;
+		//其他错误
+		EGR_OtherErro = 2;
+		//关卡是门票不够/无尽场是魔币不够
+		EGR_SparNotEnough = 3;
+		//模式错误/未开放
+		EGR_UnkownType = 4;
+		//货币过高限制进入 仅初级场
+		EGR_LimitEnter = 5;
+	}
+
+	//进入结果
+	EnterGameRulsut enterCode = 1;
+	//当前附魔晶石进度值 ps:关卡模式下这个值表示boss刷新子弹剩余（500表示还要打500发子弹）
+	//无尽模式则表示距离上次boss刷新时间毫秒
+	uint64 SparSchedule = 2;
+	//游戏数据
+	//GameSceneData sceneData = 3;
+}
+
+//打中怪
+//新加狂暴标识 炮口=Bullet*(RageType+1)
+message AttackMonsterReq{
+	//怪物 客户端唯一标识
+	repeated int64 MonsterIDList = 1;
+	//子弹炮口
+	uint64 Bullet = 2;
+	//怪的配表id列表
+	repeated int32 MonsterCfgList = 3;
+	//狂暴模式类型 0:正常 1:双倍 40级之前狂暴 2:3倍速度 40级之后狂暴传2
+	uint32 RageType = 4;
+	//请求id
+	int32 ReqId = 5;
+}
+
+//打中回复
+message AttackMonsterRes{
+	enum AttackCode{
+		//扣货币
+		//成功击杀 掉落 一击必杀
+		ACTC_Success = 0;
+		//击杀失败 不掉落
+		ACTC_Fail = 1;
+		//不扣货币
+		//弹药不足货币不够
+		ACTC_NoAmmo = 2;
+		//非法攻击 时间间隔1秒5发
+		ACTC_IllegalAttack = 3;
+		//非法怪 
+		ACTC_IllegalMonster = 4;
+		//非法炮口
+		ACTC_IllegalBullet = 5;
+		//非法状态 不在游戏场景中
+		ACTC_IllegalGameStatus = 6;
+		//其他错误
+		ACTC_OtherErr = 7;
+	}
+
+	//怪物 客户端唯一标识
+	int64 MonsterID = 1;
+	//攻击结果
+	AttackCode code = 2;
+	//消耗货币
+	uint64 Consume = 3;
+	//剩余货币
+	uint64 Remaining = 4;
+	//获得货币 有税收 这里获得是没扣税的
+	uint64 Get = 5;
+	//攻击的时间戳更新
+	int64 AttackTime = 6;
+	//当前附魔晶石进度值
+	uint64 SparSchedule = 7;
+	//关卡模式boss进度 当值为0的时候刷新boss 小于0表示非关卡模式 对应进入关卡的SparSchedule值 
+	int32 BossSchedule = 8;
+	//特殊场得到的魔导石头
+	int32 GetModaoshi = 9;
+	//使用货币 每天使用的魔币，每天0点重置0 仅无尽场使用用于挑战券任务 只有code为0或者1（攻击生效）的时候才会传这个值
+	int64 TotalUseSpar = 10;
+	//请求id
+	int32 ReqId = 11;
+	//额外掉落魔币 奖池场 魔币池掉落
+	int64 AdditionalSpar = 12;
+}
+
+//主动退出游戏 这个消息可以不用了 结束统一用GameEnd
+message ExitGame{}
+
+//游戏结束
+//考虑到断线之类的情况，避免邮件发送，当前处理是只有收到结算消息才扣除门票发奖励
+//可照无尽场模式处理不修改 但是会出现断线重连会多打很久的情况（每次都要多打门票魔币的消耗时长）
+message GameEnd{
+	//游戏类型
+	PlayGameType gameType = 1;
+
+	//只有正常结算才有奖励 ps:其他特殊情况不扣门票
+	enum GamePassType{
+		//击杀boss通关
+		GPT_BoosDie = 0;
+		//自己死亡结算
+		GPT_PlayerDie = 1;
+		//中途退出游戏回大厅
+		GPT_PlayerOut = 2;
+	}
+
+	GamePassType passType = 2;
+
+
+	//得到的金币 ps:忽略当前模式不要传 默认值就行
+	//uint64 GetGold = 2;
+	//关卡 从1开始 第几关就传几 ps:忽略当前模式不要传 默认值就行
+	//uint32 ChapterLevel = 3;
+}
+
+//回复
+message GameEndRes{
+	//验证后给验证数据作为结算标准
+	//游戏类型
+	PlayGameType gameType = 1;
+	//关卡模式正常结算数据
+	//得到的货币 ps:当前模式是魔币spar
+	uint64 GetGold = 2;
+	//获得的魔导石
+	uint64 Modaoshi = 3;
+	//玩家数据章节关卡标识chapter 如果首通，显示首通奖励 见配置表
+	uint32 PlayerChapter = 4;
+}
+
+//无尽场特殊boss相关
+//通知无尽场特殊boss刷新
+message EndelessBoosRefresh{}
+
+//无尽场特殊boss死亡
+message EndelessBoosDie{}
+
+//无尽场特殊boss死亡奖励
+message EndelessBoosReward{
+	//杀死后开箱获得的魔导石（魔导石）数量
+	uint64 GetModaoshi = 1;
+	//掉落档位 1-3对应0.8 1.0 1.2
+	uint32 DropGear = 2;
+	
+	enum KillBossResultCode{
+		//击杀boss正常结算
+		KBRC_Normal = 0;
+		//非法消息 不是无尽场
+		KBRC_SceneError = 1;
+		//非法击杀 条件不满足 进度不够
+		KBRC_Unsatisfactory = 2;
+		//其他错误
+		KBRC_OtherErro = 3;
+	}
+	KillBossResultCode KillCode = 3;
+
+	//这个场次击杀的boss总数量
+	int32 KillBossCounts = 4;
+
+	//进度 清0
+	//uint64 SparSchedule = 2;
+}
+
+//主动通知客户端炮口任务经验值变了
+message BulletExpChange{
+	//经验值
+	int64 BulletExp = 1;
+}
+
+//升级炮口
+message BulletLevelUpReq{}
+
+//升级回调
+message BulletLevelUpRes{
+	enum BulletLevelUpResult{
+		//升级成功
+		BLUR_Success = 0;
+		//经验不够
+		BLUR_NoExp = 1;
+		//其他错误
+		BLUR_Erro = 2;
+	}
+
+	BulletLevelUpResult Result = 1;
+}
+
+//瓜分的玩家信息
+message GetModaoshiPoolPlayerInfo{
+	int32 PlayerId  = 1;   //玩家id
+	int64 Modaoshi  = 2;   //瓜分的魔导石
+	int32 PlayerVip = 3;   //vip
+	int64 DropTime  = 4;   //瓜分时间
+	int32 MonsterID = 5;   //怪id
+	string Nickname = 6; //昵称
+	int64 Spar = 7; //瓜分的魔币
+	int32 Scene = 8;//0双奖池 1m场
+}
+
+//魔导石池子通知 每4秒发送
+message ModaoshiPoolNotice{
+	//假 直接用
+	uint64 ModaoshiPool = 1;
+	//真 老逻辑
+	uint64 ModaoshiPool2 = 2;
+	//奖池场瓜分玩家信息
+	repeated GetModaoshiPoolPlayerInfo CarveUpInfo = 3;
+	//魔币池
+	int64 MobiPoolPool = 4;	
+	//M池
+	int64 MPool = 5;
+}
+
+//主动获取奖池记录
+message GetPoolPlayersInfo{
+	int32 Scene = 1;//0双奖池 1m场
+}
+
+//回复
+message GetPoolPlayersInfoRes{
+	repeated GetModaoshiPoolPlayerInfo CarveUpInfo = 1;
+}
+
+
+//复活
+message ReviveReq{}
+
+message ReviveRes{
+	//0成功 大于0失败 1不在关卡 2挑战券不足 3其他
+	uint32 Result = 1;
+}

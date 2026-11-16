@@ -1,0 +1,506 @@
+[
+  {
+    "Id": 9000,
+    "Price": 6,
+    "Describe": "钻石礼包1",
+    "GoodsType": 0,
+    "SaveType": 0
+  },
+  {
+    "Id": 9001,
+    "Price": 30,
+    "Describe": "钻石礼包2",
+    "GoodsType": 0,
+    "SaveType": 0
+  },
+  {
+    "Id": 9002,
+    "Price": 98,
+    "Describe": "钻石礼包3",
+    "GoodsType": 0,
+    "SaveType": 0
+  },
+  {
+    "Id": 9003,
+    "Price": 198,
+    "Describe": "钻石礼包4",
+    "GoodsType": 0,
+    "SaveType": 0
+  },
+  {
+    "Id": 9004,
+    "Price": 328,
+    "Describe": "钻石礼包5",
+    "GoodsType": 0,
+    "SaveType": 0
+  },
+  {
+    "Id": 9005,
+    "Price": 648,
+    "Describe": "钻石礼包6",
+    "GoodsType": 0,
+    "SaveType": 0
+  },
+  {
+    "Id": 71000,
+    "Price": 6,
+    "Describe": "首充礼包",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 71001,
+    "Price": 7,
+    "Describe": "7元投资礼包",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 71101,
+    "Price": 30,
+    "Describe": "每日限购礼包1",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 71102,
+    "Price": 98,
+    "Describe": "每日限购礼包2",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 71103,
+    "Price": 258,
+    "Describe": "每日限购礼包3",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 71104,
+    "Price": 648,
+    "Describe": "每日限购礼包4",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 71105,
+    "Price": 1296,
+    "Describe": "每日限购礼包5",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 10000,
+    "Price": 6,
+    "Describe": "一本万利1",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 10001,
+    "Price": 38,
+    "Describe": "一本万利2",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 10002,
+    "Price": 68,
+    "Describe": "一本万利3",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 10003,
+    "Price": 128,
+    "Describe": "一本万利4",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 10004,
+    "Price": 388,
+    "Describe": "一本万利5",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 10005,
+    "Price": 588,
+    "Describe": "一本万利6",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 10006,
+    "Price": 888,
+    "Describe": "一本万利7",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 1000,
+    "Price": 6,
+    "Describe": "聚划算礼包1",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 1001,
+    "Price": 58,
+    "Describe": "聚划算礼包2",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 1002,
+    "Price": 98,
+    "Describe": "聚划算礼包3",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 1003,
+    "Price": 258,
+    "Describe": "聚划算礼包4",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 1004,
+    "Price": 588,
+    "Describe": "聚划算礼包5",
+    "GoodsType": 1,
+    "SaveType": 0
+  },
+  {
+    "Id": 100,
+    "Price": 58,
+    "Describe": "成长礼包1",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 101,
+    "Price": 388,
+    "Describe": "成长礼包2",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 102,
+    "Price": 588,
+    "Describe": "成长礼包3",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 722100,
+    "Price": 80,
+    "Describe": "英雄大礼包",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 100000,
+    "Price": 8,
+    "Describe": "周卡",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 100001,
+    "Price": 58,
+    "Describe": "月卡",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 100002,
+    "Price": 168,
+    "Describe": "季卡",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 888,
+    "Price": 188,
+    "Describe": "初级强化石礼包",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 889,
+    "Price": 388,
+    "Describe": "中级强化石礼包",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 890,
+    "Price": 648,
+    "Describe": "高级强化石礼包",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 777,
+    "Price": 30,
+    "Describe": "鸿运礼包",
+    "GoodsType": 2,
+    "SaveType": 0
+  },
+  {
+    "Id": 300001,
+    "Price": 30,
+    "Describe": "枪王秘宝礼包30元",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 300002,
+    "Price": 98,
+    "Describe": "枪王秘宝礼包98元",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 300003,
+    "Price": 328,
+    "Describe": "枪王秘宝礼包328元",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 300004,
+    "Price": 648,
+    "Describe": "枪王秘宝礼包648元",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 50001,
+    "Price": 100,
+    "Describe": "连购礼包1",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 50002,
+    "Price": 80,
+    "Describe": "连购礼包2",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 50003,
+    "Price": 68,
+    "Describe": "连购礼包3",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 50004,
+    "Price": 58,
+    "Describe": "连购礼包4",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 50005,
+    "Price": 38,
+    "Describe": "连购礼包5",
+    "GoodsType": 2,
+    "SaveType": 1
+  },
+  {
+    "Id": 7001,
+    "Price": 6,
+    "Describe": "惊喜签礼包",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 7002,
+    "Price": 128,
+    "Describe": "宝藏签礼包",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 7003,
+    "Price": 388,
+    "Describe": "奇迹签礼包",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 40001,
+    "Price": 88,
+    "Describe": "启程礼包",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 40002,
+    "Price": 388,
+    "Describe": "轻享礼包",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 40003,
+    "Price": 888,
+    "Describe": "畅享礼包",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 40004,
+    "Price": 1296,
+    "Describe": "尊享礼包",
+    "GoodsType": 3,
+    "SaveType": 1
+  },
+  {
+    "Id": 341,
+    "Price": 6,
+    "Describe": "白银礼包",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 342,
+    "Price": 132,
+    "Describe": "黄金礼包",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 343,
+    "Price": 666,
+    "Describe": "钻石礼包",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 900,
+    "Price": 6,
+    "Describe": "存钱罐vip0",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 901,
+    "Price": 12,
+    "Describe": "存钱罐vip1",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 902,
+    "Price": 18,
+    "Describe": "存钱罐vip2",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 903,
+    "Price": 24,
+    "Describe": "存钱罐vip3",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 904,
+    "Price": 36,
+    "Describe": "存钱罐vip4",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 905,
+    "Price": 48,
+    "Describe": "存钱罐vip5",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 906,
+    "Price": 66,
+    "Describe": "存钱罐vip6",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 907,
+    "Price": 98,
+    "Describe": "存钱罐vip7",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 908,
+    "Price": 128,
+    "Describe": "存钱罐vip8",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 909,
+    "Price": 168,
+    "Describe": "存钱罐vip9",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 910,
+    "Price": 198,
+    "Describe": "存钱罐vip10",
+    "GoodsType": 0,
+    "SaveType": 1
+  },
+  {
+    "Id": 8000,
+    "Price": 30,
+    "Describe": "夺宝券礼包一",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 8001,
+    "Price": 98,
+    "Describe": "夺宝券礼包二",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 8002,
+    "Price": 198,
+    "Describe": "夺宝券礼包三",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 8003,
+    "Price": 328,
+    "Describe": "夺宝券礼包四",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 8004,
+    "Price": 648,
+    "Describe": "夺宝券礼包五",
+    "GoodsType": 1,
+    "SaveType": 1
+  },
+  {
+    "Id": 8005,
+    "Price": 1296,
+    "Describe": "夺宝券礼包六",
+    "GoodsType": 1,
+    "SaveType": 1
+  }
+]

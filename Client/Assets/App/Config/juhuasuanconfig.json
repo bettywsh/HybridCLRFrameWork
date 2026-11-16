@@ -1,0 +1,177 @@
+[
+  {
+    "Id": 1000,
+    "Name": "6元",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 240000
+      }
+    ],
+    "FirstRewards": [
+      {
+        "id": 10002,
+        "num": 240000
+      }
+    ],
+    "SecondRewards": [
+      {
+        "id": 10002,
+        "num": 240000
+      },
+      {
+        "id": 10000,
+        "num": 10
+      }
+    ],
+    "TimeInterval": 600,
+    "ExtraRewards": [
+      {
+        "id": 10002,
+        "num": 30000
+      }
+    ],
+    "OriginalPrice": 11,
+    "Price": 6
+  },
+  {
+    "Id": 1001,
+    "Name": "58元",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 2360000
+      }
+    ],
+    "FirstRewards": [
+      {
+        "id": 10002,
+        "num": 2360000
+      }
+    ],
+    "SecondRewards": [
+      {
+        "id": 10002,
+        "num": 2360000
+      },
+      {
+        "id": 10000,
+        "num": 25
+      }
+    ],
+    "TimeInterval": 600,
+    "ExtraRewards": [
+      {
+        "id": 10002,
+        "num": 300000
+      }
+    ],
+    "OriginalPrice": 107,
+    "Price": 58
+  },
+  {
+    "Id": 1002,
+    "Name": "98元",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 4090000
+      }
+    ],
+    "FirstRewards": [
+      {
+        "id": 10002,
+        "num": 4090000
+      }
+    ],
+    "SecondRewards": [
+      {
+        "id": 10002,
+        "num": 4090000
+      },
+      {
+        "id": 10000,
+        "num": 50
+      }
+    ],
+    "TimeInterval": 600,
+    "ExtraRewards": [
+      {
+        "id": 10002,
+        "num": 500000
+      }
+    ],
+    "OriginalPrice": 181,
+    "Price": 98
+  },
+  {
+    "Id": 1003,
+    "Name": "258元",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 11120000
+      }
+    ],
+    "FirstRewards": [
+      {
+        "id": 10002,
+        "num": 11120000
+      }
+    ],
+    "SecondRewards": [
+      {
+        "id": 10002,
+        "num": 11120000
+      },
+      {
+        "id": 10000,
+        "num": 100
+      }
+    ],
+    "TimeInterval": 600,
+    "ExtraRewards": [
+      {
+        "id": 10002,
+        "num": 800000
+      }
+    ],
+    "OriginalPrice": 477,
+    "Price": 258
+  },
+  {
+    "Id": 1004,
+    "Name": "588元",
+    "BaseRewards": [
+      {
+        "id": 10002,
+        "num": 26120000
+      }
+    ],
+    "FirstRewards": [
+      {
+        "id": 10002,
+        "num": 26120000
+      }
+    ],
+    "SecondRewards": [
+      {
+        "id": 10002,
+        "num": 26120000
+      },
+      {
+        "id": 10000,
+        "num": 300
+      }
+    ],
+    "TimeInterval": 600,
+    "ExtraRewards": [
+      {
+        "id": 10002,
+        "num": 1000000
+      }
+    ],
+    "OriginalPrice": 1087,
+    "Price": 588
+  }
+]

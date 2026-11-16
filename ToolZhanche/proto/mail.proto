@@ -1,0 +1,136 @@
+syntax = "proto3";
+
+package msg;
+
+option go_package=".";
+//邮件相关
+//邮件数据
+message MailData{
+    //邮件id
+    uint64 MailID = 1;
+    //邮件标题
+    string MailTitle = 2;
+    //邮件内容
+    string MailText = 3;
+    //邮件状态 状态0未读1已读未领2已读已领4删除
+    uint32 MailStatus = 4;
+    //邮件时间
+    int64 MailSendTime = 5;
+    //邮件附带
+    repeated MailItem items = 6;
+}
+
+//邮件列表
+message MailItemList{
+    repeated MailItem List = 6;
+}
+
+//邮件物品
+message MailItem{
+    //item类型
+    enum MailItemType{
+        //灵石
+        MIT_Spar = 0;
+        //钻石
+        MIT_Diamond = 1;
+        //魔导石 魔导石
+        MIT_Modaoshi = 2;
+        //物品 强化石
+        MIT_Item = 3;
+        //英雄卡
+        MIT_HeroCard = 4;
+        //充值商品
+        MIT_Goods = 5;
+        //其他物品
+        MIT_Other = 6;
+    }
+
+    MailItemType itemType = 1;
+    //item数量
+    uint64 ItemCounts = 2;
+    //itemID商品的话就是商品id
+    uint32 ItemID = 3;
+    //充值物品vip经验
+    uint32 VipExp = 4;
+}
+
+//获取邮件列表
+message GetMailInfoReq{}
+//回复
+message GetMailInfoRes{
+    repeated MailData data = 1;
+}
+
+//读邮件等同于领取邮件
+message ReadMailReq{
+    //邮件id
+    uint64 MailID = 1;
+}
+
+//回复
+message ReadMailRes{
+    //邮件id
+    uint64 MailID = 1;
+    //邮件状态
+    uint32 MailStatus = 2;
+    //结果
+    enum ReadMailResult{
+        //正常
+        RMR_Sucess = 0;
+        //获取附件失败 可能给的奖励配置有问题等
+        RMR_GetRewardErr = 1;
+        //其他错误
+        RMR_OtherFai = 2;
+        //已读
+        RMR_AlreadyRead = 3;
+        //id错误
+        RMR_MailIDerror = 4;
+    }
+
+    ReadMailResult result = 3;
+}
+
+//一键读领
+message ReadAllMailReq{}
+//回复
+message ReadAllMailRes{
+    //根据结果状态来处理
+    repeated ReadMailRes readResult = 1;
+}
+
+//删除 必须MailStatus=2 才能删
+message DeleteMailReq{
+    //邮件id
+    uint64 MailID = 1;
+}
+//回复
+message DeleteMailRes{
+    //邮件id
+    uint64 MailID = 1;
+    //邮件状态
+    uint32 MailStatus = 2;
+}
+
+//删除已读 MailStatus=2 的
+message DeleteAllMailReq{}
+//回复
+message DeleteAllMailRes{
+    repeated DeleteMailRes data = 1;
+}
+
+//通知新邮件
+message NewMail {
+    //邮件信息
+    MailData data = 1;
+}
+
+//获取邮件信息
+message GetAllMailInfo{ }
+
+//回复
+message GetAllMailInfoRes{
+    //邮件总数 大于50只给50条 删除多余的再获取
+    int32 MailCounts = 1;
+    //邮件信息 最多50
+	repeated MailData mailData = 2;
+}

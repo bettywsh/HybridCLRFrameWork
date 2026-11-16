@@ -1,0 +1,17 @@
+{
+    "name": "ThirdParty",
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextMeshPro",
+        "ZString"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

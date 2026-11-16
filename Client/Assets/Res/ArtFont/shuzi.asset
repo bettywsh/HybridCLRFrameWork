@@ -1,0 +1,325 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a92b25f83d49b9bc132d206b370281, type: 3}
+  m_Name: shuzi
+  m_EditorClassIdentifier: 
+  hashCode: 135610045
+  material: {fileID: 2018843588559080928}
+  materialHashCode: 0
+  m_Version: 1.1.0
+  m_FaceInfo:
+    m_FaceIndex: 0
+    m_FamilyName: 
+    m_StyleName: 
+    m_PointSize: 0
+    m_Scale: 0
+    m_UnitsPerEM: 0
+    m_LineHeight: 0
+    m_AscentLine: 0
+    m_CapLine: 0
+    m_MeanLine: 0
+    m_Baseline: 0
+    m_DescentLine: 0
+    m_SuperscriptOffset: 0
+    m_SuperscriptSize: 0
+    m_SubscriptOffset: 0
+    m_SubscriptSize: 0
+    m_UnderlineOffset: 0
+    m_UnderlineThickness: 0
+    m_StrikethroughOffset: 0
+    m_StrikethroughThickness: 0
+    m_TabWidth: 0
+  spriteSheet: {fileID: 2800000, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  m_SpriteCharacterTable:
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 0
+    m_Scale: 1
+    m_Name: shuzi_0
+    m_HashCode: 1650447986
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 1
+    m_Scale: 1
+    m_Name: shuzi_1
+    m_HashCode: 1650447987
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 2
+    m_Scale: 1
+    m_Name: shuzi_2
+    m_HashCode: 1650447984
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: shuzi_3
+    m_HashCode: 1650447985
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: shuzi_4
+    m_HashCode: 1650447990
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 5
+    m_Scale: 1
+    m_Name: shuzi_5
+    m_HashCode: 1650447991
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 6
+    m_Scale: 1
+    m_Name: shuzi_6
+    m_HashCode: 1650447988
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 7
+    m_Scale: 1
+    m_Name: shuzi_7
+    m_HashCode: 1650447989
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 8
+    m_Scale: 1
+    m_Name: shuzi_8
+    m_HashCode: 1650447994
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 9
+    m_Scale: 1
+    m_Name: shuzi_9
+    m_HashCode: 1650447995
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 10
+    m_Scale: 1
+    m_Name: shuzi_10
+    m_HashCode: -1369791261
+  m_SpriteGlyphTable:
+  - m_Index: 0
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1905832304, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 1
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 49
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -29508126, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 2
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 98
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -590459429, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 147
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -814838807, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 4
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 196
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 1946792436, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 5
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 245
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 769977433, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 6
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 294
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 2114580630, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 7
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 343
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 263082818, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 8
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 392
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -1789934619, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 9
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 441
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -891735185, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  - m_Index: 10
+    m_Metrics:
+      m_Width: 49
+      m_Height: 61
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 53.91
+      m_HorizontalAdvance: 49
+    m_GlyphRect:
+      m_X: 490
+      m_Y: 0
+      m_Width: 49
+      m_Height: 61
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 1101924749, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+  spriteInfoList: []
+  fallbackSpriteAssets: []
+--- !u!21 &2018843588559080928
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TextMeshPro/Sprite
+  m_Shader: {fileID: 4800000, guid: cf81c85f95fe47e1a27f6ae460cf182c, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 902bcb1957e7eea42931d3227685da08, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ColorMask: 15
+    - _CullMode: 0
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _UseUIAlphaClip: 0
+    m_Colors:
+    - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

@@ -1,0 +1,415 @@
+[
+  {
+    "Id": 1000,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 0,
+    "MaxCurrencyValue": 45999999,
+    "ChanceAdjust": 50
+  },
+  {
+    "Id": 1001,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 46000000,
+    "MaxCurrencyValue": 46999999,
+    "ChanceAdjust": 60
+  },
+  {
+    "Id": 1002,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 47000000,
+    "MaxCurrencyValue": 47999999,
+    "ChanceAdjust": 70
+  },
+  {
+    "Id": 1003,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 48000000,
+    "MaxCurrencyValue": 48499999,
+    "ChanceAdjust": 80
+  },
+  {
+    "Id": 1004,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 48500000,
+    "MaxCurrencyValue": 48999999,
+    "ChanceAdjust": 85
+  },
+  {
+    "Id": 1005,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 49000000,
+    "MaxCurrencyValue": 49499999,
+    "ChanceAdjust": 90
+  },
+  {
+    "Id": 1006,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 49500000,
+    "MaxCurrencyValue": 49999999,
+    "ChanceAdjust": 95
+  },
+  {
+    "Id": 1007,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 50000000,
+    "MaxCurrencyValue": 50499999,
+    "ChanceAdjust": 100
+  },
+  {
+    "Id": 1008,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 50500000,
+    "MaxCurrencyValue": 50999999,
+    "ChanceAdjust": 105
+  },
+  {
+    "Id": 1009,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 51000000,
+    "MaxCurrencyValue": 51499999,
+    "ChanceAdjust": 110
+  },
+  {
+    "Id": 1010,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 51500000,
+    "MaxCurrencyValue": 51999999,
+    "ChanceAdjust": 115
+  },
+  {
+    "Id": 1011,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 52000000,
+    "MaxCurrencyValue": 52999999,
+    "ChanceAdjust": 120
+  },
+  {
+    "Id": 1012,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 53000000,
+    "MaxCurrencyValue": 53999999,
+    "ChanceAdjust": 130
+  },
+  {
+    "Id": 1013,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 54000000,
+    "MaxCurrencyValue": 54999999,
+    "ChanceAdjust": 140
+  },
+  {
+    "Id": 1014,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 55000000,
+    "MaxCurrencyValue": 55999999,
+    "ChanceAdjust": 150
+  },
+  {
+    "Id": 1015,
+    "TargetPlay": 100,
+    "MinCurrencyValue": 56000000,
+    "MaxCurrencyValue": 999999999,
+    "ChanceAdjust": 160
+  },
+  {
+    "Id": 2000,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 0,
+    "MaxCurrencyValue": 53999999,
+    "ChanceAdjust": 50
+  },
+  {
+    "Id": 2001,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 54000000,
+    "MaxCurrencyValue": 55999999,
+    "ChanceAdjust": 70
+  },
+  {
+    "Id": 2002,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 56000000,
+    "MaxCurrencyValue": 56999999,
+    "ChanceAdjust": 80
+  },
+  {
+    "Id": 2003,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 57000000,
+    "MaxCurrencyValue": 57999999,
+    "ChanceAdjust": 85
+  },
+  {
+    "Id": 2004,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 58000000,
+    "MaxCurrencyValue": 58999999,
+    "ChanceAdjust": 90
+  },
+  {
+    "Id": 2005,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 59000000,
+    "MaxCurrencyValue": 59999999,
+    "ChanceAdjust": 95
+  },
+  {
+    "Id": 2006,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 60000000,
+    "MaxCurrencyValue": 60999999,
+    "ChanceAdjust": 100
+  },
+  {
+    "Id": 2007,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 61000000,
+    "MaxCurrencyValue": 61999999,
+    "ChanceAdjust": 105
+  },
+  {
+    "Id": 2008,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 62000000,
+    "MaxCurrencyValue": 62999999,
+    "ChanceAdjust": 110
+  },
+  {
+    "Id": 2009,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 63000000,
+    "MaxCurrencyValue": 63999999,
+    "ChanceAdjust": 115
+  },
+  {
+    "Id": 2010,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 64000000,
+    "MaxCurrencyValue": 65999999,
+    "ChanceAdjust": 120
+  },
+  {
+    "Id": 2011,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 66000000,
+    "MaxCurrencyValue": 67999999,
+    "ChanceAdjust": 130
+  },
+  {
+    "Id": 2012,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 68000000,
+    "MaxCurrencyValue": 69999999,
+    "ChanceAdjust": 140
+  },
+  {
+    "Id": 2013,
+    "TargetPlay": 101,
+    "MinCurrencyValue": 70000000,
+    "MaxCurrencyValue": 999999999,
+    "ChanceAdjust": 150
+  },
+  {
+    "Id": 3000,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 0,
+    "MaxCurrencyValue": 59999999,
+    "ChanceAdjust": 20
+  },
+  {
+    "Id": 3001,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 60000000,
+    "MaxCurrencyValue": 99999999,
+    "ChanceAdjust": 30
+  },
+  {
+    "Id": 3002,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 100000000,
+    "MaxCurrencyValue": 139999999,
+    "ChanceAdjust": 50
+  },
+  {
+    "Id": 3003,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 140000000,
+    "MaxCurrencyValue": 159999999,
+    "ChanceAdjust": 70
+  },
+  {
+    "Id": 3004,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 160000000,
+    "MaxCurrencyValue": 179999999,
+    "ChanceAdjust": 80
+  },
+  {
+    "Id": 3005,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 180000000,
+    "MaxCurrencyValue": 189999999,
+    "ChanceAdjust": 90
+  },
+  {
+    "Id": 3006,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 190000000,
+    "MaxCurrencyValue": 199999999,
+    "ChanceAdjust": 95
+  },
+  {
+    "Id": 3007,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 200000000,
+    "MaxCurrencyValue": 209999999,
+    "ChanceAdjust": 100
+  },
+  {
+    "Id": 3008,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 210000000,
+    "MaxCurrencyValue": 219999999,
+    "ChanceAdjust": 105
+  },
+  {
+    "Id": 3009,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 220000000,
+    "MaxCurrencyValue": 239999999,
+    "ChanceAdjust": 110
+  },
+  {
+    "Id": 3010,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 240000000,
+    "MaxCurrencyValue": 259999999,
+    "ChanceAdjust": 120
+  },
+  {
+    "Id": 3011,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 260000000,
+    "MaxCurrencyValue": 299999999,
+    "ChanceAdjust": 130
+  },
+  {
+    "Id": 3012,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 300000000,
+    "MaxCurrencyValue": 359999999,
+    "ChanceAdjust": 150
+  },
+  {
+    "Id": 3013,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 360000000,
+    "MaxCurrencyValue": 399999999,
+    "ChanceAdjust": 180
+  },
+  {
+    "Id": 3014,
+    "TargetPlay": 102,
+    "MinCurrencyValue": 400000000,
+    "MaxCurrencyValue": 999999999,
+    "ChanceAdjust": 200
+  },
+  {
+    "Id": 4000,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 0,
+    "MaxCurrencyValue": 53999999,
+    "ChanceAdjust": 50
+  },
+  {
+    "Id": 4001,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 54000000,
+    "MaxCurrencyValue": 55999999,
+    "ChanceAdjust": 70
+  },
+  {
+    "Id": 4002,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 56000000,
+    "MaxCurrencyValue": 56999999,
+    "ChanceAdjust": 80
+  },
+  {
+    "Id": 4003,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 57000000,
+    "MaxCurrencyValue": 57999999,
+    "ChanceAdjust": 85
+  },
+  {
+    "Id": 4004,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 58000000,
+    "MaxCurrencyValue": 58999999,
+    "ChanceAdjust": 90
+  },
+  {
+    "Id": 4005,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 59000000,
+    "MaxCurrencyValue": 59999999,
+    "ChanceAdjust": 95
+  },
+  {
+    "Id": 4006,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 60000000,
+    "MaxCurrencyValue": 60999999,
+    "ChanceAdjust": 100
+  },
+  {
+    "Id": 4007,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 61000000,
+    "MaxCurrencyValue": 61999999,
+    "ChanceAdjust": 105
+  },
+  {
+    "Id": 4008,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 62000000,
+    "MaxCurrencyValue": 62999999,
+    "ChanceAdjust": 110
+  },
+  {
+    "Id": 4009,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 63000000,
+    "MaxCurrencyValue": 63999999,
+    "ChanceAdjust": 115
+  },
+  {
+    "Id": 4010,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 64000000,
+    "MaxCurrencyValue": 65999999,
+    "ChanceAdjust": 120
+  },
+  {
+    "Id": 4011,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 66000000,
+    "MaxCurrencyValue": 67999999,
+    "ChanceAdjust": 130
+  },
+  {
+    "Id": 4012,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 68000000,
+    "MaxCurrencyValue": 69999999,
+    "ChanceAdjust": 140
+  },
+  {
+    "Id": 4013,
+    "TargetPlay": 103,
+    "MinCurrencyValue": 70000000,
+    "MaxCurrencyValue": 999999999,
+    "ChanceAdjust": 150
+  }
+]

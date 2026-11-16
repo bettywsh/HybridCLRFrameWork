@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//import "task.proto";
+
+//获取活动信息
+message GetDuobaoInfoReq{}
+
+message GetDuobaoInfoRes{
+    //次数
+    int32 DuobaoCounts = 1;
+    //券
+    int32 DuobaoQuan = 2;
+    //任务相关
+    DuobaoTaskInfo DuobaoTasks = 3;
+    //中奖记录
+    repeated DuobaoPlayerInfo RecordDatas = 4;
+    //实物保底条件
+    EntityRewardCfg EntityCfg = 5;
+}
+
+//任务信息
+message DuobaoTaskInfo{
+    //总使用
+    int64 SparUse = 1;
+    //登录天数
+    int32 LoginDay = 2;
+    //充值天数
+    int32 RechargeDay = 3;
+    //任务情况
+    //登录任务 0-29位对应1-30完成情况 0未领取 1领取完成了
+    int64 LoginTask = 4;
+    //充值任务 0-29位对应1-30完成情况 0未领取 1领取完成了
+    int64 RechargTask = 5;
+}
+
+//大奖信息
+message DuobaoPlayerInfo{
+    //玩家id
+    int32 PlayerId = 1;
+    //玩家昵称
+    string PlayerName = 2;
+    //中奖id
+    int32 RewardId = 3;
+    //表id
+    //int32 TableId = 4;
+}
+
+//实物奖励配置
+message EntityRewardCfg{
+    //实物解锁条件
+    repeated int32 UnlockCondition = 1;
+}
+
+//获取任务奖励
+message GetDuobaoTaskRewardReq{
+    //任务id
+    int32 TaskId = 1;
+}
+
+message GetDuobaoTaskRewardRes{
+    //任务id
+    int32 TaskId = 1;
+    //0成功 大于0失败 1活动异常 2配置异常 3任务条件不满足 4已领取 5任务id异常 6其他
+    int32 Result = 2;
+}
+
+//转盘夺宝
+message DuobaoTableReq{
+    //次数
+    int32 Counts = 1;
+}
+
+message DuobaoTableRes{
+    //结果 0成功 大于0失败 1活动异常 2夺宝券不足
+    int32 Result = 1;
+    //奖励id
+    repeated int32 RewardId = 2;
+    //大奖表id
+    int32 RecordId = 3;
+    //魔币
+    int64 Spar = 4;
+    //魔导石
+    int32 modaoshi = 5;
+    //水晶
+    int32 Diamond = 6;
+    //随机强化石
+    int32 Stone = 7;
+}
+
+//获取自己的中奖记录
+message GetOwnDuobaoRecordReq{}
+
+message GetOwnDuobaoRecordRes{
+    repeated DuobaoRecordData Records = 1;
+}
+
+message DuobaoRecordData{
+    //奖励id
+    int32 RewardId = 1;
+    //时间戳
+    int64 RecordTime = 2;
+    //实物奖用到的数据
+    //表id
+    int32 TableId = 3;
+    //奖状态 0没填地址的 1填完地址了 发货中 2已发货 3普通奖励
+    int32 RewardStatus = 4;
+}
+
+//填写快递信息 
+//防断线 用web接口填或者主动推
+message NoticePlayerEMS{
+    //奖品表id
+    int32 TableId = 1;
+    //奖品id
+    int32 ReWardId = 2;
+}
+
+//请求
+message PlayerEMSReq{
+    //名字
+    string Name = 1;
+    //手机号
+    string PhoneNumber = 2;
+    //地址
+    string Address = 3;
+    //奖励id
+    int32 RewardId = 4;
+    //表id
+    int32 TableId = 5;
+}
+
+message PlayerEMSRes{
+    //0成功 大于0失败
+    int32 Result = 1;
+}

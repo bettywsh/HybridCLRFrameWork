@@ -1,0 +1,107 @@
+[
+  {
+    "Id": 100,
+    "Type": 1,
+    "Reward": 10002,
+    "Number": 20000000,
+    "Probability": 1
+  },
+  {
+    "Id": 101,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 7760000,
+    "Probability": 3
+  },
+  {
+    "Id": 102,
+    "Type": 2,
+    "Reward": 10002,
+    "Number": 2560000,
+    "Probability": 5
+  },
+  {
+    "Id": 103,
+    "Type": 2,
+    "Reward": 10000,
+    "Number": 5000,
+    "Probability": 7
+  },
+  {
+    "Id": 104,
+    "Type": 2,
+    "Reward": 10000,
+    "Number": 4000,
+    "Probability": 9
+  },
+  {
+    "Id": 105,
+    "Type": 3,
+    "Reward": 10002,
+    "Number": 1160000,
+    "Probability": 12
+  },
+  {
+    "Id": 106,
+    "Type": 3,
+    "Reward": 10002,
+    "Number": 360000,
+    "Probability": 20
+  },
+  {
+    "Id": 107,
+    "Type": 3,
+    "Reward": 10000,
+    "Number": 600,
+    "Probability": 30
+  },
+  {
+    "Id": 108,
+    "Type": 3,
+    "Reward": 10000,
+    "Number": 500,
+    "Probability": 50
+  },
+  {
+    "Id": 109,
+    "Type": 3,
+    "Reward": 2001,
+    "Number": 18,
+    "Probability": 55
+  },
+  {
+    "Id": 110,
+    "Type": 4,
+    "Reward": 10002,
+    "Number": 100000,
+    "Probability": 160
+  },
+  {
+    "Id": 111,
+    "Type": 4,
+    "Reward": 10002,
+    "Number": 40000,
+    "Probability": 160
+  },
+  {
+    "Id": 112,
+    "Type": 4,
+    "Reward": 10000,
+    "Number": 200,
+    "Probability": 160
+  },
+  {
+    "Id": 113,
+    "Type": 4,
+    "Reward": 10000,
+    "Number": 100,
+    "Probability": 160
+  },
+  {
+    "Id": 114,
+    "Type": 4,
+    "Reward": 2001,
+    "Number": 8,
+    "Probability": 168
+  }
+]

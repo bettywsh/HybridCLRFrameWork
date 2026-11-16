@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 8000,
+    "Name": "夺宝券礼包一",
+    "Reward1": 3,
+    "Reward2": 2100000,
+    "Price": 30,
+    "Probability": 0
+  },
+  {
+    "Id": 8001,
+    "Name": "夺宝券礼包二",
+    "Reward1": 10,
+    "Reward2": 6860000,
+    "Price": 98,
+    "Probability": 0
+  },
+  {
+    "Id": 8002,
+    "Name": "夺宝券礼包三",
+    "Reward1": 20,
+    "Reward2": 13860000,
+    "Price": 198,
+    "Probability": 0
+  },
+  {
+    "Id": 8003,
+    "Name": "夺宝券礼包四",
+    "Reward1": 33,
+    "Reward2": 22960000,
+    "Price": 328,
+    "Probability": 0
+  },
+  {
+    "Id": 8004,
+    "Name": "夺宝券礼包五",
+    "Reward1": 65,
+    "Reward2": 45360000,
+    "Price": 648,
+    "Probability": 0
+  },
+  {
+    "Id": 8005,
+    "Name": "夺宝券礼包六",
+    "Reward1": 130,
+    "Reward2": 90720000,
+    "Price": 1296,
+    "Probability": 0
+  }
+]

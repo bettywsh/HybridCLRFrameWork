@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+import "newrank.proto";
+
+//讨伐恶龙
+
+//获取信息
+message GetCrusadeDragonActivityInfo{}
+
+message GetCrusadeDragonActivityInfoRes{
+    //总伤害
+    int64 AllHurt = 1;
+    //个人伤害
+    int64 OwnHurt = 2;
+    //免费讨伐次数
+    int32 FreeCtusadeCounts = 3;
+    //排行榜数据
+    repeated PlayerRankInfo CrusadeRank = 4;
+}
+
+//讨伐
+message CrusadeDragonReq{ 
+    //攻击类型 0/1/2 免费/单次/10次
+    int32 ActType = 1;
+}
+
+message CrusadeDragonRes{
+    //结果 0成功 1免费次数不足 2钻石不足 3活动异常 4其他
+    int32 Result = 1;
+    //玩家总伤害
+    int64 Hurt = 2;
+    //奖励列表
+    repeated int32 RewardList = 3;
+}

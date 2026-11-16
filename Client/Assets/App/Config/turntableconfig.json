@@ -1,0 +1,65 @@
+[
+  {
+    "Id": 10000,
+    "Items": 10002,
+    "Quantity": 100,
+    "Probability": 0,
+    "Probability2": 45
+  },
+  {
+    "Id": 10001,
+    "Items": 10002,
+    "Quantity": 300,
+    "Probability": 0,
+    "Probability2": 50
+  },
+  {
+    "Id": 10002,
+    "Items": 10002,
+    "Quantity": 1000,
+    "Probability": 1,
+    "Probability2": 5
+  },
+  {
+    "Id": 10003,
+    "Items": 10002,
+    "Quantity": 4000,
+    "Probability": 33,
+    "Probability2": 0
+  },
+  {
+    "Id": 10004,
+    "Items": 10002,
+    "Quantity": 10000,
+    "Probability": 33,
+    "Probability2": 0
+  },
+  {
+    "Id": 10005,
+    "Items": 10002,
+    "Quantity": 20000,
+    "Probability": 33,
+    "Probability2": 0
+  },
+  {
+    "Id": 10006,
+    "Items": 10002,
+    "Quantity": 50000,
+    "Probability": 0,
+    "Probability2": 0
+  },
+  {
+    "Id": 10007,
+    "Items": 10002,
+    "Quantity": 100000,
+    "Probability": 0,
+    "Probability2": 0
+  },
+  {
+    "Id": 10008,
+    "Items": 10002,
+    "Quantity": 200000,
+    "Probability": 0,
+    "Probability2": 0
+  }
+]

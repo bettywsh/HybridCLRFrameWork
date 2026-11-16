@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be708a707b5662a44a27a96344ee1908, type: 3}
+  m_Name: AppConfig
+  m_EditorClassIdentifier: 
+  EPlayMode: 0
+  AppVersion: 6
+  ResVersion: 49
+  ChannelId: 1
+  ChannelVer: 1
+  SvrResIp: https://oss.dongfanglanyu.com/zhanche/develop/
+  DebugLog: 1
+  GameFrameRate: 30
+  PackageName: DefaultPackage
+  DownloadApkName: ff.apk
+  ProtoBuffPackageName: Msg.
+  SvrGameIp: 121.196.227.83
+  SvrGamePort: 5678
+  hasAppPay: 0
+  SdkDev: 1
+  HttpUrl: http://47.101.186.85:83/
+  AotDll:
+  - mscorlib.dll
+  - System.Core.dll
+  - System.dll
+  - UnityEngine.CoreModule.dll
+  - UnityEngine.UI.dll
+  - UniTask.dll
+  - YooAsset.dll
+  - DOTween.dll
+  - ThirdParty.dll
+  - Newtonsoft.Json.dll
+  - ZString.dll
+  - Luban.Runtime.dll
+  - System.Runtime.CompilerServices.Unsafe.dll
+  - ParadoxNotion.dll
+  - NodeCanvas.dll
+  HotfixDll:
+  - Hotfix.dll
+  - FrameWork.dll
+  Mode: "\u6D4B\u8BD5\u670D"

@@ -1,0 +1,218 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+//活动相关
+//充值相关，和钻石充值一样统一走充值，回复也一样
+//首充礼包id:71000 买了后进行4选1
+//七天投资礼包id:71001 买了解锁直接送
+//所有时间统一用毫秒时间戳 utc+8
+
+/////////////////////////////////////////
+/////////////////////////////////////////
+//获取活动信息 首充礼包 七天礼包 每日签到
+message GetActivityInfo{}
+
+message ActivityInfoRes{
+	//0表示没买 1买了但是还没4选一 2奖励都领取了 3买了邮件发送了没领取
+	uint32 FirstRechargeStatus = 1;
+	//七元礼包
+	SevenDayGifData sevenDayGifInfo = 2;
+	//每日签到
+	DaySignData daySignInfo = 3;
+	//转盘数据
+	TruntableInfo tableInfo = 4;
+}
+
+//七天礼包
+message SevenDayGifData{
+	//购买时间
+	uint64 BuyTime = 1;
+	//上次领取时间戳
+	uint64 GetTime = 2;
+	//领取次数
+	uint32 GetCounts = 3;
+}
+
+//领取七天礼包
+message GetSevenDayGiftReq{}
+
+//回复
+message GetSevenDayGiftRes{
+	enum GetSevenDayGifResult{
+		//成功
+		GSDGR_Success = 0;
+		//已经领了
+		GSDGR_AlreadyGet = 1;
+		//全部领完了
+		GSDGR_Lock = 2;
+		//其他错误
+		GSDGR_OtherError =3;
+	}
+
+	//结果
+	GetSevenDayGifResult result = 1;
+	//领取时的时间戳
+	uint64 GetTime = 2;
+}
+
+//每日签到数据
+message DaySignData{
+	//第一次签到时间戳
+	uint64 FirstSignTime = 1;
+	//上次签到的时间戳
+	uint64 LastSignTime = 2;
+	//签到次数
+	uint32 SignCounts = 3;
+	//当前签到的奖励index 1-7
+	uint32 SingRewardIndex = 4;
+	//vip奖励 位与值  共5位（1-5） 每位的对应该位奖励的领取情况：0未领取 1领取
+	uint32 VipReward = 5;
+}
+
+//获取每日签到奖励
+message GetDaySignRewardReq{
+	//奖励类型
+	enum GetDaySignRewardType{
+		//正常
+		GDSRT_Normal = 0;
+		//vip奖励
+		GDSRT_Vip = 1;
+	}
+
+	GetDaySignRewardType daySignType = 1;
+
+	//对应领取的奖励1-5 / 1-7
+	uint32 RewardIndex = 2;
+}
+
+//回复
+message GetDaySignRewardRes{
+
+	enum GetDaySignRewardResult{
+		//成功
+		GDSRR_Success = 0;
+		//已经领取
+		GDSRR_AlreadyGet = 1;
+		//未解锁
+		GDSRR_Lock = 2;
+		//其他错误
+		GDSRR_OtherError = 3;
+	}
+
+	//结果
+	GetDaySignRewardResult result = 1;
+	//领取的时间戳
+	uint64 GetTime = 2;
+}
+
+//首充礼包4选1
+message GetFirstRewardHero{
+	//选择首充英雄
+	uint32 HeroID = 1;
+}
+
+//回复
+message GetFirstRewardHeroRes{
+	//结果
+	enum GetFirstHeroResult{
+		//成功
+		GFHR_Success = 0;
+		//失败 已解锁或者id错误
+		GFHR_Fail = 1;
+	}
+
+	GetFirstHeroResult result = 1;
+	//英雄id
+	uint32 HeroID = 2;
+}
+
+
+//每日限制礼包 看login.proto：RMBGoodsBuyInfo
+//5个礼包对应id 71101-71105
+
+///////////////////////////////////
+/////后续活动 暂时不做
+
+//转盘活动
+message TruntableInfo{
+	//次数
+	uint32 TruntableCounts = 1;
+	//时间
+	uint64 TruntableTime = 2;
+}
+
+//转转盘
+message TurnTheTurntable{}
+
+//转盘结果
+message TruntableResult{
+	enum TurnTheTurntableResult{
+		//成功
+		TTTR_Success = 0;
+		//没次数
+		TTTR_NoCounts = 1;
+		//奖励配置有误
+		TTTR_RewardCfgError = 2;
+		//其他错误
+		TTTR_OtherError = 3;
+	}
+
+	//结果
+	TurnTheTurntableResult result = 1;
+	//转盘转中的id
+	uint32 TurnGetId = 2;
+}
+
+////////////////////////////////////////////////
+//聚划算活动 每日重置 看login.proto：RMBGoodsBuyInfo
+//5个id对应:1000-1004 直接升级炮口礼包100-102
+
+
+///////////////////////////////////////////////
+//更新改变
+//具体信息
+message ActivitySwitchUpdate{
+	ActivitySwitchInfo Data = 1;
+}
+
+message GetActivitySwitchInfo{}
+
+message GetActivitySwitchInfoRes{
+	repeated ActivitySwitchInfo Datas = 1;
+}
+
+message ActivitySwitchInfo{
+	//id 1001:斗龙巅峰榜 1002:赏金排位赛 1003:0元购买(如有时间这个开关客户端自己做定时处理 到时间显示或关闭)
+	//1004:盲盒活动  1005:龙王秘宝活动
+	int32 ActivityId = 1;
+	//状态 0开启 大于0关闭
+	int32 ActivityStatus = 2;
+	//如果开着的 结束时间(0 永久开) 如果关着 开启时间(0 永久关)
+	int64 EndTime = 3;
+}
+
+///////////////////////////////////////////////
+//活动时间管理
+message ActivityTimeInfo{
+	//活动id
+	int32 ActivityId = 1;
+	//开始时间
+	int64 StartTime = 2;
+	//结束时间 0的话 永久开启
+	int64 EndTime = 3;
+}
+
+//获取所有活动时间
+message GetActivityTimeInfo{}
+
+//回复
+message GetActivityTimeInfoRes{
+	repeated ActivityTimeInfo Datas = 1;
+}
+
+//活动时间改变通知
+message ActivityTimeChange{
+	ActivityTimeInfo Data = 1;
+}

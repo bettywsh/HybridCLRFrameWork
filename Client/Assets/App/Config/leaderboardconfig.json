@@ -1,0 +1,119 @@
+[
+  {
+    "Id": 1101,
+    "Type": 1,
+    "Ranking": 1,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 2000000
+      }
+    ],
+    "Txt": "恭喜你在昨日的魔币榜排行第1名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":0,\"ItemCounts\":2000000,\"ItemID\":0}]"
+  },
+  {
+    "Id": 1102,
+    "Type": 1,
+    "Ranking": 2,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 1200000
+      }
+    ],
+    "Txt": "恭喜你在昨日的魔币榜排行第2名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":0,\"ItemCounts\":1200000,\"ItemID\":0}]"
+  },
+  {
+    "Id": 1103,
+    "Type": 1,
+    "Ranking": 3,
+    "Reward": [
+      {
+        "id": 10002,
+        "num": 400000
+      }
+    ],
+    "Txt": "恭喜你在昨日的魔币榜排行第3名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":0,\"ItemCounts\":400000,\"ItemID\":0}]"
+  },
+  {
+    "Id": 2201,
+    "Type": 2,
+    "Ranking": 1,
+    "Reward": [
+      {
+        "id": 10003,
+        "num": 500000
+      }
+    ],
+    "Txt": "恭喜你在昨日的魔导石榜排行第1名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":2,\"ItemCounts\":500000,\"ItemID\":0}]"
+  },
+  {
+    "Id": 2202,
+    "Type": 2,
+    "Ranking": 2,
+    "Reward": [
+      {
+        "id": 10003,
+        "num": 300000
+      }
+    ],
+    "Txt": "恭喜你在昨日的魔导石榜排行第2名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":2,\"ItemCounts\":300000,\"ItemI\":0}]"
+  },
+  {
+    "Id": 2203,
+    "Type": 2,
+    "Ranking": 3,
+    "Reward": [
+      {
+        "id": 10003,
+        "num": 100000
+      }
+    ],
+    "Txt": "恭喜你在昨日的魔导石榜排行第3名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":2,\"ItemCounts\":100000,\"ItemID\":0}]"
+  },
+  {
+    "Id": 3301,
+    "Type": 3,
+    "Ranking": 1,
+    "Reward": [
+      {
+        "id": 2006,
+        "num": 50
+      }
+    ],
+    "Txt": "恭喜你在昨日的关卡榜排行第1名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":3,\"ItemCounts\":50,\"ItemID\":2006}]"
+  },
+  {
+    "Id": 3302,
+    "Type": 3,
+    "Ranking": 2,
+    "Reward": [
+      {
+        "id": 2006,
+        "num": 30
+      }
+    ],
+    "Txt": "恭喜你在昨日的关卡榜排行第2名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":3,\"ItemCounts\":30,\"ItemID\":2006}]"
+  },
+  {
+    "Id": 3303,
+    "Type": 3,
+    "Ranking": 3,
+    "Reward": [
+      {
+        "id": 2006,
+        "num": 10
+      }
+    ],
+    "Txt": "恭喜你在昨日的关卡榜排行第3名，获得如下奖励，请注意查收！",
+    "RewardStr": "[{\"itemType\":3,\"ItemCounts\":10,\"ItemID\":2006}]"
+  }
+]

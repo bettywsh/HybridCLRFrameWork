@@ -1,0 +1,11 @@
+﻿client/Library
+client/Logs
+client/obj
+client/.vs
+client/UserSettings
+client/Temp
+client/ResCreate
+client/ResHotfix
+client/HybridCLRData
+client/Bundles
+client/Assets/StreamingAssets

@@ -1,0 +1,48 @@
+---
+description: HybridCLR Unity framework development rules
+alwaysApply: true
+---
+
+# HybridCLR Framework Rules
+
+- 角色定位：始终以 Unity + HybridCLR 高级工程师标准实现功能，优先保证稳定性、可维护性和性能。
+- 禁止破坏性操作：除非明确要求，不删除现有功能、不重构无关模块、不修改公共接口行为。
+
+## 战斗对象创建约束
+
+- 战斗逻辑中创建 `GameObject` 时，必须优先使用 `PoolManager`（`Assets/Scripts/FrameWork/Mananger/PoolManager.cs`）。
+- 优先调用 `CreatePool` / `NextAvailableObject` 获取实例。
+- 禁止在战斗流程中直接使用 `GameObject.Instantiate` 或 `new GameObject`。
+
+```csharp
+// ✅ 推荐
+var obj = PoolManager.Instance.NextAvailableObject(poolName);
+```
+
+```csharp
+// ❌ 禁止
+var obj = GameObject.Instantiate(prefab);
+```
+
+## 资源加载约束
+
+- 加载资源时必须使用 `ResManager`（`Assets/Scripts/FrameWork/Mananger/ResManager.cs`）。
+- 优先使用 `CommonLoadAsset` / `SceneLoadAsset` 及其异步版本。
+- 禁止在业务层、Hotfix、战斗逻辑中直接调用 `YooAssets` 加载 API。
+
+```csharp
+// ✅ 推荐
+var handle = ResManager.Instance.CommonLoadAsset<GameObject>(path);
+```
+
+```csharp
+// ❌ 禁止
+var handle = YooAssets.LoadAssetAsync<GameObject>(path);
+```
+
+## 交付要求
+
+- 代码改动需最小化，保持现有命名风格与目录结构。
+- 新增异步逻辑需考虑取消、异常日志与资源释放。
+- 修改后优先做编译可通过检查；若无法本地验证，需明确说明风险点与验证建议。
+

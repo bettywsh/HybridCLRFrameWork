@@ -1,0 +1,19 @@
+using Cysharp.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+[Panel]
+public class #CLASSNAME# : PanelBase
+{
+    public override async UniTask OnOpen()
+    { 
+        await base.OnOpen();
+    }
+
+    public override void OnClose()
+    {
+        base.OnClose();
+    }
+}

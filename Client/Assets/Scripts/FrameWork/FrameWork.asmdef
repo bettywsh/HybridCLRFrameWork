@@ -1,0 +1,23 @@
+{
+    "name": "FrameWork",
+    "rootNamespace": "",
+    "references": [
+        "YooAsset",
+        "UniTask",
+        "Unity.Mathematics",
+        "ThirdParty",
+        "LoopScrollRect.Runtime",
+        "Unity.TextMeshPro",
+        "HybridCLR.Runtime",
+        "Aot"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

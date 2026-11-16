@@ -1,0 +1,248 @@
+syntax = "proto3";
+
+package msg;
+
+option go_package=".";
+//消息说明
+//消息id枚举 MSG_+对应消息结构
+//消息中的所有时间戳相关都是毫秒级别的UTC+8
+enum MsgID{
+	MSG_SignUpResponse = 0;
+	MSG_HeartBeat = 1;
+	MSG_Login = 2;
+	MSG_LoginSuccessfull = 3;
+	MSG_LoginFaild = 4;
+	MSG_EnterGameReq = 5;
+	MSG_EnterGameRes = 6;
+	MSG_AttackMonsterReq = 7;
+	MSG_AttackMonsterRes = 8;
+	MSG_ExitGame = 9;
+	MSG_GameEnd = 10;
+	MSG_GameEndRes = 11;
+	MSG_FullServiceBroadcast = 12;
+	MSG_GetSupplyReq = 13;
+	MSG_GetSupplyRes = 14;
+	MSG_UpgradeEquipReq = 15;
+	MSG_UpgradeEquipRes = 16;
+	MSG_AddTalentReq = 17;
+	MSG_AddTalentRes = 18;
+	MSG_BuyShopItemReq = 19;
+	MSG_BuyShopItemRes = 20;
+	MSG_EndelessBoosRefresh = 21;
+	MSG_EndelessBoosDie = 22;
+	MSG_EndelessBoosReward = 23;
+	MSG_UnlockHeroCardReq = 24;
+	MSG_UnlockHeroCardRes = 25;
+	MSG_VipLevelUp = 26;
+	MSG_ChangeGuide = 27;
+	MSG_VerificationCodeLogin =28;
+	MSG_PhoneNumberLogin = 29;
+	MSG_AuthenticationInfo = 30;
+	MSG_AuthenticationInfoRes = 31;
+	
+	MSG_GetMailInfoReq = 32;
+	MSG_GetMailInfoRes = 33;
+	MSG_ReadMailReq = 34;
+	MSG_ReadMailRes = 35;
+	MSG_ReadAllMailReq = 36;
+	MSG_ReadAllMailRes = 37;
+	MSG_DeleteMailReq = 38;
+	MSG_DeleteMailRes = 39;
+	MSG_DeleteAllMailReq = 40;
+	MSG_DeleteAllMailRes = 41;
+	MSG_NewMail = 42;
+	MSG_RMBBuyGoodsResult = 43;
+	
+	MSG_BindAliPayReq = 44;
+	MSG_BindAliPayRes = 45;
+	MSG_GetModaoshiInfo = 46;
+	MSG_ModaoshiInfoRes = 47;
+	MSG_GetModaoshiToAliPayReq = 48;
+	MSG_GetModaoshiToAliPayRes = 49;
+	MSG_GetActivityInfo = 50;
+	MSG_ActivityInfoRes = 51;
+	MSG_GetSevenDayGiftReq = 52;
+	MSG_GetSevenDayGiftRes = 53;
+	MSG_GetDaySignRewardReq = 54;
+	MSG_GetDaySignRewardRes = 55;
+	MSG_GetFirstRewardHero = 56;
+	MSG_GetFirstRewardHeroRes = 57;
+
+	MSG_SysMsg = 58;
+	MSG_NewServerDay = 59;
+	MSG_TurnTheTurntable = 60;
+	MSG_TruntableResult = 61;
+	MSG_GetDayTaskReward = 62;
+	MSG_GetDayTaskRewardRes = 63;
+	MSG_GetRechargeCardReward = 64;
+	MSG_GetRechargeCardRewardRes = 65;
+	MSG_OpenRandStone = 66;
+	MSG_OpenRandStoneRes = 67;
+	MSG_ThirdUseModaoshi = 68;
+
+	MSG_GetPassGift = 69;
+	MSG_GetPassGiftRes = 70;
+
+	MSG_GetDayChallengeReward = 71;
+	MSG_GetDayChallengeRewardRes = 72;
+
+	MSG_GetTaskRewardReq = 73;
+	MSG_GetTaskRewardRes = 74;
+
+	MSG_BulletExpChange = 75;
+	MSG_BulletLevelUpReq = 76;
+	MSG_BulletLevelUpRes = 77;
+
+	MSG_GetMoneyToAliEnd = 78;
+	MSG_DeleteAccountReq = 79;
+	MSG_DeleteAccountRes = 80;
+
+	MSG_ModaoshiPoolNotice =81;
+
+	MSG_TestPlayerActStart = 82;
+	MSG_TestActStartEnd = 83;
+	MSG_TestAllPlayerActEnd = 84;
+	MSG_TestPlayerActEnd = 85;
+	MSG_TestPlayerActReq = 86;
+
+	MSG_GameRankDatas = 87;
+	MSG_ShowPaomadengMsg = 88;
+	MSG_ChangePlayerInfoReq = 89;
+	MSG_ChangePlayerInfoRes = 90;
+	MSG_ChangeGuideRes = 91;
+	MSG_GetMoneyToAliEndRes = 92;
+	MSG_GetPlayerTaskInfo = 93;
+	MSG_DayTaskChangeNotice = 94;
+	MSG_PlayerTaskInfo = 95;
+
+	MSG_GetAllTaskRewardReq = 96;
+	MSG_GetAllTaskRewardRes = 97;
+
+	MSG_UpdatePlayerDeviceInfo = 98;
+	MSG_UpdatePlayerDeviceInfoRes = 99;
+
+	MSG_GetVipActivityInfo = 100;
+	MSG_GetVipActivityInfoRes = 101;
+	MSG_GetVipActivityCfg = 102;
+	MSG_GetVipActivityCfgRes = 103;
+	MSG_GetVipActivityReward = 104;
+	MSG_GetVipActivityRewardRes = 105;
+	MSG_GetEquipLeveUpReward = 106;
+	MSG_GetEquipLeveUpRewardRes = 107;
+	MSG_GetEquipRewardInfoRes = 108;
+	MSG_GetEquipRewardInfo = 109;
+
+	MSG_VipActivityEndFresh = 110;
+
+	MSG_GetKillBossReward = 111;
+	MSG_GetKillBossRewardRes = 112;
+	MSG_GetKillBossActivityInfo = 113;
+	MSG_KillBossActivityInfo = 114;
+
+	MSG_GetLongwangActivityInfo = 115;
+	MSG_LongwangActivityInfo = 116;
+	MSG_LongwangActivityFresh = 117;
+
+	MSG_RechargeActivityFresh = 118;
+	MSG_GetRechargeActivityInfoRes = 119;
+	MSG_GetRechargeActivityInfo = 120;
+	MSG_GetRechargeActivityRewardRes = 121;
+	MSG_GetRechargeActivityReward = 122;
+
+	MSG_UseRedeemCode = 123;
+	MSG_UseRedeemCodeResult = 124;
+
+	MSG_PlayerRankRefresh = 125;
+	MSG_GetPlayerRankInfo = 126;
+	MSG_GetPlayerRankInfoRes =127;
+
+	MSG_UnlockContinuousGoodsReq = 128;
+	MSG_UnlockContinuousGoodsRes =129;
+	MSG_GetEndGoodsReward = 130;
+	MSG_GetEndGoodsRewardRes = 131;
+	MSG_GetContinuousGoodsInfo = 132;
+	MSG_GetContinuousGoodsInfoRes = 133;
+
+	MSG_GetActivityHeroInfo = 134;
+	MSG_GetActivityHeroInfoRes = 135;
+	MSG_GetActivityHeroReward = 136;
+	MSG_GetActivityHeroRewardRes = 137;
+
+	MSG_HitEggReq = 138;
+	MSG_HitEggRes = 139;
+	MSG_GetActivityEggInfo = 140;
+	MSG_GetActivityEggInfoRes = 141;
+
+	MSG_ActivityEggFresh = 142;
+
+	MSG_NewSignNumber = 143;
+	MSG_GetSignActivityInfo = 144;
+	MSG_GetSignActivityInfoRes = 145;
+	MSG_SignRewardAction = 146;
+
+	MSG_GetAllMailInfo = 147;
+	MSG_GetAllMailInfoRes = 148;
+
+	MSG_GetRankMatchInfo = 149;
+	MSG_GetRankMatchInfoRes = 150;
+
+	MSG_ActivitySwitchUpdate = 151;
+
+	MSG_GetActivitySwitchInfo = 152;
+	MSG_GetActivitySwitchInfoRes = 153;
+
+	MSG_ThreeMinTimeRefresh = 154;
+
+	MSG_Get0YuangouInfo = 155;
+	MSG_Get0YuangouInfoRes = 156;
+	MSG_Complete0YuangouTaskReq = 157;
+	MSG_Complete0YuangouTaskRes = 158;
+	MSG_Player0YuangouRefresh = 159;
+
+	MSG_OpenBlindBoxReq = 160;
+	MSG_OpenBlindBoxRes = 161;
+	MSG_ResetBlindBoxReq = 162;
+	MSG_ResetBlindBoxRes = 163;
+	MSG_GetBlindBoxInfo = 164;
+	MSG_GetBlindBoxInfoRes = 165;
+
+	MSG_GetCrusadeDragonActivityInfo = 166;
+	MSG_GetCrusadeDragonActivityInfoRes = 167;
+	MSG_CrusadeDragonReq = 168;
+	MSG_CrusadeDragonRes = 169;
+
+	MSG_GetActivityTimeInfo = 170;
+	MSG_GetActivityTimeInfoRes = 171;
+	MSG_ActivityTimeChange = 172;
+
+	MSG_GetSuperGiftInfo = 173;
+	MSG_GetSuperGiftInfoRes = 174;
+	MSG_GetSuperTaskReward = 175;
+	MSG_GetSuperTaskRewardRes = 176;
+
+	MSG_GetMoneyboxInfo = 177;
+	MSG_GetMoneyboxInfoRes = 178;
+
+	MSG_GetDuobaoInfoReq = 179;
+	MSG_GetDuobaoInfoRes = 180;
+	MSG_GetDuobaoTaskRewardReq = 181;
+	MSG_GetDuobaoTaskRewardRes = 182;
+	MSG_DuobaoTableReq = 183;
+	MSG_DuobaoTableRes = 184;
+	MSG_PlayerEMSReq = 185;
+	MSG_PlayerEMSRes = 186;
+	MSG_NoticePlayerEMS = 187;
+	MSG_GetOwnDuobaoRecordReq = 188;
+	MSG_GetOwnDuobaoRecordRes = 189;
+
+	MSG_ReviveReq = 190;
+	MSG_ReviveRes = 191;
+
+	MSG_GetCycleTaskInfo = 192;
+	MSG_GetCycleTaskInfoRes = 193;
+
+	MSG_NoticeModaoshiScheduleReset = 194;
+
+	MSG_GetPoolPlayersInfo = 195;
+	MSG_GetPoolPlayersInfoRes = 196;
+}

@@ -1,0 +1,54 @@
+[
+  {
+    "Id": 101,
+    "Min": 7,
+    "Max": 30,
+    "Zdamount": 5,
+    "Recbuff": 1500,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "OnceBullet": 1,
+    "OncePrice": 80
+  },
+  {
+    "Id": 102,
+    "Min": 31,
+    "Max": 200,
+    "Zdamount": 20,
+    "Recbuff": 1500,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "OnceBullet": 2,
+    "OncePrice": 80
+  },
+  {
+    "Id": 103,
+    "Min": 200,
+    "Max": 500,
+    "Zdamount": 30,
+    "Recbuff": 1500,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "OnceBullet": 3,
+    "OncePrice": 80
+  },
+  {
+    "Id": 104,
+    "Min": 501,
+    "Max": 1000,
+    "Zdamount": 50,
+    "Recbuff": 1500,
+    "FishPrice": [
+      15,
+      80
+    ],
+    "OnceBullet": 4,
+    "OncePrice": 80
+  }
+]

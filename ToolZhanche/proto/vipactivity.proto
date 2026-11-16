@@ -1,0 +1,186 @@
+syntax = "proto3";
+
+package msg;
+option go_package=".";
+
+import "hall.proto";
+
+//vip活动
+message VipActivityInfo{
+    //开始时间
+    int64 StartTime = 1;
+    //结束时间
+    int64 EndTime = 2;
+    //已领取奖励
+    repeated VipActivityData Datas = 3;
+}
+
+//活动数据
+message VipActivityData{
+    //活动id
+    int32 ActivityID = 1;
+    //已领取数量
+    int32 GetCounts = 2;
+}
+
+//活动信息
+message PlayerVipActivityInfo{
+    //活动id
+    int32 ActivityId = 1;
+    //领取状态
+    int32 ActivityStatus = 2;
+    //上次领取时间
+    int64 GetTime = 3;
+}
+
+//获取活动信息
+message GetVipActivityInfo{}
+//回复
+message GetVipActivityInfoRes{
+    //活动状态 0关闭 1开启
+    int32 ActivityStatus = 1;
+    //活动当前状态
+    VipActivityInfo ActivityInfo = 2;
+    //玩家状态
+    repeated PlayerVipActivityInfo PlayerInfo = 3;
+}
+
+//活动奖励
+message VipActivityReward{
+    //奖励id
+    int32 RewardId = 1;
+    //奖励数量
+    int32 RewardCounts = 2;
+}
+
+message VipActivityCfg{
+    //id
+    int32 ActivityId = 1;
+    //vip
+    int32 ActivityVip = 2;
+    //活动数量
+    int32 ActivityNumber = 3;
+    //活动奖励
+    repeated VipActivityReward Reward = 4;
+}
+
+//获取活动配置
+message GetVipActivityCfg{} 
+//回复
+message GetVipActivityCfgRes{
+    //结果 0成功 大于0失败 1：未开启 2：配置有问题 3：其他
+    int32 Result = 1;
+    //活动配置
+     repeated VipActivityCfg ActivityCfg = 2;
+}
+
+//获取奖励
+message GetVipActivityReward{ 
+    //活动id
+    uint32 ActivityId = 1;
+}
+
+//回复
+message GetVipActivityRewardRes{
+    //结果 0成功 大于0失败 1：vip等级不够 2:已经领过了 3：领完了 4其他错误
+    uint32 Result = 1;
+    //活动id
+    uint32 ActivityId = 2;
+}
+
+
+//vip礼遇活动结束
+message VipActivityEndFresh{}
+
+
+///////////////////////////////////////////
+//装备活动
+//奖励信息 0开始 领取+1 大于等于7都领完了
+message EquipRewardInfo{
+    //1-6装备部位领取奖励情况
+    int32 Pos1Reward = 1;
+    int32 Pos2Reward = 2;
+    int32 Pos3Reward = 3;
+    int32 Pos4Reward = 4;
+    int32 Pos5Reward = 5;
+    int32 Pos6Reward = 6;
+}
+
+//获取奖励信息
+message GetEquipRewardInfo{}
+//回复
+message GetEquipRewardInfoRes{ 
+    EquipRewardInfo RewardInfo = 1;
+}
+
+//装备升级回馈活动
+//获取奖励 1-6
+message GetEquipLeveUpReward{ 
+    //装备位置
+    int32 EquipPos = 1;
+}
+//回复
+message GetEquipLeveUpRewardRes{
+    //0成功 大于0失败 1:领完了达到最大值了 2奖励配置异常 3装备等级异常 4装备部位异常 5其他
+    int32 RewardResult = 1;
+    //装备位置
+    int32 EquipPos = 2;
+    //奖励等级
+    int32 RewardInfo = 3;
+}
+
+//////////////////////////////////////
+//boss活动 常驻版
+//获取活动数据
+message GetKillBossActivityInfo{}
+
+message PlayerKillBossActivityInfo{
+    //场次 1-3
+    int32 BossScene = 1;
+    //击杀数
+    int32 KillCounts = 2;
+    //领取时间戳
+    int64 GetReWardTime = 3;
+    //之前击杀
+    int32 BeforeKill = 4;
+}
+
+//回复
+//数据是空的话 活动异常 关入口
+message KillBossActivityInfo{
+    repeated PlayerKillBossActivityInfo Info = 1;
+}
+
+//获取奖励
+message GetKillBossReward{
+    //boss场次
+    int32 BossScene = 1;
+}
+
+//奖励回复
+message GetKillBossRewardRes{
+    //结果 0成功 大于0失败 1配置错误 2没有奖励 3领取了 4数据异常 5其他
+    int32 Result = 1;
+    //奖励数量
+    int32 RewardNumber = 2;
+    //boss场次
+    int32 BossScene = 3;
+}
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+//龙王秘宝
+//获取信息
+message GetLongwangActivityInfo{}
+//回复
+message LongwangActivityInfo{
+    //魔币池
+    int64 SparPool = 1;
+    //功勋值
+    int32 Gongxun = 2;
+    //排行榜信息
+    repeated RankInfo LongwangRank = 3;
+}
+
+//秘宝刷新重置
+message LongwangActivityFresh{}

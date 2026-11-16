@@ -1,0 +1,819 @@
+[
+  {
+    "Id": 10001,
+    "Name": "眼镜僵尸",
+    "Type": 1000,
+    "Codex": 2,
+    "Hp": 1,
+    "MoveSpeed": 0.8,
+    "Exp": 1,
+    "Att": 50,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 1,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 60
+  },
+  {
+    "Id": 10002,
+    "Name": "僵尸牛马",
+    "Type": 1001,
+    "Codex": 3,
+    "Hp": 1,
+    "MoveSpeed": 1.2,
+    "Exp": 1,
+    "Att": 80,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 1.5,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 100
+  },
+  {
+    "Id": 10003,
+    "Name": "铁筒僵尸",
+    "Type": 1002,
+    "Codex": 4,
+    "Hp": 1,
+    "MoveSpeed": 1.2,
+    "Exp": 1,
+    "Att": 80,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 2,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 200
+  },
+  {
+    "Id": 10004,
+    "Name": "铁血僵尸",
+    "Type": 1003,
+    "Codex": 5,
+    "Hp": 1,
+    "MoveSpeed": 0.8,
+    "Exp": 1,
+    "Att": 100,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 450
+  },
+  {
+    "Id": 10005,
+    "Name": "僵尸贵族",
+    "Type": 1004,
+    "Codex": 6,
+    "Hp": 1,
+    "MoveSpeed": 1.5,
+    "Exp": 1,
+    "Att": 80,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 10006,
+    "Name": "僵尸保安",
+    "Type": 1005,
+    "Codex": 7,
+    "Hp": 1,
+    "MoveSpeed": 2,
+    "Exp": 1,
+    "Att": 80,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 1,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 200
+  },
+  {
+    "Id": 10007,
+    "Name": "绿帽僵尸",
+    "Type": 1006,
+    "Codex": 8,
+    "Hp": 1,
+    "MoveSpeed": 2,
+    "Exp": 1,
+    "Att": 100,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 400
+  },
+  {
+    "Id": 10008,
+    "Name": "摔跤僵尸",
+    "Type": 1007,
+    "Codex": 9,
+    "Hp": 1,
+    "MoveSpeed": 0.8,
+    "Exp": 1,
+    "Att": 150,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 1200
+  },
+  {
+    "Id": 10009,
+    "Name": "僵尸叮当",
+    "Type": 1008,
+    "Codex": 10,
+    "Hp": 1,
+    "MoveSpeed": 2.5,
+    "Exp": 1,
+    "Att": 50,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 3,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 10010,
+    "Name": "独眼僵尸",
+    "Type": 1009,
+    "Codex": 12,
+    "Hp": 1,
+    "MoveSpeed": 3,
+    "Exp": 1,
+    "Att": 50,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 3,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 60
+  },
+  {
+    "Id": 10011,
+    "Name": "变异僵尸",
+    "Type": 1010,
+    "Codex": 15,
+    "Hp": 1,
+    "MoveSpeed": 1.5,
+    "Exp": 1,
+    "Att": 300,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 20,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 1500
+  },
+  {
+    "Id": 10012,
+    "Name": "胖头僵尸",
+    "Type": 1011,
+    "Codex": 18,
+    "Hp": 1,
+    "MoveSpeed": 1.3,
+    "Exp": 1,
+    "Att": 100,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 10,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 500
+  },
+  {
+    "Id": 10013,
+    "Name": "粉红僵尸",
+    "Type": 1012,
+    "Codex": 20,
+    "Hp": 1,
+    "MoveSpeed": 1,
+    "Exp": 1,
+    "Att": 50,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 150
+  },
+  {
+    "Id": 10014,
+    "Name": "僵尸悟空",
+    "Type": 1014,
+    "Codex": 20,
+    "Hp": 1,
+    "MoveSpeed": 1.5,
+    "Exp": 1,
+    "Att": 100,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 10,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 500
+  },
+  {
+    "Id": 10015,
+    "Name": "黄毛僵尸",
+    "Type": 1013,
+    "Codex": 25,
+    "Hp": 1,
+    "MoveSpeed": 1.5,
+    "Exp": 1,
+    "Att": 90,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 2,
+    "Scale": 1,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 20005,
+    "Name": "僵尸贵族精英",
+    "Type": 1016,
+    "Codex": 30,
+    "Hp": 2,
+    "MoveSpeed": 1,
+    "Exp": 2,
+    "Att": 5,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 1.5,
+    "ChanceExp": 5,
+    "Php": 2
+  },
+  {
+    "Id": 20006,
+    "Name": "僵尸保安精英",
+    "Type": 1022,
+    "Codex": 50,
+    "Hp": 2,
+    "MoveSpeed": 1,
+    "Exp": 2,
+    "Att": 5,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 1.5,
+    "ChanceExp": 5,
+    "Php": 2
+  },
+  {
+    "Id": 20007,
+    "Name": "绿帽僵尸精英",
+    "Type": 1017,
+    "Codex": 60,
+    "Hp": 2,
+    "MoveSpeed": 1,
+    "Exp": 2,
+    "Att": 5,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 1.5,
+    "ChanceExp": 5,
+    "Php": 2
+  },
+  {
+    "Id": 20011,
+    "Name": "变异僵尸精英",
+    "Type": 1018,
+    "Codex": 80,
+    "Hp": 2,
+    "MoveSpeed": 1.1,
+    "Exp": 2,
+    "Att": 8,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1.5,
+    "ChanceExp": 8,
+    "Php": 2
+  },
+  {
+    "Id": 20012,
+    "Name": "胖头僵尸精英",
+    "Type": 1023,
+    "Codex": 100,
+    "Hp": 2,
+    "MoveSpeed": 1.1,
+    "Exp": 2,
+    "Att": 8,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1.5,
+    "ChanceExp": 8,
+    "Php": 2
+  },
+  {
+    "Id": 20013,
+    "Name": "粉红僵尸精英",
+    "Type": 1024,
+    "Codex": 200,
+    "Hp": 2,
+    "MoveSpeed": 1.1,
+    "Exp": 2,
+    "Att": 8,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1.5,
+    "ChanceExp": 8,
+    "Php": 4
+  },
+  {
+    "Id": 20014,
+    "Name": "僵尸悟空精英",
+    "Type": 1025,
+    "Codex": 300,
+    "Hp": 2,
+    "MoveSpeed": 1.1,
+    "Exp": 2,
+    "Att": 8,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1.5,
+    "ChanceExp": 8,
+    "Php": 4
+  },
+  {
+    "Id": 20015,
+    "Name": "黄毛僵尸精英",
+    "Type": 1027,
+    "Codex": 500,
+    "Hp": 2,
+    "MoveSpeed": 1.2,
+    "Exp": 2,
+    "Att": 8,
+    "Magnification": [
+      1,
+      100
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 1.5,
+    "ChanceExp": 8,
+    "Php": 4
+  },
+  {
+    "Id": 30003,
+    "Name": "铁筒僵尸首领",
+    "Type": 1023,
+    "Codex": 100,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 80,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 2,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 200
+  },
+  {
+    "Id": 30004,
+    "Name": "铁血僵尸首领",
+    "Type": 1024,
+    "Codex": 200,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 100,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 450
+  },
+  {
+    "Id": 30005,
+    "Name": "僵尸贵族首领",
+    "Type": 1025,
+    "Codex": 300,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 80,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 30006,
+    "Name": "僵尸保安首领",
+    "Type": 1026,
+    "Codex": 400,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 80,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 1,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 200
+  },
+  {
+    "Id": 30007,
+    "Name": "绿帽僵尸首领",
+    "Type": 1027,
+    "Codex": 500,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 100,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 5,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 400
+  },
+  {
+    "Id": 30011,
+    "Name": "变异僵尸首领",
+    "Type": 1023,
+    "Codex": 100,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 150,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 8,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 1200
+  },
+  {
+    "Id": 30012,
+    "Name": "胖头僵尸首领",
+    "Type": 1024,
+    "Codex": 200,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 50,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 3,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 30013,
+    "Name": "粉红僵尸首领",
+    "Type": 1025,
+    "Codex": 300,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 50,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 3,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 60
+  },
+  {
+    "Id": 30014,
+    "Name": "僵尸悟空首领",
+    "Type": 1026,
+    "Codex": 400,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 300,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 20,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 1500
+  },
+  {
+    "Id": 30015,
+    "Name": "黄毛僵尸首领",
+    "Type": 1027,
+    "Codex": 500,
+    "Hp": 30,
+    "MoveSpeed": 1.5,
+    "Exp": 3,
+    "Att": 100,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 0,
+    "Weight": 10,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 500
+  },
+  {
+    "Id": 40003,
+    "Name": "铁筒僵尸首领",
+    "Type": 1023,
+    "Codex": 100,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 80,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 20,
+    "Weight": 5,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 200
+  },
+  {
+    "Id": 40004,
+    "Name": "铁血僵尸首领",
+    "Type": 1024,
+    "Codex": 200,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 100,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 40,
+    "Weight": 8,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 450
+  },
+  {
+    "Id": 40005,
+    "Name": "僵尸贵族首领",
+    "Type": 1025,
+    "Codex": 300,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 80,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 60,
+    "Weight": 1,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 40006,
+    "Name": "僵尸保安首领",
+    "Type": 1026,
+    "Codex": 400,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 80,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 80,
+    "Weight": 5,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 200
+  },
+  {
+    "Id": 40007,
+    "Name": "绿帽僵尸首领",
+    "Type": 1027,
+    "Codex": 500,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 100,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 100,
+    "Weight": 8,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 400
+  },
+  {
+    "Id": 40011,
+    "Name": "变异僵尸首领",
+    "Type": 1023,
+    "Codex": 100,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 150,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 20,
+    "Weight": 3,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 1200
+  },
+  {
+    "Id": 40012,
+    "Name": "胖头僵尸首领",
+    "Type": 1024,
+    "Codex": 200,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 50,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 40,
+    "Weight": 3,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 300
+  },
+  {
+    "Id": 40013,
+    "Name": "粉红僵尸首领",
+    "Type": 1025,
+    "Codex": 300,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 50,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 60,
+    "Weight": 20,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 60
+  },
+  {
+    "Id": 40014,
+    "Name": "僵尸悟空首领",
+    "Type": 1026,
+    "Codex": 400,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 300,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 80,
+    "Weight": 10,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 1500
+  },
+  {
+    "Id": 40015,
+    "Name": "黄毛僵尸首领",
+    "Type": 1027,
+    "Codex": 500,
+    "Hp": 30,
+    "MoveSpeed": 1,
+    "Exp": 3,
+    "Att": 100,
+    "Magnification": [
+      0,
+      0
+    ],
+    "Probability": 100,
+    "Weight": 10,
+    "Scale": 2.5,
+    "ChanceExp": 100,
+    "Php": 500
+  }
+]

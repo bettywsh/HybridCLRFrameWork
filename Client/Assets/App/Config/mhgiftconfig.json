@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 341,
+    "Name": "白银礼包",
+    "MagicCoins": 360000,
+    "MagicStone": 1,
+    "Price": 6
+  },
+  {
+    "Id": 342,
+    "Name": "黄金礼包",
+    "MagicCoins": 7920000,
+    "MagicStone": 22,
+    "Price": 132
+  },
+  {
+    "Id": 343,
+    "Name": "钻石礼包",
+    "MagicCoins": 39960000,
+    "MagicStone": 120,
+    "Price": 666
+  }
+]

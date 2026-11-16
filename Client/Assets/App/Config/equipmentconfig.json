@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "Name": "武器系统",
+    "IconPath": "zb_icon_wuqi",
+    "Attribute": "攻击",
+    "AttributeIcon": "icon_04"
+  },
+  {
+    "Id": 2,
+    "Name": "动力系统",
+    "IconPath": "zb_icon_dongli",
+    "Attribute": "速度",
+    "AttributeIcon": "icon_03"
+  },
+  {
+    "Id": 3,
+    "Name": "装甲系统",
+    "IconPath": "zb_icon_zhuangjia",
+    "Attribute": "防御",
+    "AttributeIcon": "icon_01"
+  },
+  {
+    "Id": 4,
+    "Name": "瞄准系统",
+    "IconPath": "zb_icon_miaozhun",
+    "Attribute": "攻速",
+    "AttributeIcon": "icon_05"
+  },
+  {
+    "Id": 5,
+    "Name": "机动系统",
+    "IconPath": "zb_icon_jidong",
+    "Attribute": "闪避",
+    "AttributeIcon": "icon_06"
+  },
+  {
+    "Id": 6,
+    "Name": "辅助系统",
+    "IconPath": "zb_icon_fuzhu",
+    "Attribute": "血量",
+    "AttributeIcon": "icon_02"
+  }
+]

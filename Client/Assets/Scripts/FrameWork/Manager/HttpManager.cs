@@ -1,0 +1,128 @@
+﻿using Cysharp.Threading.Tasks;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class HttpManager : Singleton<HttpManager>
+{
+
+    /// <summary>
+    /// DateTime转换为10位时间戳（单位：秒）
+    /// </summary>
+    /// <param name="dateTime"> DateTime</param>
+    /// <returns>10位时间戳（单位：秒）</returns>
+    public static long DateTimeToTimeStamp()
+    {
+        DateTime dateStart = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        return (long)(DateTime.UtcNow - dateStart).TotalSeconds;
+    }
+
+    //判断网络的状态
+    public bool NetState()
+    {
+        //当网络不可用时                
+        if (Application.internetReachability == NetworkReachability.NotReachable)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    #region Get请求
+
+    public async UniTask<string> GetRequest(string url, string token = null)
+    {
+        using UnityWebRequest webRequest = new(url, "GET");
+        webRequest.timeout = 30;
+        webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        webRequest.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=gb2312");
+        webRequest.SetRequestHeader("Time-Tamp", DateTimeToTimeStamp().ToString());
+        if (token != null)
+            webRequest.SetRequestHeader("Token", token);
+        webRequest.SetRequestHeader("Time-Zone", System.TimeZone.CurrentTimeZone.GetUtcOffset(System.DateTime.Now).Hours.ToString());
+
+        try
+        {
+            await webRequest.SendWebRequest();
+        }
+        catch
+        {
+            return "";
+        }
+        if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text + "   " + url);
+            return "";
+        }
+        else
+        {
+            string data = webRequest.downloadHandler.text;
+            webRequest.Dispose();
+            return data;
+        }
+    }
+    #endregion
+
+    #region Post请求
+
+    public async UniTask<string> PostRequest(string url, string jsonString, bool isHoutai = false, string userid = "")
+    {
+        using UnityWebRequest webRequest = new(url, "POST");
+        webRequest.uploadHandler = (UploadHandler)new UploadHandlerRaw(Encoding.UTF8.GetBytes(jsonString));
+        webRequest.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+        webRequest.SetRequestHeader("Content-Type", "application/json");
+        webRequest.timeout = 10;
+        if (isHoutai)
+        {
+            var time = TimeManager.Instance.ClientTimer.ToString();
+            var id = PlayerPrefs.GetString("Guid", "");
+            if (id == "")
+            {
+                id = Guid.NewGuid().ToString();
+                PlayerPrefs.SetString("Guid", id);
+            }
+            string Authorization;
+            if (userid == "")
+            {
+                Authorization = id;
+            }
+            else
+            {
+                Authorization = userid;
+            }
+            webRequest.SetRequestHeader("auth-clientid", "2");
+            webRequest.SetRequestHeader("auth-ticks", time);
+            webRequest.SetRequestHeader("auth-sign", MD5Helper.Md5x2(jsonString + time + "3dd298ff63f343419141ef43b00edb51"));
+            webRequest.SetRequestHeader("Authorization", $"Bearer {Authorization}");
+        }
+
+        try
+        {
+            await webRequest.SendWebRequest().ToUniTask();
+
+        }
+        catch
+        {
+            Debug.LogError(webRequest.error);
+            return "";
+        }
+
+        if (webRequest.result == UnityWebRequest.Result.ProtocolError || webRequest.result == UnityWebRequest.Result.ConnectionError)
+        {
+            Debug.LogError(webRequest.error + "\n" + webRequest.downloadHandler.text);
+            return "";
+        }
+        else
+        {
+            string data = webRequest.downloadHandler.text;
+            webRequest.Dispose();
+            return data;
+        }
+    }
+    #endregion
+}
